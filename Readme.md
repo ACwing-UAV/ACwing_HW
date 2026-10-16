@@ -1,4 +1,4 @@
-# DimaQuadFC rev C2 – flight controller for frame C (STM32WB55CGU6)
+# Flight Controller board rev C2 – (STM32WB55CGU6)
 
 KiCad 7 project (it also opens in KiCad 8/9). Rev C2 keeps the rev C outline, mounting, stack-up, power path,
 motor stages, sensor layout and pogo grid, and replaces the parts that are not available:
