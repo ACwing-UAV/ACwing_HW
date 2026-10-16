@@ -1,0 +1,7 @@
+(version 1)
+# Bottom GND pour: the small passives below are already tied to a GND via by their own fan-out track, so the
+# pour connection is redundant and one thermal spoke is enough where tracks leave no room for a second one.
+(rule "GND pads in the B.Cu pour: 1 spoke"
+  (layer "B.Cu")
+  (condition "A.Type == 'Pad' && A.NetName == 'GND' && B.Type == 'Zone' && B.NetName == 'GND'")
+  (constraint min_resolved_spokes 1))
