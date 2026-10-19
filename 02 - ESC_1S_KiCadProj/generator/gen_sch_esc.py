@@ -1,4 +1,4 @@
-# DimaQuadESC rev B: DimaQuad 1S power board (brushed) for DimaQuadFC rev H (KiCad 7 schematic generator).
+# ACwing ESC 1S rev A: ACwing 1S power board (brushed) for ACwing FC rev A (KiCad 7 schematic generator).
 # Rev B adds: USB-C 1S charger (STC4054), charge switch Q5
 # (motors and FC off while charging), current shunt after the battery as rev A.
 # Takes the place of the FC in frame C: battery pads, current shunt + amplifier, bulk capacitor, four low-side MOSFET
@@ -10,11 +10,11 @@ from kisch import Schematic, POWER_LIB
 from custom_syms import all_symbols, LIB
 
 OUT = sys.argv[1]
-PROJECT = 'DimaQuadESC_B'
+PROJECT = 'ACwing_ESC1S_A'
 POWER_LIB.update({'GND': 'power:GND', 'VBAT': LIB + ':VBAT'})
 sch = Schematic(PROJECT, 'A3', title=dict(
-    title='DimaQuadESC rev B - DimaQuad 1S power board (brushed) for DimaQuadFC rev H',
-    date='2026-10-18', rev='B', company='UAV Control - A. Cirillo',
+    title='ACwing ESC 1S rev A - ACwing 1S power board (brushed) for ACwing FC rev A',
+    date='2026-10-18', rev='B', company='ACwing - Andrea Cirillo',
     comments=['40 x 40 mm, 2 layers, 1.0 mm; frame C outline; 20 x 20 mm M2 holes (hard mount)',
               'FC link: standard 4-in-1 ESC connector, JST SH 8-pin, 1:1 cable',
               'Larger drones: a commercial 4-in-1 ESC replaces this board on the same FC cable',

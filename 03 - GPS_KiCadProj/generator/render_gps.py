@@ -1,4 +1,4 @@
-# DimaQuadGPS rev D renders: the board alone (top / isometric / bottom) and the stack ESC rev B + FC rev H + GPS rev D
+# ACwing GPS rev A renders: the board alone (top / isometric / bottom) and the stack ESC rev B + FC rev H + GPS rev D
 # (M2 standoffs 6 mm, JST SH cable sketched), from the STEP meshes made by genD/step_mesh.py.
 import numpy as np, matplotlib
 matplotlib.use('Agg')
@@ -36,7 +36,7 @@ fig, axs = plt.subplots(1, 3, figsize=(21, 7.5))
 view(axs[0], Tg, Cg, 0, 0, 'Top: SAM-M10Q at 45 deg, PPS LED, FRONT arrow')
 view(axs[1], Tg, Cg, -35, -60, 'Isometric')
 view(axs[2], Tg, Cg, 0, 180, 'Bottom: compass, backup, test pads (nothing above 1.1 mm)')
-plt.tight_layout(); plt.savefig('/home/claude/outGPSD/DimaQuadGPS_D_3D.png', dpi=80); plt.close()
+plt.tight_layout(); plt.savefig('/home/claude/outGPSD/ACwing_GPS_A_3D.png', dpi=80); plt.close()
 
 # --- stack: FC + standoffs + GPS board + cable sketch
 Ts_, Cs_ = centred(S)
@@ -72,7 +72,7 @@ for i in range(len(dense) - 1):
     extra_T += [[q[0], q[1], q[2]], [q[0], q[2], q[3]]]; extra_C += [(0.12, 0.12, 0.12)] * 2
 Ts = np.concatenate([Ts_, Tf, Tg2, np.array(extra_T)]); Cs = np.concatenate([Cs_, Cf, Cg2, np.array(extra_C)])
 fig, axs = plt.subplots(1, 2, figsize=(20, 9))
-view(axs[0], Ts, Cs, -35, -62, 'Stack: DimaQuadESC B + FC H (grommets, 5 mm gap) + GPS D (6 mm standoffs)')
+view(axs[0], Ts, Cs, -35, -62, 'Stack: ACwing ESC1S B + FC H (grommets, 5 mm gap) + GPS D (6 mm standoffs)')
 view(axs[1], Ts, Cs, 0, -90, 'Side view (-Y): Qwiic loop at the right edge')
-plt.tight_layout(); plt.savefig('/home/claude/outGPSD/DimaQuad_stack_3D.png', dpi=80); plt.close()
+plt.tight_layout(); plt.savefig('/home/claude/outGPSD/ACwing_stack_3D.png', dpi=80); plt.close()
 print('renders written')

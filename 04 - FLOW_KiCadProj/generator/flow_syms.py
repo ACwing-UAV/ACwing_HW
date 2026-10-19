@@ -1,4 +1,4 @@
-# Project symbols for DimaQuadFlow (not in the KiCad 7 library): PixArt PMW3901MB-TXQT.
+# Project symbols for ACwing Flow (not in the KiCad 7 library): PixArt PMW3901MB-TXQT.
 import sys
 sys.path.insert(0, '/home/claude/genE')
 from custom_syms import _pin, S, eff
@@ -26,7 +26,7 @@ def pmw3901():
     s = [S('symbol'), n, [S('in_bom'), S('yes')], [S('on_board'), S('yes')],
          [S('property'), 'Reference', 'U', [S('at'), -10.16, 11.43, 0], eff(justify='left')],
          [S('property'), 'Value', n, [S('at'), 0, -15.24, 0], eff()],
-         [S('property'), 'Footprint', 'DimaQuadFlow:PixArt_PMW3901MB_COB-28_6x6mm', [S('at'), 0, 0, 0], eff(hide=True)],
+         [S('property'), 'Footprint', 'ACwing_Flow:PixArt_PMW3901MB_COB-28_6x6mm', [S('at'), 0, 0, 0], eff(hide=True)],
          [S('property'), 'Datasheet', 'PMW3901MB-TXQT-DS-R1.00 (PixArt, 2017-03-20)', [S('at'), 0, 0, 0], eff(hide=True)],
          [S('property'), 'ki_keywords', 'optical flow motion sensor far field', [S('at'), 0, 0, 0], eff(hide=True)],
          [S('property'), 'ki_description', 'Optical motion tracking chip, 80 mm to infinity, 4-wire SPI 2 MHz, VDD 1.8-2.1 V, VDDIO 1.8-3.6 V, 28-pin COB 6x6x2.28 mm with lens', [S('at'), 0, 0, 0], eff(hide=True)],

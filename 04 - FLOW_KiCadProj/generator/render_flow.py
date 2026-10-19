@@ -1,4 +1,4 @@
-# DimaQuadFlow rev A renders: sensor side, isometric, back side
+# ACwing Flow rev A renders: sensor side, isometric, back side
 # (M2 standoffs 6 mm, JST SH cable sketched), from the STEP meshes made by genD/step_mesh.py.
 import numpy as np, matplotlib
 matplotlib.use('Agg')
@@ -34,5 +34,5 @@ fig, axs = plt.subplots(1, 3, figsize=(21, 8))
 view(axs[0], Tg, Cg, 0, 0, 'Sensor side (faces the ground): PMW3901 (bottom), VL53L1X, MCU, Qwiic J1/J2')
 view(axs[1], Tg, Cg, -35, -60, 'Isometric')
 view(axs[2], Tg, Cg, 0, 180, 'Back side (against the tray): no parts')
-plt.tight_layout(); plt.savefig('/home/claude/outFlow/DimaQuadFlow_A_3D.png', dpi=80); plt.close()
+plt.tight_layout(); plt.savefig('/home/claude/outFlow/ACwing_Flow_A_3D.png', dpi=80); plt.close()
 print('render written')

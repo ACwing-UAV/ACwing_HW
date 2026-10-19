@@ -1,7 +1,7 @@
-# DimaQuadESC rev B (from rev A): board from the netlist. Rev B: charge port USB-C at a new 45 deg chamfer at the
+# ACwing ESC 1S rev A (from rev A): board from the netlist. Rev B: charge port USB-C at a new 45 deg chamfer at the
 #   front-left corner (mirror of the FC USB corner), charger on the top next to it, charge switch Q5 on the bottom next
 #   to the shunt.
-#   Frame C outline (same Edge.Cuts as DimaQuadFC rev E, 40 x 40 mm, chamfered rear-right corner), centred on (150, 100).
+#   Frame C outline (same Edge.Cuts as ACwing FC rev E, 40 x 40 mm, chamfered rear-right corner), centred on (150, 100).
 #   4 layers, 1.0 mm: In1 GND solid, In2 VBAT solid (distribution to the four stages), signals on F.Cu / B.Cu.
 #   Motor stages copied from the rev E FC (validated hot-loop layout): stage 1 at the rear-right edge midpoint (bottom
 #   edge in KiCad), the others rotated about the centre. M2 holes on the 20 x 20 pattern, hard mount to the frame.
@@ -14,7 +14,7 @@ from shapely.geometry import Polygon, Point, box as sbox
 from shapely.ops import unary_union
 
 OUT, NETXML = sys.argv[1], sys.argv[2]
-PROJECT = 'DimaQuadESC_B'
+PROJECT = 'ACwing_ESC1S_A'
 OX, OY = 150.0, 100.0
 HOLES = [(10, 10), (-10, 10), (-10, -10), (10, -10)]
 HOLE_KEEP = 2.6
@@ -31,7 +31,7 @@ ds.SetBoardThickness(pcbnew.FromMM(1.0))
 ds.SetAuxOrigin(K(130, 120)); ds.SetGridOrigin(K(130, 120))
 
 # ---------------------------------------------------------------- outline: copy of the FC rev E Edge.Cuts
-src = pcbnew.LoadBoard('/home/claude/outE/DimaQuadFC_E.kicad_pcb')
+src = pcbnew.LoadBoard('/home/claude/outE/ACwing_FC_E.kicad_pcb')
 for d in src.GetDrawings():
     if d.GetLayer() == pcbnew.Edge_Cuts:
         a_, c_ = B(d.GetStart()), B(d.GetEnd())
@@ -63,16 +63,16 @@ for n in root.find('nets').findall('net'):
         pin_net[(nd.get('ref'), nd.get('pin'))] = ni
 parts = json.load(open(OUT + '/%s.kicad_sch.parts.json' % PROJECT))
 def fp_dir(lib):
-    return '/home/claude/outE/DimaQuad.pretty' if lib == 'DimaQuad' else '/usr/share/kicad/footprints/%s.pretty' % lib
+    return '/home/claude/outE/ACwing.pretty' if lib == 'ACwing' else '/usr/share/kicad/footprints/%s.pretty' % lib
 FPD = {}
 for ref, info in sorted(parts.items()):
     lib, name = info['fp'].split(':')
     fp = pcbnew.FootprintLoad(fp_dir(lib), name)
     if fp is None:
-        fp = pcbnew.FootprintLoad('/home/claude/outE/DimaQuad.pretty', name)
+        fp = pcbnew.FootprintLoad('/home/claude/outE/ACwing.pretty', name)
     if fp is None:
         raise SystemExit('footprint not found ' + info['fp'])
-    fp.SetReference(ref); fp.SetValue(info['value']); fp.SetFPID(pcbnew.LIB_ID('DimaQuad', name))
+    fp.SetReference(ref); fp.SetValue(info['value']); fp.SetFPID(pcbnew.LIB_ID('ACwing', name))
     fp.SetPath(pcbnew.KIID_PATH('/' + uid('sym', ref, 1)))
     board.Add(fp); FPD[ref] = fp
     for pad in fp.Pads():
@@ -191,7 +191,7 @@ print('moved > 0.3 mm:', ', '.join(moved))
 pcbnew.SaveBoard(OUT + '/%s.kicad_pcb' % PROJECT, board)
 
 # ---------------------------------------------------------------- project rules (after SaveBoard)
-pro = json.load(open('/home/claude/outE/DimaQuadFC_E.kicad_pro'))
+pro = json.load(open('/home/claude/outE/ACwing_FC_E.kicad_pro'))
 ns = pro['net_settings']
 base = [c for c in ns['classes'] if c['name'] == 'Default'][0]
 d = dict(base); d.update(clearance=0.2, track_width=0.25, via_diameter=0.5, via_drill=0.3)

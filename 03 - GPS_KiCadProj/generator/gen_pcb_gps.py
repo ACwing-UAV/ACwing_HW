@@ -1,4 +1,4 @@
-# DimaQuadGPS rev C: board from the netlist. 30 x 30 mm, r 2 corners, centred on (150, 100) like the FC (same
+# ACwing GPS rev C: board from the netlist. 30 x 30 mm, r 2 corners, centred on (150, 100) like the FC (same
 # 20 x 20 hole pattern as FC rev F), 2 layers, 1.0 mm. Rev D fixed: SAM-M10Q (top, 0 deg), J1 (Qwiic in, TOP, right edge),
 # J2 (Qwiic out, TOP, rear edge), holes: nothing taller than ~1 mm on the bottom (stack check with FC rev H, 6 mm standoffs).
 # The other parts start from a target spot and move to the nearest legal one (courtyards, hole keep-outs, outline).
@@ -10,7 +10,7 @@ from shapely.ops import unary_union
 from shapely.affinity import rotate as srot
 
 OUT, NETXML = sys.argv[1], sys.argv[2]
-PROJECT = 'DimaQuadGPS_D'
+PROJECT = 'ACwing_GPS_A'
 OX, OY = 150.0, 100.0
 HALF, RC = 15.0, 2.0
 HOLES = [(10, 10), (-10, 10), (-10, -10), (10, -10)]       # board frame (u right, v up), mm
@@ -51,12 +51,12 @@ for n in root.find('nets').findall('net'):
         pin_net[(nd.get('ref'), nd.get('pin'))] = ni
 parts = json.load(open(OUT + '/%s.kicad_sch.parts.json' % PROJECT))
 def fp_dir(lib):
-    return OUT + '/DimaQuadGPS.pretty' if lib == 'DimaQuadGPS' else '/usr/share/kicad/footprints/%s.pretty' % lib
+    return OUT + '/ACwing_GPS.pretty' if lib == 'ACwing_GPS' else '/usr/share/kicad/footprints/%s.pretty' % lib
 FPD = {}
 for ref, info in sorted(parts.items()):
     lib, name = info['fp'].split(':')
     fp = pcbnew.FootprintLoad(fp_dir(lib), name)
-    if fp is None and lib == 'DimaQuadGPS':
+    if fp is None and lib == 'ACwing_GPS':
         fp = None
     if fp is None:
         raise SystemExit('footprint not found ' + info['fp'])
@@ -283,7 +283,7 @@ pcbnew.SaveBoard(OUT + '/%s.kicad_pcb' % PROJECT, board)
 
 # ---------------------------------------------------------------- project rules (written after SaveBoard, which
 # would otherwise store the defaults of the fresh board). Based on the FC project file.
-pro = json.load(open('/home/claude/outD/DimaQuadFC_D.kicad_pro'))
+pro = json.load(open('/home/claude/outD/ACwing_FC_D.kicad_pro'))
 ns = pro['net_settings']
 base = [c for c in ns['classes'] if c['name'] == 'Default'][0]
 d = dict(base); d.update(clearance=0.15, track_width=0.2, via_diameter=0.5, via_drill=0.3)

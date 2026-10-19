@@ -1,4 +1,4 @@
-# DimaQuadESC rev A / FC rev F: STEP models missing from the KiCad 7 library (frame convention of genD/make_3d.py).
+# ACwing ESC1S rev A / FC rev F: STEP models missing from the KiCad 7 library (frame convention of genD/make_3d.py).
 import sys
 sys.argv = sys.argv[:2]
 exec(open('/home/claude/genD/make_3d.py').read().split('# ---- PowerPAK')[0])

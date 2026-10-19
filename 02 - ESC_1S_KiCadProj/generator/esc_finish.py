@@ -1,4 +1,4 @@
-# DimaQuadESC rev B: silkscreen legend (top), project footprint library (DimaQuad.pretty) with project 3D models.
+# ACwing ESC 1S rev A: silkscreen legend (top), project footprint library (ACwing.pretty) with project 3D models.
 #   python3 esc_finish.py <out dir>
 import sys, os, re, json, shutil, math
 import pcbnew
@@ -6,11 +6,11 @@ from shapely.geometry import Polygon, Point, box
 from shapely.ops import unary_union
 
 OUT = sys.argv[1]
-PROJECT = 'DimaQuadESC_B'
+PROJECT = 'ACwing_ESC1S_A'
 BOARD = os.path.join(OUT, PROJECT + '.kicad_pcb')
 SCH = os.path.join(OUT, PROJECT + '.kicad_sch')
 OX, OY = 150.0, 100.0
-LIB = 'DimaQuad'
+LIB = 'ACwing'
 LIB3D = '/usr/share/kicad/3dmodels'
 D3 = os.path.join(OUT, '3d')
 def P(u, v): return pcbnew.VECTOR2I(pcbnew.FromMM(OX + u), pcbnew.FromMM(OY - v))
@@ -36,7 +36,7 @@ def line(a, c):
     s = pcbnew.PCB_SHAPE(b); s.SetShape(pcbnew.SHAPE_T_SEGMENT); s.SetLayer(pcbnew.F_SilkS)
     s.SetStart(P(*a)); s.SetEnd(P(*c)); s.SetWidth(pcbnew.FromMM(0.151)); b.Add(s)
 # board centre is free of parts (signals only): name, front arrow, motor legend next to each stage
-text('DimaQuadESC B', 0, 1.2, 0.8)
+text('ACwing ESC1S B', 0, 1.2, 0.8)
 text('1S power board', 0, -0.3, 0.8)
 ax, ay = 3.6, 3.6                                  # front = +u +v corner (as the FC)
 line((ax - 0.9, ay - 0.9), (ax + 0.9, ay + 0.9))
@@ -94,7 +94,7 @@ for ref, v in parts.items():
     lib, name = v['fp'].split(':')
     src_lib[name] = lib
 for name, lib in src_lib.items():
-    d_ = '/home/claude/outE/DimaQuad.pretty' if os.path.exists('/home/claude/outE/DimaQuad.pretty/%s.kicad_mod' % name) else \
+    d_ = '/home/claude/outE/ACwing.pretty' if os.path.exists('/home/claude/outE/ACwing.pretty/%s.kicad_mod' % name) else \
          '/usr/share/kicad/footprints/%s.pretty' % lib
     if not os.path.exists(os.path.join(d_, name + '.kicad_mod')):
         continue                                   # rerun: already in the project library
@@ -133,5 +133,5 @@ for v in parts.values():
 json.dump(parts, open(SCH + '.parts.json', 'w'), indent=0)
 open(os.path.join(OUT, 'fp-lib-table'), 'w').write(
     '(fp_lib_table\n  (version 7)\n  (lib (name "%s")(type "KiCad")(uri "${KIPRJMOD}/%s.pretty")(options "")'
-    '(descr "DimaQuadESC project footprints (3D models in ${KIPRJMOD}/3d)"))\n)\n' % (LIB, LIB))
+    '(descr "ACwing ESC1S project footprints (3D models in ${KIPRJMOD}/3d)"))\n)\n' % (LIB, LIB))
 print('library', LIB, 'footprints', len(os.listdir(os.path.join(OUT, LIB + '.pretty'))), '| schematic links', k)

@@ -1,11 +1,11 @@
 set -e
 cd /home/claude/outFlow
-python3 /home/claude/genFlow/route_gps.py DimaQuadFlow_A.kicad_pcb /home/claude/outFlow 2>&1 | grep -v "^$" | tail -3
-python3 /home/claude/genE/cleanup.py DimaQuadFlow_A.kicad_pcb | tail -1
-python3 /home/claude/genFlow/gnd_bridge.py DimaQuadFlow_A.kicad_pcb | tail -2
+python3 /home/claude/genFlow/route_gps.py ACwing_Flow_A.kicad_pcb /home/claude/outFlow 2>&1 | grep -v "^$" | tail -3
+python3 /home/claude/genE/cleanup.py ACwing_Flow_A.kicad_pcb | tail -1
+python3 /home/claude/genFlow/gnd_bridge.py ACwing_Flow_A.kicad_pcb | tail -2
 python3 -c "
 import pcbnew
-b=pcbnew.LoadBoard('/home/claude/outFlow/DimaQuadFlow_A.kicad_pcb')
+b=pcbnew.LoadBoard('/home/claude/outFlow/ACwing_Flow_A.kicad_pcb')
 pcbnew.WriteDRCReport(b,'/tmp/claude-0/fdrc.rpt',pcbnew.EDA_UNITS_MILLIMETRES,True)"
 grep -E "^\[|Found" /tmp/claude-0/fdrc.rpt | sed 's/(.*//' | sort | uniq -c
 python3 - <<'PY'

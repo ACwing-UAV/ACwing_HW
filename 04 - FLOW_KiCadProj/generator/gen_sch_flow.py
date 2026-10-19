@@ -1,4 +1,4 @@
-# DimaQuadFlow rev A: optical-flow + ToF board for the DimaQuadFC expansion bus (Qwiic), KiCad 7 schematic generator.
+# ACwing Flow rev A: optical-flow + ToF board for the ACwing FC expansion bus (Qwiic), KiCad 7 schematic generator.
 import sys, json
 sys.path.insert(0, '/home/claude/genE')
 import kisch
@@ -6,12 +6,12 @@ from kisch import Schematic, POWER_LIB
 from flow_syms import pmw3901
 
 OUT = sys.argv[1]
-PROJECT = 'DimaQuadFlow_A'
-LIB = 'DimaQuadFlow'
+PROJECT = 'ACwing_Flow_A'
+LIB = 'ACwing_Flow'
 POWER_LIB.update({'GND': 'power:GND', '+3V3': 'power:+3V3'})
 sch = Schematic(PROJECT, 'A4', title=dict(
-    title='DimaQuadFlow rev A - flow + ToF expansion',
-    date='2026-10-18', rev='A', company='UAV Control - A. Cirillo',
+    title='ACwing Flow rev A - flow + ToF expansion',
+    date='2026-10-18', rev='A', company='ACwing - Andrea Cirillo',
     comments=['Mounted under the battery tray, sensor side facing the ground (handoff doc for the frame)',
               'Qwiic (JST SH 4P) in/out: daisy-chain with the GPS board; I2C 0x29 (ToF) and 0x3B (flow bridge)',
               'PixArt PMW3901MB (flow, SPI) behind an ST STM32C011 I2C bridge; ST VL53L1X ToF on the bus',

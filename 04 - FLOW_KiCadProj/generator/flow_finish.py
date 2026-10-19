@@ -1,14 +1,14 @@
-# DimaQuadFlow rev A: silkscreen extras (back side), project footprint library (DimaQuadFlow.pretty) with project 3D models.
+# ACwing Flow rev A: silkscreen extras (back side), project footprint library (ACwing_Flow.pretty) with project 3D models.
 #   python3 gps_finish.py <out dir>
 import sys, os, re, json, shutil
 import pcbnew
 
 OUT = sys.argv[1]
-PROJECT = 'DimaQuadFlow_A'
+PROJECT = 'ACwing_Flow_A'
 BOARD = os.path.join(OUT, PROJECT + '.kicad_pcb')
 SCH = os.path.join(OUT, PROJECT + '.kicad_sch')
 OX, OY = 150.0, 100.0
-LIB = 'DimaQuadFlow'
+LIB = 'ACwing_Flow'
 LIB3D = '/usr/share/kicad/3dmodels'
 D3 = os.path.join(OUT, '3d')
 MODEL_FOR = {}
@@ -18,14 +18,14 @@ def P(u, v): return pcbnew.VECTOR2I(pcbnew.FromMM(OX + u), pcbnew.FromMM(OY - v)
 b = pcbnew.LoadBoard(BOARD)
 # ---------------------------------------------------------------- 1. silkscreen: board name on the back (no parts there)
 for d in list(b.GetDrawings()):
-    if d.GetLayer() == pcbnew.B_SilkS and d.GetClass() == 'PCB_TEXT' and d.GetText().startswith(('DimaQuadFlow', 'UAV Control', 'Qwiic')):
+    if d.GetLayer() == pcbnew.B_SilkS and d.GetClass() == 'PCB_TEXT' and d.GetText().startswith(('ACwing_Flow', 'Qwiic')):
         b.Delete(d)
 def text(s, u, v, size=0.8):
     t = pcbnew.PCB_TEXT(b); t.SetText(s); t.SetLayer(pcbnew.B_SilkS); t.SetPosition(P(u, v)); t.SetMirrored(True)
     t.SetTextSize(pcbnew.VECTOR2I(pcbnew.FromMM(size), pcbnew.FromMM(size))); t.SetTextThickness(pcbnew.FromMM(0.15))
     b.Add(t)
-text('DimaQuadFlow rev A', 0, -9.5, 1.0)
-text('UAV Control 2026', 0, -11.0, 0.8)
+text('ACwing Flow rev A', 0, -9.5, 1.0)
+text('ACwing Flow rev A', 0, -11.0, 0.8)
 text('Qwiic J1 / J2', 0, 9.6, 0.8)
 pcbnew.SaveBoard(BOARD, b)
 
@@ -92,7 +92,7 @@ for v in pp.values():
 json.dump(pp, open(pj, 'w'), indent=0)
 open(os.path.join(OUT, 'fp-lib-table'), 'w').write(
     '(fp_lib_table\n  (version 7)\n  (lib (name "%s")(type "KiCad")(uri "${KIPRJMOD}/%s.pretty")(options "")'
-    '(descr "DimaQuadFlow project footprints (3D models in ${KIPRJMOD}/3d)"))\n)\n' % (LIB, LIB))
+    '(descr "ACwing Flow project footprints (3D models in ${KIPRJMOD}/3d)"))\n)\n' % (LIB, LIB))
 if os.path.exists(os.path.join(OUT, 'sym-lib-table')):
     os.remove(os.path.join(OUT, 'sym-lib-table'))
 print('library', LIB, 'footprints', len(os.listdir(os.path.join(OUT, LIB + '.pretty'))), '| schematic links', k)
