@@ -21,7 +21,7 @@ ESCs. Two optional expansion boards plug into the FC's **Qwiic** (I2C) ports: a 
 flight and an **optical-flow + ToF** board for indoor position and height hold.
 
 <p align="center">
-  <img src="00%20-%20Docs/00%20-%20FC_Docs/ACwing_FC_H_pcb.png" alt="ACwing FC rev H, top and bottom" width="820">
+  <img src="00%20-%20Docs/00%20-%20FC_Docs/ACwing_FC_A_pcb.png" alt="ACwing FC rev A, top and bottom" width="820">
 </p>
 
 ## Boards
@@ -40,7 +40,7 @@ files, the Gerber zip, the DRC report, the STEP model and board views.
 
 ```
               ┌─────────────────────────┐   Qwiic (J3)   ┌──────────────────┐
-              │      ACwing FC rev H    │───────────────▶│  ACwing GPS rev D │  optional, outdoor
+              │      ACwing FC rev A    │───────────────▶│  ACwing GPS rev A │  optional, outdoor
   USB-C ─────▶│ STM32WB55 · IMU · baro  │                └──────────────────┘
   ELRS RX ───▶│ compass · 16 MB flash   │   Qwiic (J4)   ┌──────────────────┐
               │ BLE · 4 × RGB LED       │───────────────▶│ ACwing Flow rev A │  indoor
@@ -48,7 +48,7 @@ files, the Gerber zip, the DRC report, the STEP model and board views.
           ESC link A  │         │  ESC link B (motors 5–8)
          (JST SH 8)   ▼         ▼
    ┌──────────────────────┐   ┌──────────────────────────┐
-   │ ACwing ESC 1S rev B  │ or│ commercial 4-in-1 ESC(s) │
+   │ ACwing ESC 1S rev A  │ or│ commercial 4-in-1 ESC(s) │
    │ 1S, brushed, charger │   │ 2S–6S, brushless         │
    └──────────────────────┘   └──────────────────────────┘
 ```
@@ -66,7 +66,7 @@ page locally.
 
 ## Key features
 
-**ACwing FC rev H**
+**ACwing FC rev A**
 - MCU **STM32WB55CGU6** (Cortex-M4 + M0+ radio core), BLE 5 with chip antenna and ST MLPF-WB55 front end.
 - Sensors: **LSM6DSV16X** IMU, **LPS22HB** barometer, **IIS2MDC** compass; **W25Q128JV** 16 MB log flash.
 - Input **1S–6S** (LM5166 buck, 3–65 V; 100 % duty cycle pass-through on 1S), 4.1 V system rail, 3.1 V and 3.31 V LDOs.
@@ -74,13 +74,13 @@ page locally.
   sense from the ESC, battery pads for setups without a VBAT pin.
 - Two Qwiic ports, ELRS / CRSF UART port, USB-C (data, DFU, bench supply), 4 × WS2812B, SWD pogo grid.
 
-**ACwing ESC 1S rev B**
+**ACwing ESC 1S rev A**
 - 4 brushed motor stages (AON7524 N-MOSFETs) for coreless 8520 motors, 470 µF bulk capacitor.
 - 2 mΩ shunt + TSC213 current sense (0.1 V/A) on the ESC link.
 - USB-C 1S charger (STC4054, 455 mA) with a charge switch that keeps FC and motors off while charging.
 - Battery solder pads for a JST PH 2.0 pigtail.
 
-**ACwing GPS rev D** – u-blox **SAM-M10Q** (integrated patch antenna, I2C/DDC) and **IIS2MDC** compass away from the
+**ACwing GPS rev A** – u-blox **SAM-M10Q** (integrated patch antenna, I2C/DDC) and **IIS2MDC** compass away from the
 motor currents; Qwiic in / out on the top side, PPS LED, backup supply.
 
 **ACwing Flow rev A** – PixArt **PMW3901MB** flow sensor behind an **STM32C011** I2C bridge, ST **VL53L1X** ToF;
@@ -90,9 +90,9 @@ Qwiic in / out; all parts on the sensor side.
 
 ```
 00 - Docs/
-├── 00 - FC_Docs/         FC rev H: README, pin map, schematic, BoM, JLC files, Gerber, STEP, views
-├── 01 - ESC_1S_Docs/     ESC 1S rev B: same set
-├── 02 - GPS_Docs/        GPS rev D: same set
+├── 00 - FC_Docs/         FC rev A: README, pin map, schematic, BoM, JLC files, Gerber, STEP, views
+├── 01 - ESC_1S_Docs/     ESC 1S rev A: same set
+├── 02 - GPS_Docs/        GPS rev A: same set
 ├── 03 - FLOW_Docs/       Flow rev A: same set + mechanical DXF
 ├── 04 - System_Docs/     mechanical handoff, frame C2 answer and reply, stack check (3D page and render)
 └── 05 - Brand/           ACwing logos (SVG/PNG), silkscreen logo footprints, brand and silkscreen tools

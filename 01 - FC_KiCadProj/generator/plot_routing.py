@@ -32,5 +32,5 @@ for f in b.GetFootprints():
             vis = L is None or L in [LM[l] for l in layers]
             ax.add_patch(MP(pts,closed=True,fc=('yellow' if p.GetNetname()==hl else ('white' if L is None else col[L])) if vis else 'none',alpha=0.6 if vis else 0.15,ec='k',lw=0.3))
     pp=T(f.GetPosition()); ax.text(pp[0],pp[1],f.GetReference(),fontsize=6,alpha=0.8)
-ax.set_xlim(-21.5,21.5); ax.set_ylim(-21.5,21.5); ax.set_aspect('equal'); ax.grid(alpha=0.25); ax.set_title('ACwing FC rev H - tracks: F.Cu red, In2 orange, B.Cu blue; zones: GND green, VDD violet')
+ax.set_xlim(-21.5,21.5); ax.set_ylim(-21.5,21.5); ax.set_aspect('equal'); ax.grid(alpha=0.25); ax.set_title('ACwing FC rev A - tracks: F.Cu red, In2 orange, B.Cu blue; zones: GND green, VDD violet')
 plt.savefig(out,dpi=75,bbox_inches='tight')

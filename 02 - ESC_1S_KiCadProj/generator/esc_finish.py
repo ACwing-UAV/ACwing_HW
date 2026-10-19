@@ -1,4 +1,4 @@
-# ACwing ESC1S rev B: silkscreen legend (top), project footprint library (ACwing.pretty) with project 3D models.
+# ACwing ESC 1S rev A: silkscreen legend (top), project footprint library (ACwing.pretty) with project 3D models.
 #   python3 esc_finish.py <out dir>
 import sys, os, re, json, shutil, math
 import pcbnew
@@ -6,7 +6,7 @@ from shapely.geometry import Polygon, Point, box
 from shapely.ops import unary_union
 
 OUT = sys.argv[1]
-PROJECT = 'ACwing_ESC1S_B'
+PROJECT = 'ACwing_ESC1S_A'
 BOARD = os.path.join(OUT, PROJECT + '.kicad_pcb')
 SCH = os.path.join(OUT, PROJECT + '.kicad_sch')
 OX, OY = 150.0, 100.0

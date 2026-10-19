@@ -4,7 +4,7 @@
 # then compares against these copies (the stock KiCad library copies differ by version and by 3D model path).
 import sys, os, re, json, collections, pcbnew
 OUT = sys.argv[1]
-BOARD = os.path.join(OUT, 'ACwing_ESC1S_B.kicad_pcb')
+BOARD = os.path.join(OUT, 'ACwing_ESC1S_A.kicad_pcb')
 LIB = os.path.join(OUT, 'ACwing.pretty')
 b = pcbnew.LoadBoard(BOARD)
 groups = collections.defaultdict(list)

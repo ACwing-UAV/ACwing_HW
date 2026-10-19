@@ -20,7 +20,7 @@ for t in list(b.GetTracks()):
         b.Delete(t)
 pcbnew.SaveBoard(BOARD, b)
 b = pcbnew.LoadBoard(BOARD)
-dsn = os.path.join(WORK, 'ACwing_ESC1S_B.dsn'); ses = dsn[:-4] + '.ses'
+dsn = os.path.join(WORK, 'ACwing_ESC1S_A.dsn'); ses = dsn[:-4] + '.ses'
 pcbnew.ExportSpecctraDSN(b, dsn)
 s = open(dsn).read()
 s = re.sub(r'\n\s*\(plane [^\s]+ \(polygon[^)]*\)\)', '', s)

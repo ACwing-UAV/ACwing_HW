@@ -31,7 +31,7 @@ Place a footprint and flip it (left/right) for the bottom side. The boards copy 
 project library.
 
 ## Silkscreen rules used on the boards
-- Logo + board name ("ACwing FC rev H" etc.) on each board; connector labels (ESC A/B, GPS, FLOW, ELRS, USB, BAT,
+- Logo + board name ("ACwing FC rev A" etc.) on each board; connector labels (ESC A/B, GPS, FLOW, ELRS, USB, BAT,
   TO FC, CHARGE, QWIIC IN/OUT); text 0.8 mm, stroke ≥ 0.15 mm.
 - Everything inside the board outline (0.5 mm inset), off pads and courtyards, never overlapping other silkscreen;
   KiCad DRC 0 on all boards.

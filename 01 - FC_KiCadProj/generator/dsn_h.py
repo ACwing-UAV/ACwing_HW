@@ -13,7 +13,7 @@ def polyset(ps):
 ps = pcbnew.SHAPE_POLY_SET(); b.GetBoardPolygonOutlines(ps)
 BOARD_POLY = polyset(ps)
 TPS = {f.GetReference(): B(f.GetPosition()) for f in b.GetFootprints() if f.GetReference().startswith('TP')}
-dsn = os.path.join(WORK, 'ACwing_FC_H.dsn')
+dsn = os.path.join(WORK, 'ACwing_FC_A.dsn')
 pcbnew.ExportSpecctraDSN(b, dsn)
 s = open(dsn).read()
 DONE = ['GND']

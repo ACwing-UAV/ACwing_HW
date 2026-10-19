@@ -5,18 +5,18 @@ from kisch import Schematic, POWER_LIB, vec, g
 from custom_syms import all_symbols, LIB
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else 'ACwing FC.kicad_sch'
-PROJECT = 'ACwing_FC_H'
+PROJECT = 'ACwing_FC_A'
 
 POWER_LIB.update({'GND': 'power:GND', 'VDD': 'power:VDD', 'VBUS': 'power:VBUS',
                   'VBAT': LIB + ':VBAT', 'VREG': LIB + ':VREG', 'VSYS': LIB + ':VSYS'})
 
 sch = Schematic(PROJECT, 'A3', title=dict(
-    title='ACwing FC rev H - 1S-6S flight controller (STM32WB55CGU6), 4-in-1 ESC links, up to 8 motors',
+    title='ACwing FC rev A - 1S-6S flight controller (STM32WB55CGU6), 4-in-1 ESC links, up to 8 motors',
     date='2026-10-18', rev='H',
     company='ACwing - Andrea Cirillo',
     comments=['Outline: frame C (40 x 40, as rev E); holes 20 x 20 (mechanical handoff, update 2026-10-18)',
               'Power and motors from a 4-in-1 ESC (JST SH 8-pin ESC A J2, ESC B J6) or the ACwing 1S power board',
-              'Pin map: ACwing_FC_H_pinmap.md',
+              'Pin map: ACwing_FC_A_pinmap.md',
               'Generated automatically: run ERC before release']))
 
 for name, node in all_symbols().items():
@@ -201,7 +201,7 @@ mcu = {
     '24': 'HSE_OUT', '25': 'HSE_IN',                   # 32 MHz crystal, internal trimming caps
     '33': 'SMPS_LX', '31': 'VFBSMPS',                  # SMPS network (bypass at reset)
     '4': 'BOOT0', '7': 'NRST',
-    # rev F pin map (ACwing_FC_H_pinmap.md): the MCU sits at the board centre, no pin row faces an edge.
+    # rev F pin map (ACwing_FC_A_pinmap.md): the MCU sits at the board centre, no pin row faces an edge.
     # All four motor outputs on TIM2 CH1-CH4 (one DMA burst: PWM for brushed, DShot / bidirectional DShot for brushless)
     '9': 'PWM_M1', '10': 'PWM_M2', '11': 'PWM_M3', '12': 'PWM_M4',   # PA0-PA3 TIM2_CH1-CH4
     '13': 'ESC_CUR',                                   # PA4 ADC1_IN9: current from the ESC link (0.1 V/A on ACwing ESC1S)

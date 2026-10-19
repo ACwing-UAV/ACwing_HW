@@ -1,4 +1,4 @@
-# ACwing ESC1S rev B (from rev A): board from the netlist. Rev B: charge port USB-C at a new 45 deg chamfer at the
+# ACwing ESC 1S rev A (from rev A): board from the netlist. Rev B: charge port USB-C at a new 45 deg chamfer at the
 #   front-left corner (mirror of the FC USB corner), charger on the top next to it, charge switch Q5 on the bottom next
 #   to the shunt.
 #   Frame C outline (same Edge.Cuts as ACwing FC rev E, 40 x 40 mm, chamfered rear-right corner), centred on (150, 100).
@@ -14,7 +14,7 @@ from shapely.geometry import Polygon, Point, box as sbox
 from shapely.ops import unary_union
 
 OUT, NETXML = sys.argv[1], sys.argv[2]
-PROJECT = 'ACwing_ESC1S_B'
+PROJECT = 'ACwing_ESC1S_A'
 OX, OY = 150.0, 100.0
 HOLES = [(10, 10), (-10, 10), (-10, -10), (10, -10)]
 HOLE_KEEP = 2.6

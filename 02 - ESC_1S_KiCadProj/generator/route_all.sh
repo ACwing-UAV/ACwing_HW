@@ -1,10 +1,10 @@
 set -e
 cd /home/claude/outESCB
-python3 /home/claude/genESCB/esc_power.py ACwing_ESC1S_B.kicad_pcb | tail -2
-python3 /home/claude/genESCB/route_esc.py ACwing_ESC1S_B.kicad_pcb /home/claude/outESCB 2>&1 | grep -v "^$" | tail -4
+python3 /home/claude/genESCB/esc_power.py ACwing_ESC1S_A.kicad_pcb | tail -2
+python3 /home/claude/genESCB/route_esc.py ACwing_ESC1S_A.kicad_pcb /home/claude/outESCB 2>&1 | grep -v "^$" | tail -4
 python3 -c "
 import pcbnew
-b=pcbnew.LoadBoard('/home/claude/outESCB/ACwing_ESC1S_B.kicad_pcb')
+b=pcbnew.LoadBoard('/home/claude/outESCB/ACwing_ESC1S_A.kicad_pcb')
 pcbnew.WriteDRCReport(b,'/tmp/claude-0/edrcb.rpt',pcbnew.EDA_UNITS_MILLIMETRES,True)"
 grep -E "^\[|Found" /tmp/claude-0/edrcb.rpt | sed 's/(.*//' | sort | uniq -c | grep -v "lib_foot\|silk"
 python3 - <<'PY'

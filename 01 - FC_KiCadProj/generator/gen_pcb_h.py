@@ -1,4 +1,4 @@
-# ACwing FC rev H (from rev F/G): board from the netlist.
+# ACwing FC rev A (from rev F/G): board from the netlist.
 #   Outline: frame C, copied from rev E (40 x 40 mm, chamfered rear-right corner for the USB-C receptacle).
 #   Holes: 4 x 3.2 mm plated grommet holes on the 20 x 20 pattern; flange keep-out r 2.75 (no tracks / vias on the
 #          outer layers), component keep-out r 3.0 top / 3.6 bottom.
@@ -16,7 +16,7 @@ sys.path.insert(0, '/home/claude/genH')
 from kisch import uid
 
 OUT, NETXML = sys.argv[1], sys.argv[2]
-PROJECT = 'ACwing_FC_H'
+PROJECT = 'ACwing_FC_A'
 OX, OY = 150.0, 100.0
 HOLES = [(10, 10), (-10, 10), (-10, -10), (10, -10)]
 KEEP_TOP, KEEP_BOT = 3.0, 3.6
@@ -46,7 +46,7 @@ seg((20, 17), (20, -11.5)); seg((20, -11.5), (20 + BUMP, -11.5 - BUMP))
 seg((20 + BUMP, -11.5 - BUMP), (20 + BUMP, 20 + BUMP - CH)); seg((20 + BUMP, 20 + BUMP - CH), (CH - 20 - BUMP, -20 - BUMP))
 seg((CH - 20 - BUMP, -20 - BUMP), (11.5 + BUMP, -20 - BUMP)); seg((11.5 + BUMP, -20 - BUMP), (11.5, -20))
 seg((11.5, -20), (-17, -20)); arc((-17, -20), (-20 + k3, -20 + k3), (-20, -17))
-# rev H: front-left corner chamfered (v - u = 36.6) like the ACwing ESC1S rev B charge-port corner below it, so a USB-C
+# rev H: front-left corner chamfered (v - u = 36.6) like the ACwing ESC 1S rev A charge-port corner below it, so a USB-C
 # plug in the power board never runs under the FC (stack check 2026-10-18); the chip antenna stays inside the outline
 seg((-20, -17), (-20, 16.6)); seg((-20, 16.6), (-16.6, 20))
 

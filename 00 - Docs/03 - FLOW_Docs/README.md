@@ -1,8 +1,10 @@
-# ACwing Flow rev A – optical flow + ToF height board for ACwing FC (rev E and later, used with rev H)
+# ACwing Flow rev A – optical flow + ToF height board for ACwing FC rev A
 
 **Project:** ACwing · **Author:** Andrea Cirillo · **Overview:** [repository README](../../Readme.md)
 
 ![ACwing_Flow_A](ACwing_Flow_A_pcb.png)
+
+> **Revisions.** Rev A is the first released revision.
 
 KiCad 7 project (it also opens in KiCad 8/9). A 21 × 25 mm board for indoor flight: it measures ground motion
 (optical flow) and height (time of flight). It sits under the battery tray, sensor side down, and connects to the

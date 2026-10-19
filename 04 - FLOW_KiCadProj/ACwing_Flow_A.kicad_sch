@@ -4,7 +4,7 @@
   (uuid "dc84106e-4fe0-5e9c-b14e-4823103c3234")
   (paper "A4")
   (title_block
-    (title "ACwing Flow rev A - optical flow + ToF expansion for ACwing FC rev H")
+    (title "ACwing Flow rev A - optical flow + ToF expansion for ACwing FC rev A")
     (date "2026-10-19")
     (rev "A")
     (company "ACwing - Andrea Cirillo")

@@ -1,12 +1,14 @@
-# ACwing FC rev H – universal flight controller: 1S–6S, commercial 4-in-1 ESCs, up to 8 motors
+# ACwing FC rev A – universal flight controller: 1S–6S, commercial 4-in-1 ESCs, up to 8 motors
 
 **Project:** ACwing · **Author:** Andrea Cirillo · **Overview:** [repository README](../../Readme.md)
 
-![ACwing_FC_H](ACwing_FC_H_pcb.png)
+![ACwing_FC_A](ACwing_FC_A_pcb.png)
 
-KiCad 7 project (it also opens in KiCad 8/9). Rev H turns the FC into a **standard FC that works with any power
+> **Revisions.** Rev A is the first released revision. Earlier letters, marked *draft* in this document (drafts C–G), are internal design iterations that were never manufactured.
+
+KiCad 7 project (it also opens in KiCad 8/9). Rev A turns the FC into a **standard FC that works with any power
 stage that uses the common 4-in-1 ESC connector**:
-- **Mini drone (1S, brushed coreless):** the ACwing 1S power board (ACwing ESC 1S rev B) carries the
+- **Mini drone (1S, brushed coreless):** the ACwing 1S power board (ACwing ESC 1S rev A) carries the
   motor stages, the battery connector and pads, the 1S USB-C charger and the current sensor. To the FC it looks like
   any ESC: VBAT (1S) and CUR on the 8-pin cable.
 - **Larger drone (3S–6S brushless, payload > 2 kg):** a commercial 20 × 20 4-in-1 ESC replaces the power board and
@@ -15,10 +17,10 @@ stage that uses the common 4-in-1 ESC connector**:
 The FC has one USB-C port for data, DFU flashing and bench supply only. Battery charging lives on the 1S power board
 (its own USB-C), because only the 1S battery can be charged that way.
 
-## Rev H changes (from rev G)
-| Item | Rev G | Rev H | Why |
+## Changes from draft G
+| Item | Draft G | Rev A | Why |
 |---|---|---|---|
-| **Input converter** | TPS62160 buck, 3–17 V (1S–3S) | **U12 LM5166DRCT**: 3–65 V in (abs. max 68 V), 500 mA, PFM, PFET high side with 100 % duty cycle, L3 22 µH (SWPA5040S, Isat 1.9 A), C47 4.7 µF 50 V + C49 10 nF in, C6 100 µF + C46 22 µF out, R47/R48 470k/200k → **VREG 4.1 V** | one converter for **1S–6S** with margin for ESC voltage spikes; on 1S it passes the battery through (VREG ≈ VBAT − I × 1.1 Ω), as rev F/G did |
+| **Input converter** | TPS62160 buck, 3–17 V (1S–3S) | **U12 LM5166DRCT**: 3–65 V in (abs. max 68 V), 500 mA, PFM, PFET high side with 100 % duty cycle, L3 22 µH (SWPA5040S, Isat 1.9 A), C47 4.7 µF 50 V + C49 10 nF in, C6 100 µF + C46 22 µF out, R47/R48 470k/200k → **VREG 4.1 V** | one converter for **1S–6S** with margin for ESC voltage spikes; on 1S it passes the battery through (VREG ≈ VBAT − I × 1.1 Ω), as drafts F/G did |
 | RC filter R1 / C6 | 1 Ω + 100 µF on VREG | removed (C6 is now the buck output capacitor) | VREG is regulated |
 | **USB charger, 1S charge gate** | U6 STC4054, D10, R5–R7, C10, C11; Q6/Q7, R43, R45 | **removed** | charging moves to the 1S power board |
 | **External current input** | TP9/TP10 → PA6 | removed | PA6 is now motor M8 |
@@ -33,8 +35,8 @@ The FC has one USB-C port for data, DFU flashing and bench supply only. Battery 
 | C2 (VBAT at J2) | 10 µF 25 V 0805, bottom | 4.7 µF **50 V** 1206 X7R, top | 6S; the 1206 is too tall for the bottom side |
 | Power path | Q5 / D9 rear-left | same circuit, moved east of the IMU | the input buck takes the rear-left corner |
 
-Outline: frame C + 0.8 mm USB-corner step as rev F/G, plus a **front-left chamfer** v − u = 36.6 (stack check with the
-power board rev B charge port below; the chip antenna stays inside, DRC 0). Unchanged: 20 × 20 grommet holes, MCU / IMU / compass / baro / flash,
+Outline: frame C + 0.8 mm USB-corner step as drafts F/G, plus a **front-left chamfer** v − u = 36.6 (stack check with the
+power board rev A charge port below; the chip antenna stays inside, DRC 0). Unchanged: 20 × 20 grommet holes, MCU / IMU / compass / baro / flash,
 RF front end and antenna, LDOs U5 (3.1 V) and U11 (VEXP 3.31 V), 4 RGB LEDs and their positions, J1 USB-C, J2 ESC A,
 J3 Qwiic, J5 ELRS positions, pogo grid.
 
@@ -51,7 +53,7 @@ J3 Qwiic, J5 ELRS positions, pogo grid.
 - **FC load on VREG ≤ 0.5 A** (LM5166). Typical load: MCU + BLE + sensors ≈ 60 mA, ELRS receiver 50–150 mA, GPS board
   ≤ 100 mA, flow board 35 mA, 4 LEDs up to 150 mA at full white.
 - **1S end of discharge:** below about 3.3 V the 3.1 V LDO (VDD) and the 3.31 V VEXP leave regulation (dropout).
-  The buck itself runs down to 2.45 V. Same behaviour as rev F/G.
+  The buck itself runs down to 2.45 V. Same behaviour as drafts F/G.
 
 ## Power architecture
 ```
@@ -78,8 +80,8 @@ J7 / J8 pads ───┴─ VBAT 1S–6S ── U12 LM5166 (PFM) ── VREG 4.
 1:1 JST SH 8-pin cables, ≈ 50 mm. Check the pin order of any third-party ESC before plugging it in; re-pin the
 cable if it differs.
 
-## Firmware pin map (rev H)
-See `ACwing_FC_H_pinmap.md`. Summary:
+## Firmware pin map (rev A)
+See `ACwing_FC_A_pinmap.md`. Summary:
 | Function | Pin | Peripheral |
 |---|---|---|
 | Motors M1–M4 / M5–M7 / M8 | PA0–PA3 / PA8–PA10 / PA6 | TIM2 CH1–CH4 / TIM1 CH1–CH3 / TIM16 CH1, all with DMA: 32 kHz PWM (brushed) or DShot300/600 + bidirectional DShot / EDT |
@@ -88,13 +90,13 @@ See `ACwing_FC_H_pinmap.md`. Summary:
 | ELRS (J5) | PB6 TX / PB7 RX | USART1, CRSF 420 kbaud |
 | SPI1 IMU + flash | PB3 / PB4 / PB5, CS PC14 (IMU), PE4 (flash) | SPI1 |
 | IMU INT1 / RGB LEDs / VBUS detect | PA15 / PA7 / PB1 | EXTI / TIM17 CH1 + DMA / GPIO |
-| Qwiic J3 + J4 / USB / SWD / BOOT0 / HSE | PB8–PB9 / PA11–PA12 / PA13–PA14 / PH3 / 32 MHz | as rev F |
+| Qwiic J3 + J4 / USB / SWD / BOOT0 / HSE | PB8–PB9 / PA11–PA12 / PA13–PA14 / PH3 / 32 MHz | as draft F |
 
 - Free: PB2. Not connected: PC15. No second UART is free: GNSS goes on I2C (ACwing GPS, u-blox DDC).
 
 ## Add-on boards
-- **GPS board (ACwing GPS rev D)**, optional (outdoor variant), stacked above on the 20 × 20 holes with a **6 mm** gap
-  (rev D has its Qwiic connectors on the top side; rev C needed 8 mm): cable from FC **J3** (right edge, front) to
+- **GPS board (ACwing GPS rev A)**, optional (outdoor variant), stacked above on the 20 × 20 holes with a **6 mm** gap
+  (GPS rev A has its Qwiic connectors on the top side; the GPS draft C needed 8 mm): cable from FC **J3** (right edge, front) to
   GPS J1 (right edge). GPS J2 is an optional pass-through.
 - **Flow board (ACwing Flow rev A)**, under the frame: cable from FC **J4** (right edge, rear) down through the deck to
   flow J1.
@@ -110,12 +112,12 @@ See `ACwing_FC_H_pinmap.md`. Summary:
 | J2 ESC A | top, rear edge, (+1.5, −16.9), mouth −v (unchanged) |
 | **J6 ESC B** | top, **left edge**, (−16.9, −3.4), mouth −u; pins u = −14.9, v = +0.1 (pin 1) … −6.9 (pin 8) |
 | **J7 VBAT+ / J8 GND** | top, left edge, (−18.4, +7.2) / (−18.4, +4.1); "+" / "−" on the silkscreen |
-| J3 Qwiic (GPS) | top, right edge, (+16.9, **+3.6**), mouth +u (0.8 mm forward of rev G, to make room for J4) |
+| J3 Qwiic (GPS) | top, right edge, (+16.9, **+3.6**), mouth +u (0.8 mm forward of draft G, to make room for J4) |
 | **J4 Qwiic (flow)** | top, right edge, (+16.9, −4.3), mouth +u |
 | J5 ELRS, J1 USB-C, LEDs, sensors, antenna, pogo grid | unchanged |
 
 ## PCB
-- 4 layers, 1.0 mm, stack-up and rules as rev F/G. New net class **HV** (VBAT, BUCK_SW): 0.3 mm tracks, 0.15 mm
+- 4 layers, 1.0 mm, stack-up and rules as drafts F/G. New net class **HV** (VBAT, BUCK_SW): 0.3 mm tracks, 0.15 mm
   clearance (6S). VREG in the Power class (0.3 mm).
 - U12: GND pins (3 ILIM, 5 RT, 10) tied straight into the exposed pad, two 0.3 mm vias in the pad to the In1 GND plane.
 - Routing: 1062 tracks, 187 vias: Freerouting in one run plus the locked pre-routes (RF chain, crystal, MCU ground,
@@ -123,16 +125,16 @@ See `ACwing_FC_H_pinmap.md`. Summary:
 
 ## Checks
 - Netlist: 0 errors (`check_net.py`, 91 nets).
-- KiCad DRC (`ACwing_FC_H_DRC.rpt`): **0 violations, 0 unconnected pads, 0 footprint errors**.
+- KiCad DRC (`ACwing_FC_A_DRC.rpt`): **0 violations, 0 unconnected pads, 0 footprint errors**.
 - Silkscreen: 103 references on the board (C17 and two more on the Fab layer only: no free spot), 8 with a leader line.
 
 ## Fabrication (JLCPCB)
 - 4 layers, 1.0 mm FR-4; parts on both sides (top 36, bottom 57).
 - New LCSC parts: **LM5166DRCT C181495** (350 in stock on 2026-10-18: check before ordering), SWPA5040S220MT C68434,
   4.7 µF 50 V 1206 X7R C29823 (Basic), 470 kΩ C25790, 200 kΩ C25764, 10 nF 50 V C15195.
-- CPL: rotation corrections as rev F/G. U12 (VSON-10, DRC) has no learned correction yet: 270° as the DFN/QFN parts of
+- CPL: rotation corrections as drafts F/G. U12 (VSON-10, DRC) has no learned correction yet: 270° as the DFN/QFN parts of
   this board. **Check U12 pin 1 in the JLC preview**, with J2/J6 (tabs toward the edges) and the LED marks.
-- **Cost:** about **28.2 USD per board at 10 boards, 22.7 USD at 100** (components only; rev G 26.1 / 20.6). The LM5166
+- **Cost:** about **28.2 USD per board at 10 boards, 22.7 USD at 100** (components only; draft G 26.1 / 20.6). The LM5166
   (3.7 USD) replaces the TPS62160 + charger + charge gate (≈ 2.4 USD).
 
 ## To check before ordering
@@ -147,26 +149,26 @@ See `ACwing_FC_H_pinmap.md`. Summary:
 ## Contents
 | File | What |
 |---|---|
-| `ACwing_FC_H_pcb.png` | top and bottom PCB views (mask, pads, silkscreen) |
-| [`ACwing_FC_H_schematic.pdf`](ACwing_FC_H_schematic.pdf) | schematic |
-| [`ACwing_FC_H_pinmap.md`](ACwing_FC_H_pinmap.md) | pin map, ESC links, add-on ports |
-| `ACwing_FC_H_BoM.xlsx` | assembly BoM (sheet `BoM`) and costing (sheet `Costing`) |
-| `ACwing_FC_H_BoM_JLCPCB.xlsx`, `ACwing_FC_H_CPL.xlsx` | JLCPCB BoM (LCSC part numbers) and pick-and-place with rotation corrections (93 parts) |
-| `ACwing_FC_H_gerber.zip` | Gerber (4 copper layers) + Excellon drill files, origin at the lower-left corner: upload as is to JLCPCB |
-| `ACwing_FC_H_DRC.rpt` | KiCad DRC report (0 violations, 0 unconnected pads) |
-| `ACwing_FC_H.step`, `ACwing_FC_H_3D.png`, `ACwing_FC_H_routing.png` | STEP of the assembled board, 3D renders, copper routing |
-| `ACwing_FC_H_outline.dxf` | mechanical outline for the frame design |
+| `ACwing_FC_A_pcb.png` | top and bottom PCB views (mask, pads, silkscreen) |
+| [`ACwing_FC_A_schematic.pdf`](ACwing_FC_A_schematic.pdf) | schematic |
+| [`ACwing_FC_A_pinmap.md`](ACwing_FC_A_pinmap.md) | pin map, ESC links, add-on ports |
+| `ACwing_FC_A_BoM.xlsx` | assembly BoM (sheet `BoM`) and costing (sheet `Costing`) |
+| `ACwing_FC_A_BoM_JLCPCB.xlsx`, `ACwing_FC_A_CPL.xlsx` | JLCPCB BoM (LCSC part numbers) and pick-and-place with rotation corrections (93 parts) |
+| `ACwing_FC_A_gerber.zip` | Gerber (4 copper layers) + Excellon drill files, origin at the lower-left corner: upload as is to JLCPCB |
+| `ACwing_FC_A_DRC.rpt` | KiCad DRC report (0 violations, 0 unconnected pads) |
+| `ACwing_FC_A.step`, `ACwing_FC_A_3D.png`, `ACwing_FC_A_routing.png` | STEP of the assembled board, 3D renders, copper routing |
+| `ACwing_FC_A_outline.dxf` | mechanical outline for the frame design |
 
 KiCad sources in [`01 - FC_KiCadProj/`](../../01%20-%20FC_KiCadProj/):
 
 | File | What |
 |---|---|
-| `ACwing_FC_H.kicad_pro / .kicad_sch / .kicad_pcb` | KiCad 7 project, schematic, routed PCB |
+| `ACwing_FC_A.kicad_pro / .kicad_sch / .kicad_pcb` | KiCad 7 project, schematic, routed PCB |
 | `ACwing.kicad_sym`, `ACwing.pretty/`, `3d/` | project library (symbols, footprints incl. the ACwing logos) and STEP models |
 | `generator/` | scripts that generated and checked the design (see Regeneration) |
 
 ## Regeneration
-`generator/build_all_h.sh` (helpers from the rev E generator, Freerouting 1.9 capped at 20 min). The result changes
+`generator/build_all_h.sh` (helpers from the draft E generator, Freerouting 1.9 capped at 20 min). The result changes
 with any placement change: check the DRC after editing the placement.
 
 > The generator scripts were run in the original build environment: absolute paths inside them (`/home/claude/...`) must be adapted before running them again. The ACwing logos and silkscreen labels were added afterwards with the tools in `00 - Docs/05 - Brand/tools/`.

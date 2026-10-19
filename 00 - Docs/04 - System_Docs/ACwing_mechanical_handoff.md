@@ -1,14 +1,16 @@
-# ACwing rev E/F – mechanical handoff (frame C → frame C2)
+# ACwing – mechanical handoff (frame C → frame C2)
+
+> **Revisions.** This is a design log written before the first release. The boards it describes as current are now the rev A release (FC rev A, ESC 1S rev A, GPS rev A, Flow rev A); letters marked *draft* are earlier internal iterations that were never manufactured.
 
 **From:** electronics design (ACwing FC, ACwing ESC 1S, ACwing Flow, ACwing GPS)
 **To:** mechanical / frame design agent
-**Date:** 2026-10-17, **updated 2026-10-18** (§0 supersedes the older items it names; §0.9 = FC rev H, §0.10 = power board rev B + stack check; §0.11 = GPS rev D, 6 mm standoffs)
-**Status:** §0 is a decided architecture change; **§0.7 gives the rev F boards as designed** (ACwing ESC 1S rev A, ACwing FC
-rev F, ACwing GPS rev C: connector coordinates, USB corner, LEDs, heights). §2 (flow board) is final.
+**Date:** 2026-10-17, **updated 2026-10-18** (§0 supersedes the older items it names; §0.9 = FC rev A, §0.10 = power board rev A + stack check; §0.11 = GPS rev A, 6 mm standoffs)
+**Status:** §0 is a decided architecture change; **§0.7 gives the draft F boards as designed** (ACwing ESC 1S draft A, ACwing FC
+draft F, ACwing GPS draft C: connector coordinates, USB corner, LEDs, heights). §2 (flow board) is final.
 
 ## 0. Update 2026-10-18 – new stack: motor board + FC, 20 × 20 mm holes
 
-The rev E FC was not ordered. Its microcontroller sat in a corner with one pin row 0.6 mm from the board edge, and the
+The draft E FC was not ordered. Its microcontroller sat in a corner with one pin row 0.6 mm from the board edge, and the
 four motor stages filled the edge midpoints, so routing was at its limit. The decision is:
 
 | # | Change | What it means for the frame |
@@ -23,7 +25,7 @@ four motor stages filled the edge midpoints, so routing was at its limit. The de
 - Component keep-out unchanged: r 3.0 mm on the top, r 3.6 mm on the bottom (frame boss Ø5.2 + flange).
 - Minimum board for this pattern with these keep-outs: about 28.5 × 28.5 mm.
 
-### 0.2 Motor board – ACwing ESC 1S rev A (new)
+### 0.2 Motor board – ACwing ESC 1S draft A (new)
 - **Outline and place in the frame: identical to today's FC in frame C** – 40 × 40 mm, R3 corners, mounted at 45°,
   front = top-right corner (+20, +20). It sits where the FC sits today: 3 mm above the deck, battery under the deck.
 - Carries the parts that drove the frame C layout:
@@ -45,9 +47,9 @@ four motor stages filled the edge midpoints, so routing was at its limit. The de
 - The FC therefore sits about **6 mm higher** than in frame C (5 mm gap + 1.0 mm motor board). Please re-check:
   - the propeller-disc clearance above the board outline;
   - the duct/cage height;
-  - the USB-C plug access at the right corner (its exact position may move in rev F; it stays on the right corner).
+  - the USB-C plug access at the right corner (its exact position may move in draft F; it stays on the right corner).
 - **FC–motor board link:** standard 4-in-1 ESC cable, JST SH 8-pin, 1:1, 25–35 mm, both ends top side. Leave about
-  8 mm beside the stack at one edge for the plug and a small loop (edge to be fixed in the rev F placement; not the
+  8 mm beside the stack at one edge for the plug and a small loop (edge to be fixed in the draft F placement; not the
   left edge, which holds the BLE antenna). The FC floats on grommets: the cable must not be tight.
 - BLE chip antenna: still on the FC left edge. Nothing conductive (carbon, metal) beside it; the motor board under
   it will have a copper keep-out (electronics side).
@@ -56,7 +58,7 @@ four motor stages filled the edge midpoints, so routing was at its limit. The de
 **Does the FC need to grow? No – except a 0.8 mm step at the USB corner (§0.7).** Removing the four motor stages, the battery pads, the shunt and the 470 µF capacitor
 frees about 40 % of the board. The 20 × 20 holes then leave a 14 mm wide free cross in the centre: the 7 × 7 mm
 microcontroller goes there with room to escape on all four sides; the IMU sits next to it, also on the top side
-(rev F as designed: the In1 ground plane shields it from the motor board).
+(draft F as designed: the In1 ground plane shields it from the motor board).
 - The pattern alone would allow a ~30 × 30 mm FC.
 - We keep 40 × 40 for four reasons:
   - a larger ground plane for the BLE antenna;
@@ -80,34 +82,34 @@ microcontroller goes there with room to escape on all four sides; the IMU sits n
 
 ### 0.6 Superseded items
 - §5 "16 × 16 mm pattern" and "26 × 26 board": replaced by 0.1 / 0.5.
-- §3 and §4 connector coordinates (FC J3 at (+16.9, +7.8), J5 at (+9.2, +16.85)): they move in rev F, coordinates follow
+- §3 and §4 connector coordinates (FC J3 at (+16.9, +7.8), J5 at (+9.2, +16.85)): they move in draft F, coordinates follow
   with the new placement. Edges and plug-zone sizes stay as described.
 - §7 RGB LED positions: replaced by 0.4.
 - §7 "no change to outline, grommet holes and keep-outs, motor pads, battery pads": the outline, motor pads, battery pads,
   lead exits and keep-out radii now belong to the motor board (0.2); the hole pattern changes (0.1).
 - Unchanged: §1, §2 (flow board), §6 (larger battery), §8 (what we need back) plus the new items in §8.
 
-### 0.7 Rev F boards as designed (2026-10-18)
+### 0.7 Draft F boards as designed (2026-10-18)
 Same (u, v) frame as §1 (FC top view, front = (+20, +20)). Heights are above the board surface on the side named.
 
-**ACwing ESC 1S rev A (motor board)**
+**ACwing ESC 1S draft A (motor board)**
 | Item | Value |
 |---|---|
-| Outline | identical to the rev E FC: 40 × 40 mm, R3 corners, 5 mm chamfer at the rear-right corner (no USB on this board; kept for one outline in the frame) |
+| Outline | identical to the draft E FC: 40 × 40 mm, R3 corners, 5 mm chamfer at the rear-right corner (no USB on this board; kept for one outline in the frame) |
 | Board | 4 layers, 1.0 mm; mass ≈ 5 g with parts |
 | Holes | 4 × Ø2.2 mm NPTH (M2) at (±10, ±10); keep-out r 2.6 mm both sides. Hard mount (screws or nylon standoffs) |
 | Motor pads, battery pads | same positions as frame C (edge midpoints; rear corner, leads off the corner tip) |
 | **J1 ESC link** | JST SH 8-pin side entry, **top side, rear edge**: pins at u = +6.1 … +13.1, v = −14.9; body u +4.0 … +15.0, v −15.5 … −19.7; mouth toward −v at the edge; height 2.9 mm |
 | Heights | top ≤ 2.9 mm (J1 2.9, C1 2.8 at u −11 … −4, v −19.5 … −15.2); bottom ≤ 1.1 mm (shunt corner only) |
 
-**ACwing FC rev F**
+**ACwing FC draft F**
 | Item | Value |
 |---|---|
-| Outline | frame C 40 × 40 (R3) **plus a 0.8 mm step at the USB corner**: right edge u = +20.8 from v = −12.3 down to the chamfer, rear edge v = −20.8 from u = +12.3 to the chamfer (45° steps from (+20, −11.5) and (+11.5, −20)); chamfer line u − v = 36.2 from (+20.8, −15.4) to (+15.4, −20.8) (rev E: u − v = 35). DXF: `ACwing_FC_F_outline.dxf` |
-| Why the step | the (+10, −10) grommet of the 20 × 20 pattern reached the USB-C pads at the rev E position: the receptacle moved 0.85 mm outward along the diagonal and its front shell legs need the edge to follow |
+| Outline | frame C 40 × 40 (R3) **plus a 0.8 mm step at the USB corner**: right edge u = +20.8 from v = −12.3 down to the chamfer, rear edge v = −20.8 from u = +12.3 to the chamfer (45° steps from (+20, −11.5) and (+11.5, −20)); chamfer line u − v = 36.2 from (+20.8, −15.4) to (+15.4, −20.8) (draft E: u − v = 35). DXF: `ACwing_FC_F_outline.dxf` |
+| Why the step | the (+10, −10) grommet of the 20 × 20 pattern reached the USB-C pads at the draft E position: the receptacle moved 0.85 mm outward along the diagonal and its front shell legs need the edge to follow |
 | Board | 4 layers, 1.0 mm; mass ≈ 4 g bare |
 | Holes | 4 × Ø3.2 mm plated at (±10, ±10) for M2 grommets; copper keep-out r 2.75, components r 3.0 top / 3.6 bottom (as §0.1) |
-| **J1 USB-C** | top side, centre (+15.77, −15.77), axis at 45° toward the corner, mouth at the chamfer (0.35 mm beyond it, as rev E); plug zone: 10 mm wide × 15 mm along the diagonal beyond the chamfer |
+| **J1 USB-C** | top side, centre (+15.77, −15.77), axis at 45° toward the corner, mouth at the chamfer (0.35 mm beyond it, as draft E); plug zone: 10 mm wide × 15 mm along the diagonal beyond the chamfer |
 | **J2 ESC link** | JST SH 8-pin side entry, **top side, rear edge**: pins u = −2.0 … +5.0, v = −14.9; body u −4.1 … +7.1, v −15.5 … −19.7; mouth toward −v; height 2.9 mm |
 | ESC cable | JST SH 8-pin, 1:1, ≈ 50 mm. From the motor-board J1 (top, rear edge) up and back into the FC J2 (top, rear edge, 8 mm to the left): an S behind the stack. Keep free behind the rear edge: u −5 … +16, 8 mm out, from the motor-board top to 4 mm above the FC top |
 | J3 Qwiic | top side, right edge, (+16.9, +2.8), mouth +u |
@@ -119,18 +121,18 @@ Same (u, v) frame as §1 (FC top view, front = (+20, +20)). Heights are above th
 **Stack**
 - Motor board top surface → FC bottom surface **≥ 4.5 mm (5 mm recommended)**: under the FC only passives (≤ 1.0 mm);
   the tallest motor-board parts (J1, C1) are not under FC bottom parts taller than 1 mm.
-- FC on grommets → 6 mm M2 nylon standoffs → GPS rev C (as §5, new pattern).
+- FC on grommets → 6 mm M2 nylon standoffs → GPS draft C (as §5, new pattern).
 
-**ACwing GPS rev C**
+**ACwing GPS draft C**
 | Item | Value |
 |---|---|
 | Outline | 30 × 30 mm, R2 corners, centred on the FC, 1.0 mm, 2 layers |
 | Holes | 4 × Ø2.2 mm NPTH at (±10, ±10), keep-out r 2.6 mm both sides |
-| J1 / J2 Qwiic | bottom side; J1 right edge mouth +u, J2 rear edge mouth −v (as rev B, on the larger board) |
+| J1 / J2 Qwiic | bottom side; J1 right edge mouth +u, J2 rear edge mouth −v (as draft B, on the larger board) |
 | Height | SAM-M10Q on top: stack top ≈ 13.5 mm above the FC top (6 mm standoffs + 1.0 mm + 6.3 mm) |
 
-### 0.8 FC rev G: commercial brushless 4-in-1 ESC option (2026-10-18)
-- FC rev G = rev F mechanics (same outline, holes, connector positions, heights). New on the FC: two solder pads
+### 0.8 FC draft G: commercial brushless 4-in-1 ESC option (2026-10-18)
+- FC draft G = draft F mechanics (same outline, holes, connector positions, heights). New on the FC: two solder pads
   TP9 / TP10 on the bottom at the left edge, (−17.6, −3.6) / (−17.6, −6.4), for an optional external current sensor
   wire pair.
 - The FC now takes **1S–3S** on the ESC link, so a commercial 20 × 20 brushless 4-in-1 ESC can replace ACwing ESC 1S.
@@ -139,37 +141,37 @@ Same (u, v) frame as §1 (FC top view, front = (+20, +20)). Heights are above th
   14–18 AWG soldered to the ESC, often a separate low-ESR capacitor (Ø6–8 × 10–12 mm) on the battery leads.
 - Brushless motors need their own mounts (a later frame variant, as §0.2 says); the FC stack is unchanged.
 
-### 0.9 FC rev H: universal FC, 1S–6S, two ESC links, two Qwiic ports (2026-10-18)
-FC rev H keeps the rev F/G outline, holes, grommets, J1 USB-C, J2 ESC A, J5 ELRS, LEDs and antenna. Changes visible
+### 0.9 FC rev A: universal FC, 1S–6S, two ESC links, two Qwiic ports (2026-10-18)
+FC rev A keeps the drafts F/G outline, holes, grommets, J1 USB-C, J2 ESC A, J5 ELRS, LEDs and antenna. Changes visible
 to the frame:
 | Item | Value |
 |---|---|
 | **J6 ESC link B** (new) | JST SH 8-pin side entry, **top side, left edge**, centre (−16.9, −3.4), mouth toward −u; body u −20.2 … −13.6, v −9.3 … +2.5; height 2.9 mm. Second 4-in-1 ESC (motors M5–M8) for hexa / octo frames; keep 8 mm free beyond the left edge for the plug and cable |
 | **J7 / J8 battery pads** (new) | 2 × 2 mm solder pads, top side, left edge: VBAT+ (−18.4, +7.2), GND (−18.4, +4.1). FC supply only (thin wires, AWG 24–26) |
 | J3 Qwiic | moved 0.8 mm forward: (+16.9, **+3.6**), mouth +u (GPS board cable) |
-| **J4 Qwiic** (new) | top side, right edge, (+16.9, −4.3), mouth +u (flow board cable, down through the deck). GPS J2 is no longer needed: the rev F note about its plug above the FC J2 does not apply |
+| **J4 Qwiic** (new) | top side, right edge, (+16.9, −4.3), mouth +u (flow board cable, down through the deck). GPS J2 is no longer needed: the draft F note about its plug above the FC J2 does not apply |
 | Input buck | top, rear-left corner: L3 5 × 5 × **4.0 mm** at (−15.3, −15.4) – the tallest FC part after the USB-C; nothing above it except the GPS board (6 mm standoffs: 2 mm clear) |
 | Heights | top ≤ 4.0 mm (L3), connectors 2.9 mm, USB-C 3.2 mm; bottom ≤ 1.0 mm (unchanged) |
-| Power stage | ACwing 1S power board (ACwing ESC 1S rev B, next) or commercial 20 × 20 4-in-1 ESCs (2S–6S). Battery voltage up to 6S reaches the FC through the ESC A cable |
-| Board files | `ACwing_FC_H_outline.dxf` (same outline as rev F/G) |
+| Power stage | ACwing 1S power board (ACwing ESC 1S rev A, next) or commercial 20 × 20 4-in-1 ESCs (2S–6S). Battery voltage up to 6S reaches the FC through the ESC A cable |
+| Board files | `ACwing_FC_A_outline.dxf` (same outline as drafts F/G) |
 
-### 0.10 Power board rev B and stack check (2026-10-18)
+### 0.10 Power board rev A and stack check (2026-10-18)
 | Item | Value |
 |---|---|
-| **ACwing ESC 1S rev B outline** | frame C outline with a **new front-left chamfer** v − u = 36.2 and 0.8 mm steps (left edge u = −20.8 from v = +12.3 to +15.4, front edge v = +20.8 from u = −12.3 to −15.4), i.e. the FC USB corner mirrored about u = v. The rear-right chamfer stays |
+| **ACwing ESC 1S rev A outline** | frame C outline with a **new front-left chamfer** v − u = 36.2 and 0.8 mm steps (left edge u = −20.8 from v = +12.3 to +15.4, front edge v = +20.8 from u = −12.3 to −15.4), i.e. the FC USB corner mirrored about u = v. The rear-right chamfer stays |
 | **Charge port** | USB-C on the power board top, centre (−15.77, +15.77), axis at 45°, mouth at the front-left chamfer. Plug zone: 12.5 mm wide × 25 mm along the diagonal, from 1.7 mm below to 4.9 mm above the power-board top |
-| **FC rev H outline** | front-left corner now chamfered too: v − u = 36.6, from (−20, +16.6) to (−16.6, +20) (was R3). Keeps the charge-port plug out from under the FC |
-| Battery | solder pads at the rear-left corner as rev A + a JST PH 2.0 pigtail (30–40 mm) soldered to them; no board-mounted battery connector |
+| **FC rev A outline** | front-left corner now chamfered too: v − u = 36.6, from (−20, +16.6) to (−16.6, +20) (was R3). Keeps the charge-port plug out from under the FC |
+| Battery | solder pads at the rear-left corner as draft A + a JST PH 2.0 pigtail (30–40 mm) soldered to them; no board-mounted battery connector |
 | Heights | power board top ≤ 3.3 mm (USB-C 3.26, J1 2.9, C1 3.1) |
 | **FC → GPS standoffs: 8 mm** (was 6 mm) | stack check with mated plugs: at 6 mm the GPS J1 plug (GPS bottom, right edge) hits FC J3/J4 and their plugs (−0.6 mm); at 8 mm no clash. Stack top ≈ 15.5 mm above the FC top |
 
-### 0.11 GPS rev D: back to 6 mm standoffs (2026-10-19)
+### 0.11 GPS rev A: back to 6 mm standoffs (2026-10-19)
 | Item | Value |
 |---|---|
-| **ACwing GPS rev D** | same 30 × 30 mm outline and M2 holes as rev C; **Qwiic J1 / J2 now on the top side**: J1 right edge (+11.88, 0), mouth +u; J2 rear edge (0, −11.88), mouth −v; height 2.9 mm |
+| **ACwing GPS rev A** | same 30 × 30 mm outline and M2 holes as draft C; **Qwiic J1 / J2 now on the top side**: J1 right edge (+11.88, 0), mouth +u; J2 rear edge (0, −11.88), mouth −v; height 2.9 mm |
 | GNSS module | SAM-M10Q axis-aligned (was 45°), centred; top 6.3 mm |
 | Bottom side | ≤ 1.1 mm (compass, backup capacitor, test pads) |
-| **FC → GPS standoffs: 6 mm** | replaces the 8 mm of §0.10 (that value only applies to GPS rev C). Stack check: no clash with all plugs mated |
+| **FC → GPS standoffs: 6 mm** | replaces the 8 mm of §0.10 (that value only applies to GPS draft C). Stack check: no clash with all plugs mated |
 | Cables | FC J3 → GPS J1: loop outside the right edge from the FC top up to the GPS top. Keep 8 mm free beyond the right edge from the FC top to 4 mm above the GPS top |
 
 ---
@@ -248,16 +250,16 @@ The FC has **one** Qwiic port; the flow and GPS boards each have **two** (pass-t
 
 | Port | Board | Position | Mouth |
 |---|---|---|---|
-| **J3** (Qwiic, JST SH 4-pin) | FC rev E | right edge, (u, v) = (+16.9, +7.8), top side | toward +u (right edge) |
+| **J3** (Qwiic, JST SH 4-pin) | FC draft E | right edge, (u, v) = (+16.9, +7.8), top side | toward +u (right edge) |
 | J1 / J2 | flow board | §2.3 | ±s |
-| J1 / J2 | GPS board rev B | two Qwiic ports, positions in the GPS rev B release (rev A had one 6-pin JST SH at its right edge) | — |
+| J1 / J2 | GPS board draft B | two Qwiic ports, positions in the GPS draft B release (draft A had one 6-pin JST SH at its right edge) | — |
 
 Supported configurations (all on the same bus):
 - **Indoor:** FC J3 → flow J1.
 - **Outdoor:** FC J3 → GPS J1.
 - **Both:** FC J3 → GPS J1, GPS J2 → flow J1.
 
-Rev F: FC J3 moves to (u, v) = (+16.9, +2.8), same edge and mouth (§0.7).
+Draft F: FC J3 moves to (u, v) = (+16.9, +2.8), same edge and mouth (§0.7).
 
 Cable rules:
 - Standard Qwiic cables (JST SH 4-pin, 1:1): 50, 100, 150, 200 mm are off-the-shelf. **Total bus length ≤ 300 mm.**
@@ -270,7 +272,7 @@ Cable rules:
 ## 4. ELRS receiver (long-range control)
 
 - **Port:** FC **J5**, JST SH 1.0 mm 4-pin, on the **top edge** at (u, v) = (+9.2, +16.85), mouth toward +v
-  (rev F: (+2.0, +16.85), same edge and mouth, §0.7).
+  (draft F: (+2.0, +16.85), same edge and mouth, §0.7).
   Pinout: 1 GND, 2 VSYS (battery, 3.3–4.2 V), 3 FC RX, 4 FC TX (CRSF).
 - **Receiver envelope to plan for:** up to **12 × 10 × 4 mm** (common ELRS 2.4 GHz nano receivers are 10 × 10 mm or
   smaller), **≤ 1 g**, with either a ceramic chip antenna or a **T/dipole wire antenna of 30–80 mm**.
@@ -285,7 +287,7 @@ Cable rules:
 ## 5. GPS board (optional) – see §0.5: holes 20 × 20, board ≈ 30 × 30
 
 - 26 × 26 × 1.0 mm board **stacked on top of the FC** on the same 16 × 16 mm pattern, with **6 mm M2 nylon
-  standoffs** (FC on its grommets → standoffs → GPS board), as in GPS rev A.
+  standoffs** (FC on its grommets → standoffs → GPS board), as in GPS draft A.
 - The SAM-M10Q module (15.5 × 15.5 × 6.3 mm) is on top: the top of the stack is ≈ **13.5 mm above the FC top
   surface** (6 mm + 1.0 mm board + 6.3 mm module).
 - **Sky view:** nothing conductive above the module. Any canopy over it must be RF-transparent (no carbon, no metal
@@ -300,7 +302,7 @@ performance. Until that study is done:
 - attach the flow board to the **tray**, never to the battery, so a battery change does not move the sensors;
 - the battery is still inserted from the rear (frame C); the flow board and its cable must not block insertion.
 
-## 7. Other rev E items visible on the FC (partly superseded, see §0.6)
+## 7. Other draft E items visible on the FC (partly superseded, see §0.6)
 
 - **RGB status LEDs** (WS2812B-2020, top side): D1 front at (u, v) ≈ (+14.0, +12.6), D2 rear at ≈ (−18.6, −12.6).
   Leave them visible from outside (open area or light pipe).

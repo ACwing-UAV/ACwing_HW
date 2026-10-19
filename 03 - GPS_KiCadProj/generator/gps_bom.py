@@ -1,4 +1,4 @@
-# ACwing GPS rev D: assembly BoM (+ Costing sheet) and JLCPCB BoM.
+# ACwing GPS rev A: assembly BoM (+ Costing sheet) and JLCPCB BoM.
 #   python3 gps_bom.py <out dir>
 import sys, os, re, json
 import pcbnew
@@ -6,7 +6,7 @@ from openpyxl import Workbook
 from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
 
 OUT = sys.argv[1]
-PROJECT = 'ACwing_GPS_D'
+PROJECT = 'ACwing_GPS_A'
 parts = json.load(open(os.path.join(OUT, PROJECT + '.kicad_sch.parts.json')))
 b = pcbnew.LoadBoard(os.path.join(OUT, PROJECT + '.kicad_pcb'))
 side = {f.GetReference(): ('Bottom' if f.IsFlipped() else 'Top') for f in b.GetFootprints()}
@@ -58,8 +58,8 @@ def style_header(ws, r):
         c.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
 wb = Workbook(); ws = wb.active; ws.title = 'BoM'
 hdr = ['Item', 'Quantity', 'Part Reference', 'Value', 'MPN', 'Manufacturer', 'LCSC / JLCPCB #', 'Package', 'Description', 'Side', 'Notes']
-ws.append(['ACwing GPS rev D - assembly BoM (1 board)'])
-ws.append(['Source: ACwing_GPS_D.kicad_sch / ACwing_GPS_D.kicad_pcb. LCSC part numbers checked on 2026-10-17. U1 and C5 are not stocked by LCSC: consigned parts or hand soldering.'])
+ws.append(['ACwing GPS rev A - assembly BoM (1 board)'])
+ws.append(['Source: ACwing_GPS_A.kicad_sch / ACwing_GPS_A.kicad_pcb. LCSC part numbers checked on 2026-10-17. U1 and C5 are not stocked by LCSC: consigned parts or hand soldering.'])
 ws.append([]); ws.append(hdr); H = 4
 rows = sorted(groups.items(), key=lambda kv: key(sorted(kv[1], key=key)[0]))
 for i, ((k, sd), refs) in enumerate(rows, 1):
@@ -100,7 +100,7 @@ ws.freeze_panes = 'A5'
 
 # ---------------------------------------------------------------- Costing
 cs = wb.create_sheet('Costing')
-cs.append(['ACwing GPS rev D - component costing (assembled parts, USD)'])
+cs.append(['ACwing GPS rev A - component costing (assembled parts, USD)'])
 cs.append(['Blue = input prices; black = formulas. "Estimate" rows are typical distributor prices, not quotes. PCB, assembly fees and the cable are not included.'])
 cs.append([])
 ch = ['References', 'Qty / board', 'MPN', 'Source', 'Unit price @10 boards', 'Unit price @100 boards', 'Cost / board @10', 'Cost / board @100', 'Price basis']

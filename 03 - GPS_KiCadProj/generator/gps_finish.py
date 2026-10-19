@@ -1,10 +1,10 @@
-# ACwing GPS rev D: silkscreen extras, project footprint library (ACwing_GPS.pretty) with project 3D models.
+# ACwing GPS rev A: silkscreen extras, project footprint library (ACwing_GPS.pretty) with project 3D models.
 #   python3 gps_finish.py <out dir>
 import sys, os, re, json, shutil
 import pcbnew
 
 OUT = sys.argv[1]
-PROJECT = 'ACwing_GPS_D'
+PROJECT = 'ACwing_GPS_A'
 BOARD = os.path.join(OUT, PROJECT + '.kicad_pcb')
 SCH = os.path.join(OUT, PROJECT + '.kicad_sch')
 OX, OY = 150.0, 100.0

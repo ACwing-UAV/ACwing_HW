@@ -1,21 +1,23 @@
-# ACwing frame C2 – mechanical answer to the rev E/F/H handoff
+# ACwing frame C2 – mechanical answer to the electronics handoff
+
+> **Revisions.** This is a design log written before the first release. The boards it describes as current are now the rev A release (FC rev A, ESC 1S rev A, GPS rev A, Flow rev A); letters marked *draft* are earlier internal iterations that were never manufactured.
 
 **Author:** Andrea Cirillo (ACwing). **From:** mechanical / frame design. **To:** electronics design (ACwing ESC 1S,
 ACwing FC, ACwing GPS, ACwing Flow).
 **Date:** 2026-10-19. **Answers:** `ACwing_mechanical_handoff.md` (§0.1–0.11, §2–§8) as of 2026-10-19.
-**Inputs used:** the stack-check geometry of the GPS rev D package (`stack_data.js`, config D6 = ESC B + FC H + GPS D,
-6 mm standoffs), the FC H pin map, the ESC B / Flow A hardware notes and the Flow A DXF.
+**Inputs used:** the stack-check geometry of the GPS rev A package (`stack_data.js`, config D6 = ESC 1S A + FC A + GPS A,
+6 mm standoffs), the FC A pin map, the ESC 1S A / Flow A hardware notes and the Flow A DXF.
 **Electronics reply:** `ACwing_frame_C2_electronics_reply.md`.
 
 > The frame files listed in §10 (STL, GLB, renders) belong to the frame design and are not part of this repository.
 
 ## 0. Decision 2026-10-19 – baseline configuration of the 1S mini drone: indoor, no GPS
 
-The GPS board (ACwing GPS rev D) is an extension for a larger outdoor drone. The 1S mini drone flies **indoor only**:
-ESC B + FC H + Flow A, no GPS board and no cable B.
-- Corner column without GPS: insert – ESC B – S1 2.57 mm – grommet with FC H – **M2 washer (Ø5 × 0.3) + M2 × 12
+The GPS board (ACwing GPS rev A) is an extension for a larger outdoor drone. The 1S mini drone flies **indoor only**:
+ESC 1S A + FC A + Flow A, no GPS board and no cable B.
+- Corner column without GPS: insert – ESC 1S A – S1 2.57 mm – grommet with FC A – **M2 washer (Ø5 × 0.3) + M2 × 12
   screw** on the upper ball (tip at −4.3 mm: 2.3 mm into the insert). No S2.
-- FC H J3 stays free (no cable B); the frame keeps the 20 × 20 stack, so the GPS board can still be fitted for tests.
+- FC A J3 stays free (no cable B); the frame keeps the 20 × 20 stack, so the GPS board can still be fitted for tests.
 - Mass ≈ 66.5 g, **thrust-to-weight ≈ 2.1** (73.2 g / 1.91 with the GPS board).
 - Sections 2, 4 and 7 below describe the full stack with GPS; they stay valid for the GPS option.
 
@@ -25,7 +27,7 @@ ESC B + FC H + Flow A, no GPS board and no cable B.
 |---|---|---|
 | Stack bosses | 4 bosses on the **20 × 20** pattern (board (±10, ±10) = frame (0, ±14.14), (±14.14, 0)), Ø5.2 top (= ESC keep-out r 2.6), Ø6.6 at the deck, **3 mm** tall: the ESC sits directly on them, at the old FC height (bottom −2.0) | 0.1, 0.2 |
 | Fastening | **Hangtife HLTI-M2-001** hot-melt insert (M2 × 3 × Ø3.0) in a Ø2.8 × 3.4 seat in each boss; Ø2.2 clearance below | 0.2 |
-| Openings | top bridge removed on **both** ±X sides. The FC USB-C plug (+X) and the ESC B charge-port plug (−X) pass between the two duct rings of that side: the gap between the rings is 13.2 mm, so a plug overmold up to **13.2 mm wide** fits (checked, 0 mm³). The rings are not cut (the 14 mm stack-check envelope with its +1.7 mm side margin would break them). Use slim USB-C cables. | 0.7, 0.10 |
+| Openings | top bridge removed on **both** ±X sides. The FC USB-C plug (+X) and the ESC 1S A charge-port plug (−X) pass between the two duct rings of that side: the gap between the rings is 13.2 mm, so a plug overmold up to **13.2 mm wide** fits (checked, 0 mm³). The rings are not cut (the 14 mm stack-check envelope with its +1.7 mm side margin would break them). Use slim USB-C cables. | 0.7, 0.10 |
 | ESC cable | no frame part behind the rear edge between the board and the M1 duct ring; cable modelled and checked (§4) | 0.3, 0.7 |
 | Qwiic slot | new deck slot for the flow cable, board (u 20.4…22.6, v −11.1…−6.9), behind FC J4 | 3 |
 | Flow tray | 1.2 mm plate fused under the bay lips (front part of the bay, clear of the rear latch tongue), 2 downward bosses Ø4.8 × 2.4 with the same M2 inserts, lightening window | 2.4 |
@@ -40,13 +42,13 @@ the edge midpoints exactly as they reached the frame-C FC pads.
 | z (frame, mm) | Part |
 |---|---|
 | −5.0 … −2.0 | boss with the M2 insert (insert −5.0 … −2.0) |
-| −2.0 … −1.0 | ACwing ESC 1S rev B, hard-mounted (clamped by the column) |
+| −2.0 … −1.0 | ACwing ESC 1S rev A, hard-mounted (clamped by the column) |
 | −1.0 … 1.57 | spacer **S1** Ø4.5 / Ø2.3 × **2.57 mm** (PETG, printed; STL supplied) |
 | 1.57 … 4.0 | lower ball of the M2 damping grommet (QUARKZMAN, 6 mm, slot Ø3.03 × 1.14) |
-| 4.0 … 5.0 | ACwing FC rev H in the grommet slot (Ø3.2 holes) |
+| 4.0 … 5.0 | ACwing FC rev A in the grommet slot (Ø3.2 holes) |
 | 5.0 … 7.43 | upper ball |
 | 7.43 … 11.0 | spacer **S2** Ø4.5 / Ø2.3 × **3.57 mm** |
-| 11.0 … 12.0 | ACwing GPS rev D |
+| 11.0 … 12.0 | ACwing GPS rev A |
 | 12.0 … 14.0 | **M2 × 16 socket-head screw** (tip at −4.0: 2 mm into the insert, 2.2 mm above the deck underside, 2.7 mm above the battery) |
 
 - Gap ESC top → FC bottom = **5.0 mm** (§0.3), FC top → GPS bottom = **6.0 mm** (§0.11).
@@ -60,7 +62,7 @@ the edge midpoints exactly as they reached the frame-C FC pads.
 ## 3. USB-C access, outline steps, LEDs
 
 - FC J1 (+X) and ESC J4 charge port (−X): the plugs pass between the duct rings; overmold width ≤ 13.2 mm (checked, 0 mm³).
-  The 0.8 mm outline steps of FC H and ESC B are inside the deck footprint; nothing to change in the frame.
+  The 0.8 mm outline steps of FC A and ESC 1S A are inside the deck footprint; nothing to change in the frame.
 - **RGB LEDs:** the FC top is 1.1 mm above the highest frame point, so nothing of the frame is above the LEDs. Ray test
   from each LED (36 azimuths × 4 elevations, frame + all stack parts): front pair visible in 74–76 % of the
   directions, rear pair in 52–60 % (the rear connectors and the ESC cable hide the low rear-inward directions). All four
@@ -69,14 +71,14 @@ the edge midpoints exactly as they reached the frame-C FC pads.
 ## 4. Cables (modelled wire by wire, pin 1 to pin 1)
 
 Pin 1 of each JST SH footprint taken from the footprint orientation (unrotated: pin 1 at −X, mouth +Y), checked
-against the FC H doc (J6 pin 1 at v = +0.1).
+against the FC A doc (J6 pin 1 at v = +0.1).
 
 | Cable | From → to | Route | Wire length between plug housings | Off-the-shelf? |
 |---|---|---|---|---|
-| **A** ESC link, JST SH 8, 1:1 | ESC B J1 (top, rear edge, pin 1 at u 6.1) → FC H J2 (top, rear edge, pin 1 at u −2.0) | out of J1, up through the corridor between the rear board edge and the M1 duct top ring (the ring passes 1.5–4.5 mm behind the edge at z 2.5–3.9), shifted to +u where the corridor is wider, then back to −u above the ring and into J2. Order is kept (no crossing). | ≈ 18 mm (≈ 26 mm plug to plug) | **custom**: a 50 mm cable leaves ≈ 25 mm of slack in the propeller area; use pre-crimped SH wires cut to 30 mm |
+| **A** ESC link, JST SH 8, 1:1 | ESC 1S A J1 (top, rear edge, pin 1 at u 6.1) → FC A J2 (top, rear edge, pin 1 at u −2.0) | out of J1, up through the corridor between the rear board edge and the M1 duct top ring (the ring passes 1.5–4.5 mm behind the edge at z 2.5–3.9), shifted to +u where the corridor is wider, then back to −u above the ring and into J2. Order is kept (no crossing). | ≈ 18 mm (≈ 26 mm plug to plug) | **custom**: a 50 mm cable leaves ≈ 25 mm of slack in the propeller area; use pre-crimped SH wires cut to 30 mm |
 | **B** Qwiic | FC J3 → GPS J1 | loop outside the right edge, z 5.5–13.5, ≤ 3.6 mm beyond the edge | ≈ 14 mm | **custom** (≈ 20 mm); standard Qwiic cables start at 50 mm |
 | **C** Qwiic | FC J4 → Flow J1 | out of J4, over the M2 duct ring (z > 4.3), back along the edge to v = −9, down beside the ESC edge, through the new deck slot, under the deck to Flow J1 (the ribbon twists half a turn under the deck: J4 pin 1 is at the rear, Flow J1 pin 1 is at the front) | ≈ 40 mm | standard **50 mm** Qwiic; the deck slot is the tie point (≈ 12 mm from J4) |
-| **D** battery pigtail | ESC B J2 pads → JST PH 2.0 | off the rear corner tip, down through the deck notch, PH pair behind the bay | 20 / 15 mm | PH 2.0 pigtail 30–40 mm, 24 AWG (BoM item) |
+| **D** battery pigtail | ESC 1S A J2 pads → JST PH 2.0 | off the rear corner tip, down through the deck notch, PH pair behind the bay | 20 / 15 mm | PH 2.0 pigtail 30–40 mm, 24 AWG (BoM item) |
 
 - Colours in the model: A = GND black, VBAT red, CUR yellow, TLM white, M1 blue, M2 green, M3 orange, M4 purple;
   Qwiic = GND black, 3V3 red, SDA blue, SCL yellow.
@@ -104,7 +106,7 @@ against the FC H doc (J6 pin 1 at v = +0.1).
 
 Same beam model as frame C for the isolation modes (it reproduces the frame-C isolation band, 62–95 Hz):
 
-| Grommet stiffness per corner (axial / radial, N/mm) | FC H isolation modes |
+| Grommet stiffness per corner (axial / radial, N/mm) | FC A isolation modes |
 |---|---|
 | 0.7 / 0.6 (frame-C assumption) | **92–120 Hz** |
 | 1.4 / 1.2 (both balls clamped, realistic for this column) | 130–167 Hz |
@@ -126,9 +128,9 @@ frame-C calibration; the structure is unchanged except for the bosses and the fl
 | Battery 1S 20 × 40 × 8 | 20.0 |
 | Motors 8520 ×4 | 11.0 |
 | Propellers + motor leads | 2.0 |
-| ACwing ESC 1S B (doc) | 5.0 |
-| ACwing FC H (estimate: 4.0 bare + parts) | 5.5 |
-| ACwing GPS D (estimate, SAM-M10Q ≈ 4 g) | 6.0 |
+| ACwing ESC 1S A (doc) | 5.0 |
+| ACwing FC A (estimate: 4.0 bare + parts) | 5.5 |
+| ACwing GPS A (estimate, SAM-M10Q ≈ 4 g) | 6.0 |
 | ACwing Flow A (doc) | 1.5 |
 | Cables + PH pigtail | 1.2 |
 | 4 × M2 × 16 steel, 6 inserts, 4 grommets, spacers | 3.4 |

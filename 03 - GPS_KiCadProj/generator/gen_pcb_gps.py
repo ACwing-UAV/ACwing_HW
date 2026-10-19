@@ -10,7 +10,7 @@ from shapely.ops import unary_union
 from shapely.affinity import rotate as srot
 
 OUT, NETXML = sys.argv[1], sys.argv[2]
-PROJECT = 'ACwing_GPS_D'
+PROJECT = 'ACwing_GPS_A'
 OX, OY = 150.0, 100.0
 HALF, RC = 15.0, 2.0
 HOLES = [(10, 10), (-10, 10), (-10, -10), (10, -10)]       # board frame (u right, v up), mm

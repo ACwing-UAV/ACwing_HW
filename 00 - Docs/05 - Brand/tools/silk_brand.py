@@ -122,26 +122,26 @@ def text_any(s, bottom, c, h=0.8, maxr=6.0, alts=()):
     print('  NO SPOT for text', repr(s)); return None
 
 if CFG == 'fc':
-    logo_block('Full', False, (5.0, 3.0), 8, ['FC rev H'])
-    (logo_block('Full', True, (14.0, -3.0), 8, ['ACwing FC rev H'])
-     or logo_block('Mark', True, (14.0, -3.0), 6, ['ACwing FC rev H']))
+    logo_block('Full', False, (5.0, 3.0), 8, ['FC rev A'])
+    (logo_block('Full', True, (14.0, -3.0), 8, ['ACwing FC rev A'])
+     or logo_block('Mark', True, (14.0, -3.0), 6, ['ACwing FC rev A']))
     for ref, s_ in (('J2', 'ESC A'), ('J6', 'ESC B'), ('J3', 'GPS'), ('J4', 'FLOW'), ('J5', 'ELRS'), ('J1', 'USB')):
         label(ref, s_)
     text_any('BAT', False, (-16.3, 9.2), 0.8, 3)
 elif CFG == 'esc':
     for d in list(b.GetDrawings()):
         pass
-    text_any('ACwing ESC 1S rev B', False, (0.0, 0.5), 0.8, 6.0, ('ESC 1S rev B',))
+    text_any('ACwing ESC 1S rev A', False, (0.0, 0.5), 0.8, 6.0, ('ESC 1S rev A',))
     logo_block('Full', False, (10.0, 15.0), 7, [])
-    logo_block('Full', True, (0.0, 1.5), 10, ['ACwing ESC 1S rev B'])
+    logo_block('Full', True, (0.0, 1.5), 10, ['ACwing ESC 1S rev A'])
     for ref, s_ in (('J1', 'TO FC'), ('J4', 'CHARGE')):
         label(ref, s_)
 
 elif CFG == 'gps':
-    text_any('ACwing GPS rev D', False, (2.6, 13.4), 0.8, 8.0, ('GPS rev D',))
+    text_any('ACwing GPS rev A', False, (2.6, 13.4), 0.8, 8.0, ('GPS rev A',))
     logo_block('Full', False, (-11.3, 0.0), 6, [])
-    (logo_block('Full', True, (-3.8, 8.0), 8, ['ACwing GPS rev D'])
-     or logo_block('Full', True, (-3.8, 8.0), 8, ['GPS rev D']) or logo_block('Mark', True, (-3.8, 8.0), 6, []))
+    (logo_block('Full', True, (-3.8, 8.0), 8, ['ACwing GPS rev A'])
+     or logo_block('Full', True, (-3.8, 8.0), 8, ['GPS rev A']) or logo_block('Mark', True, (-3.8, 8.0), 6, []))
     for ref, s_ in (('J1', 'QWIIC IN'), ('J2', 'QWIIC OUT')):
         label(ref, s_)
 elif CFG == 'flow':

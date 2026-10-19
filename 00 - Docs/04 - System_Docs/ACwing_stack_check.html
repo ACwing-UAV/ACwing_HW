@@ -78,21 +78,21 @@ ul.find li[aria-selected="true"] { border-color: var(--accent); box-shadow: inse
   <div class="col">
     <header>
       <h1>ACwing Stack Check</h1>
-      <p class="lede">Power board rev B, flight controller rev H and GPS board stacked on the 20 × 20 mm holes, with every connector mated. Each part is a prism of its courtyard and datasheet height; plugs are envelopes in front of each connector mouth.</p>
+      <p class="lede">Power board rev A, flight controller rev A and GPS board stacked on the 20 × 20 mm holes, with every connector mated. Each part is a prism of its courtyard and datasheet height; plugs are envelopes in front of each connector mouth.</p>
     </header>
 
     <dl class="stackline">
-      <dt id="gpsName">GPS rev D</dt><dd id="zGps">on 6 mm nylon standoffs</dd>
-      <dt>FC rev H</dt><dd>1.0 mm, on M2 grommets, 5 mm above</dd>
-      <dt>ESC rev B</dt><dd>1S power board, 1.0 mm, frame bosses</dd>
+      <dt id="gpsName">GPS rev A</dt><dd id="zGps">on 6 mm nylon standoffs</dd>
+      <dt>FC rev A</dt><dd>1.0 mm, on M2 grommets, 5 mm above</dd>
+      <dt>ESC 1S rev A</dt><dd>1S power board, 1.0 mm, frame bosses</dd>
     </dl>
 
     <div class="panel">
       <h2>GPS board and standoffs</h2>
       <div class="seg" role="group" aria-label="GPS configuration">
-        <button id="cD6" aria-pressed="true">Rev D · 6 mm</button>
-        <button id="cC6" aria-pressed="false">Rev C · 6 mm</button>
-        <button id="cC8" aria-pressed="false">Rev C · 8 mm</button>
+        <button id="cD6" aria-pressed="true">GPS rev A · 6 mm</button>
+        <button id="cC6" aria-pressed="false">GPS draft C · 6 mm</button>
+        <button id="cC8" aria-pressed="false">GPS draft C · 8 mm</button>
       </div>
       <div class="verdict"><span class="big" id="nClash">–</span><span class="vlabel" id="vClash">clashes</span>
         <span class="big" id="nTight" style="font-size:1.4rem">–</span><span class="vlabel">under 0.5 mm</span></div>
@@ -117,8 +117,8 @@ ul.find li[aria-selected="true"] { border-color: var(--accent); box-shadow: inse
     <canvas id="gl" aria-label="3D view of the board stack"></canvas>
     <div class="hud">
       <div class="toggles" id="tg">
-        <label class="chip"><input type="checkbox" id="vESC" checked><span class="sw" style="background:#2f6b4f"></span>ESC B</label>
-        <label class="chip"><input type="checkbox" id="vFC" checked><span class="sw" style="background:#2c5f86"></span>FC H</label>
+        <label class="chip"><input type="checkbox" id="vESC" checked><span class="sw" style="background:#2f6b4f"></span>ESC 1S A</label>
+        <label class="chip"><input type="checkbox" id="vFC" checked><span class="sw" style="background:#2c5f86"></span>FC A</label>
         <label class="chip"><input type="checkbox" id="vGPS" checked><span class="sw" style="background:#7a4f9e"></span>GPS</label>
         <label class="chip"><input type="checkbox" id="vPlug" checked><span class="sw" style="background:#e0a03a"></span>Plugs</label>
         <label class="chip"><input type="checkbox" id="vHw" checked><span class="sw" style="background:#9aa4ad"></span>Hardware</label>
@@ -223,15 +223,15 @@ ul.find li[aria-selected="true"] { border-color: var(--accent); box-shadow: inse
     'GPS J1 plug|FC J4 plug': 'Same for FC J4 next to J3.',
     'GPS J1 plug|FC J3': 'The GPS J1 plug comes down onto the FC J3 receptacle.',
     'GPS J1 plug|FC J4': 'The GPS J1 plug comes down onto the FC J4 receptacle.',
-    'GPS J2 plug|FC J2 plug': 'Only if GPS J2 is used: its plug lands on the ESC A plug of the FC. Rev H leaves GPS J2 free.',
-    'FC J2 plug|GPS J2 plug': 'Only if GPS J2 is used: its plug lands on the ESC A plug of the FC. Rev H leaves GPS J2 free.',
-    'FC J3 plug|GPS J1 plug': 'GPS rev C J1 sits on the GPS bottom right above FC J3: both plugs need the same space.',
+    'GPS J2 plug|FC J2 plug': 'Only if GPS J2 is used: its plug lands on the ESC A plug of the FC. FC rev A leaves GPS J2 free.',
+    'FC J2 plug|GPS J2 plug': 'Only if GPS J2 is used: its plug lands on the ESC A plug of the FC. FC rev A leaves GPS J2 free.',
+    'FC J3 plug|GPS J1 plug': 'GPS draft C J1 sits on the GPS bottom right above FC J3: both plugs need the same space.',
     'FC J4 plug|GPS J1 plug': 'Same for FC J4 next to J3.',
     'FC J2|GPS J2': 'Receptacles face to face, 2.9 + 2.9 mm in a 6 mm gap.',
     'FC J3|GPS J1': 'Receptacles face to face, 2.9 + 2.9 mm in a 6 mm gap.',
     'FC J4|GPS J1': 'Receptacles face to face, 2.9 + 2.9 mm in a 6 mm gap.',
     'ESC J4|HW grommet -10,+10': 'Charge port next to the front-left grommet spacer (r 2.5 mm assumed): fits.',
-    'FC J1|HW grommet flange +10,-10': 'FC USB-C next to its grommet flange: as rev F/G, fits.',
+    'FC J1|HW grommet flange +10,-10': 'FC USB-C next to its grommet flange: as drafts F/G, fits.',
   };
   function why(f) { return WHY[f.a + '|' + f.b] || WHY[f.b + '|' + f.a] || ''; }
   function renderList() {
@@ -243,7 +243,7 @@ ul.find li[aria-selected="true"] { border-color: var(--accent); box-shadow: inse
     document.getElementById('vClash').textContent = nC === 1 ? 'clash' : 'clashes';
     document.getElementById('nTight').textContent = nT;
     document.getElementById('zGps').textContent = 'on ' + standoff + ' mm nylon standoffs';
-    document.getElementById('gpsName').textContent = 'GPS rev ' + cfg[0];
+    document.getElementById('gpsName').textContent = cfg[0] === 'D' ? 'GPS rev A' : 'GPS draft ' + cfg[0];   // D = released GPS rev A
     list.innerHTML = '';
     F.forEach((f, i) => {
       const li = document.createElement('li'); li.tabIndex = 0; li.setAttribute('role', 'option'); li.setAttribute('aria-selected', 'false');

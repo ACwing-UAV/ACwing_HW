@@ -1,4 +1,4 @@
-# ACwing ESC1S rev B: assembly BoM (+ Costing sheet) and JLCPCB BoM.
+# ACwing ESC 1S rev A: assembly BoM (+ Costing sheet) and JLCPCB BoM.
 #   python3 esc_bom.py <out dir>
 import sys, os, re, json
 import pcbnew
@@ -6,7 +6,7 @@ from openpyxl import Workbook
 from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
 
 OUT = sys.argv[1]
-PROJECT = 'ACwing_ESC1S_B'
+PROJECT = 'ACwing_ESC1S_A'
 parts = json.load(open(os.path.join(OUT, PROJECT + '.kicad_sch.parts.json')))
 b = pcbnew.LoadBoard(os.path.join(OUT, PROJECT + '.kicad_pcb'))
 side = {f.GetReference(): ('Bottom' if f.IsFlipped() else 'Top') for f in b.GetFootprints()}
@@ -76,8 +76,8 @@ def style_header(ws, r):
         c.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
 wb = Workbook(); ws = wb.active; ws.title = 'BoM'
 hdr = ['Item', 'Quantity', 'Part Reference', 'Value', 'MPN', 'Manufacturer', 'LCSC / JLCPCB #', 'Package', 'Description', 'Side', 'Notes']
-ws.append(['ACwing ESC1S rev B - assembly BoM (1 board)'])
-ws.append(['Source: ACwing_ESC1S_B.kicad_sch / ACwing_ESC1S_B.kicad_pcb. LCSC part numbers from the rev E FC BoM (2026-10-15/17); J1 C160407, rev B parts (Q5 AON7423 C99711, U2 STC4054GR C262930, J4 TYPE-C-31-M-12 C165948) checked 2026-10-18. D1-D4: SS34F fitted in place of STPS3L45AF (same outline).'])
+ws.append(['ACwing ESC 1S rev A - assembly BoM (1 board)'])
+ws.append(['Source: ACwing_ESC1S_A.kicad_sch / ACwing_ESC1S_A.kicad_pcb. LCSC part numbers from the rev E FC BoM (2026-10-15/17); J1 C160407, rev B parts (Q5 AON7423 C99711, U2 STC4054GR C262930, J4 TYPE-C-31-M-12 C165948) checked 2026-10-18. D1-D4: SS34F fitted in place of STPS3L45AF (same outline).'])
 ws.append([]); ws.append(hdr); H = 4
 rows = sorted(groups.items(), key=lambda kv: key(sorted(kv[1], key=key)[0]))
 for i, ((k, sd), refs) in enumerate(rows, 1):
@@ -121,7 +121,7 @@ ws.freeze_panes = 'A5'
 
 # ---------------------------------------------------------------- Costing
 cs = wb.create_sheet('Costing')
-cs.append(['ACwing ESC1S rev B - component costing (assembled parts, USD)'])
+cs.append(['ACwing ESC 1S rev A - component costing (assembled parts, USD)'])
 cs.append(['Blue = input prices; black = formulas. "Estimate" rows are typical distributor prices, not quotes. PCB (4 layers), assembly fees, motors and the 8-pin cable are not included.'])
 cs.append([])
 ch = ['References', 'Qty / board', 'MPN', 'Source', 'Unit price @10 boards', 'Unit price @100 boards', 'Cost / board @10', 'Cost / board @100', 'Price basis']

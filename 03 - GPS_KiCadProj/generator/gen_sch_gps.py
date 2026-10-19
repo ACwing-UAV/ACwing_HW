@@ -1,14 +1,14 @@
-# ACwing GPS rev D: GNSS + compass expansion board for ACwing FC rev H (Qwiic expansion bus, 20 x 20 holes) (KiCad 7 schematic generator).
+# ACwing GPS rev A: GNSS + compass expansion board for ACwing FC rev A (Qwiic expansion bus, 20 x 20 holes) (KiCad 7 schematic generator).
 import sys, json
 sys.path.insert(0, '/home/claude/genD')
 import kisch
 from kisch import Schematic, POWER_LIB
 
 OUT = sys.argv[1]
-PROJECT = 'ACwing_GPS_D'
+PROJECT = 'ACwing_GPS_A'
 POWER_LIB.update({'GND': 'power:GND'})   # rev B: +3V3 as net labels (the rail comes in from the Qwiic bus)
 sch = Schematic(PROJECT, 'A4', title=dict(
-    title='ACwing GPS rev D - GNSS + compass for ACwing FC H',
+    title='ACwing GPS rev A - GNSS + compass for ACwing FC H',
     date='2026-10-19', rev='D', company='ACwing - Andrea Cirillo',
     comments=['30 x 30 mm, 2 layers, 1.0 mm; same 20 x 20 hole pattern as the flight controller rev F',
               'Expansion bus: Qwiic (JST SH 4-pin) x 2, pass-through, from FC J3; daisy-chain to the flow board',
