@@ -1,8 +1,8 @@
-# DimaQuadFC rev H – universal flight controller: 1S–6S, commercial 4-in-1 ESCs, up to 8 motors
+# ACwing FC rev H – universal flight controller: 1S–6S, commercial 4-in-1 ESCs, up to 8 motors
 
 KiCad 7 project (it also opens in KiCad 8/9). Rev H turns the FC into a **standard FC that works with any power
 stage that uses the common 4-in-1 ESC connector**:
-- **Mini drone (1S, brushed coreless):** the DimaQuad 1S power board (DimaQuadESC rev B, next project) carries the
+- **Mini drone (1S, brushed coreless):** the ACwing 1S power board (ACwing ESC1S rev B, next project) carries the
   motor stages, the battery connector and pads, the 1S USB-C charger and the current sensor. To the FC it looks like
   any ESC: VBAT (1S) and CUR on the 8-pin cable.
 - **Larger drone (3S–6S brushless, payload > 2 kg):** a commercial 20 × 20 4-in-1 ESC replaces the power board and
@@ -37,7 +37,7 @@ J3 Qwiic, J5 ELRS positions, pogo grid.
 ## Supported configurations
 | Power stage | Battery | VREG | Charging | Current measurement |
 |---|---|---|---|---|
-| DimaQuad 1S power board (brushed coreless) | 1S | ≈ VBAT (100 % duty cycle) | on the power board (its USB-C) | CUR pin, 0.1 V/A |
+| ACwing 1S power board (brushed coreless) | 1S | ≈ VBAT (100 % duty cycle) | on the power board (its USB-C) | CUR pin, 0.1 V/A |
 | Commercial 20 × 20 4-in-1 ESC (2–6S class) | 2S–6S | 4.1 V | external balance charger | CUR pin (scale in firmware) or EDT |
 | Two 4-in-1 ESCs (hexa / octo) | 2S–6S | 4.1 V | external | ESC A CUR + EDT on all motors |
 | Separate ESCs + PDB | 2S–6S | 4.1 V | external | EDT; FC supplied on the J7/J8 pads |
@@ -75,7 +75,7 @@ J7 / J8 pads ───┴─ VBAT 1S–6S ── U12 LM5166 (PFM) ── VREG 4.
 cable if it differs.
 
 ## Firmware pin map (rev H)
-See `DimaQuadFC_H_pinmap.md`. Summary:
+See `ACwing_FC_H_pinmap.md`. Summary:
 | Function | Pin | Peripheral |
 |---|---|---|
 | Motors M1–M4 / M5–M7 / M8 | PA0–PA3 / PA8–PA10 / PA6 | TIM2 CH1–CH4 / TIM1 CH1–CH3 / TIM16 CH1, all with DMA: 32 kHz PWM (brushed) or DShot300/600 + bidirectional DShot / EDT |
@@ -86,13 +86,13 @@ See `DimaQuadFC_H_pinmap.md`. Summary:
 | IMU INT1 / RGB LEDs / VBUS detect | PA15 / PA7 / PB1 | EXTI / TIM17 CH1 + DMA / GPIO |
 | Qwiic J3 + J4 / USB / SWD / BOOT0 / HSE | PB8–PB9 / PA11–PA12 / PA13–PA14 / PH3 / 32 MHz | as rev F |
 
-- Free: PB2. Not connected: PC15. No second UART is free: GNSS goes on I2C (DimaQuadGPS, u-blox DDC).
+- Free: PB2. Not connected: PC15. No second UART is free: GNSS goes on I2C (ACwing GPS, u-blox DDC).
 
 ## Add-on boards
-- **GPS board (DimaQuadGPS rev C)**, stacked above on the 20 × 20 holes on **8 mm standoffs** (stack check: at 6 mm its
+- **GPS board (ACwing GPS rev C)**, stacked above on the 20 × 20 holes on **8 mm standoffs** (stack check: at 6 mm its
   J1 plug hits FC J3/J4 and their plugs): cable from FC **J3** (right edge, front) to
   GPS J1 (right edge). GPS J2 stays free, so the rev F note about its plug above the ESC connector no longer applies.
-- **Flow board (DimaQuadFlow rev A)**, under the frame: cable from FC **J4** (right edge, rear) down through the deck to
+- **Flow board (ACwing Flow rev A)**, under the frame: cable from FC **J4** (right edge, rear) down through the deck to
   flow J1.
 - Bus addresses: GNSS 0x42, GPS compass 0x1E, ToF 0x29, flow bridge 0x3B (no clash). VEXP 300 mA covers both boards.
 
@@ -119,7 +119,7 @@ See `DimaQuadFC_H_pinmap.md`. Summary:
 
 ## Checks
 - Netlist: 0 errors (`check_net.py`, 91 nets).
-- KiCad DRC (`DimaQuadFC_H_DRC.rpt`): **0 violations, 0 unconnected pads, 0 footprint errors**.
+- KiCad DRC (`ACwing_FC_H_DRC.rpt`): **0 violations, 0 unconnected pads, 0 footprint errors**.
 - Silkscreen: 103 references on the board (C17 and two more on the Fab layer only: no free spot), 8 with a leader line.
 
 ## Fabrication (JLCPCB)
@@ -143,14 +143,14 @@ See `DimaQuadFC_H_pinmap.md`. Summary:
 ## Contents
 | File | What |
 |---|---|
-| `DimaQuadFC_H.kicad_pro / .kicad_sch / .kicad_pcb` | project, schematic, routed PCB |
-| `DimaQuad.kicad_sym`, `DimaQuad.pretty/`, `3d/` | project symbols, footprints, STEP models |
-| `DimaQuadFC_H.step`, `DimaQuadFC_H_3D.png`, `DimaQuadFC_H_routing.png` | STEP, 3D views, copper |
-| `DimaQuadFC_H_BoM.xlsx` | sheets `BoM` and `Costing` |
-| `DimaQuadFC_H_BoM_JLCPCB.xlsx`, `DimaQuadFC_H_CPL.xlsx` | JLC BoM (LCSC numbers) and pick-and-place (93 parts) |
-| `DimaQuadFC_H_gerber.zip` | Gerber (4 copper layers) + Excellon, origin at the lower-left corner |
-| `DimaQuadFC_H_schematic.pdf`, `DimaQuadFC_H_DRC.rpt`, `DimaQuadFC_H_outline.dxf` | schematic, DRC report, outline |
-| `DimaQuadFC_H_pinmap.md` | pin map, ESC links, add-on ports |
+| `ACwing_FC_H.kicad_pro / .kicad_sch / .kicad_pcb` | project, schematic, routed PCB |
+| `ACwing.kicad_sym`, `ACwing.pretty/`, `3d/` | project symbols, footprints, STEP models |
+| `ACwing_FC_H.step`, `ACwing_FC_H_3D.png`, `ACwing_FC_H_routing.png` | STEP, 3D views, copper |
+| `ACwing_FC_H_BoM.xlsx` | sheets `BoM` and `Costing` |
+| `ACwing_FC_H_BoM_JLCPCB.xlsx`, `ACwing_FC_H_CPL.xlsx` | JLC BoM (LCSC numbers) and pick-and-place (93 parts) |
+| `ACwing_FC_H_gerber.zip` | Gerber (4 copper layers) + Excellon, origin at the lower-left corner |
+| `ACwing_FC_H_schematic.pdf`, `ACwing_FC_H_DRC.rpt`, `ACwing_FC_H_outline.dxf` | schematic, DRC report, outline |
+| `ACwing_FC_H_pinmap.md` | pin map, ESC links, add-on ports |
 | `generator/` | regeneration scripts (`build_all_h.sh`) |
 
 ## Regeneration

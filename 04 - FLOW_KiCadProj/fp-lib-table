@@ -1,4 +1,4 @@
 (fp_lib_table
   (version 7)
-  (lib (name "DimaQuadFlow")(type "KiCad")(uri "${KIPRJMOD}/DimaQuadFlow.pretty")(options "")(descr "DimaQuadFlow project footprints (3D models in ${KIPRJMOD}/3d)"))
+  (lib (name "ACwing_Flow")(type "KiCad")(uri "${KIPRJMOD}/ACwing_Flow.pretty")(options "")(descr "ACwing Flow project footprints (3D models in ${KIPRJMOD}/3d)"))
 )

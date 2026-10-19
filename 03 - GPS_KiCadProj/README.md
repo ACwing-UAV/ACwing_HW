@@ -1,4 +1,4 @@
-# DimaQuadGPS rev D – GNSS + compass expansion board for DimaQuadFC rev H
+# ACwing GPS rev D – GNSS + compass expansion board for ACwing FC rev H
 
 KiCad 7 project (it also opens in KiCad 8/9). A 30 × 30 mm board that stacks on top of the flight controller on the
 same **20 × 20 mm** holes, on **6 mm** nylon standoffs. Circuit identical to rev B/C (Qwiic expansion bus, GNSS on
@@ -34,14 +34,14 @@ PPS LED (D2/Q1/R2), safeboot/reset pads, M2 holes and the stack.
 ## Contents
 | File | What |
 |---|---|
-| `DimaQuadGPS_D.kicad_pro / .kicad_sch / .kicad_pcb` | project, schematic, routed PCB |
-| `DimaQuadGPS_D.kicad_dru` | project DRC rules |
-| `DimaQuadGPS.pretty/`, `3d/` | project footprints and STEP models |
-| `DimaQuadGPS_D_schematic.pdf`, `DimaQuadGPS_D_DRC.rpt` | schematic, DRC report |
-| `DimaQuadGPS_D.step`, `DimaQuadGPS_D_3D.png`, `DimaQuad_stack_3D.png` | STEP; board views; DimaQuadESC B + FC H + GPS D stack |
-| `DimaQuadGPS_D_BoM.xlsx` | sheets `BoM` and `Costing` |
-| `DimaQuadGPS_D_BoM_JLCPCB.xlsx`, `DimaQuadGPS_D_CPL.xlsx` | JLC BoM (LCSC numbers) and pick-and-place (15 parts) |
-| `DimaQuadGPS_D_gerber.zip` | Gerber + Excellon, origin at the lower-left corner |
+| `ACwing_GPS_D.kicad_pro / .kicad_sch / .kicad_pcb` | project, schematic, routed PCB |
+| `ACwing_GPS_D.kicad_dru` | project DRC rules |
+| `ACwing_GPS.pretty/`, `3d/` | project footprints and STEP models |
+| `ACwing_GPS_D_schematic.pdf`, `ACwing_GPS_D_DRC.rpt` | schematic, DRC report |
+| `ACwing_GPS_D.step`, `ACwing_GPS_D_3D.png`, `ACwing_stack_3D.png` | STEP; board views; ACwing ESC1S B + FC H + GPS D stack |
+| `ACwing_GPS_D_BoM.xlsx` | sheets `BoM` and `Costing` |
+| `ACwing_GPS_D_BoM_JLCPCB.xlsx`, `ACwing_GPS_D_CPL.xlsx` | JLC BoM (LCSC numbers) and pick-and-place (15 parts) |
+| `ACwing_GPS_D_gerber.zip` | Gerber + Excellon, origin at the lower-left corner |
 | `generator/` | regeneration scripts (`build_all_gps.sh`) |
 
 ## Circuit
@@ -72,7 +72,7 @@ m_fc = R · m_gps,   R = [  0.7071  -0.7071   0 ]
 - Stack: FC on its grommets → 6 mm M2 nylon standoffs → GPS board. Top of the module ≈ 13.3 mm above the FC top.
 - Cables: FC rev H J3 (top, right edge, v = +3.6) → GPS J1 (top, right edge, v = 0), short loop outside the right edge.
   The flow board has its own FC port (rev H J4); GPS J2 is an optional pass-through.
-- Stack check (DimaQuadESC B + FC H + GPS D, 6 mm standoffs, all plugs mated): no clash; wherever a GPS bottom part sits above an
+- Stack check (ACwing ESC1S B + FC H + GPS D, 6 mm standoffs, all plugs mated): no clash; wherever a GPS bottom part sits above an
   FC rev H top part the vertical gap is ≥ 3.0 mm.
 - RF: as rev C, 30 mm ground plane; nothing conductive above the module. The top-side connectors stay lower than the
   module (2.9 vs 6.3 mm).

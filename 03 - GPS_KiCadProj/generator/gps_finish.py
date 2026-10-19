@@ -1,14 +1,14 @@
-# DimaQuadGPS rev D: silkscreen extras, project footprint library (DimaQuadGPS.pretty) with project 3D models.
+# ACwing GPS rev D: silkscreen extras, project footprint library (ACwing_GPS.pretty) with project 3D models.
 #   python3 gps_finish.py <out dir>
 import sys, os, re, json, shutil
 import pcbnew
 
 OUT = sys.argv[1]
-PROJECT = 'DimaQuadGPS_D'
+PROJECT = 'ACwing_GPS_D'
 BOARD = os.path.join(OUT, PROJECT + '.kicad_pcb')
 SCH = os.path.join(OUT, PROJECT + '.kicad_sch')
 OX, OY = 150.0, 100.0
-LIB = 'DimaQuadGPS'
+LIB = 'ACwing_GPS'
 LIB3D = '/usr/share/kicad/3dmodels'
 D3 = os.path.join(OUT, '3d')
 MODEL_FOR = {'ublox_SAM-M8Q': 'ublox_SAM-M10Q'}          # footprint -> project model (made by make_3d_gps.py)
@@ -18,7 +18,7 @@ b = pcbnew.LoadBoard(BOARD)
 # ---------------------------------------------------------------- 1. silkscreen: front arrow, board name (top)
 TAG = 'gps_finish'
 for d in list(b.GetDrawings()):
-    if d.GetLayer() == pcbnew.F_SilkS and (d.GetClass() == 'PCB_TEXT' and d.GetText().startswith(('FRONT', 'DimaQuadGPS'))
+    if d.GetLayer() == pcbnew.F_SilkS and (d.GetClass() == 'PCB_TEXT' and d.GetText().startswith(('FRONT', 'ACwing_GPS'))
                                            or d.GetClass() == 'PCB_SHAPE' and abs(pcbnew.ToMM(d.GetWidth()) - 0.151) < 1e-6):
         b.Delete(d)
 def text(s, u, v, size=0.8, just=None):
@@ -38,7 +38,7 @@ ax, ay = -4.6, 12.4
 line((ax - 0.85, ay - 0.85), (ax + 0.85, ay + 0.85))
 line((ax + 0.85, ay + 0.85), (ax + 0.85, ay + 0.1)); line((ax + 0.85, ay + 0.85), (ax + 0.1, ay + 0.85))
 text('FRONT', ax - 1.2, ay + 0.3, just='right')
-text('DimaQuadGPS D', 2.6, 13.4, just='left')
+text('ACwing GPS D', 2.6, 13.4, just='left')
 pcbnew.SaveBoard(BOARD, b)
 
 # ---------------------------------------------------------------- 2. project library + 3D models
@@ -90,7 +90,7 @@ for v in pp.values():
 json.dump(pp, open(pj, 'w'), indent=0)
 open(os.path.join(OUT, 'fp-lib-table'), 'w').write(
     '(fp_lib_table\n  (version 7)\n  (lib (name "%s")(type "KiCad")(uri "${KIPRJMOD}/%s.pretty")(options "")'
-    '(descr "DimaQuadGPS project footprints (3D models in ${KIPRJMOD}/3d)"))\n)\n' % (LIB, LIB))
+    '(descr "ACwing GPS project footprints (3D models in ${KIPRJMOD}/3d)"))\n)\n' % (LIB, LIB))
 if os.path.exists(os.path.join(OUT, 'sym-lib-table')):
     os.remove(os.path.join(OUT, 'sym-lib-table'))
 print('library', LIB, 'footprints', len(os.listdir(os.path.join(OUT, LIB + '.pretty'))), '| schematic links', k)

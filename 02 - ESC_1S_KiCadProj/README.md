@@ -1,4 +1,4 @@
-# DimaQuadESC rev B – DimaQuad 1S power board (brushed) for DimaQuadFC rev H
+# ACwing ESC1S rev B – ACwing 1S power board (brushed) for ACwing FC rev H
 
 KiCad 7 project (it also opens in KiCad 8/9). The power board of the 1S mini drone: battery entry, current sensor,
 four brushed motor stages, and (new in rev B) a **USB-C charge port with a 1S charger**. To the FC it looks like any
@@ -42,11 +42,11 @@ USB-C J4 VBUS ─ U2 VCC, D6 LED, D5
 
 ## Checks
 - Netlist: 0 errors (`check_net.py`, 33 nets).
-- KiCad DRC (`DimaQuadESC_B_DRC.rpt`): **0 violations, 0 unconnected pads, 0 footprint errors**.
+- KiCad DRC (`ACwing_ESC1S_B_DRC.rpt`): **0 violations, 0 unconnected pads, 0 footprint errors**.
 - Routing: 133 tracks, 248 vias (power pours and fixed paths + Freerouting for the charger signals).
 
 ## Stack check (ESC B + FC H + GPS C)
-Interactive 3D page: "DimaQuad Stack Check". Every part is a prism (courtyard × datasheet height), every connector gets
+Interactive 3D page: "ACwing Stack Check". Every part is a prism (courtyard × datasheet height), every connector gets
 a mated-plug envelope. Results:
 - **6 mm FC → GPS standoffs (as designed): 5 clashes.** The GPS board connector J1 (bottom side, right edge) sits right
   above FC J3/J4: with plugs inserted they overlap by 0.6 mm (plugs) and 0.2 mm (plug on receptacle). GPS J2 (unused
@@ -72,11 +72,11 @@ a mated-plug envelope. Results:
 ## Contents
 | File | What |
 |---|---|
-| `DimaQuadESC_B.kicad_pro / .kicad_sch / .kicad_pcb` | project, schematic, routed PCB |
-| `DimaQuad.pretty/`, `3d/`, `DimaQuad.kicad_sym` | project footprints, STEP models, symbols |
-| `DimaQuadESC_B.step`, `DimaQuadESC_B_3D.png` | STEP and board views |
-| `DimaQuadESC_B_BoM.xlsx` | sheets `BoM` and `Costing` |
-| `DimaQuadESC_B_BoM_JLCPCB.xlsx`, `DimaQuadESC_B_CPL.xlsx` | JLC BoM (LCSC numbers) and pick-and-place (40 parts) |
-| `DimaQuadESC_B_gerber.zip` | Gerber (4 copper layers) + Excellon |
-| `DimaQuadESC_B_schematic.pdf`, `DimaQuadESC_B_DRC.rpt` | schematic, DRC report |
+| `ACwing_ESC1S_B.kicad_pro / .kicad_sch / .kicad_pcb` | project, schematic, routed PCB |
+| `ACwing.pretty/`, `3d/`, `ACwing.kicad_sym` | project footprints, STEP models, symbols |
+| `ACwing_ESC1S_B.step`, `ACwing_ESC1S_B_3D.png` | STEP and board views |
+| `ACwing_ESC1S_B_BoM.xlsx` | sheets `BoM` and `Costing` |
+| `ACwing_ESC1S_B_BoM_JLCPCB.xlsx`, `ACwing_ESC1S_B_CPL.xlsx` | JLC BoM (LCSC numbers) and pick-and-place (40 parts) |
+| `ACwing_ESC1S_B_gerber.zip` | Gerber (4 copper layers) + Excellon |
+| `ACwing_ESC1S_B_schematic.pdf`, `ACwing_ESC1S_B_DRC.rpt` | schematic, DRC report |
 | `generator/` | regeneration scripts (`build_all_esc.sh`), stack check (`stack_check.py`) |

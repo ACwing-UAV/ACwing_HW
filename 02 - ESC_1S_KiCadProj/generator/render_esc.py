@@ -1,4 +1,4 @@
-# DimaQuadESC rev B renders (top / isometric / bottom) from the STEP mesh made by genD/step_mesh.py.
+# ACwing ESC1S rev B renders (top / isometric / bottom) from the STEP mesh made by genD/step_mesh.py.
 import numpy as np, matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -33,6 +33,6 @@ fig, axs = plt.subplots(1, 3, figsize=(21, 7.5))
 view(axs[0], Tg, Cg, 0, 0, 'Top: motor stages, battery pads, charge port (front-left), charger, Q5, ESC link J1')
 view(axs[1], Tg, Cg, -35, -60, 'Isometric')
 view(axs[2], Tg, Cg, 0, 180, 'Bottom: shunt R9 + TSC213, charger passives')
-plt.tight_layout(); plt.savefig('/home/claude/outESCB/DimaQuadESC_B_3D.png', dpi=80); plt.close()
+plt.tight_layout(); plt.savefig('/home/claude/outESCB/ACwing_ESC1S_B_3D.png', dpi=80); plt.close()
 
 print('render written')

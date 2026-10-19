@@ -1,4 +1,4 @@
-# DimaQuadESC rev A - planes, motor-stage pours, battery entry / shunt, fixed short tracks, GND/VBAT fan-out.
+# ACwing ESC1S rev A - planes, motor-stage pours, battery entry / shunt, fixed short tracks, GND/VBAT fan-out.
 #   In1  GND solid           In2  VBAT solid (fed from the shunt output, feeds the four stages through via clusters)
 #   F.Cu stage pours (rev E FC geometry): M-n (Q drain, D anode, motor pad 2), VBAT (motor pad 1, D cathode, C+),
 #        GND (C-, Q sources); battery entry J2 / C1; GND fill on the rest

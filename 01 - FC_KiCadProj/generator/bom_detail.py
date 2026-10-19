@@ -1,4 +1,4 @@
-# Detailed (assembly) BoM for DimaQuadFC rev H (from rev E): quantity, references, MPN, manufacturer, package, description,
+# Detailed (assembly) BoM for ACwing FC rev H (from rev E): quantity, references, MPN, manufacturer, package, description,
 # side, notes. Groups come from the schematic (parts.json); the assembly side comes from the routed PCB.
 import sys, json, re, os, pcbnew
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -176,8 +176,8 @@ for ref, v in parts.items():
 FONT = 'Arial'
 wb = Workbook(); ws = wb.active; ws.title = 'BoM'
 hdr = ['Item', 'Quantity', 'Part Reference', 'Value', 'MPN', 'Manufacturer', 'LCSC / JLCPCB #', 'Package', 'Description', 'Side', 'Notes']
-ws.append(['DimaQuadFC rev H - assembly BoM (1 board)'])
-ws.append(['Source: DimaQuadFC_H.kicad_sch / DimaQuadFC_H.kicad_pcb. MPNs = parts as assembled by JLCPCB (LCSC part numbers checked on 2026-10-16/18); equivalents are noted where they replace the originally specified part.'])
+ws.append(['ACwing FC rev H - assembly BoM (1 board)'])
+ws.append(['Source: ACwing_FC_H.kicad_sch / ACwing_FC_H.kicad_pcb. MPNs = parts as assembled by JLCPCB (LCSC part numbers checked on 2026-10-16/18); equivalents are noted where they replace the originally specified part.'])
 ws.append([])
 ws.append(hdr)
 H = 4

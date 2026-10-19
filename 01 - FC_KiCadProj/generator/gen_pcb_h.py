@@ -1,11 +1,11 @@
-# DimaQuadFC rev H (from rev F/G): board from the netlist.
+# ACwing FC rev H (from rev F/G): board from the netlist.
 #   Outline: frame C, copied from rev E (40 x 40 mm, chamfered rear-right corner for the USB-C receptacle).
 #   Holes: 4 x 3.2 mm plated grommet holes on the 20 x 20 pattern; flange keep-out r 2.75 (no tracks / vias on the
 #          outer layers), component keep-out r 3.0 top / 3.6 bottom.
 #   MCU at the board centre on the top side (rot 180: motor and ADC pins face east, RF pin north-west toward the chip
 #   antenna kept at the left edge as rev E), IMU south of it near the centre, compass at the front corner, four
 #   WS2812B mirrored about the front-rear diagonal, ESC link J2 on the top at the rear edge (8 mm west of
-#   DimaQuadESC J1). Fixed parts first, the others go to the nearest legal spot from a target.
+#   ACwing ESC1S J1). Fixed parts first, the others go to the nearest legal spot from a target.
 #   python3 gen_pcb_h.py <out dir> <netlist xml>
 import sys, json, math, re, uuid, os
 import xml.etree.ElementTree as ET
@@ -16,7 +16,7 @@ sys.path.insert(0, '/home/claude/genH')
 from kisch import uid
 
 OUT, NETXML = sys.argv[1], sys.argv[2]
-PROJECT = 'DimaQuadFC_H'
+PROJECT = 'ACwing_FC_H'
 OX, OY = 150.0, 100.0
 HOLES = [(10, 10), (-10, 10), (-10, -10), (10, -10)]
 KEEP_TOP, KEEP_BOT = 3.0, 3.6
@@ -46,7 +46,7 @@ seg((20, 17), (20, -11.5)); seg((20, -11.5), (20 + BUMP, -11.5 - BUMP))
 seg((20 + BUMP, -11.5 - BUMP), (20 + BUMP, 20 + BUMP - CH)); seg((20 + BUMP, 20 + BUMP - CH), (CH - 20 - BUMP, -20 - BUMP))
 seg((CH - 20 - BUMP, -20 - BUMP), (11.5 + BUMP, -20 - BUMP)); seg((11.5 + BUMP, -20 - BUMP), (11.5, -20))
 seg((11.5, -20), (-17, -20)); arc((-17, -20), (-20 + k3, -20 + k3), (-20, -17))
-# rev H: front-left corner chamfered (v - u = 36.6) like the DimaQuadESC rev B charge-port corner below it, so a USB-C
+# rev H: front-left corner chamfered (v - u = 36.6) like the ACwing ESC1S rev B charge-port corner below it, so a USB-C
 # plug in the power board never runs under the FC (stack check 2026-10-18); the chip antenna stays inside the outline
 seg((-20, -17), (-20, 16.6)); seg((-20, 16.6), (-16.6, 20))
 
@@ -83,10 +83,10 @@ parts = json.load(open(OUT + '/%s.kicad_sch.parts.json' % PROJECT))
 FPD = {}
 for ref, info in sorted(parts.items()):
     lib, name = info['fp'].split(':')
-    fp = pcbnew.FootprintLoad(OUT + '/DimaQuad.pretty', name)
+    fp = pcbnew.FootprintLoad(OUT + '/ACwing.pretty', name)
     if fp is None:
         raise SystemExit('footprint not found ' + info['fp'])
-    fp.SetReference(ref); fp.SetValue(info['value']); fp.SetFPID(pcbnew.LIB_ID('DimaQuad', name))
+    fp.SetReference(ref); fp.SetValue(info['value']); fp.SetFPID(pcbnew.LIB_ID('ACwing', name))
     fp.SetPath(pcbnew.KIID_PATH('/' + uid('sym', ref, 1)))
     board.Add(fp); FPD[ref] = fp
     for pad in fp.Pads():
@@ -131,8 +131,8 @@ FIXED = {   # ref: (u, v, rot, bottom)
 for ref, (u, v, r, bot) in FIXED.items():
     put(ref, u, v, r, bot)
 # ESC link J2: TOP side, rear edge, mouth (fixing tabs, footprint +Y) toward -v. Not on the bottom: there it would sit
-# right above DimaQuadESC J1 (both 2.9 mm tall, more than the 5 mm stack gap). Left of the USB-C corner, 8 mm west
-# of DimaQuadESC J1: the 1:1 cable (loose wires) makes an S from the ESC top up to the FC top
+# right above ACwing ESC1S J1 (both 2.9 mm tall, more than the 5 mm stack gap). Left of the USB-C corner, 8 mm west
+# of ACwing ESC1S J1: the 1:1 cable (loose wires) makes an S from the ESC top up to the FC top
 put('J2', 0, 0, 0)
 assert pp('J2', 'MP')[1] < pp('J2', '1')[1] - 1
 U_J2 = 1.5
@@ -235,7 +235,7 @@ print('not placed:', missing)
 pcbnew.SaveBoard(OUT + '/%s.kicad_pcb' % PROJECT, board)
 
 # ---------------------------------------------------------------- project rules (after SaveBoard)
-pro = json.load(open('/home/claude/outE/DimaQuadFC_E.kicad_pro'))
+pro = json.load(open('/home/claude/outE/ACwing_FC_E.kicad_pro'))
 pro['meta']['filename'] = PROJECT + '.kicad_pro'
 # rev H net classes: battery-voltage nets (up to 6S) 0.3 mm with 0.15 mm clearance
 ns = pro['net_settings']

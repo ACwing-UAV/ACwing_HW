@@ -3,7 +3,7 @@ cd /home/claude/outH
 for it in 1 2 3 4 5 6; do
   python3 -c "
 import pcbnew
-b=pcbnew.LoadBoard('DimaQuadFC_H.kicad_pcb')
+b=pcbnew.LoadBoard('ACwing_FC_H.kicad_pcb')
 pcbnew.WriteDRCReport(b,'/tmp/claude-0/rp.rpt',pcbnew.EDA_UNITS_MILLIMETRES,True)" 2>/dev/null
   python3 - > /tmp/claude-0/rp_items.txt <<'PY'
 import re
@@ -23,17 +23,17 @@ PY
     rip=""
     for xy in "$x1 $y1" "$x2 $y2"; do
       set -- $xy
-      r=$(python3 /home/claude/genE/ripbox.py DimaQuadFC_H.kicad_pcb $(echo "$1-$R" | bc) $(echo "$2-$R" | bc) $(echo "$1+$R" | bc) $(echo "$2+$R" | bc))
+      r=$(python3 /home/claude/genE/ripbox.py ACwing_FC_H.kicad_pcb $(echo "$1-$R" | bc) $(echo "$2-$R" | bc) $(echo "$1+$R" | bc) $(echo "$2+$R" | bc))
       rip="$rip $r"
     done
     others=$(echo $rip | tr ' ' '\n' | sort -u | grep -vx "$net" | tr '\n' ' ')
     echo "  $net: ripped [$others]"
-    python3 /home/claude/genH/astar.py DimaQuadFC_H.kicad_pcb "$net" $others 2>/dev/null | grep "A\*" | sed 's/^/    /'
+    python3 /home/claude/genH/astar.py ACwing_FC_H.kicad_pcb "$net" $others 2>/dev/null | grep "A\*" | sed 's/^/    /'
   done < /tmp/claude-0/rp_items.txt
-  python3 /home/claude/genE/cleanup.py DimaQuadFC_H.kicad_pcb > /dev/null
+  python3 /home/claude/genE/cleanup.py ACwing_FC_H.kicad_pcb > /dev/null
 done
 python3 -c "
 import pcbnew
-b=pcbnew.LoadBoard('DimaQuadFC_H.kicad_pcb')
+b=pcbnew.LoadBoard('ACwing_FC_H.kicad_pcb')
 pcbnew.WriteDRCReport(b,'/tmp/claude-0/hdrc2.rpt',pcbnew.EDA_UNITS_MILLIMETRES,True)" 2>/dev/null
 grep -E "^\[|Found" /tmp/claude-0/hdrc2.rpt | grep -v silk | sed 's/(.*//' | sort | uniq -c

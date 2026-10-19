@@ -1,0 +1,232 @@
+{
+"J1": {
+"lib_id": "Connector_Generic:Conn_01x04",
+"value": "Qwiic IN",
+"fp": "ACwing_GPS:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+"fields": {
+"Note": "JST SH 1.0 mm 4-pin side entry, TOP side (rev D), right edge (mouth toward +X). From FC J3"
+},
+"dnp": false
+},
+"J2": {
+"lib_id": "Connector_Generic:Conn_01x04",
+"value": "Qwiic OUT",
+"fp": "ACwing_GPS:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+"fields": {
+"Note": "JST SH 1.0 mm 4-pin side entry, TOP side (rev D), rear edge (mouth toward -Y). Optional pass-through (the flow board has its own FC port J4)"
+},
+"dnp": false
+},
+"C1": {
+"lib_id": "Device:C",
+"value": "10uF",
+"fp": "ACwing_GPS:C_0603_1608Metric",
+"fields": {
+"Note": "Bus input bulk / GNSS start-up inrush (100 mA), 10 V X5R"
+},
+"dnp": false
+},
+"C3": {
+"lib_id": "Device:C",
+"value": "100nF",
+"fp": "ACwing_GPS:C_0402_1005Metric",
+"fields": {
+"Note": "SAM-M10Q VCC, at pin 17"
+},
+"dnp": false
+},
+"C4": {
+"lib_id": "Device:C",
+"value": "100nF",
+"fp": "ACwing_GPS:C_0402_1005Metric",
+"fields": {
+"Note": "SAM-M10Q V_IO, at pin 2"
+},
+"dnp": false
+},
+"U1": {
+"lib_id": "RF_GPS:SAM-M8Q",
+"value": "SAM-M10Q-00B",
+"fp": "ACwing_GPS:ublox_SAM-M8Q",
+"fields": {
+"Note": "SAM-M10Q-00B (pin compatible with SAM-M8Q). Top side, axis-aligned (rev D; was 45 deg), antenna to the sky. DDC (I2C) 0x42 on the Qwiic bus"
+},
+"dnp": false
+},
+"R1": {
+"lib_id": "Device:R",
+"value": "1k",
+"fp": "ACwing_GPS:R_0402_1005Metric",
+"fields": {
+"Note": "Limits the supercap charge current"
+},
+"dnp": false
+},
+"D1": {
+"lib_id": "Device:D_Schottky",
+"value": "RB521S30",
+"fp": "ACwing_GPS:D_SOD-523",
+"fields": {
+"Note": "Blocks the supercap from feeding the 3.3 V rail when off"
+},
+"dnp": false
+},
+"C5": {
+"lib_id": "Device:C_Polarized",
+"value": "11mF",
+"fp": "ACwing_GPS:C_1210_3225Metric",
+"fields": {
+"Note": "Seiko CPH3225A 3.3 V EDLC: about 10 min of hardware backup (32 uA) for a hot start after a battery swap"
+},
+"dnp": false
+},
+"TP1": {
+"lib_id": "Connector:TestPoint",
+"value": "SAFEBOOT_N",
+"fp": "ACwing_GPS:TestPoint_Pad_D1.0mm",
+"fields": {
+"Note": "SAFEBOOT_N: short to TP3 at power-up for firmware recovery"
+},
+"dnp": false
+},
+"TP2": {
+"lib_id": "Connector:TestPoint",
+"value": "RESET_N",
+"fp": "ACwing_GPS:TestPoint_Pad_D1.0mm",
+"fields": {
+"Note": "RESET_N, active low"
+},
+"dnp": false
+},
+"TP3": {
+"lib_id": "Connector:TestPoint",
+"value": "GND",
+"fp": "ACwing_GPS:TestPoint_Pad_D1.0mm",
+"fields": {
+"Note": "GND"
+},
+"dnp": false
+},
+"TP4": {
+"lib_id": "Connector:TestPoint",
+"value": "GPS_TXD",
+"fp": "ACwing_GPS:TestPoint_Pad_D1.0mm",
+"fields": {
+"Note": "GNSS UART TXD (output, 3.3 V)"
+},
+"dnp": false
+},
+"TP5": {
+"lib_id": "Connector:TestPoint",
+"value": "GPS_RXD",
+"fp": "ACwing_GPS:TestPoint_Pad_D1.0mm",
+"fields": {
+"Note": "GNSS UART RXD (input, 3.3 V)"
+},
+"dnp": false
+},
+"U3": {
+"lib_id": "Sensor_Magnetic:LIS2MDL",
+"value": "IIS2MDC",
+"fp": "ACwing_GPS:LGA-12_2x2mm_P0.5mm",
+"fields": {
+"Note": "IIS2MDCTR, bottom side, axes aligned with the FC axes. CS high = I2C. DRDY not used (polled)"
+},
+"dnp": false
+},
+"C6": {
+"lib_id": "Device:C",
+"value": "220nF",
+"fp": "ACwing_GPS:C_0402_1005Metric",
+"fields": {
+"Note": "IIS2MDC C1: 220 nF, ESR < 200 mOhm, close to pins 5-6"
+},
+"dnp": false
+},
+"C7": {
+"lib_id": "Device:C",
+"value": "100nF",
+"fp": "ACwing_GPS:C_0402_1005Metric",
+"fields": {
+"Note": "IIS2MDC Vdd"
+},
+"dnp": false
+},
+"R3": {
+"lib_id": "Device:R",
+"value": "4.7k",
+"fp": "ACwing_GPS:R_0402_1005Metric",
+"fields": {
+"Note": "DNP: pull-ups are on the FC (R15/R16). Fit only for a host without pull-ups"
+},
+"dnp": true
+},
+"R4": {
+"lib_id": "Device:R",
+"value": "4.7k",
+"fp": "ACwing_GPS:R_0402_1005Metric",
+"fields": {},
+"dnp": true
+},
+"R2": {
+"lib_id": "Device:R",
+"value": "220R",
+"fp": "ACwing_GPS:R_0402_1005Metric",
+"fields": {},
+"dnp": false
+},
+"D2": {
+"lib_id": "Device:LED",
+"value": "green",
+"fp": "ACwing_GPS:LED_0402_1005Metric",
+"fields": {
+"Note": "PPS LED, top side: blinks once per second with a 3D fix"
+},
+"dnp": false
+},
+"Q1": {
+"lib_id": "Transistor_FET:2N7002",
+"value": "2N7002",
+"fp": "ACwing_GPS:SOT-23",
+"fields": {
+"Note": "Gate only on TIMEPULSE (no pull-down: it would pull the SAFEBOOT strap low)"
+},
+"dnp": false
+},
+"H1": {
+"lib_id": "Mechanical:MountingHole",
+"value": "M2",
+"fp": "ACwing_GPS:MountingHole_2.2mm_M2",
+"fields": {
+"Note": "M2 hole, 20 x 20 pattern (same as the FC rev F). Nylon standoff to the FC stack"
+},
+"dnp": false
+},
+"H2": {
+"lib_id": "Mechanical:MountingHole",
+"value": "M2",
+"fp": "ACwing_GPS:MountingHole_2.2mm_M2",
+"fields": {
+"Note": "M2 hole, 20 x 20 pattern (same as the FC rev F). Nylon standoff to the FC stack"
+},
+"dnp": false
+},
+"H3": {
+"lib_id": "Mechanical:MountingHole",
+"value": "M2",
+"fp": "ACwing_GPS:MountingHole_2.2mm_M2",
+"fields": {
+"Note": "M2 hole, 20 x 20 pattern (same as the FC rev F). Nylon standoff to the FC stack"
+},
+"dnp": false
+},
+"H4": {
+"lib_id": "Mechanical:MountingHole",
+"value": "M2",
+"fp": "ACwing_GPS:MountingHole_2.2mm_M2",
+"fields": {
+"Note": "M2 hole, 20 x 20 pattern (same as the FC rev F). Nylon standoff to the FC stack"
+},
+"dnp": false
+}
+}

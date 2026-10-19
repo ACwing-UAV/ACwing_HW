@@ -20,18 +20,18 @@ Kept from rev C, as decided for C2:
 ## Contents
 | File | What |
 |---|---|
-| `DimaQuadFC_C2.kicad_pro / .kicad_sch / .kicad_pcb` | project, schematic, routed PCB |
-| `DimaQuad.kicad_sym`, `DimaQuad.pretty/` | project symbols and footprints (new: `MLPF-WB55-01E3`, `ST_MLPF-WB55-01E3_CSP-6`, `Grommet_PTH_3.2mm_Pad5.0mm`) |
+| `ACwing_FC_C2.kicad_pro / .kicad_sch / .kicad_pcb` | project, schematic, routed PCB |
+| `ACwing.kicad_sym`, `ACwing.pretty/` | project symbols and footprints (new: `MLPF-WB55-01E3`, `ST_MLPF-WB55-01E3_CSP-6`, `Grommet_PTH_3.2mm_Pad5.0mm`) |
 | `3d/` | STEP models, referenced as `${KIPRJMOD}/3d/...` |
-| `DimaQuadFC_C2.step`, `DimaQuadFC_C2_3D.png` | full board in STEP; top, isometric and bottom views |
-| `DimaQuadFC_C2_routing.png` | F.Cu, In2 and B.Cu overlaid |
-| `DimaQuadFC_C2_BoM.xlsx` | sheet `BoM`: assembly BoM (quantity, references, value, MPN, manufacturer, package, description, side, notes); sheet `Costing`: component cost per board for 10 and 100 boards (distributor prices of 2026-10-15) |
-| `DimaQuadFC_C2_schematic.pdf`, `DimaQuadFC_C2_DRC.rpt` | schematic, DRC report |
-| `DimaQuadFC_C2_BoM_JLCPCB.xlsx` | BoM in the JLCPCB format (Comment, Designator, Footprint, JLCPCB Part #): every line has its LCSC number, so JLC's BOM tool matches it exactly |
-| `DimaQuadFC_C2_CPL.xlsx` | pick-and-place file in the JLCPCB format (Designator, Mid X, Mid Y, Layer, Rotation), 90 assembled parts |
-| `DimaQuadFC_C2_gerber.zip` | Gerber (4 copper layers, mask, paste, silk, outline) and Excellon drill (PTH/NPTH), same origin as the CPL |
-| `DimaQuadFC_C2.kicad_dru` | project DRC rule (thermal spokes, see Checks) |
-| `DimaQuadFC_C2_Placement.csv` | placement used for the top side (rev C CSV with the C2 changes) |
+| `ACwing_FC_C2.step`, `ACwing_FC_C2_3D.png` | full board in STEP; top, isometric and bottom views |
+| `ACwing_FC_C2_routing.png` | F.Cu, In2 and B.Cu overlaid |
+| `ACwing_FC_C2_BoM.xlsx` | sheet `BoM`: assembly BoM (quantity, references, value, MPN, manufacturer, package, description, side, notes); sheet `Costing`: component cost per board for 10 and 100 boards (distributor prices of 2026-10-15) |
+| `ACwing_FC_C2_schematic.pdf`, `ACwing_FC_C2_DRC.rpt` | schematic, DRC report |
+| `ACwing_FC_C2_BoM_JLCPCB.xlsx` | BoM in the JLCPCB format (Comment, Designator, Footprint, JLCPCB Part #): every line has its LCSC number, so JLC's BOM tool matches it exactly |
+| `ACwing_FC_C2_CPL.xlsx` | pick-and-place file in the JLCPCB format (Designator, Mid X, Mid Y, Layer, Rotation), 90 assembled parts |
+| `ACwing_FC_C2_gerber.zip` | Gerber (4 copper layers, mask, paste, silk, outline) and Excellon drill (PTH/NPTH), same origin as the CPL |
+| `ACwing_FC_C2.kicad_dru` | project DRC rule (thermal spokes, see Checks) |
+| `ACwing_FC_C2_Placement.csv` | placement used for the top side (rev C CSV with the C2 changes) |
 | `generator/` | regeneration scripts (`build_all.sh`) |
 
 All documentation, schematic notes, footprint descriptions and PCB texts are in English.
@@ -167,15 +167,15 @@ I2C address 0x5D is unchanged.
   netlist.
 - **`generator/check_mech.py`: OK.** Grommet keep-outs top r 3.0 / bottom r 3.6, antenna keep-out, courtyards
   ≥ 0.25 mm from the outline, bottom parts ≤ 1.2 mm, pogo clearance.
-- **KiCad DRC (`DimaQuadFC_C2_DRC.rpt`): 0 errors, 0 warnings, everything connected**, with the footprint-vs-library
+- **KiCad DRC (`ACwing_FC_C2_DRC.rpt`): 0 errors, 0 warnings, everything connected**, with the footprint-vs-library
   check active.
-  - **Project library.** Every footprint used on the board is stored in `DimaQuad.pretty` exactly as placed (3D
-    models in `3d/`, pogo-pad clearance), and the board and schematic link to `DimaQuad:<name>`. KiCad 8/9 therefore
+  - **Project library.** Every footprint used on the board is stored in `ACwing.pretty` exactly as placed (3D
+    models in `3d/`, pogo-pad clearance), and the board and schematic link to `ACwing:<name>`. KiCad 8/9 therefore
     no longer reports "footprint does not match library": that warning came from the stock KiCad libraries, which
     differ by version and by the 3D model path.
   - **Thermal reliefs.** Ten bottom GND pads (C7, C8, C9, C15, C16, C19, C21, C23, R9, R11) can take only one thermal
     spoke into the B.Cu pour. They are already tied to a GND via by their own track. The project rule file
-    `DimaQuadFC_C2.kicad_dru` accepts one spoke for GND pads in the B.Cu pour (KiCad 8/9 reports the two-spoke default as
+    `ACwing_FC_C2.kicad_dru` accepts one spoke for GND pads in the B.Cu pour (KiCad 8/9 reports the two-spoke default as
     an error).
   - **In2.** An unconnected 1.6 mm² VDD fragment near the rear corner has been removed.
 - **Routing.** 1034 tracks, 219 vias.
@@ -197,7 +197,7 @@ I2C address 0x5D is unchanged.
     drawing if in doubt.
 
 ## Fabrication files (JLCPCB)
-- **BoM for JLC.** Upload `DimaQuadFC_C2_BoM_JLCPCB.xlsx`, not the detailed BoM.
+- **BoM for JLC.** Upload `ACwing_FC_C2_BoM_JLCPCB.xlsx`, not the detailed BoM.
   - JLC's tool guesses badly from free-text descriptions (it matched a MOSFET for 100 nF and a terminal block for the
     green LED). With the "JLCPCB Part #" column every line is matched exactly.
   - Where the original MPN is not stocked by LCSC/JLC, an equivalent was chosen (column "Notes" of the detailed BoM):

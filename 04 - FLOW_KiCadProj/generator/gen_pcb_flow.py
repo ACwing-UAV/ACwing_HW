@@ -1,4 +1,4 @@
-# DimaQuadFlow rev A: board from the netlist. 21 x 25 mm, R1.5 corners, 2 layers, 1.0 mm, all parts on the sensor
+# ACwing Flow rev A: board from the netlist. 21 x 25 mm, R1.5 corners, 2 layers, 1.0 mm, all parts on the sensor
 # side (KiCad top = the side facing the ground once mounted). Fixed: J1/J2 (Qwiic, left/right edge), U1 (PMW3901),
 # U3 (VL53L1X), holes. The other parts move from a target to the nearest legal spot.
 import sys, json, math, uuid
@@ -8,8 +8,8 @@ from shapely.geometry import Polygon, Point, box as sbox
 from shapely.ops import unary_union
 
 OUT, NETXML = sys.argv[1], sys.argv[2]
-PROJECT = 'DimaQuadFlow_A'
-LIBN = 'DimaQuadFlow'
+PROJECT = 'ACwing_Flow_A'
+LIBN = 'ACwing_Flow'
 OX, OY = 150.0, 100.0
 HX, HY, RC = 10.5, 12.5, 1.5
 HOLES = [(-8.0, 0.4), (8.0, 0.4)]
@@ -229,7 +229,7 @@ json.dump({}, open(OUT + '/route_keepouts.json', 'w'))
 pcbnew.SaveBoard(OUT + '/%s.kicad_pcb' % PROJECT, board)
 
 # ---------------------------------------------------------------- project rules (after SaveBoard)
-pro = json.load(open('/home/claude/outE/DimaQuadFC_E.kicad_pro'))
+pro = json.load(open('/home/claude/outE/ACwing_FC_E.kicad_pro'))
 ns = pro['net_settings']
 base = [c for c in ns['classes'] if c['name'] == 'Default'][0]
 d = dict(base); d.update(clearance=0.12, track_width=0.15, via_diameter=0.45, via_drill=0.2)

@@ -1,4 +1,4 @@
-# DimaQuadFC rev F - planes, fixed RF / LDO / sensor details, MCU ground, pogo stubs, GND fan-out.
+# ACwing FC rev F - planes, fixed RF / LDO / sensor details, MCU ground, pogo stubs, GND fan-out.
 #   In1  GND solid (minus the antenna keep-out)
 #   In2  VDD pour (minus the antenna keep-out), also carries signals
 #   F.Cu RF chain pre-routed: RF1 -> MLPF-WB55 -> 0.36 mm line (50 ohm over In1) -> tuning R34 / C36 -> antenna

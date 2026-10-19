@@ -1,4 +1,4 @@
-# DimaQuad stack interference check: DimaQuadESC rev B (bottom) + DimaQuadFC rev H (grommets) + DimaQuadGPS rev C (standoffs).
+# ACwing stack interference check: ACwing ESC1S rev B (bottom) + ACwing FC rev H (grommets) + ACwing GPS rev C (standoffs).
 # Every footprint becomes a prism (courtyard polygon x height); connectors also get the envelope of a mated plug in
 # front of their mouth; holes get the mounting hardware. Prisms of different boards are checked pairwise.
 # Output: JSON (objects + findings) for the 3D viewer, and a text report.
@@ -13,8 +13,8 @@ T_ESC, GAP, T_FC, STANDOFF, T_GPS = 1.0, 5.0, 1.0, float(sys.argv[1]) if len(sys
 TAG = sys.argv[2] if len(sys.argv) > 2 else ''
 Z = {'ESC': 0.0, 'FC': T_ESC + GAP, 'GPS': T_ESC + GAP + T_FC + STANDOFF}
 THK = {'ESC': T_ESC, 'FC': T_FC, 'GPS': T_GPS}
-BOARDS = {'ESC': '/home/claude/outESCB/DimaQuadESC_B.kicad_pcb', 'FC': '/home/claude/outH/DimaQuadFC_H.kicad_pcb',
-          'GPS': '/home/claude/outGPSC/DimaQuadGPS_C.kicad_pcb'}
+BOARDS = {'ESC': '/home/claude/outESCB/ACwing_ESC1S_B.kicad_pcb', 'FC': '/home/claude/outH/ACwing_FC_H.kicad_pcb',
+          'GPS': '/home/claude/outGPSC/ACwing_GPS_C.kicad_pcb'}
 H = {   # body height above the board surface (mm, max from datasheets)
  'JST_SH_SM08B': 2.9, 'JST_SH_SM04B': 2.9, 'USB_C_Receptacle_HRO': 3.26, 'L_Sunlord_SWPA5040S': 4.0, 'CP_EIA-7343-31': 3.1,
  'D_SMAflat': 1.08, 'Vishay_PowerPAK': 1.04, 'C_1206': 1.8, 'R_1206': 0.6, 'C_1210': 1.0, 'C_0805': 1.45, 'C_0603': 0.9,

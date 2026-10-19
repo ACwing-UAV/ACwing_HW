@@ -112,7 +112,7 @@ if 'Costing' in wb.sheetnames:
 ws = wb.create_sheet('Costing')
 FONT = 'Arial'
 BLUE = Font(name=FONT, size=10, color='0000FF')
-ws.append(['DimaQuadFC rev H - component costing (assembled parts as ordered at JLCPCB, USD)'])
+ws.append(['ACwing FC rev H - component costing (assembled parts as ordered at JLCPCB, USD)'])
 ws.append(['Prices from distributors on 2026-10-15/17 (LCSC unless noted). "Quote" = price read for that exact MPN; '
            '"Estimate" = price of an equivalent part of the same series and size. PCB fabrication, assembly, '
            'stencil, shipping and duties are not included.'])

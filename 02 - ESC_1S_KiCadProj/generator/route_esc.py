@@ -1,4 +1,4 @@
-# DimaQuadESC rev A: Freerouting round trip for the signal nets (PWM_M1-4, CUR) on F.Cu / B.Cu only,
+# ACwing ESC1S rev A: Freerouting round trip for the signal nets (PWM_M1-4, CUR) on F.Cu / B.Cu only,
 # GND stitching vias, zone fill.  python3 route_esc.py <board> <work dir>
 # GND, VBAT and VBAT_RAW are complete from esc_power.py (planes, pours, fan-out): they are not routed.
 import sys, os, re, subprocess, math
@@ -20,7 +20,7 @@ for t in list(b.GetTracks()):
         b.Delete(t)
 pcbnew.SaveBoard(BOARD, b)
 b = pcbnew.LoadBoard(BOARD)
-dsn = os.path.join(WORK, 'DimaQuadESC_B.dsn'); ses = dsn[:-4] + '.ses'
+dsn = os.path.join(WORK, 'ACwing_ESC1S_B.dsn'); ses = dsn[:-4] + '.ses'
 pcbnew.ExportSpecctraDSN(b, dsn)
 s = open(dsn).read()
 s = re.sub(r'\n\s*\(plane [^\s]+ \(polygon[^)]*\)\)', '', s)

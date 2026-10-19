@@ -1,4 +1,4 @@
-# Mechanical handoff DXF for the DimaQuadFlow rev A board. Board frame, mm, origin at the board centre,
+# Mechanical handoff DXF for the ACwing Flow rev A board. Board frame, mm, origin at the board centre,
 # u right / v up, viewed from the SENSOR side (the side that faces the ground once mounted).
 import ezdxf, math
 HX, HY, R = 10.5, 12.5, 1.5
@@ -32,5 +32,5 @@ msp.add_lwpolyline(pts, close=True, dxfattribs={'layer': 'SENSOR_SIDE_PARTS_MAX_
 for txt, (x, y) in (('SENSOR SIDE VIEW (faces the ground)', (-10.5, 14.5)), ('PMW3901 lens 6x6x2.28, FOV 42 deg', (-10.5, -16.0)),
                     ('VL53L1X 4.9x2.5x1.56, FOV 27 deg', (-10.5, -17.5)), ('J1', (-12.0, 7.0)), ('J2', (11.0, 7.0))):
     msp.add_text(txt, height=0.8, dxfattribs={'layer': 'NOTES'}).set_placement((x, y))
-doc.saveas('/home/claude/outFlow/handoff/DimaQuadFlow_A_mech_outline.dxf')
+doc.saveas('/home/claude/outFlow/handoff/ACwing_Flow_A_mech_outline.dxf')
 print('ok')

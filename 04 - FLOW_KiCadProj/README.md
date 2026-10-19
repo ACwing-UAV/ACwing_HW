@@ -1,4 +1,4 @@
-# DimaQuadFlow rev A – optical flow + ToF height board for DimaQuadFC rev E
+# ACwing Flow rev A – optical flow + ToF height board for ACwing FC rev E
 
 KiCad 7 project (it also opens in KiCad 8/9). A 21 × 25 mm board for indoor flight: it measures ground motion
 (optical flow) and height (time of flight). It sits under the battery tray, sensor side down, and connects to the
@@ -17,14 +17,14 @@ FC expansion bus (Qwiic) with a standard JST SH 4-pin cable.
 ## Contents
 | File | What |
 |---|---|
-| `DimaQuadFlow_A.kicad_pro / .kicad_sch / .kicad_pcb` | project, schematic, routed PCB |
-| `DimaQuadFlow.pretty/`, `3d/` | project footprints (custom PMW3901 COB-28 land pattern from the datasheet), STEP models |
-| `DimaQuadFlow_A_schematic.pdf`, `DimaQuadFlow_A_DRC.rpt` | schematic, DRC report |
-| `DimaQuadFlow_A.step`, `DimaQuadFlow_A_3D.png` | STEP of the assembled board, renders |
-| `DimaQuadFlow_A_BoM.xlsx` | sheet `BoM` (assembly BoM, every field filled) and sheet `Costing` |
-| `DimaQuadFlow_A_BoM_JLCPCB.xlsx`, `DimaQuadFlow_A_CPL.xlsx` | JLC BoM with LCSC numbers, pick-and-place (30 parts, all on the sensor side) |
-| `DimaQuadFlow_A_gerber.zip` | Gerber + Excellon, origin at the lower-left corner |
-| `DimaQuadFlow_A_mech_outline.dxf` | outline, holes, sensor axes and envelopes for the frame design |
+| `ACwing_Flow_A.kicad_pro / .kicad_sch / .kicad_pcb` | project, schematic, routed PCB |
+| `ACwing_Flow.pretty/`, `3d/` | project footprints (custom PMW3901 COB-28 land pattern from the datasheet), STEP models |
+| `ACwing_Flow_A_schematic.pdf`, `ACwing_Flow_A_DRC.rpt` | schematic, DRC report |
+| `ACwing_Flow_A.step`, `ACwing_Flow_A_3D.png` | STEP of the assembled board, renders |
+| `ACwing_Flow_A_BoM.xlsx` | sheet `BoM` (assembly BoM, every field filled) and sheet `Costing` |
+| `ACwing_Flow_A_BoM_JLCPCB.xlsx`, `ACwing_Flow_A_CPL.xlsx` | JLC BoM with LCSC numbers, pick-and-place (30 parts, all on the sensor side) |
+| `ACwing_Flow_A_gerber.zip` | Gerber + Excellon, origin at the lower-left corner |
+| `ACwing_Flow_A_mech_outline.dxf` | outline, holes, sensor axes and envelopes for the frame design |
 | `generator/` | regeneration scripts |
 
 ## Circuit
@@ -53,7 +53,7 @@ FC expansion bus (Qwiic) with a standard JST SH 4-pin cable.
   The back side is flat (board name only).
 - Sensor axes (sensor-side view): PMW3901 at (0, −6.2), field of view 42°; VL53L1X at (0, +0.8), 27°.
 - Mount it parallel to the propeller plane, no window in front of the sensors. Everything for the frame designer is
-  in `DimaQuad_rev_E_mechanical_handoff.md` and the DXF.
+  in `ACwing_rev_E_mechanical_handoff.md` and the DXF.
 
 ## PCB
 - Rules: 0.15 mm tracks / 0.12 mm clearance (Default), 0.3 mm for power; vias 0.45/0.2 mm; copper to edge 0.3 mm.
@@ -65,12 +65,12 @@ FC expansion bus (Qwiic) with a standard JST SH 4-pin cable.
 
 ## Checks
 - Netlist: 0 errors (`check_net.py`, 44 nets).
-- KiCad DRC (`DimaQuadFlow_A_DRC.rpt`): 0 violations, 0 unconnected pads, 0 footprint errors.
+- KiCad DRC (`ACwing_Flow_A_DRC.rpt`): 0 violations, 0 unconnected pads, 0 footprint errors.
 - Silkscreen: 35 references on the board (5 with a short leader line), none over pads.
 
 ## Fabrication (JLCPCB)
 - 2 layers, 1.0 mm FR-4, 1 oz. All parts on the top (sensor) side: single-sided assembly.
-- BoM `DimaQuadFlow_A_BoM_JLCPCB.xlsx`; every line has an LCSC number (PMW3901 C43496881, VL53L1X C190004,
+- BoM `ACwing_Flow_A_BoM_JLCPCB.xlsx`; every line has an LCSC number (PMW3901 C43496881, VL53L1X C190004,
   STM32C011F4U6TR C5456188, LDK130PU-R C157446).
 - **PMW3901 lens.** The LN03-ZSZ lens is a separate item in the PixArt ordering table. Check that the LCSC/JLC part
   includes it; otherwise order the lens separately and press it on after reflow (it is not reflow-safe if it is a

@@ -1,4 +1,4 @@
 (sym_lib_table
   (version 7)
-  (lib (name "DimaQuad")(type "KiCad")(uri "${KIPRJMOD}/DimaQuad.kicad_sym")(options "")(descr "DimaQuad project symbols"))
+  (lib (name "ACwing")(type "KiCad")(uri "${KIPRJMOD}/ACwing.kicad_sym")(options "")(descr "ACwing project symbols"))
 )
