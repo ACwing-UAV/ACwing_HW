@@ -6,7 +6,7 @@
 
 KiCad 7 project (it also opens in KiCad 8/9). Rev H turns the FC into a **standard FC that works with any power
 stage that uses the common 4-in-1 ESC connector**:
-- **Mini drone (1S, brushed coreless):** the ACwing 1S power board (ACwing ESC1S rev B, next project) carries the
+- **Mini drone (1S, brushed coreless):** the ACwing 1S power board (ACwing ESC 1S rev B) carries the
   motor stages, the battery connector and pads, the 1S USB-C charger and the current sensor. To the FC it looks like
   any ESC: VBAT (1S) and CUR on the 8-pin cable.
 - **Larger drone (3S–6S brushless, payload > 2 kg):** a commercial 20 × 20 4-in-1 ESC replaces the power board and

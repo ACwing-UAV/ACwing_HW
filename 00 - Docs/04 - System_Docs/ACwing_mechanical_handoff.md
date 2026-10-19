@@ -1,9 +1,9 @@
 # ACwing rev E/F – mechanical handoff (frame C → frame C2)
 
-**From:** electronics design (ACwing FC, ACwing ESC1S, ACwing Flow, ACwing GPS)
+**From:** electronics design (ACwing FC, ACwing ESC 1S, ACwing Flow, ACwing GPS)
 **To:** mechanical / frame design agent
 **Date:** 2026-10-17, **updated 2026-10-18** (§0 supersedes the older items it names; §0.9 = FC rev H, §0.10 = power board rev B + stack check; §0.11 = GPS rev D, 6 mm standoffs)
-**Status:** §0 is a decided architecture change; **§0.7 gives the rev F boards as designed** (ACwing ESC1S rev A, ACwing FC
+**Status:** §0 is a decided architecture change; **§0.7 gives the rev F boards as designed** (ACwing ESC 1S rev A, ACwing FC
 rev F, ACwing GPS rev C: connector coordinates, USB corner, LEDs, heights). §2 (flow board) is final.
 
 ## 0. Update 2026-10-18 – new stack: motor board + FC, 20 × 20 mm holes
@@ -14,7 +14,7 @@ four motor stages filled the edge midpoints, so routing was at its limit. The de
 | # | Change | What it means for the frame |
 |---|---|---|
 | 0.1 | **Mounting holes 20.0 × 20.0 mm** (was 16 × 16), centred, on every stacked board | frame bosses move to the 20 × 20 pattern (the FPV standard for M2 stacks); off-the-shelf 20 × 20 brushless 4-in-1 ESCs and FCs fit the same frame later |
-| 0.2 | **New motor board "ACwing ESC1S"** under the FC | it takes the place of today's FC in frame C (see 0.4) |
+| 0.2 | **New motor board "ACwing ESC 1S"** under the FC | it takes the place of today's FC in frame C (see 0.4) |
 | 0.3 | FC without motor stages, battery pads or shunt | the FC becomes a "logic" board soft-mounted above the motor board |
 | 0.4 | **Four RGB status LEDs**, symmetric about the board centre: two at the front end and two at the rear end of the front–rear diagonal (navigation lights) | leave both ends of the diagonal visible from outside |
 
@@ -23,7 +23,7 @@ four motor stages filled the edge midpoints, so routing was at its limit. The de
 - Component keep-out unchanged: r 3.0 mm on the top, r 3.6 mm on the bottom (frame boss Ø5.2 + flange).
 - Minimum board for this pattern with these keep-outs: about 28.5 × 28.5 mm.
 
-### 0.2 Motor board – ACwing ESC1S rev A (new)
+### 0.2 Motor board – ACwing ESC 1S rev A (new)
 - **Outline and place in the frame: identical to today's FC in frame C** – 40 × 40 mm, R3 corners, mounted at 45°,
   front = top-right corner (+20, +20). It sits where the FC sits today: 3 mm above the deck, battery under the deck.
 - Carries the parts that drove the frame C layout:
@@ -90,7 +90,7 @@ microcontroller goes there with room to escape on all four sides; the IMU sits n
 ### 0.7 Rev F boards as designed (2026-10-18)
 Same (u, v) frame as §1 (FC top view, front = (+20, +20)). Heights are above the board surface on the side named.
 
-**ACwing ESC1S rev A (motor board)**
+**ACwing ESC 1S rev A (motor board)**
 | Item | Value |
 |---|---|
 | Outline | identical to the rev E FC: 40 × 40 mm, R3 corners, 5 mm chamfer at the rear-right corner (no USB on this board; kept for one outline in the frame) |
@@ -133,7 +133,7 @@ Same (u, v) frame as §1 (FC top view, front = (+20, +20)). Heights are above th
 - FC rev G = rev F mechanics (same outline, holes, connector positions, heights). New on the FC: two solder pads
   TP9 / TP10 on the bottom at the left edge, (−17.6, −3.6) / (−17.6, −6.4), for an optional external current sensor
   wire pair.
-- The FC now takes **1S–3S** on the ESC link, so a commercial 20 × 20 brushless 4-in-1 ESC can replace ACwing ESC1S.
+- The FC now takes **1S–3S** on the ESC link, so a commercial 20 × 20 brushless 4-in-1 ESC can replace ACwing ESC 1S.
   Stand-alone 4-in-1 ESCs start at 2S (1S brushless exists only as all-in-one FC boards). Envelope to plan for:
   boards 29 × 31 to 40 × 33 mm on the 20 × 20 holes (M2 or M3), 5–12 g, ≈ 5–6 mm tall with parts, battery leads
   14–18 AWG soldered to the ESC, often a separate low-ESR capacitor (Ø6–8 × 10–12 mm) on the battery leads.
@@ -150,13 +150,13 @@ to the frame:
 | **J4 Qwiic** (new) | top side, right edge, (+16.9, −4.3), mouth +u (flow board cable, down through the deck). GPS J2 is no longer needed: the rev F note about its plug above the FC J2 does not apply |
 | Input buck | top, rear-left corner: L3 5 × 5 × **4.0 mm** at (−15.3, −15.4) – the tallest FC part after the USB-C; nothing above it except the GPS board (6 mm standoffs: 2 mm clear) |
 | Heights | top ≤ 4.0 mm (L3), connectors 2.9 mm, USB-C 3.2 mm; bottom ≤ 1.0 mm (unchanged) |
-| Power stage | ACwing 1S power board (ACwing ESC1S rev B, next) or commercial 20 × 20 4-in-1 ESCs (2S–6S). Battery voltage up to 6S reaches the FC through the ESC A cable |
+| Power stage | ACwing 1S power board (ACwing ESC 1S rev B, next) or commercial 20 × 20 4-in-1 ESCs (2S–6S). Battery voltage up to 6S reaches the FC through the ESC A cable |
 | Board files | `ACwing_FC_H_outline.dxf` (same outline as rev F/G) |
 
 ### 0.10 Power board rev B and stack check (2026-10-18)
 | Item | Value |
 |---|---|
-| **ACwing ESC1S rev B outline** | frame C outline with a **new front-left chamfer** v − u = 36.2 and 0.8 mm steps (left edge u = −20.8 from v = +12.3 to +15.4, front edge v = +20.8 from u = −12.3 to −15.4), i.e. the FC USB corner mirrored about u = v. The rear-right chamfer stays |
+| **ACwing ESC 1S rev B outline** | frame C outline with a **new front-left chamfer** v − u = 36.2 and 0.8 mm steps (left edge u = −20.8 from v = +12.3 to +15.4, front edge v = +20.8 from u = −12.3 to −15.4), i.e. the FC USB corner mirrored about u = v. The rear-right chamfer stays |
 | **Charge port** | USB-C on the power board top, centre (−15.77, +15.77), axis at 45°, mouth at the front-left chamfer. Plug zone: 12.5 mm wide × 25 mm along the diagonal, from 1.7 mm below to 4.9 mm above the power-board top |
 | **FC rev H outline** | front-left corner now chamfered too: v − u = 36.6, from (−20, +16.6) to (−16.6, +20) (was R3). Keeps the charge-port plug out from under the FC |
 | Battery | solder pads at the rear-left corner as rev A + a JST PH 2.0 pigtail (30–40 mm) soldered to them; no board-mounted battery connector |

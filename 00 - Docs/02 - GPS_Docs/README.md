@@ -83,7 +83,7 @@ m_fc = R · m_gps,   R = [  0.7071  -0.7071   0 ]
   A4 stainless screws, see `04 - System_Docs`). Top of the module ≈ 13.3 mm above the FC top.
 - Cables: FC rev H J3 (top, right edge, v = +3.6) → GPS J1 (top, right edge, v = 0), short loop outside the right edge.
   The flow board has its own FC port (rev H J4); GPS J2 is an optional pass-through.
-- Stack check (ACwing ESC1S B + FC H + GPS D, 6 mm standoffs, all plugs mated): no clash; wherever a GPS bottom part sits above an
+- Stack check (ACwing ESC 1S B + FC H + GPS D, 6 mm standoffs, all plugs mated): no clash; wherever a GPS bottom part sits above an
   FC rev H top part the vertical gap is ≥ 3.0 mm.
 - RF: as rev C, 30 mm ground plane; nothing conductive above the module. The top-side connectors stay lower than the
   module (2.9 vs 6.3 mm).
