@@ -149,7 +149,7 @@
   (net 67 "VREG")
   (net 68 "VSYS")
 
-  (footprint "DimaQuad:LED_WS2812B-2020_PLCC4_2.0x2.0mm" locked (layer "F.Cu")
+  (footprint "ACwing:LED_WS2812B-2020_PLCC4_2.0x2.0mm" locked (layer "F.Cu")
     (tstamp 01433201-fed5-4380-8181-042487a69a13)
     (at 168.4 89 90)
     (descr "2.0mm x 2.0mm Addressable RGB LED NeoPixel Nano, 12 mA, https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf")
@@ -210,7 +210,7 @@
     )
   )
 
-  (footprint "DimaQuad:LED_WS2812B-2020_PLCC4_2.0x2.0mm" locked (layer "F.Cu")
+  (footprint "ACwing:LED_WS2812B-2020_PLCC4_2.0x2.0mm" locked (layer "F.Cu")
     (tstamp 153d0d8a-a4ac-42d7-971d-de53917fa126)
     (at 161 81.6)
     (descr "2.0mm x 2.0mm Addressable RGB LED NeoPixel Nano, 12 mA, https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf")
@@ -272,7 +272,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "F.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "F.Cu")
     (tstamp 1c43ff8c-a8b0-4441-9d06-d7d7ef50ee01)
     (at 144.162051 113.678828 180)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -322,7 +322,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_1206_3216Metric" (layer "F.Cu")
+  (footprint "ACwing:C_1206_3216Metric" (layer "F.Cu")
     (tstamp 1f1220a6-6c3c-44c6-9373-63306b85226c)
     (at 148.4 112.4)
     (descr "Capacitor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -372,7 +372,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" locked (layer "F.Cu")
+  (footprint "ACwing:C_0402_1005Metric" locked (layer "F.Cu")
     (tstamp 2b53b775-c3da-4c8b-a519-6b843a186485)
     (at 133.05 82.55 90)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -422,7 +422,7 @@
     )
   )
 
-  (footprint "DimaQuad:Grommet_PTH_3.2mm_Pad5.0mm" locked (layer "F.Cu")
+  (footprint "ACwing:Grommet_PTH_3.2mm_Pad5.0mm" locked (layer "F.Cu")
     (tstamp 2d2e8b84-bddd-460f-b176-69c6ef10ec64)
     (at 140 110)
     (descr "Plated 3.2 mm hole for an M2 anti-vibration grommet (frame C), exposed copper ring 5.0 mm on both sides, tied to GND. Seat for the grommet flange; no electrical contact with the frame (rubber). Component keep-outs (r 3.0 top, r 3.6 bottom) are checked at board level")
@@ -448,7 +448,7 @@
       (net 54 "GND") (zone_connect 2) (tstamp e2563a34-1cbf-4a0f-afcb-ed4ee61adb54))
   )
 
-  (footprint "DimaQuad:Grommet_PTH_3.2mm_Pad5.0mm" locked (layer "F.Cu")
+  (footprint "ACwing:Grommet_PTH_3.2mm_Pad5.0mm" locked (layer "F.Cu")
     (tstamp 31c7b8f9-686f-4aa7-b8ef-edea78d113f6)
     (at 160 90)
     (descr "Plated 3.2 mm hole for an M2 anti-vibration grommet (frame C), exposed copper ring 5.0 mm on both sides, tied to GND. Seat for the grommet flange; no electrical contact with the frame (rubber). Component keep-outs (r 3.0 top, r 3.6 bottom) are checked at board level")
@@ -474,7 +474,7 @@
       (net 54 "GND") (zone_connect 2) (tstamp 9ca18d4c-4b17-4789-b310-ee0e34cac9ed))
   )
 
-  (footprint "DimaQuad:Grommet_PTH_3.2mm_Pad5.0mm" locked (layer "F.Cu")
+  (footprint "ACwing:Grommet_PTH_3.2mm_Pad5.0mm" locked (layer "F.Cu")
     (tstamp 33b233d6-52a2-49dd-b635-5fb95ad81b8e)
     (at 160 110)
     (descr "Plated 3.2 mm hole for an M2 anti-vibration grommet (frame C), exposed copper ring 5.0 mm on both sides, tied to GND. Seat for the grommet flange; no electrical contact with the frame (rubber). Component keep-outs (r 3.0 top, r 3.6 bottom) are checked at board level")
@@ -500,7 +500,7 @@
       (net 54 "GND") (zone_connect 2) (tstamp 89a57bdd-af08-4360-aabe-a2cd54fd2707))
   )
 
-  (footprint "DimaQuad:D_SOD-123F" (layer "F.Cu")
+  (footprint "ACwing:D_SOD-123F" (layer "F.Cu")
     (tstamp 33bd0d73-20db-4a04-b2ec-b41f706eabb1)
     (at 155.203154 107.250133)
     (descr "D_SOD-123F")
@@ -566,7 +566,7 @@
     )
   )
 
-  (footprint "DimaQuad:SOT-23" (layer "F.Cu")
+  (footprint "ACwing:SOT-23" (layer "F.Cu")
     (tstamp 370fc717-6ebd-457a-8d46-0e44cdf04bcc)
     (at 156.6 104.4)
     (descr "SOT, 3 Pin (https://www.jedec.org/system/files/docs/to-236h.pdf variant AB), generated with kicad-footprint-generator ipc_gullwing_generator.py")
@@ -633,7 +633,7 @@
     )
   )
 
-  (footprint "DimaQuad:Crystal_SMD_2016-4Pin_2.0x1.6mm" (layer "F.Cu")
+  (footprint "ACwing:Crystal_SMD_2016-4Pin_2.0x1.6mm" (layer "F.Cu")
     (tstamp 49508bc1-3c6a-40f4-831e-8c9170a1a95a)
     (at 141.4 94.6 90)
     (descr "SMD Crystal SERIES SMD2016/4 http://www.q-crystal.com/upload/5/2015552223166229.pdf, 2.0x1.6mm^2 package")
@@ -697,7 +697,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_1206_3216Metric" (layer "F.Cu")
+  (footprint "ACwing:C_1206_3216Metric" (layer "F.Cu")
     (tstamp 4cf7f1ec-488a-4a82-8fb4-2276f9b5336d)
     (at 143.05 118.513397)
     (descr "Capacitor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -747,7 +747,7 @@
     )
   )
 
-  (footprint "DimaQuad:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y" locked (layer "F.Cu")
+  (footprint "ACwing:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y" locked (layer "F.Cu")
     (tstamp 4f69ff8f-5b30-483d-8dce-972cd8f96380)
     (at 150 103.6)
     (descr "LGA, 14 Pin (https://www.st.com/resource/en/datasheet/lsm6ds3tr-c.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py")
@@ -839,7 +839,7 @@
     )
   )
 
-  (footprint "DimaQuad:ST_HLGA-10_2x2mm_P0.5mm_LayoutBorder3x2y" locked (layer "F.Cu")
+  (footprint "ACwing:ST_HLGA-10_2x2mm_P0.5mm_LayoutBorder3x2y" locked (layer "F.Cu")
     (tstamp 5c706ab1-18d0-475d-9235-1caf2848f18d)
     (at 166.64 85.8)
     (descr "ST  HLGA, 10 Pin (https://www.st.com/resource/en/datasheet/lps22hh.pdf#page=55), generated with kicad-footprint-generator ipc_noLead_generator.py")
@@ -925,7 +925,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "F.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "F.Cu")
     (tstamp 6193bb8f-45c7-4119-ac01-15ad487d9274)
     (at 138.828142 116.233709 90)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -975,7 +975,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" locked (layer "F.Cu")
+  (footprint "ACwing:R_0402_1005Metric" locked (layer "F.Cu")
     (tstamp 658439f3-4598-4fa9-be91-ee36feaf14f7)
     (at 133.05 84.47 90)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -1025,7 +1025,7 @@
     )
   )
 
-  (footprint "DimaQuad:SOT-23-6" (layer "F.Cu")
+  (footprint "ACwing:SOT-23-6" (layer "F.Cu")
     (tstamp 67764cfe-9ae7-4956-9d49-8440cd944988)
     (at 155.279127 111.484575 90)
     (descr "SOT, 6 Pin (https://www.jedec.org/sites/default/files/docs/Mo-178c.PDF variant AB), generated with kicad-footprint-generator ipc_gullwing_generator.py")
@@ -1098,7 +1098,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "F.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "F.Cu")
     (tstamp 7041163c-36c2-4283-b31a-61803a124c77)
     (at 142.92134 112.732876 180)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -1148,7 +1148,7 @@
     )
   )
 
-  (footprint "DimaQuad:ST_MLPF-WB55-01E3_CSP-6" locked (layer "F.Cu")
+  (footprint "ACwing:ST_MLPF-WB55-01E3_CSP-6" locked (layer "F.Cu")
     (tstamp 757cc654-de97-4432-a4f5-d96132876347)
     (at 146 90.9255)
     (descr "ST MLPF-WB55-01E3 2.4 GHz filter, bumpless CSP 6 pads (2 x 3), die 1.0 x 1.6 mm, pitch 0.5 (X) x 0.587 (Y), pad 0.2 mm NSMD. A1 OUT (antenna), A3 IN (RF1), A2 B1 B2 B3 GND")
@@ -1188,7 +1188,7 @@
     )
   )
 
-  (footprint "DimaQuad:Johanson_2450AT18x100" locked (layer "F.Cu")
+  (footprint "ACwing:Johanson_2450AT18x100" locked (layer "F.Cu")
     (tstamp 7a13b447-f1eb-4fd3-a145-517d03bf6f9c)
     (at 131.4 85.5 -90)
     (descr "Johanson 2450AT43F0100 SMD antenna 2400-2500Mhz, -0.5dBi, https://www.johansontechnology.com/datasheets/2450AT18A100/2450AT18A100.pdf")
@@ -1235,7 +1235,7 @@
     )
   )
 
-  (footprint "DimaQuad:JST_SH_SM08B-SRSS-TB_1x08-1MP_P1.00mm_Horizontal" locked (layer "F.Cu")
+  (footprint "ACwing:JST_SH_SM08B-SRSS-TB_1x08-1MP_P1.00mm_Horizontal" locked (layer "F.Cu")
     (tstamp 85e53d6f-69de-4ab4-8958-21f721b0a371)
     (at 133.125 103.4 -90)
     (descr "JST SH series connector, SM08B-SRSS-TB (http://www.jst-mfg.com/product/pdf/eng/eSH.pdf), generated with kicad-footprint-generator")
@@ -1306,7 +1306,7 @@
     )
   )
 
-  (footprint "DimaQuad:JST_SH_SM08B-SRSS-TB_1x08-1MP_P1.00mm_Horizontal" locked (layer "F.Cu")
+  (footprint "ACwing:JST_SH_SM08B-SRSS-TB_1x08-1MP_P1.00mm_Horizontal" locked (layer "F.Cu")
     (tstamp 92c8f09a-a140-47f3-9197-ef9231a1b1e2)
     (at 151.5 116.875)
     (descr "JST SH series connector, SM08B-SRSS-TB (http://www.jst-mfg.com/product/pdf/eng/eSH.pdf), generated with kicad-footprint-generator")
@@ -1380,7 +1380,7 @@
     )
   )
 
-  (footprint "DimaQuad:TestPoint_Pad_2.0x2.0mm" locked (layer "F.Cu")
+  (footprint "ACwing:TestPoint_Pad_2.0x2.0mm" locked (layer "F.Cu")
     (tstamp 93d32fc7-9c2c-48da-9aa0-edf66b027b08)
     (at 131.6 95.9)
     (descr "SMD rectangular pad as test Point, square 2.0mm side length")
@@ -1418,7 +1418,7 @@
       (net 54 "GND") (tstamp b1ce5f6e-b005-4b30-812d-586fdabb8d80))
   )
 
-  (footprint "DimaQuad:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal" locked (layer "F.Cu")
+  (footprint "ACwing:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal" locked (layer "F.Cu")
     (tstamp 9487739f-fae0-4a63-ab65-d4585fd7e118)
     (at 152 83.15 180)
     (descr "JST SH series connector, SM04B-SRSS-TB (http://www.jst-mfg.com/product/pdf/eng/eSH.pdf), generated with kicad-footprint-generator")
@@ -1486,7 +1486,7 @@
     )
   )
 
-  (footprint "DimaQuad:DFN-6_1.3x1.2mm_P0.4mm" (layer "F.Cu")
+  (footprint "ACwing:DFN-6_1.3x1.2mm_P0.4mm" (layer "F.Cu")
     (tstamp 95443181-7194-430c-b3ce-5fe005af2a54)
     (at 149 109 90)
     (descr "6-Lead Plastic DFN (1.3mm x 1.2mm) ")
@@ -1555,7 +1555,7 @@
     )
   )
 
-  (footprint "DimaQuad:Grommet_PTH_3.2mm_Pad5.0mm" locked (layer "F.Cu")
+  (footprint "ACwing:Grommet_PTH_3.2mm_Pad5.0mm" locked (layer "F.Cu")
     (tstamp 96ac33fb-3352-49ca-9e59-2a8c4be3126d)
     (at 140 90)
     (descr "Plated 3.2 mm hole for an M2 anti-vibration grommet (frame C), exposed copper ring 5.0 mm on both sides, tied to GND. Seat for the grommet flange; no electrical contact with the frame (rubber). Component keep-outs (r 3.0 top, r 3.6 bottom) are checked at board level")
@@ -1581,7 +1581,7 @@
       (net 54 "GND") (zone_connect 2) (tstamp 75ffd8c7-ee98-4220-b974-38b37531ac83))
   )
 
-  (footprint "DimaQuad:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal" locked (layer "F.Cu")
+  (footprint "ACwing:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal" locked (layer "F.Cu")
     (tstamp a65b4a5d-a82f-43c8-852c-29d04a36c13f)
     (at 166.9 104.3 90)
     (descr "JST SH series connector, SM04B-SRSS-TB (http://www.jst-mfg.com/product/pdf/eng/eSH.pdf), generated with kicad-footprint-generator")
@@ -1649,7 +1649,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0805_2012Metric" (layer "F.Cu")
+  (footprint "ACwing:C_0805_2012Metric" (layer "F.Cu")
     (tstamp b3819f77-a7db-40a3-87a1-80a7a73bbcc1)
     (at 134.615678 111.496766 180)
     (descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf, https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
@@ -1699,7 +1699,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0603_1608Metric" (layer "F.Cu")
+  (footprint "ACwing:C_0603_1608Metric" (layer "F.Cu")
     (tstamp bd8e73f4-cf16-406b-9348-31a77916cc40)
     (at 159.3 102 90)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -1749,7 +1749,7 @@
     )
   )
 
-  (footprint "DimaQuad:LED_WS2812B-2020_PLCC4_2.0x2.0mm" locked (layer "F.Cu")
+  (footprint "ACwing:LED_WS2812B-2020_PLCC4_2.0x2.0mm" locked (layer "F.Cu")
     (tstamp be8c90d0-275e-424e-8b0d-ba2ebeb632f9)
     (at 131.6 111 -90)
     (descr "2.0mm x 2.0mm Addressable RGB LED NeoPixel Nano, 12 mA, https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf")
@@ -1811,7 +1811,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "F.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "F.Cu")
     (tstamp bf2858f9-b18d-4695-a130-f67d4cd11ee1)
     (at 159 105.6 90)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -1861,7 +1861,7 @@
     )
   )
 
-  (footprint "DimaQuad:LGA-12_2x2mm_P0.5mm" locked (layer "F.Cu")
+  (footprint "ACwing:LGA-12_2x2mm_P0.5mm" locked (layer "F.Cu")
     (tstamp c13fe51f-3050-4c86-965a-1981b636bf72)
     (at 167.4 82.6 45)
     (descr "LGA12")
@@ -1958,7 +1958,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_1206_3216Metric" (layer "F.Cu")
+  (footprint "ACwing:C_1206_3216Metric" (layer "F.Cu")
     (tstamp cc0d8a90-8779-4562-88c7-7bdd429eb631)
     (at 138.719648 105.84335)
     (descr "Capacitor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -2008,7 +2008,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "F.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "F.Cu")
     (tstamp d12addf4-5525-487f-b783-5c3dc7acf5cc)
     (at 152 108.6 90)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -2058,7 +2058,7 @@
     )
   )
 
-  (footprint "DimaQuad:USB_C_Receptacle_HRO_TYPE-C-31-M-12" locked (layer "F.Cu")
+  (footprint "ACwing:USB_C_Receptacle_HRO_TYPE-C-31-M-12" locked (layer "F.Cu")
     (tstamp d3335c07-bcdf-4c47-816e-c58cf1b71769)
     (at 165.767 115.767 45)
     (descr "USB Type-C receptacle for USB 2.0 and PD, http://www.krhro.com/uploads/soft/180320/1-1P320120243.pdf")
@@ -2144,7 +2144,7 @@
     )
   )
 
-  (footprint "DimaQuad:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm" locked (layer "F.Cu")
+  (footprint "ACwing:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm" locked (layer "F.Cu")
     (tstamp dc153769-d684-4cdf-ad30-9d0d5f340455)
     (at 147 97 180)
     (descr "QFN, 48 Pin (http://www.st.com/resource/en/datasheet/stm32f042k6.pdf#page=94), generated with kicad-footprint-generator ipc_noLead_generator.py")
@@ -2323,7 +2323,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "F.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "F.Cu")
     (tstamp e633a282-891d-4aba-b15c-1962cd474563)
     (at 149 107.3)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -2373,7 +2373,7 @@
     )
   )
 
-  (footprint "DimaQuad:TestPoint_Pad_2.0x2.0mm" locked (layer "F.Cu")
+  (footprint "ACwing:TestPoint_Pad_2.0x2.0mm" locked (layer "F.Cu")
     (tstamp ea477568-83c1-45c0-ae02-5394291bd400)
     (at 131.6 92.8)
     (descr "SMD rectangular pad as test Point, square 2.0mm side length")
@@ -2411,7 +2411,7 @@
       (net 64 "VBAT") (tstamp d78e2857-c267-45ea-8895-5af9d91d7ee7))
   )
 
-  (footprint "DimaQuad:Texas_DRC0010J" (layer "F.Cu")
+  (footprint "ACwing:Texas_DRC0010J" (layer "F.Cu")
     (tstamp ee84c013-92d5-4c08-98d8-34c1e9482490)
     (at 141.264482 115.175677 90)
     (descr "Texas DRC0010J, VSON10 3x3mm Body, 0.5mm Pitch,  http://www.ti.com/lit/ds/symlink/tps63000.pdf")
@@ -2528,7 +2528,7 @@
     )
   )
 
-  (footprint "DimaQuad:LED_WS2812B-2020_PLCC4_2.0x2.0mm" locked (layer "F.Cu")
+  (footprint "ACwing:LED_WS2812B-2020_PLCC4_2.0x2.0mm" locked (layer "F.Cu")
     (tstamp ef2c0cff-f988-4d14-9228-25d1e813210b)
     (at 139 118.4 180)
     (descr "2.0mm x 2.0mm Addressable RGB LED NeoPixel Nano, 12 mA, https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf")
@@ -2590,7 +2590,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "F.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "F.Cu")
     (tstamp f717fa61-70b8-4228-a596-376221818854)
     (at 151 108.6 90)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -2640,7 +2640,7 @@
     )
   )
 
-  (footprint "DimaQuad:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal" locked (layer "F.Cu")
+  (footprint "ACwing:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal" locked (layer "F.Cu")
     (tstamp f87b5ba1-448b-4904-811c-d66fab1abf2c)
     (at 166.9 96.4 90)
     (descr "JST SH series connector, SM04B-SRSS-TB (http://www.jst-mfg.com/product/pdf/eng/eSH.pdf), generated with kicad-footprint-generator")
@@ -2708,7 +2708,7 @@
     )
   )
 
-  (footprint "DimaQuad:L_Sunlord_SWPA5040S" (layer "F.Cu")
+  (footprint "ACwing:L_Sunlord_SWPA5040S" (layer "F.Cu")
     (tstamp fc1d767e-1901-47db-9445-a01829ddcbed)
     (at 134.701867 115.348903 90)
     (descr "Inductor, Sunlord, SWPA5040S, 5.0x5.0x4.0mm, https://www.sunlordinc.com/UploadFiles/PDF_Cat/20120704094224784.pdf")
@@ -2764,7 +2764,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 00b4ab6a-3fe0-41eb-9696-6f675bcf95a1)
     (at 149.8 90 180)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -2814,7 +2814,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 04c60873-4b39-4920-b7a3-1afbe3092020)
     (at 164 93.4 -90)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -2864,7 +2864,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 0a00a703-bc0b-4138-a882-4539aad1c6ab)
     (at 153.8 90.4)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -2914,7 +2914,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp 0e16f402-b6fb-4915-921d-37d87b642b9b)
     (at 149.4 104.4)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -2964,7 +2964,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 16b89f50-6c52-4038-808f-f55a57c1bf78)
     (at 149.1 91.4 -90)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -3014,7 +3014,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp 19e12f43-1ad9-4ea4-8f14-f6f657ec2deb)
     (at 145.75 101.6 -90)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -3064,7 +3064,7 @@
     )
   )
 
-  (footprint "DimaQuad:L_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:L_0402_1005Metric" (layer "B.Cu")
     (tstamp 1c99bf3f-4daf-4c99-8f72-48bbbac444ce)
     (at 142.25 96.313397)
     (descr "Inductor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
@@ -3110,7 +3110,7 @@
     )
   )
 
-  (footprint "DimaQuad:TestPoint_Pad_D1.0mm" locked (layer "B.Cu")
+  (footprint "ACwing:TestPoint_Pad_D1.0mm" locked (layer "B.Cu")
     (tstamp 1d455484-d466-4c70-aa81-b4c47a014ad4)
     (at 148.73 111.73)
     (descr "SMD pad as test Point, diameter 1.0mm")
@@ -3136,7 +3136,7 @@
       (net 43 "SWCLK") (clearance 1) (tstamp 54f2016f-268f-441a-aa66-9dff62edc0b8))
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp 1f17210e-5d22-4680-a176-1261bf82ac85)
     (at 167.2 93.6 -90)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -3186,7 +3186,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 276f0b3c-b7b0-4a97-9410-2d0ff2334dd6)
     (at 163.05 93.486602 -90)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -3236,7 +3236,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp 3023b926-9cf6-451e-b2cf-ef9653d39b77)
     (at 144.55 91.6)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -3286,7 +3286,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 3548f8b2-db65-4b96-baa4-b09bf637b5c4)
     (at 152 102 -90)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -3336,7 +3336,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp 36bd4da1-7de9-4b35-9cfb-477c4357e5e5)
     (at 167.76 83.32)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -3386,7 +3386,7 @@
     )
   )
 
-  (footprint "DimaQuad:TestPoint_Pad_D1.0mm" locked (layer "B.Cu")
+  (footprint "ACwing:TestPoint_Pad_D1.0mm" locked (layer "B.Cu")
     (tstamp 3b5c9622-3d1a-452b-88aa-2a1955412c54)
     (at 151.27 111.73)
     (descr "SMD pad as test Point, diameter 1.0mm")
@@ -3412,7 +3412,7 @@
       (net 26 "NRST") (clearance 1) (tstamp 20bcad0f-9c55-4bc2-8d42-bfdc5d6f314b))
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 3cee5d7a-a32c-4a97-afb8-975846398e12)
     (at 140.95 99.486602 -90)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -3462,7 +3462,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp 40614d9c-1f91-4e8a-9886-b0aa01eb2366)
     (at 142.4 99)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -3512,7 +3512,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 417d39fe-8cda-4f45-8c13-b037d20cdab7)
     (at 148.8 106.4 -90)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -3562,7 +3562,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp 41bdf566-8c6b-4d84-a450-f7470bbbd262)
     (at 151.6 97.6)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -3612,7 +3612,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 4457d275-c7a3-4349-b8c9-3e101e749985)
     (at 148.125047 90.007085 -90)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -3662,7 +3662,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp 49ac5211-255a-4764-9bef-78f684cc11b8)
     (at 143.473606 92.980422 -90)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -3712,7 +3712,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 4c6b1c73-d9db-4f71-a2fc-8f388f2761fd)
     (at 155.6 97.4)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -3762,7 +3762,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 4ccdfbbc-be29-4818-8575-b1c1ea27e4a2)
     (at 141.4 102.2)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -3812,7 +3812,7 @@
     )
   )
 
-  (footprint "DimaQuad:TestPoint_Pad_D1.0mm" locked (layer "B.Cu")
+  (footprint "ACwing:TestPoint_Pad_D1.0mm" locked (layer "B.Cu")
     (tstamp 549dada3-612b-4ad9-8302-14fc40da6656)
     (at 153.81 114.27)
     (descr "SMD pad as test Point, diameter 1.0mm")
@@ -3838,7 +3838,7 @@
       (net 4 "CRSF_RX") (clearance 1) (tstamp 4f5e4929-6c07-4f25-b1d3-27e716e1e49f))
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 5b0e4d04-42d2-4d1b-90ef-120a24d07108)
     (at 153.4 92.4)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -3888,7 +3888,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0603_1608Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0603_1608Metric" (layer "B.Cu")
     (tstamp 5c9f1f0d-2607-495b-9bf3-cf9b756df921)
     (at 163 84.5)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -3938,7 +3938,7 @@
     )
   )
 
-  (footprint "DimaQuad:DFN-6_1.3x1.2mm_P0.4mm" (layer "B.Cu")
+  (footprint "ACwing:DFN-6_1.3x1.2mm_P0.4mm" (layer "B.Cu")
     (tstamp 66207964-367c-45c6-908d-7dedb873d938)
     (at 165.6 95.4)
     (descr "6-Lead Plastic DFN (1.3mm x 1.2mm) ")
@@ -4006,7 +4006,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 69d1486f-1739-4d80-9ea4-8b616e9a4a10)
     (at 153.983174 95.947637 -90)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -4056,7 +4056,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp 6b204d56-eb7e-4a71-ba5c-5b3721a7d4fc)
     (at 161 83.6 -90)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -4106,7 +4106,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp 6eacfcdc-9134-4822-9d6f-e84c232f9853)
     (at 166.28 83.32 -90)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -4156,7 +4156,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 71102338-a296-44be-8797-e109a8201f16)
     (at 141.4 103.2)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -4206,7 +4206,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 71753a4e-a181-4bd8-a4ea-c28ffea368b2)
     (at 147.424306 104.3737 180)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -4256,7 +4256,7 @@
     )
   )
 
-  (footprint "DimaQuad:TestPoint_Pad_D1.0mm" locked (layer "B.Cu")
+  (footprint "ACwing:TestPoint_Pad_D1.0mm" locked (layer "B.Cu")
     (tstamp 7a26369c-8538-456c-9e83-82d35b16c03e)
     (at 146.19 114.27)
     (descr "SMD pad as test Point, diameter 1.0mm")
@@ -4282,7 +4282,7 @@
       (net 66 "VDD") (clearance 1) (tstamp aa795679-e35c-4d69-9951-8e3b14bb0065))
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 7ac2224e-a9b2-4c72-b570-65c0030a1933)
     (at 153 102 -90)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -4332,7 +4332,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp 7b37a214-8a8c-4bbc-84a3-800c90c283b8)
     (at 153 96.1 -90)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -4382,7 +4382,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 7f8315e0-9a7f-4fc5-9cbf-ed4dc520fcb4)
     (at 151.6 98.6)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -4432,7 +4432,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 7fa5bd2c-8b71-4cdc-9d74-7e8758a81800)
     (at 153.4 94.4)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -4482,7 +4482,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 8511db70-6522-4781-903a-b9922de110cf)
     (at 160.6 114.6)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -4532,7 +4532,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp 871eb644-8a10-4bd2-8659-72652b5e581a)
     (at 165.88 85.55)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -4582,7 +4582,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp 8af08009-85f8-44a8-b9b9-60829d5b1306)
     (at 165.6 97.6)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -4632,7 +4632,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp 8b369e57-614e-430c-b859-e5796f702d77)
     (at 150.6 102.7)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -4682,7 +4682,7 @@
     )
   )
 
-  (footprint "DimaQuad:TestPoint_Pad_D1.0mm" locked (layer "B.Cu")
+  (footprint "ACwing:TestPoint_Pad_D1.0mm" locked (layer "B.Cu")
     (tstamp 8b4e5d31-e246-42d4-8946-cbb3017ac93f)
     (at 148.73 114.27)
     (descr "SMD pad as test Point, diameter 1.0mm")
@@ -4708,7 +4708,7 @@
       (net 54 "GND") (clearance 1) (tstamp f810138f-cec8-45bd-9663-f63f47cd514a))
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 8f5de6bf-c73c-49e6-a474-6c923ae42733)
     (at 155.6 96.4)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -4758,7 +4758,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 90e6f5ce-b409-4f31-a830-4a69c238211c)
     (at 164.6 110.6 -90)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -4808,7 +4808,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp 91a57d27-4e36-49bc-9df0-c5aa8864b793)
     (at 166.4 89 -90)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -4858,7 +4858,7 @@
     )
   )
 
-  (footprint "DimaQuad:TestPoint_Pad_D1.0mm" locked (layer "B.Cu")
+  (footprint "ACwing:TestPoint_Pad_D1.0mm" locked (layer "B.Cu")
     (tstamp 933c6ad4-3f1d-4d57-a275-54849832cf92)
     (at 146.19 111.73)
     (descr "SMD pad as test Point, diameter 1.0mm")
@@ -4884,7 +4884,7 @@
       (net 44 "SWDIO") (clearance 1) (tstamp 3a9f2485-85aa-4a9c-9ea4-b0373a465732))
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 95ad4a5a-5476-4b1d-9eb3-1526e02420e3)
     (at 140.606308 95.699733 -90)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -4934,7 +4934,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp 962d3892-ad11-4c3c-aeb5-2b13573f0c5e)
     (at 152 105 180)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -4984,7 +4984,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp 97cc45ea-d462-45e0-9a1b-951079207d29)
     (at 152 106.6 -90)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -5034,7 +5034,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp 988f1640-6ded-4645-b15b-d8867eed7c57)
     (at 151.8 92.2 -90)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -5084,7 +5084,7 @@
     )
   )
 
-  (footprint "DimaQuad:TestPoint_Pad_D1.0mm" locked (layer "B.Cu")
+  (footprint "ACwing:TestPoint_Pad_D1.0mm" locked (layer "B.Cu")
     (tstamp a12bc7dd-35b3-4c66-a7fc-22bc21fa116c)
     (at 153.81 111.73)
     (descr "SMD pad as test Point, diameter 1.0mm")
@@ -5110,7 +5110,7 @@
       (net 1 "BOOT0") (clearance 1) (tstamp e48b25e5-2c4d-4196-a3cb-fe511d360ff0))
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp a5dade15-87da-4b93-9f8e-3df2967781aa)
     (at 152.2 89.8 -90)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -5160,7 +5160,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp a82396d6-c2f1-4e6c-9a7e-2dab121c44f4)
     (at 151.6 99.6)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -5210,7 +5210,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp b07ebef0-5305-4eb5-a477-41fc7628d559)
     (at 153.4 93.4)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -5260,7 +5260,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp c2f8d154-f6dc-4f9f-b73a-04be1e47b61a)
     (at 151.6 96.6)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -5310,7 +5310,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp c654b4f5-bbe4-4580-b479-2092518b1fc4)
     (at 147.7 91.4)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -5360,7 +5360,7 @@
     )
   )
 
-  (footprint "DimaQuad:D_SOD-523" (layer "B.Cu")
+  (footprint "ACwing:D_SOD-523" (layer "B.Cu")
     (tstamp ca134bd0-32ff-4bb7-bdba-12763c9bbbce)
     (at 156 87 -90)
     (descr "http://www.diodes.com/datasheets/ap02001.pdf p.144")
@@ -5424,7 +5424,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp d346b075-a91f-45dd-af14-4eb862dbfa14)
     (at 150.6 117.2)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -5474,7 +5474,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0603_1608Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0603_1608Metric" (layer "B.Cu")
     (tstamp d6bfb5d0-2471-46b4-a544-eb43d9fb0314)
     (at 147 102.4 -90)
     (descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -5524,7 +5524,7 @@
     )
   )
 
-  (footprint "DimaQuad:WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4mm" (layer "B.Cu")
+  (footprint "ACwing:WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4mm" (layer "B.Cu")
     (tstamp e5c85f1b-a3a1-4cb5-884b-a5e6ad6ffe43)
     (at 156.868696 103.602666)
     (descr "WSON, 8 Pin (http://ww1.microchip.com/downloads/en/AppNotes/S72030.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py")
@@ -5603,7 +5603,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp eaf57a43-6cbf-469f-81e8-a8f86fd8bea1)
     (at 139 116.4)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -5653,7 +5653,7 @@
     )
   )
 
-  (footprint "DimaQuad:TestPoint_Pad_D1.0mm" locked (layer "B.Cu")
+  (footprint "ACwing:TestPoint_Pad_D1.0mm" locked (layer "B.Cu")
     (tstamp ef03636f-8bd0-456e-af26-91f92f6d441c)
     (at 151.27 114.27)
     (descr "SMD pad as test Point, diameter 1.0mm")
@@ -5679,7 +5679,7 @@
       (net 5 "CRSF_TX") (clearance 1) (tstamp 49078961-5824-4568-8c10-25623a62c151))
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp f3a311e2-8440-4617-89ea-9e6888f212a2)
     (at 133.6 111 -90)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -5729,7 +5729,7 @@
     )
   )
 
-  (footprint "DimaQuad:L_0805_2012Metric" (layer "B.Cu")
+  (footprint "ACwing:L_0805_2012Metric" (layer "B.Cu")
     (tstamp f5c6d524-90c5-479d-89aa-a27d1270c805)
     (at 141.514584 97.689082 180)
     (descr "Inductor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 80, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -5779,7 +5779,7 @@
     )
   )
 
-  (footprint "DimaQuad:R_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:R_0402_1005Metric" (layer "B.Cu")
     (tstamp fc26d692-78cf-449d-9e92-5ce3e26cee0d)
     (at 153.8 89.4)
     (descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
@@ -5829,7 +5829,7 @@
     )
   )
 
-  (footprint "DimaQuad:C_0402_1005Metric" (layer "B.Cu")
+  (footprint "ACwing:C_0402_1005Metric" (layer "B.Cu")
     (tstamp fc9b6f90-9cb3-41d1-968e-68e6824f6a31)
     (at 142 95.2)
     (descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
