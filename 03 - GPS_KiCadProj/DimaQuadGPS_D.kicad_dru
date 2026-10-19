@@ -1,0 +1,7 @@
+(version 1)
+(rule "IIS2MDC LGA-12 pad to pad (0.5 mm pitch)"
+  (condition "A.Type == 'Pad' && B.Type == 'Pad' && A.intersectsCourtyard('U3') && B.intersectsCourtyard('U3')")
+  (constraint clearance (min 0.1mm)))
+(rule "GND pads in the pours: 1 spoke"
+  (condition "A.Type == 'Pad' && A.NetName == 'GND' && B.Type == 'Zone'")
+  (constraint min_resolved_spokes 1))

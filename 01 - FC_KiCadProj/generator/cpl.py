@@ -12,13 +12,27 @@ subprocess.run(['kicad-cli', 'pcb', 'export', 'pos', '--format', 'csv', '--units
 parts = json.load(open(PARTS))
 def assembled(ref):
     p = parts.get(ref)
-    return p is not None and not p.get('dnp') and ref != 'J2' and not re.match(r'^(M|TP|H)\d', ref)
+    return p is not None and not p.get('dnp') and not (re.match(r'^(TP|H)\d', ref) or 'TestPoint_Pad_2.0x2.0mm' in parts[ref]['fp'])
 key = lambda r: (re.sub(r'\d', '', r), int(re.sub(r'\D', '', r) or 0))
+# JLC library zero orientation differs from KiCad's for these footprints (read from JLC's placement preview of this
+# board, 2026-10-16): angle added to the KiCad rotation.
+CORR = {
+ 'QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm': 270,   # U2
+ 'DFN-6_1.3x1.2mm_P0.4mm': 270,                # U5
+ 'ST_MLPF-WB55-01E3_CSP-6': 270,               # U8
+ 'Vishay_PowerPAK_1212-8_Single': 270,         # Q1-Q4 (AON7524)
+ 'SOT-23-6': 270,                              # U7
+ 'LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y': 180,  # U1
+ 'SOT-23': 180,                                # Q5
+ 'Texas_DRC0010J': 270,                        # U12 (LM5166, same zero orientation as the DFN-6 / QFN-48 of this board: check in the JLC preview)
+ 'CP_EIA-7343-31_Kemet-D': 180,                # C1 (tantalum polarity)
+ 'D_SMAflat': 180,                             # D5-D8 (cathode band)
+}
 rows = []
 for r in csv.DictReader(open(tmp)):
     if not assembled(r['Ref']):
         continue
-    rot = round(float(r['Rot'])) % 360
+    rot = (round(float(r['Rot'])) + CORR.get(r['Package'], 0)) % 360
     rows.append((r['Ref'], '%.4fmm' % float(r['PosX']), '%.4fmm' % float(r['PosY']), 'Top' if r['Side'] == 'top' else 'Bottom', rot))
 rows.sort(key=lambda x: key(x[0]))
 missing = sorted({r for r in parts if assembled(r)} - {x[0] for x in rows}, key=key)

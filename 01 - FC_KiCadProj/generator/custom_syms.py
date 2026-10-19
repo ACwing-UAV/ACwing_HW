@@ -125,15 +125,88 @@ def mlpf_wb55():
          body, pins]
     return s
 
+def tsc213():
+    n = 'TSC213'
+    body = [S('symbol'), n + '_0_1',
+            [S('rectangle'), [S('start'), -7.62, 5.08], [S('end'), 7.62, -5.08],
+             [S('stroke'), [S('width'), 0.254], [S('type'), S('default')]], [S('fill'), [S('type'), S('background')]]]]
+    pins = [S('symbol'), n + '_1_1',
+            _pin('input', -10.16, 2.54, 0, 'VIN+', '4'),
+            _pin('input', -10.16, -2.54, 0, 'VIN-', '5'),
+            _pin('power_in', 0, 7.62, 270, 'VCC', '3'),
+            _pin('power_in', 0, -7.62, 90, 'GND', '2'),
+            _pin('input', 2.54, -7.62, 90, 'REF', '1'),
+            _pin('output', 10.16, 0, 180, 'OUT', '6')]
+    s = [S('symbol'), n, [S('in_bom'), S('yes')], [S('on_board'), S('yes')],
+         [S('property'), 'Reference', 'U', [S('at'), -7.62, 6.35, 0], eff(justify='left')],
+         [S('property'), 'Value', n, [S('at'), 0, -10.16, 0], eff()],
+         [S('property'), 'Footprint', 'Package_TO_SOT_SMD:SOT-363_SC-70-6', [S('at'), 0, 0, 0], eff(hide=True)],
+         [S('property'), 'Datasheet', 'https://www.st.com/resource/en/datasheet/tsc210.pdf', [S('at'), 0, 0, 0], eff(hide=True)],
+         [S('property'), 'ki_keywords', 'current sense amplifier zero drift bidirectional', [S('at'), 0, 0, 0], eff(hide=True)],
+         [S('property'), 'ki_description', 'Zero-drift current sense amplifier, gain 50 V/V, CM -0.3...26 V, SC70-6 (DS13237: 1 REF, 2 GND, 3 VCC, 4 VIN+, 5 VIN-, 6 OUT)', [S('at'), 0, 0, 0], eff(hide=True)],
+         body, pins]
+    return s
+
+def tps62160():
+    n = 'TPS62160'
+    body = [S('symbol'), n + '_0_1',
+            [S('rectangle'), [S('start'), -7.62, 7.62], [S('end'), 7.62, -7.62],
+             [S('stroke'), [S('width'), 0.254], [S('type'), S('default')]], [S('fill'), [S('type'), S('background')]]]]
+    pins = [S('symbol'), n + '_1_1',
+            _pin('power_in', -10.16, 5.08, 0, 'VIN', '2'),
+            _pin('input', -10.16, 0, 0, 'EN', '3'),
+            _pin('power_out', 10.16, 5.08, 180, 'SW', '7'),
+            _pin('input', 10.16, 2.54, 180, 'VOS', '6'),
+            _pin('input', 10.16, -2.54, 180, 'FB', '5'),
+            _pin('open_collector', 10.16, -5.08, 180, 'PG', '8'),
+            _pin('power_in', -2.54, -10.16, 90, 'PGND', '1'),
+            _pin('power_in', 0, -10.16, 90, 'AGND', '4'),
+            _pin('passive', 2.54, -10.16, 90, 'EP', '9')]
+    s = [S('symbol'), n, [S('in_bom'), S('yes')], [S('on_board'), S('yes')],
+         [S('property'), 'Reference', 'U', [S('at'), -7.62, 8.89, 0], eff(justify='left')],
+         [S('property'), 'Value', n, [S('at'), 0, -12.7, 0], eff()],
+         [S('property'), 'Footprint', 'Package_SON:WSON-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm', [S('at'), 0, 0, 0], eff(hide=True)],
+         [S('property'), 'Datasheet', 'https://www.ti.com/lit/ds/symlink/tps62160.pdf', [S('at'), 0, 0, 0], eff(hide=True)],
+         [S('property'), 'ki_keywords', 'buck converter step-down 17V 1A DCS-Control 100% mode', [S('at'), 0, 0, 0], eff(hide=True)],
+         [S('property'), 'ki_description', '3-17 V, 1 A synchronous step-down converter with 100% duty-cycle mode, adjustable (VFB 0.8 V), WSON-8 2x2 (DSG)', [S('at'), 0, 0, 0], eff(hide=True)],
+         body, pins]
+    return s
+
+def lm5166():
+    n = 'LM5166'
+    body = [S('symbol'), n + '_0_1',
+            [S('rectangle'), [S('start'), -7.62, 7.62], [S('end'), 7.62, -7.62],
+             [S('stroke'), [S('width'), 0.254], [S('type'), S('default')]], [S('fill'), [S('type'), S('background')]]]]
+    pins = [S('symbol'), n + '_1_1',
+            _pin('power_in', -10.16, 5.08, 0, 'VIN', '2'),
+            _pin('input', -10.16, 2.54, 0, 'EN', '7'),
+            _pin('passive', -10.16, 0, 0, 'HYS', '9'),
+            _pin('passive', -10.16, -2.54, 0, 'SS', '4'),
+            _pin('passive', -10.16, -5.08, 0, 'RT', '5'),
+            _pin('power_out', 10.16, 5.08, 180, 'SW', '1'),
+            _pin('input', 10.16, 0, 180, 'FB', '8'),
+            _pin('open_collector', 10.16, -2.54, 180, 'PGOOD', '6'),
+            _pin('passive', 10.16, -5.08, 180, 'ILIM', '3'),
+            _pin('power_in', -1.27, -10.16, 90, 'GND', '10'),
+            _pin('passive', 1.27, -10.16, 90, 'PAD', '11')]
+    s = [S('symbol'), n, [S('in_bom'), S('yes')], [S('on_board'), S('yes')],
+         [S('property'), 'Reference', 'U', [S('at'), -7.62, 8.89, 0], eff(justify='left')],
+         [S('property'), 'Value', n, [S('at'), 0, -12.7, 0], eff()],
+         [S('property'), 'Footprint', 'Package_SON:Texas_DRC0010J', [S('at'), 0, 0, 0], eff(hide=True)],
+         [S('property'), 'Datasheet', 'https://www.ti.com/lit/ds/symlink/lm5166.pdf', [S('at'), 0, 0, 0], eff(hide=True)],
+         [S('property'), 'ki_keywords', 'buck converter step-down 65V 500mA PFM COT 100% duty cycle', [S('at'), 0, 0, 0], eff(hide=True)],
+         [S('property'), 'ki_description', '3-65 V, 500 mA synchronous step-down converter, 100% duty cycle (PFET high side), adjustable (VFB 1.223 V), VSON-10 3x3 (DRC)', [S('at'), 0, 0, 0], eff(hide=True)],
+         body, pins]
+    return s
+
 def all_symbols():
     syms = {
         'LSM6DSV16X': lsm6dsv16x(),
-        'STC4054': stc4054(),
         'LD39130S-ADJ': ld39130s_adj(),
-        'AON7524': aon7524(),
         'MLPF-WB55-01E3': mlpf_wb55(),
+        'LM5166': lm5166(),
     }
-    for p in ('VBAT', 'VBAT_F', 'VSYS'):
+    for p in ('VBAT', 'VREG', 'VSYS'):
         syms[p] = power_sym(p)
     return syms
 

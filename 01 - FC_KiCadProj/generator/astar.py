@@ -1,4 +1,4 @@
-# Grid A* router for the last few open connections (F.Cu, B.Cu, In2 inside the VDD island; vias allowed).
+# Grid A* router (rev F copy: the rev E per-net keep-out boxes removed) for the last few open connections (F.Cu, B.Cu, In2 inside the VDD island; vias allowed).
 # Obstacles = copper of other nets inflated by half width + clearance; refillable pours (B.Cu GND, In1 GND,
 # In2 VDD island) are not obstacles because the zone filler will clear around the new copper.
 import sys, math, heapq, re
@@ -78,7 +78,8 @@ def build(net):
         own = t.GetNetname() == net
         if t.GetClass() == 'PCB_VIA':
             c = Point(*mm(t.GetPosition()))
-            holes.append(c.buffer(pcbnew.ToMM(t.GetDrill()) / 2))
+            if not own:                      # rev E: an own via is not a hole obstacle (it trapped A* starting from a via)
+                holes.append(c.buffer(pcbnew.ToMM(t.GetDrill()) / 2))
             for L in LAY:
                 g = c.buffer(pcbnew.ToMM(t.GetWidth()) / 2)
                 mine[L].append(g) if own else obst[L].append((g, t.GetNetname()))
@@ -94,6 +95,9 @@ def build(net):
         for i in range(fp_.OutlineCount()):
             pg = Polygon([mm(fp_.Outline(i).CPoint(j)) for j in range(fp_.Outline(i).PointCount())])
             mine[pcbnew.F_Cu].append(pg) if z.GetNetname() == net else obst[pcbnew.F_Cu].append((pg, z.GetNetname()))
+    for z in b.Zones():                      # rev E: the shunt pours are reserved (the DSN has them as keep-outs too)
+        if not z.GetIsRuleArea() and z.GetZoneName() in ('VBAT_RAW_bot', 'VBAT_shunt_bot') and z.GetNetname() != net:
+            obst[pcbnew.B_Cu].append((zpoly(z), z.GetNetname()))
     inner = BOARDP.buffer(-0.35)
     outside = box(X0, Y0, X1, Y1).difference(inner)
     blocked = {}
@@ -112,15 +116,13 @@ def build(net):
         g |= raster(holes, W / 2 + 0.22)
         g |= raster([outside, ANT], W / 2)
         if L in (pcbnew.F_Cu, pcbnew.B_Cu):
-            g |= raster([GROM], W / 2)
+            g |= raster([GROM], W / 2 + 0.06)
         if L == pcbnew.B_Cu:
             g |= raster([Point(c).buffer(1.5) for (_, c, n) in TPS if n != net], W / 2)
         if L == pcbnew.In2_Cu:
             g |= ~raster([ISLAND.buffer(-0.3)], 0)
         if net.startswith('USB_D'):
             g |= raster([U1KO, STAGES], W / 2)
-        if net == 'USB_DP':                  # keep D+ on the same side of the IMU as D- (routed first, east side)
-            g |= raster([box(-20, -6, 0, 4)], 0)
         blocked[L] = g
     vb = np.zeros_like(blocked[LAY[0]])
     for L in LAY:
@@ -130,8 +132,6 @@ def build(net):
     vb |= raster([Point(c).buffer(1.5) for (_, c, n) in TPS if n != net], VIA_D / 2)
     if net.startswith('USB_D'):
         vb |= raster([U1KO, STAGES], VIA_D / 2)
-    if net == 'USB_DP':
-        vb |= raster([box(-20, -6, 0, 4)], 0)
     goal_src = {L: raster(mine[L], 0) for L in LAY}
     return blocked, vb, goal_src, mine
 
@@ -153,7 +153,7 @@ def astar(start_cells, goal, blocked, vb):
         d, (L, i, j) = heapq.heappop(pq)
         if d > dist.get((L, i, j), INF): continue
         n += 1
-        if n > 3_000_000: break
+        if n > 12_000_000: break
         if goal[L][i, j] and (L, i, j) not in start_set:
             path = [(L, i, j)]
             while path[-1] in prev: path.append(prev[path[-1]])

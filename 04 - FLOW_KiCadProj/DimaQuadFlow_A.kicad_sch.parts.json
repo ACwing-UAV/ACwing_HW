@@ -1,0 +1,323 @@
+{
+"J1": {
+"lib_id": "Connector_Generic:Conn_01x04",
+"value": "Qwiic",
+"fp": "DimaQuadFlow:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+"fields": {
+"Note": "Qwiic / STEMMA QT: 1 GND, 2 3.3 V, 3 SDA, 4 SCL. In (from the FC or the GPS board)"
+},
+"dnp": false
+},
+"J2": {
+"lib_id": "Connector_Generic:Conn_01x04",
+"value": "Qwiic",
+"fp": "DimaQuadFlow:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+"fields": {
+"Note": "Qwiic / STEMMA QT: 1 GND, 2 3.3 V, 3 SDA, 4 SCL. Out (daisy chain)"
+},
+"dnp": false
+},
+"U2": {
+"lib_id": "Regulator_Linear:LDK130-ADJ_DFN6",
+"value": "LDK130PU-R",
+"fp": "DimaQuadFlow:DFN-6_1.3x1.2mm_P0.4mm",
+"fields": {
+"Note": "Adjustable LDO (DFN-6 1.2 x 1.3, LCSC C157446), VOUT = 0.8 V x (1 + R5/R6) = 2.0 V (PMW3901 VDD 1.8-2.1 V)"
+},
+"dnp": false
+},
+"R5": {
+"lib_id": "Device:R",
+"value": "15k 1%",
+"fp": "DimaQuadFlow:R_0402_1005Metric",
+"fields": {},
+"dnp": false
+},
+"R6": {
+"lib_id": "Device:R",
+"value": "10k 1%",
+"fp": "DimaQuadFlow:R_0402_1005Metric",
+"fields": {},
+"dnp": false
+},
+"C8": {
+"lib_id": "Device:C",
+"value": "1uF",
+"fp": "DimaQuadFlow:C_0402_1005Metric",
+"fields": {
+"Note": "U2 input"
+},
+"dnp": false
+},
+"C9": {
+"lib_id": "Device:C",
+"value": "1uF",
+"fp": "DimaQuadFlow:C_0402_1005Metric",
+"fields": {
+"Note": "U2 output"
+},
+"dnp": false
+},
+"U1": {
+"lib_id": "DimaQuadFlow:PMW3901MB",
+"value": "PMW3901MB-TXQT",
+"fp": "DimaQuadFlow:PixArt_PMW3901MB_COB-28_6x6mm",
+"fields": {
+"Note": "Sensor side (faces the ground). Lens LN03 on the package: keep the 42 deg field of view clear"
+},
+"dnp": false
+},
+"R1": {
+"lib_id": "Device:R",
+"value": "3R",
+"fp": "DimaQuadFlow:R_0402_1005Metric",
+"fields": {
+"Note": "Datasheet reference RC filter on VDD"
+},
+"dnp": false
+},
+"C1": {
+"lib_id": "Device:C",
+"value": "22uF",
+"fp": "DimaQuadFlow:C_0603_1608Metric",
+"fields": {},
+"dnp": false
+},
+"C2": {
+"lib_id": "Device:C",
+"value": "22uF",
+"fp": "DimaQuadFlow:C_0603_1608Metric",
+"fields": {},
+"dnp": false
+},
+"C3": {
+"lib_id": "Device:C",
+"value": "100nF",
+"fp": "DimaQuadFlow:C_0402_1005Metric",
+"fields": {},
+"dnp": false
+},
+"C4": {
+"lib_id": "Device:C",
+"value": "10uF",
+"fp": "DimaQuadFlow:C_0603_1608Metric",
+"fields": {
+"Note": "VDDIO"
+},
+"dnp": false
+},
+"C5": {
+"lib_id": "Device:C",
+"value": "100nF",
+"fp": "DimaQuadFlow:C_0402_1005Metric",
+"fields": {
+"Note": "VDDIO"
+},
+"dnp": false
+},
+"C6": {
+"lib_id": "Device:C",
+"value": "4.7uF",
+"fp": "DimaQuadFlow:C_0603_1608Metric",
+"fields": {
+"Note": "VREG"
+},
+"dnp": false
+},
+"C7": {
+"lib_id": "Device:C",
+"value": "100nF",
+"fp": "DimaQuadFlow:C_0402_1005Metric",
+"fields": {
+"Note": "VREG"
+},
+"dnp": false
+},
+"R4": {
+"lib_id": "Device:R",
+"value": "10k",
+"fp": "DimaQuadFlow:R_0402_1005Metric",
+"fields": {
+"Note": "NRESET pull-up"
+},
+"dnp": false
+},
+"R2": {
+"lib_id": "Device:R",
+"value": "10k",
+"fp": "DimaQuadFlow:R_0402_1005Metric",
+"fields": {
+"Note": "NCS pull-up: deselected at boot"
+},
+"dnp": false
+},
+"R3": {
+"lib_id": "Device:R",
+"value": "10k",
+"fp": "DimaQuadFlow:R_0402_1005Metric",
+"fields": {
+"Note": "MOTION pull-up"
+},
+"dnp": false
+},
+"U3": {
+"lib_id": "Sensor_Distance:VL53L1CXV0FY1",
+"value": "VL53L1CXV0FY/1",
+"fp": "DimaQuadFlow:ST_VL53L1x",
+"fields": {
+"Note": "Sensor side, next to the flow sensor. 27 deg field of view. Cover: ST AN cover-glass rules, or no cover"
+},
+"dnp": false
+},
+"C10": {
+"lib_id": "Device:C",
+"value": "100nF",
+"fp": "DimaQuadFlow:C_0402_1005Metric",
+"fields": {
+"Note": "ToF AVDD"
+},
+"dnp": false
+},
+"C11": {
+"lib_id": "Device:C",
+"value": "4.7uF",
+"fp": "DimaQuadFlow:C_0603_1608Metric",
+"fields": {
+"Note": "ToF AVDDVCSEL"
+},
+"dnp": false
+},
+"R9": {
+"lib_id": "Device:R",
+"value": "10k",
+"fp": "DimaQuadFlow:R_0402_1005Metric",
+"fields": {
+"Note": "XSHUT pull-up (ToF on unless the bridge resets it)"
+},
+"dnp": false
+},
+"R10": {
+"lib_id": "Device:R",
+"value": "10k",
+"fp": "DimaQuadFlow:R_0402_1005Metric",
+"fields": {
+"Note": "GPIO1 open-drain pull-up"
+},
+"dnp": false
+},
+"U4": {
+"lib_id": "MCU_ST_STM32C0:STM32C011F4Ux",
+"value": "STM32C011F4U6",
+"fp": "DimaQuadFlow:ST_UFQFPN-20_3x3mm_P0.5mm",
+"fields": {
+"Note": "Flow bridge: SPI1 PA4-PA7 to the PMW3901, I2C1 PB6/PB7 slave 0x3B on the Qwiic bus. Firmware: read motion at 100 Hz, publish dX/dY/SQUAL/shutter"
+},
+"dnp": false
+},
+"C12": {
+"lib_id": "Device:C",
+"value": "100nF",
+"fp": "DimaQuadFlow:C_0402_1005Metric",
+"fields": {
+"Note": "MCU VDD"
+},
+"dnp": false
+},
+"C13": {
+"lib_id": "Device:C",
+"value": "4.7uF",
+"fp": "DimaQuadFlow:C_0603_1608Metric",
+"fields": {
+"Note": "MCU VDD bulk"
+},
+"dnp": false
+},
+"C14": {
+"lib_id": "Device:C",
+"value": "100nF",
+"fp": "DimaQuadFlow:C_0402_1005Metric",
+"fields": {
+"Note": "NRST"
+},
+"dnp": false
+},
+"R11": {
+"lib_id": "Device:R",
+"value": "1k",
+"fp": "DimaQuadFlow:R_0402_1005Metric",
+"fields": {},
+"dnp": false
+},
+"D1": {
+"lib_id": "Device:LED",
+"value": "green",
+"fp": "DimaQuadFlow:LED_0402_1005Metric",
+"fields": {
+"Note": "Status LED (PA8 low = on)"
+},
+"dnp": false
+},
+"TP1": {
+"lib_id": "Connector:TestPoint",
+"value": "SWDIO",
+"fp": "DimaQuadFlow:TestPoint_Pad_D1.0mm",
+"fields": {
+"Note": "SWDIO (PA13) - SWD programming pad"
+},
+"dnp": false
+},
+"TP2": {
+"lib_id": "Connector:TestPoint",
+"value": "SWCLK",
+"fp": "DimaQuadFlow:TestPoint_Pad_D1.0mm",
+"fields": {
+"Note": "SWCLK (PA14) - SWD programming pad"
+},
+"dnp": false
+},
+"TP3": {
+"lib_id": "Connector:TestPoint",
+"value": "MCU_NRST",
+"fp": "DimaQuadFlow:TestPoint_Pad_D1.0mm",
+"fields": {
+"Note": "NRST - SWD programming pad"
+},
+"dnp": false
+},
+"TP4": {
+"lib_id": "Connector:TestPoint",
+"value": "+3V3",
+"fp": "DimaQuadFlow:TestPoint_Pad_D1.0mm",
+"fields": {
+"Note": "3.3 V - SWD programming pad"
+},
+"dnp": false
+},
+"TP5": {
+"lib_id": "Connector:TestPoint",
+"value": "GND",
+"fp": "DimaQuadFlow:TestPoint_Pad_D1.0mm",
+"fields": {
+"Note": "GND - SWD programming pad"
+},
+"dnp": false
+},
+"H1": {
+"lib_id": "Mechanical:MountingHole",
+"value": "M2",
+"fp": "DimaQuadFlow:MountingHole_2.2mm_M2",
+"fields": {
+"Note": "M2 mounting hole (frame boss, see handoff)"
+},
+"dnp": false
+},
+"H2": {
+"lib_id": "Mechanical:MountingHole",
+"value": "M2",
+"fp": "DimaQuadFlow:MountingHole_2.2mm_M2",
+"fields": {
+"Note": "M2 mounting hole (frame boss, see handoff)"
+},
+"dnp": false
+}
+}

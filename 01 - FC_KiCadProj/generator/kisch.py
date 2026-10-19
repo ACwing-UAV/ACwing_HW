@@ -165,6 +165,13 @@ class Schematic:
                            [S('stroke'), [S('width'), 0], [S('type'), S('dash')]], [S('fill'), [S('type'), S('none')]],
                            [S('uuid'), uid('r', a, b)]])
 
+    def polygon(self, pts):
+        """Closed dashed outline (same style as rect), for blocks that are not rectangles."""
+        pts = list(pts) + [pts[0]]
+        self.items.append([S('polyline'), [S('pts')] + [[S('xy'), g(x), g(y)] for x, y in pts],
+                           [S('stroke'), [S('width'), 0], [S('type'), S('dash')]], [S('fill'), [S('type'), S('none')]],
+                           [S('uuid'), uid('pl', *pts[:3])]])
+
     # -- symbol instances
     def _instance(self, lib_id, ref, value, x, y, rot, unit=1, fp='', fields=None, dnp=False,
                   in_bom=True, on_board=True, field_pos=None, mirror=False):

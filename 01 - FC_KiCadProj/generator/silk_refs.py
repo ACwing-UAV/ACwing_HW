@@ -223,7 +223,7 @@ for side in (False, True):
                             continue
                         if marks_side is not None and g.distance(marks_side) < GAP_LAB:
                             continue
-                        a_, c_ = nearest_points(g, own_c)
+                        a_, c_ = nearest_points(g.buffer(0.2), own_c)          # start 0.2 mm off the ink box: KiCad text bbox is larger
                         ln = LineString([(a_.x, a_.y), (c_.x, c_.y)])
                         if ln.length < 0.3:
                             continue

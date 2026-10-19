@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "DimaQuad")(type "KiCad")(uri "${KIPRJMOD}/DimaQuad.pretty")(options "")(descr "DimaQuadESC project footprints (3D models in ${KIPRJMOD}/3d)"))
+)

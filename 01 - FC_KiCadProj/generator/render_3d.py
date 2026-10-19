@@ -2,7 +2,7 @@ import numpy as np, matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.collections import PolyCollection
-d = np.load('/tmp/claude-0/meshC2.npz'); T, C = d['T'], d['C']
+d = np.load('/tmp/claude-0/meshH.npz'); T, C = d['T'], d['C']
 T = T - np.array([150, -100, 0])             # board centre at origin (STEP: y up)
 def view(ax, az, el, title, lim=None):
     a, e = np.radians(az), np.radians(el)
@@ -22,7 +22,7 @@ def view(ax, az, el, title, lim=None):
     if lim: ax.set_xlim(*lim[0]); ax.set_ylim(*lim[1])
     else: ax.autoscale_view()
 fig, axs = plt.subplots(1, 3, figsize=(24, 8.5))
-view(axs[0], 0, 0, 'Top')
+view(axs[0], 0, 0, 'Top: 1S-6S buck (rear-left), ESC A (rear) and ESC B (left), 2 Qwiic (right)')
 view(axs[1], -35, -60, 'Isometric')
-view(axs[2], 0, 180, 'Bottom: passives and 2x4 pogo grid')
-plt.tight_layout(); plt.savefig('/home/claude/outC2/DimaQuadFC_C2_3D.png', dpi=80)
+view(axs[2], 0, 180, 'Bottom: passives, flash, 2x4 pogo grid')
+plt.tight_layout(); plt.savefig('/home/claude/outH/DimaQuadFC_H_3D.png', dpi=80)

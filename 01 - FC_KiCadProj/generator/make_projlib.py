@@ -4,7 +4,7 @@
 # then compares against these copies (the stock KiCad library copies differ by version and by 3D model path).
 import sys, os, re, json, collections, pcbnew
 OUT = sys.argv[1]
-BOARD = os.path.join(OUT, 'DimaQuadFC_C2.kicad_pcb')
+BOARD = os.path.join(OUT, 'DimaQuadFC_H.kicad_pcb')
 LIB = os.path.join(OUT, 'DimaQuad.pretty')
 b = pcbnew.LoadBoard(BOARD)
 groups = collections.defaultdict(list)
@@ -19,6 +19,7 @@ def norm(fp):
     c.Reference().SetPosition(pcbnew.VECTOR2I(0, pcbnew.FromMM(-1.5))); c.Reference().SetTextAngleDegrees(0)
     c.SetFPID(pcbnew.LIB_ID('DimaQuad', str(fp.GetFPID().GetLibItemName())))
     c.SetLocked(False)
+    c.SetAttributes(c.GetAttributes() & ~(pcbnew.FP_EXCLUDE_FROM_POS_FILES | pcbnew.FP_EXCLUDE_FROM_BOM))   # no DNP flags in the library
     return c
 def sig(fp):   # graphics + pads, to pick the most common variant of a footprint
     n = norm(fp)

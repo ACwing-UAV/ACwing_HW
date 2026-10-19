@@ -206,110 +206,6 @@
           (effects
             (font
               (size 1.27 1.27)))))))
-  (symbol "STC4054"
-    (in_bom yes)
-    (on_board yes)
-    (property "Reference" "U"
-      (at -5.842 6.604 0)
-      (effects
-        (font
-          (size 1.27 1.27))))
-    (property "Value" "STC4054"
-      (at 1.524 6.604 0)
-      (effects
-        (font
-          (size 1.27 1.27))
-        (justify left)))
-    (property "Footprint" "Package_TO_SOT_SMD:TSOT-23-5"
-      (at 0 -12.7 0)
-      (effects
-        (font
-          (size 1.27 1.27)) hide))
-    (property "Datasheet" "https://www.st.com/resource/en/datasheet/stc4054.pdf"
-      (at 0 -2.54 0)
-      (effects
-        (font
-          (size 1.27 1.27)) hide))
-    (property "ki_keywords" "li-ion charger linear 4.2V"
-      (at 0 0 0)
-      (effects
-        (font
-          (size 1.27 1.27)) hide))
-    (property "ki_description" "800 mA standalone linear Li-Ion charger, 4.2 V, TSOT23-5 (pinout LTC4054)"
-      (at 0 0 0)
-      (effects
-        (font
-          (size 1.27 1.27)) hide))
-    (property "ki_fp_filters" "TSOT?23*"
-      (at 0 0 0)
-      (effects
-        (font
-          (size 1.27 1.27)) hide))
-    (symbol "STC4054_0_1"
-      (rectangle
-        (start -7.62 5.08)
-        (end 7.62 -7.62)
-        (stroke
-          (width 0.254)
-          (type default))
-        (fill
-          (type background))))
-    (symbol "STC4054_1_1"
-      (pin open_collector line
-        (at -10.16 0 0)
-        (length 2.54)
-        (name "~{CHRG}"
-          (effects
-            (font
-              (size 1.27 1.27))))
-        (number "1"
-          (effects
-            (font
-              (size 1.27 1.27)))))
-      (pin power_in line
-        (at 0 -10.16 90)
-        (length 2.54)
-        (name "GND"
-          (effects
-            (font
-              (size 1.27 1.27))))
-        (number "2"
-          (effects
-            (font
-              (size 1.27 1.27)))))
-      (pin power_out line
-        (at 10.16 0 180)
-        (length 2.54)
-        (name "BAT"
-          (effects
-            (font
-              (size 1.27 1.27))))
-        (number "3"
-          (effects
-            (font
-              (size 1.27 1.27)))))
-      (pin power_in line
-        (at 0 7.62 270)
-        (length 2.54)
-        (name "V_{CC}"
-          (effects
-            (font
-              (size 1.27 1.27))))
-        (number "4"
-          (effects
-            (font
-              (size 1.27 1.27)))))
-      (pin bidirectional line
-        (at -10.16 -2.54 0)
-        (length 2.54)
-        (name "PROG"
-          (effects
-            (font
-              (size 1.27 1.27))))
-        (number "5"
-          (effects
-            (font
-              (size 1.27 1.27)))))))
   (symbol "LD39130S-ADJ"
     (in_bom yes)
     (on_board yes)
@@ -417,232 +313,6 @@
             (font
               (size 1.27 1.27))))
         (number "2"
-          (effects
-            (font
-              (size 1.27 1.27)))))))
-  (symbol "AON7524"
-    (pin_names
-      (offset 0) hide)
-    (in_bom yes)
-    (on_board yes)
-    (property "Reference" "Q"
-      (at 5.08 1.27 0)
-      (effects
-        (font
-          (size 1.27 1.27))
-        (justify left)))
-    (property "Value" "AON7524"
-      (at 5.08 -1.27 0)
-      (effects
-        (font
-          (size 1.27 1.27))
-        (justify left)))
-    (property "Footprint" "Package_SO:Vishay_PowerPAK_1212-8_Single"
-      (at 5.08 2.54 0)
-      (effects
-        (font
-          (size 1.27 1.27)) hide))
-    (property "Datasheet" "https://www.aosmd.com/sites/default/files/res/datasheets/AON7524.pdf"
-      (at 0 0 0)
-      (effects
-        (font
-          (size 1.27 1.27)) hide))
-    (property "ki_keywords" "N-MOSFET logic level 30V"
-      (at 0 0 0)
-      (effects
-        (font
-          (size 1.27 1.27)) hide))
-    (property "ki_description" "30 V N-MOSFET, 5.8 mOhm @ VGS 2.5 V, DFN 3x3 EP: 1-3 S, 4 G, 5-8 + EP D"
-      (at 0 0 0)
-      (effects
-        (font
-          (size 1.27 1.27)) hide))
-    (symbol "AON7524_0_1"
-      (polyline
-        (pts
-          (xy 0.254 0)
-          (xy -2.54 0))
-        (stroke
-          (width 0)
-          (type default))
-        (fill
-          (type none)))
-      (polyline
-        (pts
-          (xy 0.254 1.905)
-          (xy 0.254 -1.905))
-        (stroke
-          (width 0.254)
-          (type default))
-        (fill
-          (type none)))
-      (polyline
-        (pts
-          (xy 0.762 -1.27)
-          (xy 0.762 -2.286))
-        (stroke
-          (width 0.254)
-          (type default))
-        (fill
-          (type none)))
-      (polyline
-        (pts
-          (xy 0.762 0.508)
-          (xy 0.762 -0.508))
-        (stroke
-          (width 0.254)
-          (type default))
-        (fill
-          (type none)))
-      (polyline
-        (pts
-          (xy 0.762 2.286)
-          (xy 0.762 1.27))
-        (stroke
-          (width 0.254)
-          (type default))
-        (fill
-          (type none)))
-      (polyline
-        (pts
-          (xy 2.54 2.54)
-          (xy 2.54 1.778))
-        (stroke
-          (width 0)
-          (type default))
-        (fill
-          (type none)))
-      (polyline
-        (pts
-          (xy 2.54 -2.54)
-          (xy 2.54 0)
-          (xy 0.762 0))
-        (stroke
-          (width 0)
-          (type default))
-        (fill
-          (type none)))
-      (polyline
-        (pts
-          (xy 0.762 -1.778)
-          (xy 3.302 -1.778)
-          (xy 3.302 1.778)
-          (xy 0.762 1.778))
-        (stroke
-          (width 0)
-          (type default))
-        (fill
-          (type none)))
-      (polyline
-        (pts
-          (xy 1.016 0)
-          (xy 2.032 0.381)
-          (xy 2.032 -0.381)
-          (xy 1.016 0))
-        (stroke
-          (width 0)
-          (type default))
-        (fill
-          (type outline)))
-      (polyline
-        (pts
-          (xy 2.794 0.508)
-          (xy 2.921 0.381)
-          (xy 3.683 0.381)
-          (xy 3.81 0.254))
-        (stroke
-          (width 0)
-          (type default))
-        (fill
-          (type none)))
-      (polyline
-        (pts
-          (xy 3.302 0.381)
-          (xy 2.921 -0.254)
-          (xy 3.683 -0.254)
-          (xy 3.302 0.381))
-        (stroke
-          (width 0)
-          (type default))
-        (fill
-          (type none)))
-      (circle
-        (center 1.651 0)
-        (radius 2.794)
-        (stroke
-          (width 0.254)
-          (type default))
-        (fill
-          (type none)))
-      (circle
-        (center 2.54 -1.778)
-        (radius 0.254)
-        (stroke
-          (width 0)
-          (type default))
-        (fill
-          (type outline)))
-      (circle
-        (center 2.54 1.778)
-        (radius 0.254)
-        (stroke
-          (width 0)
-          (type default))
-        (fill
-          (type outline))))
-    (symbol "AON7524_1_1"
-      (pin input line
-        (at -5.08 0 0)
-        (length 2.54)
-        (name "G"
-          (effects
-            (font
-              (size 1.27 1.27))))
-        (number "4"
-          (effects
-            (font
-              (size 1.27 1.27)))))
-      (pin passive line
-        (at 2.54 -5.08 90)
-        (length 2.54) hide
-        (name "S"
-          (effects
-            (font
-              (size 1.27 1.27))))
-        (number "2"
-          (effects
-            (font
-              (size 1.27 1.27)))))
-      (pin passive line
-        (at 2.54 -5.08 90)
-        (length 2.54) hide
-        (name "S"
-          (effects
-            (font
-              (size 1.27 1.27))))
-        (number "3"
-          (effects
-            (font
-              (size 1.27 1.27)))))
-      (pin passive line
-        (at 2.54 -5.08 90)
-        (length 2.54)
-        (name "S"
-          (effects
-            (font
-              (size 1.27 1.27))))
-        (number "1"
-          (effects
-            (font
-              (size 1.27 1.27)))))
-      (pin passive line
-        (at 2.54 5.08 270)
-        (length 2.54)
-        (name "D"
-          (effects
-            (font
-              (size 1.27 1.27))))
-        (number "5"
           (effects
             (font
               (size 1.27 1.27)))))))
@@ -756,6 +426,171 @@
           (effects
             (font
               (size 1.27 1.27)))))))
+  (symbol "LM5166"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U"
+      (at -7.62 8.89 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "LM5166"
+      (at 0 -12.7 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" "Package_SON:Texas_DRC0010J"
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/lm5166.pdf"
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "ki_keywords" "buck converter step-down 65V 500mA PFM COT 100% duty cycle"
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "ki_description" "3-65 V, 500 mA synchronous step-down converter, 100% duty cycle (PFET high side), adjustable (VFB 1.223 V), VSON-10 3x3 (DRC)"
+      (at 0 0 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (symbol "LM5166_0_1"
+      (rectangle
+        (start -7.62 7.62)
+        (end 7.62 -7.62)
+        (stroke
+          (width 0.254)
+          (type default))
+        (fill
+          (type background))))
+    (symbol "LM5166_1_1"
+      (pin power_in line
+        (at -10.16 5.08 0)
+        (length 2.54)
+        (name "VIN"
+          (effects
+            (font
+              (size 1.27 1.27))))
+        (number "2"
+          (effects
+            (font
+              (size 1.27 1.27)))))
+      (pin input line
+        (at -10.16 2.54 0)
+        (length 2.54)
+        (name "EN"
+          (effects
+            (font
+              (size 1.27 1.27))))
+        (number "7"
+          (effects
+            (font
+              (size 1.27 1.27)))))
+      (pin passive line
+        (at -10.16 0 0)
+        (length 2.54)
+        (name "HYS"
+          (effects
+            (font
+              (size 1.27 1.27))))
+        (number "9"
+          (effects
+            (font
+              (size 1.27 1.27)))))
+      (pin passive line
+        (at -10.16 -2.54 0)
+        (length 2.54)
+        (name "SS"
+          (effects
+            (font
+              (size 1.27 1.27))))
+        (number "4"
+          (effects
+            (font
+              (size 1.27 1.27)))))
+      (pin passive line
+        (at -10.16 -5.08 0)
+        (length 2.54)
+        (name "RT"
+          (effects
+            (font
+              (size 1.27 1.27))))
+        (number "5"
+          (effects
+            (font
+              (size 1.27 1.27)))))
+      (pin power_out line
+        (at 10.16 5.08 180)
+        (length 2.54)
+        (name "SW"
+          (effects
+            (font
+              (size 1.27 1.27))))
+        (number "1"
+          (effects
+            (font
+              (size 1.27 1.27)))))
+      (pin input line
+        (at 10.16 0 180)
+        (length 2.54)
+        (name "FB"
+          (effects
+            (font
+              (size 1.27 1.27))))
+        (number "8"
+          (effects
+            (font
+              (size 1.27 1.27)))))
+      (pin open_collector line
+        (at 10.16 -2.54 180)
+        (length 2.54)
+        (name "PGOOD"
+          (effects
+            (font
+              (size 1.27 1.27))))
+        (number "6"
+          (effects
+            (font
+              (size 1.27 1.27)))))
+      (pin passive line
+        (at 10.16 -5.08 180)
+        (length 2.54)
+        (name "ILIM"
+          (effects
+            (font
+              (size 1.27 1.27))))
+        (number "3"
+          (effects
+            (font
+              (size 1.27 1.27)))))
+      (pin power_in line
+        (at -1.27 -10.16 90)
+        (length 2.54)
+        (name "GND"
+          (effects
+            (font
+              (size 1.27 1.27))))
+        (number "10"
+          (effects
+            (font
+              (size 1.27 1.27)))))
+      (pin passive line
+        (at 1.27 -10.16 90)
+        (length 2.54)
+        (name "PAD"
+          (effects
+            (font
+              (size 1.27 1.27))))
+        (number "11"
+          (effects
+            (font
+              (size 1.27 1.27)))))))
   (symbol "VBAT"
     (power)
     (pin_names
@@ -832,7 +667,7 @@
           (effects
             (font
               (size 1.27 1.27)))))))
-  (symbol "VBAT_F"
+  (symbol "VREG"
     (power)
     (pin_names
       (offset 0))
@@ -843,7 +678,7 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Value" "VBAT_F"
+    (property "Value" "VREG"
       (at 0 3.81 0)
       (effects
         (font
@@ -863,12 +698,12 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "ki_description" "Power symbol creates a global label with name \"VBAT_F\""
+    (property "ki_description" "Power symbol creates a global label with name \"VREG\""
       (at 0 0 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (symbol "VBAT_F_0_1"
+    (symbol "VREG_0_1"
       (polyline
         (pts
           (xy -0.762 1.27)
@@ -896,11 +731,11 @@
           (type default))
         (fill
           (type none))))
-    (symbol "VBAT_F_1_1"
+    (symbol "VREG_1_1"
       (pin power_in line
         (at 0 0 90)
         (length 0) hide
-        (name "VBAT_F"
+        (name "VREG"
           (effects
             (font
               (size 1.27 1.27))))

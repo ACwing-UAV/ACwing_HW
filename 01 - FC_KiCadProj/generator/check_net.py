@@ -37,7 +37,7 @@ for name, nodes in nets.items():
     if len(nodes) < 2 and not name.startswith('unconnected'):
         print('SINGLE-NODE net', name, nodes); err += 1
 # power_in pins need a driver
-drivers = {'GND', 'VBUS', 'VSYS', 'VBAT_F', 'SMPS_LX'}   # nets with PWR_FLAG; SMPS_LX is driven by the MCU SMPS switch (VLXSMPS)
+drivers = {'GND', 'VBUS', 'VSYS', 'SMPS_LX', 'VLED', 'VBAT', 'VREG'}   # nets with PWR_FLAG (VBAT from the ESC link or the battery pads; VREG from the buck U12); SMPS_LX is driven by the MCU SMPS switch (VLXSMPS)
 for name, nodes in nets.items():
     tys = [ty for _, _, ty in nodes]
     if 'power_in' in tys and name not in drivers and 'power_out' not in tys:

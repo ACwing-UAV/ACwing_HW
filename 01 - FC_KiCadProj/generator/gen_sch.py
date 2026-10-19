@@ -5,14 +5,14 @@ from kisch import Schematic, POWER_LIB, vec, g
 from custom_syms import all_symbols, LIB
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else 'DimaQuadFC.kicad_sch'
-PROJECT = 'DimaQuadFC_C2'
+PROJECT = 'DimaQuadFC_E'
 
 POWER_LIB.update({'GND': 'power:GND', 'VDD': 'power:VDD', 'VBUS': 'power:VBUS',
                   'VBAT': LIB + ':VBAT', 'VBAT_F': LIB + ':VBAT_F', 'VSYS': LIB + ':VSYS'})
 
 sch = Schematic(PROJECT, 'A3', title=dict(
-    title='DimaQuadFC rev C2 - 1S flight controller for frame C (STM32WB55CGU6)',
-    date='2026-10-15', rev='C2',
+    title='DimaQuadFC rev E - 1S flight controller (STM32WB55CGU6)',
+    date='2026-10-18', rev='E',
     company='UAV Control - A. Cirillo',
     comments=['Outline and keep-outs: DimaQuadFC_C_Edge_Cuts.dxf, DimaQuadFC_C_Keepouts.dxf (frame C)',
               'Placement: DimaQuadFC_C_Placement.csv (mechanical handoff)',
@@ -78,12 +78,14 @@ def divider(ra, rb, va, vb, x, y, top, mid, bot, cref=None, cval='100nF', note_=
 
 # battery pads (J2, rear edge) -> VBAT
 sch.part('J2', 'Connector_Generic:Conn_01x02', 'BATT 1S', 20.32, Y0, 0,
-         {'1': ('W', 'VBAT'), '2': ('W', 'GND')}, fp=LIB + ':BattPads_1x02_SMD', mirror=True,
+         {'1': ('W', 'VBAT_RAW'), '2': ('W', 'GND')}, fp=LIB + ':BattPads_1x02_SMD', mirror=True,
          fields={'Note': 'Solder pads for the battery lead (BT2.0 / PH2.0 on the pigtail). Rear corner, leads exit off the corner tip'},
          field_pos={'Reference': (19.05, 31.75), 'Value': (19.05, 40.64)})
 j1p = sch.pin_end('J2', '1')[0]; j2p = sch.pin_end('J2', '2')[0]
-sch.wire(j1p, (35.56, Y0))
-node('VBAT', (30.48, Y0))
+sch.wire(j1p, (25.4, Y0))
+sch.label('VBAT_RAW', (25.4, Y0), 0)          # rev E: through the current shunt R35 (block F)
+sch.wire((30.48, Y0), (35.56, Y0))
+node('VBAT', (30.48, Y0), j=False)
 sch.wire(j2p, (27.94, j2p[1]))
 sch.power('GND', (27.94, j2p[1]), 270)
 
@@ -179,7 +181,7 @@ note('R7 + C11: STC4054 DS\nsec. 6.13 (stability\nwith no battery)', (99.06, 93.
 sch.text('Sensing', (124.46, 66.04), size=1.5, bold=True)
 divider('R8', 'R9', '470k 1%', '470k 1%', 127.0, 76.2, 'VBAT', 'VBAT_SNS', 'GND', cref='C12', label_dx=15.24)
 divider('R10', 'R11', '100k', '100k', 154.94, 76.2, 'VBUS', 'VBUS_DET', 'GND', label_dx=5.08)
-note('VBAT_SNS = VBAT/2 (ADC, PC5)\nVBUS_DET = VBUS/2 (PC2):\nmotors inhibited with USB plugged in', (124.46, 101.6))
+note('VBAT_SNS = VBAT/2 (ADC PA6, IN11)\nVBUS_DET = VBUS/2 (GPIO PB1):\nmotors inhibited with USB plugged in', (124.46, 101.6))
 
 # ================================================================ B. USB-C
 block('B - USB-C (charging + DFU/CDC), ESD protection', (12, 122), (178, 188))
@@ -213,16 +215,19 @@ mcu = {
     # so it carries just BOOT0/I2C (east) and NRST/VDDA/PA0 (west); no LSE (RF wake-up and RTC from HSE)
     '9': 'PWM_M1',                                     # PA0  TIM2_CH1
     '43': 'PWM_M2',                                    # PB3  TIM2_CH2
-    '15': 'PWM_M3',                                    # PA6  TIM16_CH1
+    '13': 'PWM_M3',                                    # PA4  LPTIM2_OUT (rev E: TIM16 is the RGB LED timer)
     '36': 'PWM_M4',                                    # PA10 TIM1_CH3
-    '13': 'VBUS_DET', '14': 'VBAT_SNS',                # PA4 ADC1_IN9, PA5 ADC1_IN10
-    '30': 'LED_FRONT', '29': 'LED_REAR',               # PE4, PB1 (GPIO)
-    '5': 'I2C_SCL', '6': 'I2C_SDA',                    # PB8/PB9 I2C1
+    '15': 'VBAT_SNS', '16': 'ISNS',                    # PA6 ADC1_IN11, PA7 ADC1_IN12 (rev E)
+    '29': 'VBUS_DET',                                  # PB1 GPIO: VBUS/2 reads high with USB plugged in (rev E)
+    '14': 'SPI_SCK', '44': 'SPI_MISO', '45': 'SPI_MOSI',   # PA5/PB4/PB5 SPI1: IMU + log flash (rev E)
+    '28': 'IMU_CS', '30': 'FLASH_CS',                  # PB0, PE4
+    '46': 'RGB_DIN',                                   # PB6 TIM16_CH1N (DMA) (rev E)
+    '18': 'CRSF_TX', '47': 'CRSF_RX',                  # PA9/PB7 USART1 -> ELRS receiver J5 (rev E)
+    '5': 'I2C_SCL', '6': 'I2C_SDA',                    # PB8/PB9 I2C1: expansion bus (Qwiic J3) only
     '37': 'USB_DM', '38': 'USB_DP',                    # PA11/PA12 USB FS
     '39': 'SWDIO', '41': 'SWCLK',                      # PA13/PA14
-    '42': 'IMU_INT1', '44': 'IMU_INT2', '45': 'MAG_DRDY', '28': 'BARO_INT',   # PA15, PB4, PB5, PB0
-    '46': 'UART_TX', '47': 'UART_RX',                  # PB6/PB7 USART1
-    '2': None, '3': None, '10': None, '11': None, '12': None, '16': None, '17': None, '18': None, '19': None,
+    '42': 'IMU_INT1',                                  # PA15
+    '2': None, '3': None, '10': None, '11': None, '12': None, '17': None, '19': None,
 }
 sch.part('U2', 'MCU_ST_STM32WB:STM32WB55CGUx', 'STM32WB55CGU6', MX, MY, 0, mcu,
          fp='Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm',
@@ -230,15 +235,14 @@ sch.part('U2', 'MCU_ST_STM32WB:STM32WB55CGUx', 'STM32WB55CGU6', MX, MY, 0, mcu,
          field_pos={'Reference': (MX + 22.86, MY - 43.18), 'Value': (MX + 22.86, MY + 41.91)})
 sch.tie('U2', ['1', '20', '35', '48', '8', '23', '34', '40'], 'VDD')
 sch.tie('U2', ['22', '49', '32'], 'GND', sym_at=1)
-note('Pin map (IEKF firmware), rev C2:\n'
-     'Motor PWM: M1 PA0 TIM2_CH1, M2 PB3 TIM2_CH2,\n'
-     '  M3 PA6 TIM16_CH1, M4 PA10 TIM1_CH3\n'
-     'LED: front PE4, rear PB1 (GPIO)\n'
-     'No LSE: RF wake-up HSE/1024, RTC HSE/32\n'
-     'ADC: PA5 VBAT_SNS (IN10), PA4 VBUS_DET (IN9)\n'
-     'I2C1 PB8/PB9 -> LSM6DSV16X (Mode 3)\n'
-     'IMU_INT1 PA15, IMU_INT2 PB4, MAG_DRDY PB5, BARO_INT PB0\n'
-     'USART1 PB6/PB7 -> TP1/TP2 (pogo), USB PA11/PA12\n'
+note('Pin map (IEKF firmware), rev E:\n'
+     'Motor PWM: M1 PA0 TIM2_CH1, M2 PB3 TIM2_CH2, M3 PA4 LPTIM2_OUT, M4 PA10 TIM1_CH3\n'
+     'SPI1 PA5 SCK / PB4 MISO / PB5 MOSI: IMU (CS PB0) + log flash (CS PE4)\n'
+     'ADC: PA6 VBAT_SNS (IN11), PA7 ISNS (IN12); VBUS_DET PB1 (GPIO)\n'
+     'USART1 PA9 TX / PB7 RX -> ELRS (CRSF 420 kbaud), J5\n'
+     'I2C1 PB8/PB9 -> expansion bus (Qwiic J3: GPS, flow, sensors)\n'
+     'RGB LEDs PB6 (TIM16_CH1N + DMA, TIM16 used only here), IMU_INT1 PA15; PA8, PB2 free\n'
+     'No LSE: RF wake-up HSE/1024, RTC HSE/32. USB PA11/PA12 (DFU, CDC)\n'
      'SWD PA13/PA14, BOOT0 = PH3 (pull-down 10k)', (186.69, 17.78))
 
 # decoupling (one 100 nF per supply pin, VDDA 1 uF, VDDRF 100 nF + 100 pF), row under the MCU
@@ -287,22 +291,23 @@ sch.wire(sch.pin_end('AE1', '1')[0], (rb[0] + 10.16, rb[1]))
 
 
 # ================================================================ D. SENSORS
-block('D - Sensors: LSM6DSV16X (I2C1) + sensor hub -> IIS2MDC, LPS22HB', (286, 12), (408, 150))
+block('D - Sensors: LSM6DSV16X (SPI1) + sensor hub -> IIS2MDC, LPS22HB; log flash', (286, 12), (408, 150))
 sch.part('U1', LIB + ':LSM6DSV16X', 'LSM6DSV16X', 335.28, 50.8, 0,
-         {'1': 'VDD', '2': 'SHUB_SDA', '3': 'SHUB_SCL', '4': 'IMU_INT1', '5': ('W', 'VDD'), '6': 'GND',
-          '8': ('W', 'VDD'), '9': 'IMU_INT2', '10': None, '11': None, '12': 'VDD', '13': 'I2C_SCL', '14': 'I2C_SDA'},
-         fields={'Note': 'Board centre (frame CG), axes 45 deg to the airframe. SA0 = 1 -> 0x6B. CS = 1 -> I2C'},
+         {'1': 'SPI_MISO', '2': 'SHUB_SDA', '3': 'SHUB_SCL', '4': 'IMU_INT1', '5': ('W', 'VDD'), '6': 'GND',
+          '8': ('W', 'VDD'), '9': None, '10': None, '11': None, '12': 'IMU_CS', '13': 'SPI_SCK', '14': 'SPI_MOSI'},
+         fields={'Note': 'Board centre (frame CG), axes 45 deg to the airframe. Rev E: 4-wire SPI (mode 3, <= 10 MHz) on SPI1 with the log flash; sensor hub (SDx/SCx) unchanged'},
          field_pos={'Reference': (340.36, 33.02), 'Value': (340.36, 68.58), 'just': 'left'})
 sch.tie('U1', ['5', '8'], 'VDD', sym_at=0)
 C('C16', '100nF', 360.68, 30.48, 'VDD', 'GND', fields={'Note': 'Vdd (pin 8)'})
 C('C17', '100nF', 370.84, 30.48, 'VDD', 'GND', fields={'Note': 'Vdd_IO (pin 5)'})
-R('R15', '2.2k', 297.18, 25.4, 'VDD', 'I2C_SCL', fields={'Note': 'I2C1 pull-up (up to 1 MHz Fm+)'})
-R('R16', '2.2k', 309.88, 25.4, 'VDD', 'I2C_SDA')
+R('R15', '2.2k', 297.18, 25.4, 'VEXP', 'I2C_SCL', fields={'Note': 'Expansion bus (I2C1) pull-up to the Qwiic 3.3 V rail; add-on boards have their pull-ups DNP'})
+R('R16', '2.2k', 309.88, 25.4, 'VEXP', 'I2C_SDA')
+R('R38', '10k', 322.58, 25.4, 'VDD', 'IMU_CS', fields={'Note': 'IMU CS pull-up: deselected during boot'})
 R('R17', '4.7k', 381, 25.4, 'VDD', 'SHUB_SCL', fields={'Note': 'Sensor hub bus pull-up (or the internal SHUB_PU_EN)'})
 R('R18', '4.7k', 393.7, 25.4, 'VDD', 'SHUB_SDA')
 
 sch.part('U3', 'Sensor_Magnetic:LIS2MDL', 'IIS2MDC', 327.66, 109.22, 0,
-         {'1': 'SHUB_SCL', '3': 'VDD', '4': 'SHUB_SDA', '5': 'MAG_C1', '6': 'GND', '7': 'MAG_DRDY',
+         {'1': 'SHUB_SCL', '3': 'VDD', '4': 'SHUB_SDA', '5': 'MAG_C1', '6': 'GND', '7': None,
           '9': ('W', 'VDD'), '10': ('W', 'VDD')},
          fields={'Note': 'IIS2MDCTR (industrial grade of the LIS2MDL: same LGA-12 pinout and registers). Front corner, farthest from battery and motor currents. No motor current under it'},
          field_pos={'Reference': (332.74, 93.98), 'Value': (332.74, 124.46), 'just': 'left'})
@@ -313,7 +318,7 @@ C('C20', '10uF 6.3V', 309.88, 88.9, 'VDD', 'GND', fp=FP_C0603, fields={'Note': '
 
 sch.part('U4', 'Sensor_Pressure:LPS22DF', 'LPS22HB', 377.19, 109.22, 0,
          {'1': ('W', 'VDD'), '10': ('W', 'VDD'), '2': 'SHUB_SCL', '4': 'SHUB_SDA', '5': 'VDD', '6': 'VDD',
-          '7': 'BARO_INT', '8': ('W', 'GND'), '9': ('W', 'GND')},
+          '7': None, '8': ('W', 'GND'), '9': ('W', 'GND')},
          fields={'Note': 'LPS22HBTR on the LPS22DF symbol/footprint (same HLGA-10 pinout, pin 3 to GND). Optional. SA0 = 1 -> 0x5D'},
          stub=7.62,
          field_pos={'Reference': (382.27, 93.98), 'Value': (382.27, 124.46), 'just': 'left'})
@@ -323,10 +328,22 @@ C('C21', '100nF', 355.6, 88.9, 'VDD', 'GND')
 note('Topology = IKS4A1 Mode 3: the IEKF firmware\n'
      'reads the IIS2MDC through the LSM6DSV16X\n'
      'sensor hub (samples aligned in the FIFO).\n'
-     'Addresses: LSM6DSV16X 0x6B, IIS2MDC 0x1E, LPS22HB 0x5D', (289.56, 134.62))
+     'Rev E: the IMU host interface is SPI; DRDY/INT2/baro INT not used (FIFO + timestamps)\n'
+     'Addresses on the hub bus: IIS2MDC 0x1E, LPS22HB 0x5D', (289.56, 134.62))
+
+# log flash on SPI1 (rev E)
+sch.part('U10', 'Memory_Flash:W25Q32JVSS', 'W25Q128JV', 388.62, 66.04, 0,
+         {'1': 'FLASH_CS', '2': 'SPI_MISO', '3': 'VDD', '4': 'GND', '5': 'SPI_MOSI', '6': 'SPI_SCK', '7': 'VDD', '8': 'VDD'},
+         fp='Package_SON:WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4mm',
+         fields={'Note': 'Winbond W25Q128JVPIQ, 16 MB SPI NOR (WSON-8 6x5, bottom side): flight logs (blackbox). /WP and /HOLD tied high'},
+         field_pos={'Reference': (396.24, 53.34), 'Value': (396.24, 55.88), 'just': 'left'})
+C('C39', '100nF', 373.38, 66.04, 'VDD', 'GND', side='left', fields={'Note': 'Flash VCC'})
+R('R37', '10k', 373.38, 50.8, 'VDD', 'FLASH_CS', side='left', fields={'Note': 'Flash CS pull-up: deselected during boot'})
 
 # ================================================================ E. MOTORS
-block('E - Motor stage: 4 x low-side N-MOSFET (BoM_motori.xlsx), 8520 coreless on 1S', (12, 192), (282, 285))
+# rev D: block E is L-shaped, the free top-right corner holds block G (GPS port)
+sch.polygon([(12, 192), (184.15, 192), (184.15, 219.71), (282, 219.71), (282, 285), (12, 285)])
+sch.text('E - Motor stage: 4 x low-side N-MOSFET (BoM_motori.xlsx), 8520 coreless on 1S', (13.27, 193.27), size=2.0, bold=True)
 motors = [('M1', 'CW, rear right', 'BLACK prop'), ('M2', 'CCW, front right', 'GREEN prop'),
           ('M3', 'CCW, rear left', 'BLACK prop'), ('M4', 'CW, front left', 'GREEN prop')]
 for i, (mref, spin, prop) in enumerate(motors):
@@ -384,28 +401,44 @@ note('Rg 22 ohm limits the GPIO peak current (Ciss 2250 pF);\n'
      'PWM 32 kHz on TIM2 (ARR 2000 @ 64 MHz), same resolution as motors.c', (12.7, 276.86))
 
 # ================================================================ F. LEDS, PROGRAMMING, HOLES
-block('F - Navigation LEDs, programming pads, mounting', (286, 154), (408, 250))
-for k, (ref, col, rr, val, net, where) in enumerate([
-        ('D1', 'white', 'R28', '220R', 'LEDF_K', 'front corner, top edge'),
-        ('D2', 'white', 'R29', '220R', 'LEDF_K', 'front corner, right edge'),
-        ('D3', 'red', 'R30', '470R', 'LEDR_K', 'rear corner, bottom edge'),
-        ('D4', 'red', 'R31', '470R', 'LEDR_K', 'rear corner, left edge')]):
-    x = 300.99 + 12.7 * k
-    R(rr, val, x, 172.72, 'VSYS', ('W', 'LED%d_A' % (k + 1)), side='left')
-    sch.part(ref, 'Device:LED', col, x, 180.34, 90, {'2': ('W', 'LED%d_A' % (k + 1)), '1': net}, fp=FP_LED,
-             fields={'Note': 'Navigation LED, ' + where},
-             field_pos={'Reference': (x - 2.54, 179.07), 'Value': (x - 2.54, 181.61), 'just': 'right'})
-for unit, (y, g_, d_, s_, net_g, net_d, rpd) in enumerate([(182.88, '2', '6', '1', 'LED_FRONT', 'LEDF_K', 'R32'),
-                                                          (205.74, '5', '3', '4', 'LED_REAR', 'LEDR_K', 'R33')], 1):
-    sch.part('Q6', 'Device:Q_Dual_NMOS_S1G1D2S2G2D1', '2N7002DW', 365.76, y, 0,
-             {g_: ('W', net_g), d_: net_d, s_: 'GND'}, unit=unit, fp='Package_TO_SOT_SMD:SOT-363_SC-70-6',
-             field_pos={'Reference': (370.84, y - 1.27), 'Value': (370.84, y + 1.27), 'just': 'left'})
-    gp = sch.pin_end('Q6', g_, unit)[0]
-    sch.wire(gp, (gp[0] - 7.62, gp[1]))
-    sch.label(net_g, (gp[0] - 7.62, gp[1]), 180)
-    R(rpd, '100k', gp[0] - 2.54, gp[1] + 3.81, ('W', net_g), 'GND', side='left')
-    sch.junction((gp[0] - 2.54, gp[1]))
-note('LEDs supplied from VSYS (3.3-4.7 V):\na white LED (Vf ~3 V) would not\nlight from a 3.1 V GPIO', (292.1, 200.66))
+block('F - Current sense, RGB LEDs, programming pads, mounting', (286, 154), (408, 250))
+# current sense: high-side shunt between the battery pads and VBAT, TSC213 (gain 50) -> ADC
+R('R35', '2m', 297.18, 172.72, 'VBAT_RAW', 'VBAT', fp='Resistor_SMD:R_1206_3216Metric', side='left',
+  fields={'Note': 'Current shunt 2 mOhm 1 W 1206, battery entry (J2+ -> R35 -> VBAT). Kelvin sense to U9'})
+sch.part('U9', LIB + ':TSC213', 'TSC213', 320.04, 175.26, 0,
+         {'4': 'VBAT_RAW', '5': 'VBAT', '3': 'VBAT', '2': 'GND', '1': 'GND', '6': ('W', 'ISNS_A')},
+         fp='Package_TO_SOT_SMD:SOT-363_SC-70-6',
+         fields={'Note': 'TSC213ICT, gain 50: ISNS = 50 x 2 mOhm x I = 0.1 V/A (0-31 A full scale at 3.1 V). REF = GND (unidirectional). VCC from VBAT after the shunt (2.7-26 V): no VDD track into the battery corner'},
+         field_pos={'Reference': (312.42, 166.37), 'Value': (325.12, 185.42), 'just': 'left'})
+R('R36', '1k', 334.01, 175.26, ('W', 'ISNS_A'), 'ISNS', rot=90, fields={'Note': 'RC 1k/100nF: anti-alias, fc 1.6 kHz'})
+C('C37', '100nF', 341.63, 179.07, 'ISNS', 'GND')
+C('C38', '100nF', 309.88, 162.56, 'VBAT', 'GND', side='left', fields={'Note': 'TSC213 VCC (VBAT)'})
+note('ISNS = 0.1 V/A (ADC PA7)\nMotor peak ~8 A -> 0.8 V', (290.83, 186.69))
+# RGB LEDs (front + rear), WS2812B-2020 chained, supplied from VSYS through a Schottky
+sch.part('D11', 'Device:D_Schottky', 'RB521S30', 358.14, 162.56, 180, {'2': 'VSYS', '1': ('W', 'VLED')},
+         fp='Diode_SMD:D_SOD-523', fields={'Note': 'VLED = VSYS - 0.3 V: the LED data threshold (0.7 VLED) stays below the 3.1 V GPIO level on USB too'},
+         field_pos={'Reference': (358.14, 158.75), 'Value': (358.14, 166.37)})
+vl = sch.pin_end('D11', '1')[0]
+sch.wire(vl, (vl[0] + 7.62, vl[1]))
+sch.label('VLED', (vl[0] + 2.54, vl[1]), 0)
+sch._instance('power:PWR_FLAG', '#FLG10', 'PWR_FLAG', vl[0] + 7.62, vl[1], 0)   # VLED is driven by D11
+R('R39', '33R', 345.44, 203.2, 'RGB_DIN', ('W', 'RGB_D1'), rot=90, fields={'Note': 'Series resistor at the first LED input'})
+sch.part('D1', 'LED:WS2812B-2020', 'WS2812B-2020', 360.68, 203.2, 0,
+         {'3': ('W', 'RGB_D1'), '1': ('W', 'RGB_D2'), '4': 'VLED', '2': 'GND'},
+         fields={'Note': 'Front RGB LED (front corner). Use full on/off colours: PWM dimming ripples next to the magnetometer'},
+         field_pos={'Reference': (355.6, 193.04), 'Value': (355.6, 213.36), 'just': 'right'})
+sch.part('D2', 'LED:WS2812B-2020', 'WS2812B-2020', 383.54, 203.2, 0,
+         {'3': ('W', 'RGB_D2'), '1': None, '4': 'VLED', '2': 'GND'},
+         fields={'Note': 'Rear RGB LED (rear corner), second in the chain'},
+         field_pos={'Reference': (388.62, 193.04), 'Value': (388.62, 213.36), 'just': 'left'})
+sch.wire(sch.pin_end('R39', '2')[0], sch.pin_end('D1', '3')[0])
+sch.wire(sch.pin_end('D1', '1')[0], sch.pin_end('D2', '3')[0])
+C('C40', '100nF', 363.22, 180.34, 'VLED', 'GND', side='left', fields={'Note': 'D1 supply'})
+C('C41', '100nF', 373.38, 180.34, 'VLED', 'GND', fields={'Note': 'D2 supply'})
+# no buzzer: a magnetic transducer has a permanent magnet (hard iron next to the compasses) and there is no free
+# 6 x 6 mm spot on the top side. Beeps (lost model, low battery) are made with the motors (audio-rate PWM, props off
+# or at low duty), as on the Crazyflie.
+note('No buzzer: beeps through the motors (audio PWM).\nA magnetic buzzer would put a magnet under the compasses.', (290.83, 193.04))
 
 for k, (tp, net, nt) in enumerate([('TP6', 'SWDIO', 'SWDIO (PA13)'), ('TP7', 'SWCLK', 'SWCLK (PA14)'),
                                    ('TP8', 'NRST', 'NRST')]):
@@ -413,7 +446,7 @@ for k, (tp, net, nt) in enumerate([('TP6', 'SWDIO', 'SWDIO (PA13)'), ('TP7', 'SW
     sch.part(tp, 'Connector:TestPoint', net, x, 175.26, 0, {'1': net}, fp='TestPoint:TestPoint_Pad_D1.0mm',
              fields={'Note': nt + ' - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom'}, stub=2.54,
              field_pos={'Reference': (x - 1.27, 168.91), 'Value': (x - 1.27, 166.37), 'just': 'left'})
-for k, (tp, net, nt) in enumerate([('TP1', 'UART_TX', 'USART1 TX (PB6)'), ('TP2', 'UART_RX', 'USART1 RX (PB7)'),
+for k, (tp, net, nt) in enumerate([('TP1', 'CRSF_TX', 'USART1 TX (PA9), ELRS port J5 (factory test / monitor)'), ('TP2', 'CRSF_RX', 'USART1 RX (PB7), ELRS port J5 (factory test / monitor)'),
                                    ('TP3', 'BOOT0', 'BOOT0: bridge to TP4 for DFU'),
                                    ('TP4', 'VDD', 'VDD 3.1 V'), ('TP5', 'GND', 'GND')]):
     x = 330.2 + 10.16 * k
@@ -426,7 +459,37 @@ for k in range(4):
              fields={'Note': 'Plated 3.2 hole for an M2 anti-vibration grommet, 16x16 pattern (frame C). Exposed 5.0 mm copper ring on both sides, GND'},
              field_pos={'Reference': (378.46 + 7.62 * k, 220.98), 'Value': (378.46 + 7.62 * k, 223.52)},
              in_bom=False)
-note('Grommet holes 3.2 PTH, 16x16\nfrom DimaQuadFC_C_Keepouts.dxf', (375.92, 210.82))
+note('Grommet holes 3.2 PTH, 16x16\nfrom DimaQuadFC_C_Keepouts.dxf', (375.92, 240.03))
+
+# ================================================================ G. EXPANSION (Qwiic) AND ELRS PORTS (rev E)
+block('G - Expansion bus (Qwiic) and ELRS ports (rev E)', (186.69, 192), (282, 217.17))
+sch.part('J3', 'Connector_Generic:Conn_01x04', 'Qwiic', 201.93, 203.2, 0,
+         {'1': 'GND', '2': 'VEXP', '3': 'I2C_SDA', '4': 'I2C_SCL'},
+         fp='Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal',
+         fields={'Note': 'Qwiic / STEMMA QT (JST SH 4P): 1 GND, 2 3.3 V, 3 SDA, 4 SCL. GPS and flow boards daisy-chain'},
+         field_pos={'Reference': (205.74, 198.12), 'Value': (205.74, 200.66), 'just': 'left'})
+sch.part('U11', 'Regulator_Linear:LDK130-ADJ_DFN6', 'LDK130PU-R', 233.68, 203.2, 0,
+         {'6': 'VSYS', '4': 'VSYS', '2': 'GND', '1': ('W', 'VEXP'), '3': ('W', 'VEXP_ADJ'), '5': None},
+         fp='Package_DFN_QFN:DFN-6_1.3x1.2mm_P0.4mm',
+         fields={'Note': 'Adjustable LDK130 (LCSC C157446, same part as the flow board), 3.3 V 300 mA for the expansion bus only: a short or a hot-plug on the Qwiic cable cannot pull down the MCU rail'},
+         field_pos={'Reference': (226.06, 198.12), 'Value': (232.41, 198.12), 'just': 'left'})
+oo = sch.pin_end('U11', '1')[0]
+sch.wire(oo, (oo[0] + 5.08, oo[1]))
+sch.label('VEXP', (oo[0] + 5.08, oo[1]), 0)
+bp = sch.pin_end('U11', '3')[0]
+R('R41', '15k 1%', bp[0] + 5.08, bp[1] + 3.81, ('W', 'VEXP_ADJ'), 'GND', fields={'Note': 'VEXP divider, bottom'})
+R('R40', '47k 1%', bp[0] + 15.24, bp[1] + 3.81, ('W', 'VEXP_ADJ'), 'VEXP',
+  fields={'Note': 'VEXP divider, top: VOUT = 0.8 V x (1 + 47k/15k) = 3.31 V'})
+sch.wire(bp, (bp[0] + 15.24, bp[1])); sch.junction((bp[0] + 5.08, bp[1]))
+C('C43', '1uF', 214.63, 205.74, 'VSYS', 'GND', side='left', fields={'Note': 'U11 input'})
+C('C44', '2.2uF', 276.86, 207.01, 'VEXP', 'GND', fields={'Note': 'U11 output / Qwiic'})
+sch.part('J5', 'Connector_Generic:Conn_01x04', 'ELRS', 309.88, 226.06, 0,
+         {'1': 'GND', '2': 'VSYS', '3': 'CRSF_RX', '4': 'CRSF_TX'},
+         fp='Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal',
+         fields={'Note': 'ELRS receiver (CRSF): 1 GND, 2 VSYS, 3 <- RX module TX, 4 -> RX module RX. Not Qwiic: do not plug sensors here'},
+         field_pos={'Reference': (313.69, 220.98), 'Value': (313.69, 223.52), 'just': 'left'})
+note('J5: ELRS receiver port (rev E),\nJST SH 4P, top board edge', (293.37, 236.22), size=1.0)
+note('Qwiic addresses:\nGPS 0x42, compass 0x1E,\nToF 0x29, flow bridge 0x3B', (252.73, 198.12), size=1.0)
 
 sch.write(OUT)
 json.dump({'%s.%s' % k: v for k, v in sch.expected.items()}, open(OUT + '.expected.json', 'w'), indent=0)

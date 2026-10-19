@@ -9,58 +9,102 @@ from openpyxl.utils import get_column_letter
 BOM = sys.argv[1]
 Q, E = 'Quote', 'Estimate'
 # (refs, qty/board, MPN, source / part #, unit @ 10 boards, unit @ 100 boards, basis, notes)
-ROWS = [
- ('AE1', 1, '2450AT18A0100001E', 'LCSC C89334 (legacy P/N)', 0.849, 0.6343, Q, 'Same part as legacy 2450AT18A100E (Johanson global P/N). LCSC sells it under the legacy P/N (1,416 in stock); factory lead time 17 weeks'),
+E_ROWS = [   # rev E: parts as assembled by JLCPCB (jlc_parts.py); LCSC prices of 2026-10-16/17
+ ('AE1', 1, '2450AT18A0100001E', 'LCSC C17430588', 0.69, 0.65, Q, 'Price from the JLC BOM tool (5 boards)'),
  ('C1', 1, 'T520D477M006ATE015', 'LCSC C696809', 1.6307, 1.2652, Q, 'Only 78 in stock at LCSC'),
- ('C2, C3, C4, C5', 4, 'GRM188R61A106KE69D', 'LCSC C77044', 0.0351, 0.0246, Q, ''),
- ('C6', 1, 'GRM31CR60J107ME39L', 'LCSC C77085', 0.1257, 0.1023, Q, ''),
- ('C7, C9', 2, 'GRM188R61A475KE15D', 'LCSC (0603 X5R 10 V)', 0.03, 0.022, E, 'Priced as 0603 X5R MLCC, same series as C77044'),
- ('C8, C22', 2, 'GRM155R61A105KE15D', 'LCSC (0402 X5R)', 0.008, 0.006, E, ''),
- ('C10', 1, 'GRM155R61A105KE15D', 'LCSC (0402 X5R)', 0.008, 0.006, E, ''),
- ('C11', 1, 'GRM188R61A475KE15D', 'LCSC (0603 X5R 10 V)', 0.03, 0.022, E, ''),
- ('C12, C14, C15, C16, C17, C19, C21, C23, C24, C25, C26, C28', 12, 'GRM155R71C104KA88D', 'LCSC C71629', 0.0052, 0.0047, Q, 'MOQ 100 pcs'),
- ('C18', 1, 'GRM155R71C224KA12D', 'LCSC (0402 X7R)', 0.006, 0.005, E, ''),
- ('C20', 1, 'GRM188R60J106ME47D', 'LCSC (0603 X5R)', 0.035, 0.028, E, 'Priced as C77044'),
- ('C27', 1, 'GRM1555C1H101JA01D', 'LCSC (0402 C0G)', 0.004, 0.003, E, ''),
- ('C29', 1, 'GRM155R61A475MEAAD', 'LCSC (0402 X5R 4.7 uF)', 0.02, 0.015, E, ''),
- ('D1, D2', 2, 'IN-S42ATUW', 'DigiKey / LCSC (0402 LED)', 0.05, 0.04, E, 'Any 0402 white LED, Vf ~3 V'),
- ('D3, D4', 2, 'IN-S42ATR', 'DigiKey / LCSC (0402 LED)', 0.04, 0.03, E, 'Any 0402 red LED'),
- ('D5, D6, D7, D8', 4, 'STPS3L45AF', 'LCSC C2969832', 0.4322, 0.3802, Q, 'Only 3 in stock at LCSC: buy from Mouser/DigiKey or the ST eStore'),
+ ('C2, C3, C4, C5', 4, 'CL10A106KP8NNNC', 'LCSC C19702 (JLC Basic)', 0.0287, 0.0287, Q, ''),
+ ('C6', 1, 'CL31A107MQHNNNE', 'LCSC C15008', 0.1319, 0.0968, Q, ''),
+ ('C7, C9', 2, 'CL10A475KO8NNNC', 'LCSC C19666 (JLC Basic)', 0.0205, 0.0159, Q, ''),
+ ('C8, C22, C43', 3, 'CL05A105KA5NQNC', 'LCSC C52923 (JLC Basic)', 0.0068, 0.0068, Q, 'MOQ 100'),
+ ('C10', 1, 'CL05A105KA5NQNC', 'LCSC C52923 (JLC Basic)', 0.0068, 0.0068, Q, ''),
+ ('C11', 1, 'CL10A475KO8NNNC', 'LCSC C19666 (JLC Basic)', 0.0205, 0.0159, Q, ''),
+ ('C12, C14, C15, C16, C17, C19, C21, C23, C24, C25, C26, C28, C37, C38, C39, C40, C41', 17, 'CL05B104KO5NNNC', 'LCSC C1525 (JLC Basic)', 0.0049, 0.0049, Q, 'MOQ 100'),
+ ('C18', 1, 'CL05B224KO5NNNC', 'LCSC C16772', 0.0054, 0.0054, Q, ''),
+ ('C20', 1, 'CL10A106KP8NNNC', 'LCSC C19702 (JLC Basic)', 0.0287, 0.0287, Q, '10 V part'),
+ ('C27', 1, '0402CG101J500NT', 'LCSC C1546 (JLC Basic)', 0.0032, 0.0032, Q, ''),
+ ('C29', 1, 'CL05A475MP5NRNC', 'LCSC C23733', 0.0168, 0.0168, Q, 'Out of stock at LCSC on 2026-10-16: check JLC stock'),
+ ('C44', 1, 'CL05A225MQ5NSNC', 'LCSC C12530 (JLC Basic)', 0.004, 0.004, E, ''),
+ ('D1, D2', 2, 'WS2812B-2020', 'LCSC C965555', 0.10, 0.08, E, 'Worldsemi RGB LED, price estimated'),
+ ('D5, D6, D7, D8', 4, 'SS34F', 'LCSC C908669', 0.0326, 0.0326, Q, 'GOODWORK, SMAF (DO-221AC); replaces STPS3L45AF'),
  ('D9', 1, 'PMEG2010AEH,115', 'LCSC C110921', 0.1082, 0.0851, Q, ''),
- ('D10', 1, 'IN-S42ATG', 'DigiKey / LCSC (0402 LED)', 0.04, 0.03, E, 'Any 0402 green LED'),
+ ('D10', 1, 'XL-1005UGC', 'LCSC C965793', 0.012, 0.008, E, 'XINGLIGHT 0402 green'),
+ ('D11', 1, 'RB521S30T1G', 'LCSC C8523', 0.03, 0.02, E, ''),
  ('J1', 1, 'TYPE-C-31-M-12', 'LCSC C165948', 0.1729, 0.1365, Q, 'MOQ 5 pcs'),
- ('L1', 1, '74479774222', 'Mouser / DigiKey', 0.80, 0.66, E, 'Mouser 0.86 USD @1, 0.548 USD @10k: intermediate breaks estimated. Active, 3,438 at Mouser'),
- ('L2', 1, 'LQG15WZ10NJ02D', 'LCSC (LQG15 series)', 0.03, 0.02, E, 'LQG15HS10NJ02D (LCSC C77103) is a stocked alternative'),
- ('Q1, Q2, Q3, Q4', 4, 'AON7524', 'LCSC (via Octopart)', 0.232, 0.178, Q, ''),
+ ('J3, J5', 2, 'SM04B-SRSS-TB(LF)(SN)', 'LCSC C160404', 0.25, 0.18, E, 'JST SH 4P side entry (Qwiic, ELRS); price estimated'),
+ ('L1', 1, 'MPH201210S2R2MT', 'LCSC C55755', 0.0467, 0.0388, Q, ''),
+ ('L2', 1, 'LQG15HS10NJ02D', 'LCSC C77103', 0.0185, 0.0185, Q, 'MOQ 50'),
+ ('Q1, Q2, Q3, Q4', 4, 'AON7524', 'LCSC C431195', 0.232, 0.178, Q, ''),
  ('Q5', 1, 'AO3401A', 'LCSC C15127', 0.1028, 0.0831, Q, 'MOQ 5 pcs'),
- ('Q6', 1, '2N7002DW-7-F', 'LCSC C83571', 0.0879, 0.0714, Q, 'MOQ 5 pcs'),
- ('R1', 1, 'RC0603FR-071RL', 'LCSC (Yageo 0603)', 0.003, 0.002, E, ''),
- ('R2, R10, R11, R32, R33', 5, 'RC0402FR-07100KL', 'LCSC (Yageo 0402)', 0.0024, 0.0019, E, 'Priced as RC0402FR-0710KL (C60490), MOQ 100'),
- ('R3', 1, 'RC0402FR-07287KL', 'LCSC (Yageo 0402)', 0.0024, 0.0019, E, ''),
- ('R4', 1, 'RC0402FR-07100KL', 'LCSC (Yageo 0402)', 0.0024, 0.0019, E, ''),
- ('R5', 1, 'RC0402FR-073K3L', 'LCSC (Yageo 0402)', 0.0024, 0.0019, E, ''),
- ('R6', 1, 'RC0402FR-071KL', 'LCSC (Yageo 0402)', 0.0024, 0.0019, E, ''),
- ('R7', 1, 'RC0402FR-071RL', 'LCSC (Yageo 0402)', 0.0024, 0.0019, E, ''),
- ('R8, R9', 2, 'RC0402FR-07470KL', 'LCSC (Yageo 0402)', 0.0024, 0.0019, E, ''),
- ('R12, R13', 2, 'RC0402FR-075K1L', 'LCSC (Yageo 0402)', 0.0024, 0.0019, E, ''),
- ('R14', 1, 'RC0402FR-0710KL', 'LCSC C60490', 0.0024, 0.0019, Q, 'MOQ 100 pcs'),
- ('R15, R16', 2, 'RC0402FR-072K2L', 'LCSC (Yageo 0402)', 0.0024, 0.0019, E, ''),
- ('R17, R18', 2, 'RC0402FR-074K7L', 'LCSC (Yageo 0402)', 0.0024, 0.0019, E, ''),
- ('R20, R21, R22, R23', 4, 'RC0402FR-0722RL', 'LCSC (Yageo 0402)', 0.0024, 0.0019, E, ''),
- ('R24, R25, R26, R27', 4, 'RC0402FR-07100KL', 'LCSC (Yageo 0402)', 0.0024, 0.0019, E, ''),
- ('R28, R29', 2, 'RC0402FR-07220RL', 'LCSC (Yageo 0402)', 0.0024, 0.0019, E, ''),
- ('R30, R31', 2, 'RC0402FR-07470RL', 'LCSC (Yageo 0402)', 0.0024, 0.0019, E, ''),
- ('R34', 1, 'RC0402JR-070RL', 'LCSC (Yageo 0402)', 0.0024, 0.0019, E, ''),
+ ('R1', 1, 'HRC0603F1R00ENTN', 'LCSC C54920875', 0.005, 0.004, E, ''),
+ ('R2, R10, R11, R24, R25, R26, R27', 7, '0402WGF1003TCE', 'LCSC C25741 (JLC Basic)', 0.002, 0.002, E, ''),
+ ('R3', 1, 'RC-02K2873FT', 'LCSC C42921050', 0.003, 0.002, E, ''),
+ ('R4', 1, '0402WGF1003TCE', 'LCSC C25741 (JLC Basic)', 0.002, 0.002, E, ''),
+ ('R5', 1, '0402WGF3301TCE', 'LCSC C25890 (JLC Basic)', 0.002, 0.002, E, ''),
+ ('R6, R36', 2, '0402WGF1001TCE', 'LCSC C11702 (JLC Basic)', 0.002, 0.002, E, ''),
+ ('R7', 1, 'FRC0402F1R00TS', 'LCSC C2909329', 0.003, 0.002, E, ''),
+ ('R8, R9', 2, '0402WGF4703TCE', 'LCSC C25790 (JLC Basic)', 0.002, 0.002, E, ''),
+ ('R12, R13', 2, '0402WGF5101TCE', 'LCSC C25905 (JLC Basic)', 0.002, 0.002, E, ''),
+ ('R14, R37, R38', 3, '0402WGF1002TCE', 'LCSC C25744 (JLC Basic)', 0.002, 0.002, E, ''),
+ ('R15, R16', 2, '0402WGF2201TCE', 'LCSC C25879 (JLC Basic)', 0.002, 0.002, E, ''),
+ ('R17, R18', 2, '0402WGF4701TCE', 'LCSC C25900 (JLC Basic)', 0.002, 0.002, E, ''),
+ ('R20, R21, R22, R23', 4, '0402WGF220JTCE', 'LCSC C25092 (JLC Basic)', 0.002, 0.002, E, ''),
+ ('R34', 1, '0402WGF0000TCE', 'LCSC C17168 (JLC Basic)', 0.002, 0.002, E, ''),
+ ('R35', 1, 'RLM12FTCMR002', 'LCSC C710257', 0.0476, 0.0389, Q, '2 mOhm 1 W shunt, 145k in stock'),
+ ('R39', 1, '0402WGF330JTCE', 'LCSC C25105 (JLC Basic)', 0.002, 0.002, E, ''),
+ ('R40', 1, '0402WGF4702TCE', 'LCSC C25819 (JLC Basic)', 0.002, 0.002, E, ''),
+ ('R41', 1, '0402WGF1502TCE', 'LCSC C25756 (JLC Basic)', 0.002, 0.002, E, ''),
  ('U1', 1, 'LSM6DSV16XTR', 'LCSC C5267406', 3.0014, 2.4748, Q, ''),
  ('U2', 1, 'STM32WB55CGU6', 'LCSC C404023', 7.8102, 5.8543, Q, 'Mouser/DigiKey: 7.22 USD @10, 6.16-6.31 USD @100'),
- ('U3', 1, 'IIS2MDCTR', 'LCSC C2655002', 3.6906, 2.981, Q, '6,902 in stock at LCSC'),
+ ('U3', 1, 'IIS2MDCTR', 'LCSC C2655002', 3.6906, 2.981, Q, ''),
  ('U4', 1, 'LPS22HBTR', 'LCSC C94049', 2.6466, 2.0382, Q, 'Out of stock at LCSC: reference price; buy where you found stock'),
- ('U5', 1, 'LD39130SPUR', 'TME (GBP 0.45 / 0.36)', 0.60, 0.48, Q, 'Converted at 1.33 USD/GBP; out of stock at TME: check ST eStore / Mouser'),
+ ('U5', 1, 'LD39130SPUR', 'LCSC C2798213', 0.60, 0.48, E, ''),
  ('U6', 1, 'STC4054GR', 'LCSC C262930', 1.4469, 1.0963, Q, ''),
  ('U7', 1, 'USBLC6-2SC6', 'LCSC C7519', 0.1786, 0.1375, Q, 'MOQ 5 pcs'),
  ('U8', 1, 'MLPF-WB55-01E3', 'LCSC C2651048', 0.368, 0.2711, Q, ''),
- ('Y1', 1, 'NX2016SA-32M-EXS00A-CS06654', 'LCSC (NX2016SA series)', 0.4632, 0.3565, E, 'Priced as NX2016SA (LCSC C910048); ST-specified 32 MHz part via NDK distributors'),
+ ('U9', 1, 'TSC213ICT', 'LCSC C1858319', 0.60, 0.45, E, 'Current-sense amplifier, price estimated'),
+ ('U10', 1, 'W25Q128JVPIQ', 'LCSC C190862', 1.60, 1.30, E, '16 MB log flash, price estimated'),
+ ('U11', 1, 'LDK130PU-R', 'LCSC C157446', 0.4186, 0.3181, Q, '1,162 in stock on 2026-10-17'),
+ ('Y1', 1, 'NX2016SA-32MHZ-STD-CZS-5', 'LCSC C843260', 0.3534, 0.3534, Q, 'NDK 32 MHz 8 pF +-10 ppm'),
 ]
+
+
+# rev F: rows built from the BoM sheet (one per MPN), prices looked up by MPN in the rev E table above
+PRICE = {}
+for refs_, q_, mpn_, src_, p10_, p100_, basis_, note_ in E_ROWS:
+    PRICE.setdefault(mpn_, (src_, p10_, p100_, basis_, note_))
+PRICE.update({
+    '0402WGF1000TCE': ('LCSC C25076 (JLC Basic)', 0.002, 0.002, E, ''),
+    'SM08B-SRSS-TB(LF)(SN)': ('LCSC C160407', 0.35, 0.25, E, 'JST SH 8P side entry (ESC link); price estimated'),
+    'WS2812B-2020': ('LCSC C965555', 0.10, 0.08, E, 'Worldsemi RGB LED, price estimated'),
+    'TPS62160DSGR': ('LCSC C324077', 0.8073, 0.6494, Q, '1,236 in stock on 2026-10-18'),
+    'AO3407A': ('LCSC C5379096', 0.0482, 0.0393, Q, 'MSKSEMI'),
+    '2N7002': ('LCSC C8545', 0.012, 0.008, E, ''),
+    'CL21A226MAQNNNE': ('LCSC C45783 (JLC Basic)', 0.1953, 0.1953, Q, 'MOQ 20'),
+    'CL21A106KAYNNNE': ('LCSC C15850 (JLC Basic)', 0.02, 0.016, E, ''),
+    '0402WGF4023TCE': ('LCSC C25785', 0.002, 0.002, E, ''),
+    # rev H
+    'LM5166DRCT': ('LCSC C181495', 3.6923, 3.3626, Q, '350 in stock on 2026-10-18 (30+ tier used for 100 boards)'),
+    'SWPA5040S220MT': ('LCSC C68434', 0.12, 0.09, E, 'Sunlord 22 uH 5x5x4, price estimated (same series)'),
+    '1206B475K500NT': ('LCSC C29823 (JLC Basic)', 0.03, 0.025, E, ''),
+    '0402WGF2003TCE': ('LCSC C25764 (JLC Basic)', 0.002, 0.002, E, ''),
+    'CL05B103KB5NNNC': ('LCSC C15195 (JLC Basic)', 0.002, 0.002, E, '10 nF 50 V X7R'),
+})
+_wb0 = load_workbook(BOM)
+_rows = {}
+for row in _wb0['BoM'].iter_rows(min_row=5, values_only=True):
+    if isinstance(row[0], int) and row[2]:
+        g = _rows.setdefault(row[4], [])
+        g += [x.strip() for x in str(row[2]).split(',')]
+import re as _re
+_key = lambda r: (_re.sub(r'\d', '', r), int(_re.sub(r'\D', '', r) or 0))
+ROWS = []
+for mpn_, refs_ in _rows.items():
+    if mpn_ not in PRICE:
+        raise SystemExit('no price for ' + mpn_)
+    src_, p10_, p100_, basis_, note_ = PRICE[mpn_]
+    refs_ = sorted(refs_, key=_key)
+    ROWS.append((', '.join(refs_), len(refs_), mpn_, src_, p10_, p100_, basis_, note_))
+ROWS.sort(key=lambda x: _key(x[0].split(',')[0]))
 
 wb = load_workbook(BOM)
 if 'Costing' in wb.sheetnames:
@@ -68,8 +112,8 @@ if 'Costing' in wb.sheetnames:
 ws = wb.create_sheet('Costing')
 FONT = 'Arial'
 BLUE = Font(name=FONT, size=10, color='0000FF')
-ws.append(['DimaQuadFC rev C2 - component costing (assembled parts, USD)'])
-ws.append(['Prices from distributors on 2026-10-15 (LCSC unless noted). "Quote" = price read for that exact MPN; '
+ws.append(['DimaQuadFC rev H - component costing (assembled parts as ordered at JLCPCB, USD)'])
+ws.append(['Prices from distributors on 2026-10-15/17 (LCSC unless noted). "Quote" = price read for that exact MPN; '
            '"Estimate" = price of an equivalent part of the same series and size. PCB fabrication, assembly, '
            'stencil, shipping and duties are not included.'])
 ws.append(['', 'USD -> EUR exchange rate (edit):', 0.92])
@@ -84,7 +128,7 @@ for i, (refs, q, mpn, src, p10, p100, basis, note) in enumerate(ROWS, 1):
     ws.append([i, refs, q, mpn, src, p10, '=C%d*F%d' % (r, r), p100, '=C%d*H%d' % (r, r), basis, note or '-'])
 last = ws.max_row
 ws.append([''] * 11)                       # spacer (a real row, so the indices below are exact)
-iu = lambda u: H + 1 + [x[0] for x in ROWS].index(u)
+iu = lambda u: H + 1 + [x[0] for x in ROWS].index(u)   # single-part rows only
 ws.append(['', 'Components per board (USD)', '=SUM(C%d:C%d)' % (H + 1, last), 'placements', '', '',
            '=SUM(G%d:G%d)' % (H + 1, last), '', '=SUM(I%d:I%d)' % (H + 1, last), '', 'Sum of the cost per board'])
 r1 = ws.max_row
@@ -96,7 +140,7 @@ ws.append(['', 'Share of U2 + sensors (U1, U3, U4)', '', '', '', '',
 r4 = ws.max_row
 end = ws.max_row
 ws.append([''] * 11)
-ws.append(['Not included: C36 (DNP), pads/holes (PCB features), motors, battery, grommets. JLCPCB PCBA adds a setup fee '
+ws.append(['Not included: C36 (DNP), pads/holes (PCB features), the ESC / power board and its cable, grommets. JLCPCB PCBA adds a setup fee '
            'per unique "extended" part (most ICs here) on top of the component price.'])
 note_r = ws.max_row
 
