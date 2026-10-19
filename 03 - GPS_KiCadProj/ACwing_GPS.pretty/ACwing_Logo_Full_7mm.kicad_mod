@@ -1,6 +1,6 @@
 (footprint "ACwing_Logo_Full_7mm" (version 20221018) (generator pcbnew)
   (layer "F.Cu")
-  (descr "ACwing full logo on the silkscreen, 7 mm high (Andrea Cirillo)")
+  (descr "ACwing full logo on the silkscreen, 7 mm high")
   (tags "logo ACwing")
   (attr board_only exclude_from_pos_files exclude_from_bom)
   (fp_text reference "REF**" (at 0 4.50) (layer "F.Fab") hide (effects (font (size 0.8 0.8) (thickness 0.12))))

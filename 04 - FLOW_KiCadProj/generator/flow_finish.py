@@ -18,14 +18,14 @@ def P(u, v): return pcbnew.VECTOR2I(pcbnew.FromMM(OX + u), pcbnew.FromMM(OY - v)
 b = pcbnew.LoadBoard(BOARD)
 # ---------------------------------------------------------------- 1. silkscreen: board name on the back (no parts there)
 for d in list(b.GetDrawings()):
-    if d.GetLayer() == pcbnew.B_SilkS and d.GetClass() == 'PCB_TEXT' and d.GetText().startswith(('ACwing_Flow', 'UAV Control', 'Qwiic')):
+    if d.GetLayer() == pcbnew.B_SilkS and d.GetClass() == 'PCB_TEXT' and d.GetText().startswith(('ACwing_Flow', 'Qwiic')):
         b.Delete(d)
 def text(s, u, v, size=0.8):
     t = pcbnew.PCB_TEXT(b); t.SetText(s); t.SetLayer(pcbnew.B_SilkS); t.SetPosition(P(u, v)); t.SetMirrored(True)
     t.SetTextSize(pcbnew.VECTOR2I(pcbnew.FromMM(size), pcbnew.FromMM(size))); t.SetTextThickness(pcbnew.FromMM(0.15))
     b.Add(t)
 text('ACwing Flow rev A', 0, -9.5, 1.0)
-text('UAV Control 2026', 0, -11.0, 0.8)
+text('ACwing Flow rev A', 0, -11.0, 0.8)
 text('Qwiic J1 / J2', 0, 9.6, 0.8)
 pcbnew.SaveBoard(BOARD, b)
 

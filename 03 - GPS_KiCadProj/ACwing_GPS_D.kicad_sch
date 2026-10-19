@@ -4,12 +4,12 @@
   (uuid "e840546c-4f4c-56e0-ac2e-d2858299d11b")
   (paper "A4")
   (title_block
-    (title "ACwing GPS rev D - GNSS + compass for ACwing FC H")
+    (title "ACwing GPS rev D - GNSS + compass expansion for ACwing FC rev H")
     (date "2026-10-19")
     (rev "D")
     (company "ACwing - Andrea Cirillo")
-    (comment 1 "30 x 30 mm, 2 layers, 1.0 mm; same 20 x 20 hole pattern as the flight controller rev F")
-    (comment 2 "Expansion bus: Qwiic (JST SH 4-pin) x 2, pass-through, from FC J3; daisy-chain to the flow board")
+    (comment 1 "30 x 30 mm, 2 layers, 1.0 mm; same 20 x 20 mm hole pattern as the flight controller")
+    (comment 2 "Expansion bus: Qwiic (JST SH 4-pin) x 2, pass-through, from FC J3; optional daisy-chain to the flow board")
     (comment 3 "u-blox SAM-M10Q (integrated patch antenna, pin compatible with SAM-M8Q)")
     (comment 4 "Generated automatically: run ERC before release"))
   (lib_symbols
