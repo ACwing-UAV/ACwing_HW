@@ -2710,7 +2710,7 @@
   (gr_text "Qwiic J1 / J2" (at 150 90.4) (layer "B.SilkS") (tstamp 003a66b7-55c6-4a0a-b33b-0f007ac3b243)
     (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror))
   )
-  (gr_text "ACwing Flow rev A" (at 150.056905 103.25) (layer "B.SilkS") (tstamp d064e41b-a2a8-40cc-bd81-3a01b1002198)
+  (gr_text "Flow rev A" (at 150.057 103.25) (layer "B.SilkS") (tstamp d064e41b-a2a8-40cc-bd81-3a01b1002198)
     (effects (font (size 0.8 0.8) (thickness 0.15)) (justify mirror))
   )
 
