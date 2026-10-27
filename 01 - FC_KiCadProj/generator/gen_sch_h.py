@@ -408,21 +408,21 @@ note('ESC link B: second 4-in-1 ESC (motors M5-M8).\nPins 2-4 (VBAT, CUR, TLM) o
      'Battery pads J7/J8: alternative FC supply input,\nsame VBAT net as J2 pin 2 (one source at a time).\nJ4: second Qwiic port (flow board), parallel to J3.', (213.36, 260.35))
 
 # ================================================================ F. LEDS, PROGRAMMING, HOLES
-block('F - RGB LEDs (4 x WS2812B), programming pads, mounting', (286, 154), (408, 250))
-# RGB LEDs (front + rear), WS2812B-2020 chained, supplied from VSYS through a Schottky
-sch.part('D11', 'Device:D_Schottky', 'RB521S30', 358.14, 162.56, 180, {'2': 'VSYS', '1': ('W', 'VLED')},
-         fp='Diode_SMD:D_SOD-523', fields={'Note': 'VLED = VSYS - 0.3 V: the LED data threshold (0.7 VLED) stays below the 3.1 V GPIO level on USB too'},
+block('F - RGB LEDs (4 x XL-2020RGBC-WS2812B), programming pads, mounting', (286, 154), (408, 250))
+# RGB LEDs, XL-2020RGBC-WS2812B chained, supplied from VSYS through the 0R link R49
+sch.part('R49', 'Device:R', '0R', 358.14, 162.56, 90, {'1': 'VSYS', '2': ('W', 'VLED')},
+         fp='Resistor_SMD:R_0402_1005Metric', fields={'Note': '0R link VSYS -> VLED (replaces the RB521S30 Schottky, 2026-10-27): VLED = VSYS keeps the XL-2020 LEDs above their 3.5 V minimum on 1S'},
          field_pos={'Reference': (358.14, 158.75), 'Value': (358.14, 166.37)})
-vl = sch.pin_end('D11', '1')[0]
+vl = sch.pin_end('R49', '2')[0]
 sch.wire(vl, (vl[0] + 7.62, vl[1]))
 sch.label('VLED', (vl[0] + 2.54, vl[1]), 0)
-sch._instance('power:PWR_FLAG', '#FLG10', 'PWR_FLAG', vl[0] + 7.62, vl[1], 0)   # VLED is driven by D11
+sch._instance('power:PWR_FLAG', '#FLG10', 'PWR_FLAG', vl[0] + 7.62, vl[1], 0)   # VLED is driven by R49
 R('R39', '33R', 297.18, 203.2, 'RGB_DIN', ('W', 'RGB_D1'), rot=90, fields={'Note': 'Series resistor at the first LED input (data from PA7)'})
 LEDS = [('D1', 'rear-right'), ('D2', 'rear-left'), ('D3', 'front-left'), ('D4', 'front-right')]   # chain starts at the rear pair
 for k, (ref, where) in enumerate(LEDS):
     x = 312.42 + 22.86 * k
     din = 'RGB_D%d' % (k + 1); dout = ('W', 'RGB_D%d' % (k + 2)) if k < 3 else None
-    sch.part(ref, 'LED:WS2812B-2020', 'WS2812B-2020', x, 203.2, 0, {'3': ('W', din), '1': dout, '4': 'VLED', '2': 'GND'},
+    sch.part(ref, 'LED:WS2812B-2020', 'XL-2020RGBC-WS2812B', x, 203.2, 0, {'3': ('W', din), '1': dout, '4': 'VLED', '2': 'GND'},
              fields={'Note': 'RGB LED %d of 4, %s corner (pairs mirrored about the front-rear diagonal). %s' % (k + 1, where,
                      'Rear LED' if k < 2 else 'Front LED, >= 5 mm from the compass; use full on/off colours (PWM ripple near the magnetometer)')},
              field_pos={'Reference': (x - 7.62, 196.85), 'Value': (x - 7.62, 217.17), 'just': 'left'})

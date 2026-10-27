@@ -32,7 +32,7 @@ All alternate functions below were checked against ST's pin data (STM32_open_pin
 | 28 | PB0 | ESC_TLM_MCU | GPIO / EXTI: ESC A serial telemetry, optional (draft G: PB7) | west |
 | 46 | PB6 | CRSF_TX | USART1_TX (alternate pin): ELRS receiver J5 | south |
 | 47 | PB7 | CRSF_RX | USART1_RX (alternate pin) | south |
-| 16 | PA7 | RGB_DIN | TIM17_CH1 + DMA: 4 × WS2812B-2020, D1 rear → D2 → D3 front → D4 (draft G: PB6) | north |
+| 16 | PA7 | RGB_DIN | TIM17_CH1 + DMA: 4 × XL-2020RGBC-WS2812B, D1 rear → D2 → D3 front → D4 (draft G: PB6) | north |
 | 43 | PB3 | SPI_SCK | SPI1_SCK: IMU + log flash | south |
 | 44 | PB4 | SPI_MISO | SPI1_MISO | south |
 | 45 | PB5 | SPI_MOSI | SPI1_MOSI | south |
@@ -102,4 +102,4 @@ daisy-chain through their own pass-through ports.
 - VBAT 1S–6S (3.0–25.2 V; LM5166 abs. max 68 V, so ESC voltage spikes have margin) → U12 buck, PFM, 500 mA max →
   **VREG 4.1 V** (2S–6S). On 1S the buck runs at 100 % duty cycle: VREG ≈ VBAT − I × 1.1 Ω.
 - USB-C: data, DFU and bench supply only (VBUS → D9 → VSYS; Q5 cuts VREG off while USB is present). No charger.
-- VSYS → LDO U5 3.1 V (VDD), LDO U11 3.31 V (VEXP, Qwiic), VLED (LEDs, through D11), ELRS port.
+- VSYS → LDO U5 3.1 V (VDD), LDO U11 3.31 V (VEXP, Qwiic), VLED (LEDs, through the 0R link R49: VLED = VSYS), ELRS port.

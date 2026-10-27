@@ -13537,7 +13537,7 @@
     (fill
       (type none))
     (uuid "5fa91c0d-917d-5225-856f-0c0fb7c323f9"))
-  (text "F - RGB LEDs (4 x WS2812B), programming pads, mounting"
+  (text "F - RGB LEDs (4 x XL-2020RGBC-WS2812B), programming pads, mounting"
     (at 287.27 155.27 0)
     (effects
       (font
@@ -13545,24 +13545,24 @@
       (justify left top))
     (uuid "af9f092a-791d-5fd7-b826-0bcf4b561ca3"))
   (symbol
-    (lib_id "Device:D_Schottky")
-    (at 358.14 162.56 180)
+    (lib_id "Device:R")
+    (at 358.14 162.56 90)
     (unit 1)
     (in_bom yes)
     (on_board yes)
     (dnp no)
     (uuid "15e1a8d8-361c-5f36-8e04-71c6099d3633")
-    (property "Reference" "D11"
+    (property "Reference" "R49"
       (at 358.14 158.75 0)
       (effects
         (font
           (size 1.27 1.27))))
-    (property "Value" "RB521S30"
+    (property "Value" "0R"
       (at 358.14 166.37 0)
       (effects
         (font
           (size 1.27 1.27))))
-    (property "Footprint" "ACwing:D_SOD-523"
+    (property "Footprint" "ACwing:R_0402_1005Metric"
       (at 358.14 162.56 0)
       (effects
         (font
@@ -13572,7 +13572,7 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "VLED = VSYS - 0.3 V: the LED data threshold (0.7 VLED) stays below the 3.1 V GPIO level on USB too"
+    (property "Note" "0R link VSYS -> VLED (replaces the RB521S30 Schottky, 2026-10-27): VLED = VSYS keeps the XL-2020 LEDs above their 3.5 V minimum on 1S"
       (at 358.14 162.56 0)
       (effects
         (font
@@ -13584,7 +13584,7 @@
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "D11")
+          (reference "R49")
           (unit 1)))))
   (symbol
     (lib_id "ACwing:VSYS")
@@ -13730,7 +13730,7 @@
         (font
           (size 1.27 1.27))
         (justify left)))
-    (property "Value" "WS2812B-2020"
+    (property "Value" "XL-2020RGBC-WS2812B"
       (at 304.8 217.17 0)
       (effects
         (font
@@ -13908,7 +13908,7 @@
         (font
           (size 1.27 1.27))
         (justify left)))
-    (property "Value" "WS2812B-2020"
+    (property "Value" "XL-2020RGBC-WS2812B"
       (at 327.66 217.17 0)
       (effects
         (font
@@ -14086,7 +14086,7 @@
         (font
           (size 1.27 1.27))
         (justify left)))
-    (property "Value" "WS2812B-2020"
+    (property "Value" "XL-2020RGBC-WS2812B"
       (at 350.52 217.17 0)
       (effects
         (font
@@ -14264,7 +14264,7 @@
         (font
           (size 1.27 1.27))
         (justify left)))
-    (property "Value" "WS2812B-2020"
+    (property "Value" "XL-2020RGBC-WS2812B"
       (at 373.38 217.17 0)
       (effects
         (font

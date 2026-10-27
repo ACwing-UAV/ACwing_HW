@@ -676,15 +676,6 @@
 },
 "dnp": false
 },
-"D11": {
-"lib_id": "Device:D_Schottky",
-"value": "RB521S30",
-"fp": "ACwing:D_SOD-523",
-"fields": {
-"Note": "VLED = VSYS - 0.3 V: the LED data threshold (0.7 VLED) stays below the 3.1 V GPIO level on USB too"
-},
-"dnp": false
-},
 "R39": {
 "lib_id": "Device:R",
 "value": "33R",
@@ -696,7 +687,7 @@
 },
 "D1": {
 "lib_id": "LED:WS2812B-2020",
-"value": "WS2812B-2020",
+"value": "XL-2020RGBC-WS2812B",
 "fp": "ACwing:LED_WS2812B-2020_PLCC4_2.0x2.0mm",
 "fields": {
 "Note": "RGB LED 1 of 4, rear-right corner (pairs mirrored about the front-rear diagonal). Rear LED"
@@ -714,7 +705,7 @@
 },
 "D2": {
 "lib_id": "LED:WS2812B-2020",
-"value": "WS2812B-2020",
+"value": "XL-2020RGBC-WS2812B",
 "fp": "ACwing:LED_WS2812B-2020_PLCC4_2.0x2.0mm",
 "fields": {
 "Note": "RGB LED 2 of 4, rear-left corner (pairs mirrored about the front-rear diagonal). Rear LED"
@@ -732,7 +723,7 @@
 },
 "D3": {
 "lib_id": "LED:WS2812B-2020",
-"value": "WS2812B-2020",
+"value": "XL-2020RGBC-WS2812B",
 "fp": "ACwing:LED_WS2812B-2020_PLCC4_2.0x2.0mm",
 "fields": {
 "Note": "RGB LED 3 of 4, front-left corner (pairs mirrored about the front-rear diagonal). Front LED, >= 5 mm from the compass; use full on/off colours (PWM ripple near the magnetometer)"
@@ -750,7 +741,7 @@
 },
 "D4": {
 "lib_id": "LED:WS2812B-2020",
-"value": "WS2812B-2020",
+"value": "XL-2020RGBC-WS2812B",
 "fp": "ACwing:LED_WS2812B-2020_PLCC4_2.0x2.0mm",
 "fields": {
 "Note": "RGB LED 4 of 4, front-right corner (pairs mirrored about the front-rear diagonal). Front LED, >= 5 mm from the compass; use full on/off colours (PWM ripple near the magnetometer)"
@@ -934,6 +925,15 @@
 "fp": "ACwing:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
 "fields": {
 "Note": "ELRS receiver (CRSF): 1 GND, 2 VSYS (4.1 V), 3 <- RX module TX, 4 -> RX module RX. Not Qwiic: do not plug sensors here"
+},
+"dnp": false
+},
+"R49": {
+"lib_id": "Device:R",
+"value": "0R",
+"fp": "ACwing:R_0402_1005Metric",
+"fields": {
+"Note": "0R link VSYS -> VLED (replaces the RB521S30 Schottky, 2026-10-27): VLED = VSYS keeps the XL-2020 LEDs above their 3.5 V minimum on 1S"
 },
 "dnp": false
 }

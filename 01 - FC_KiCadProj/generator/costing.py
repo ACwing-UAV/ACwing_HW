@@ -76,6 +76,7 @@ PRICE.update({
     '0402WGF1000TCE': ('LCSC C25076 (JLC Basic)', 0.002, 0.002, E, ''),
     'SM08B-SRSS-TB(LF)(SN)': ('LCSC C160407', 0.35, 0.25, E, 'JST SH 8P side entry (ESC link); price estimated'),
     'WS2812B-2020': ('LCSC C965555', 0.10, 0.08, E, 'Worldsemi RGB LED, price estimated'),
+    'XL-2020RGBC-WS2812B': ('LCSC C5349955', 0.0657, 0.055, Q, 'XINGLIGHT, ~94k in stock on 2026-10-27 (replaces WS2812B-2020)'),
     'TPS62160DSGR': ('LCSC C324077', 0.8073, 0.6494, Q, '1,236 in stock on 2026-10-18'),
     'AO3407A': ('LCSC C5379096', 0.0482, 0.0393, Q, 'MSKSEMI'),
     '2N7002': ('LCSC C8545', 0.012, 0.008, E, ''),

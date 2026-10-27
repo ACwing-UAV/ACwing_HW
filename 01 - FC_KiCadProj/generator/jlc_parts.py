@@ -94,7 +94,7 @@ LCSC = {
      'Capacitor, MLCC, 2.2 uF, 6.3 V, X5R, 20%', 'JLC Basic part'),
  ('10nF', 'C_0402_1005Metric'): ('CL05B103KB5NNNC', 'Samsung Electro-Mechanics', 'C15195', '10nF 50V X7R 0402',
      'Capacitor, MLCC, 10 nF, 50 V, X7R, 10%', 'JLC Basic part'),
- ('WS2812B-2020', 'LED_WS2812B-2020_PLCC4_2.0x2.0mm'): ('WS2812B-2020', 'Worldsemi', 'C965555', 'WS2812B-2020 RGB LED',
+ ('XL-2020RGBC-WS2812B', 'LED_WS2812B-2020_PLCC4_2.0x2.0mm'): ('XL-2020RGBC-WS2812B', 'XINGLIGHT', 'C5349955', 'XL-2020RGBC-WS2812B RGB LED',
      'LED, RGB addressable, integrated driver, 2.0 x 2.0 mm', None),
  ('RB521S30', 'D_SOD-523'): ('RB521S30T1G', 'onsemi', 'C8523', 'RB521S30 Schottky SOD-523', 'Diode, Schottky, 30 V, 200 mA, SOD-523', None),
  ('Qwiic', 'JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal'): ('SM04B-SRSS-TB(LF)(SN)', 'JST', 'C160404', 'JST SH 4P 1.0 mm side entry',

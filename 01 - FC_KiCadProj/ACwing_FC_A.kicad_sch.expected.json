@@ -270,8 +270,6 @@
 "J4.2": "VEXP",
 "J4.3": "I2C_SDA",
 "J4.4": "I2C_SCL",
-"D11.1": "VLED",
-"D11.2": "VSYS",
 "R39.1": "RGB_DIN",
 "R39.2": "RGB_D1",
 "D1.1": "RGB_D2",
@@ -329,5 +327,7 @@
 "J5.1": "GND",
 "J5.2": "VSYS",
 "J5.3": "CRSF_RX",
-"J5.4": "CRSF_TX"
+"J5.4": "CRSF_TX",
+"R49.2": "VLED",
+"R49.1": "VSYS"
 }
