@@ -482,10 +482,10 @@
 },
 "U4": {
 "lib_id": "Sensor_Pressure:LPS22DF",
-"value": "LPS22HB",
+"value": "LPS22HH",
 "fp": "ACwing:ST_HLGA-10_2x2mm_P0.5mm_LayoutBorder3x2y",
 "fields": {
-"Note": "LPS22HBTR on the LPS22DF symbol/footprint (same HLGA-10 pinout, pin 3 to GND). Optional. SA0 = 1 -> 0x5D"
+"Note": "LPS22HHTR (replaces LPS22HBTR, same pinout) on the LPS22DF symbol/footprint (HLGA-10, pin 3 to GND). Optional. SA0 = 1 -> 0x5D"
 },
 "dnp": false
 },

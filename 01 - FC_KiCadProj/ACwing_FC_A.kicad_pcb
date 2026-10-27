@@ -1948,7 +1948,7 @@
         (effects (font (size 0.8 0.8) (thickness 0.15)))
       (tstamp 543d0972-399a-4c74-b54d-87fb20ff6eb1)
     )
-    (fp_text value "LPS22HB" (at 0 1.95) (layer "F.Fab")
+    (fp_text value "LPS22HH" (at 0 1.95) (layer "F.Fab")
         (effects (font (size 1 1) (thickness 0.15)))
       (tstamp d22141f4-4970-404f-b5f1-d0a565456135)
     )

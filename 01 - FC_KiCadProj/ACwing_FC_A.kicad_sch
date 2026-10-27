@@ -10010,7 +10010,7 @@
     (fill
       (type none))
     (uuid "ab27d7da-c985-5c44-8da9-5ab557c7e117"))
-  (text "D - Sensors: LSM6DSV16X (SPI1) + sensor hub -> IIS2MDC, LPS22HB; log flash"
+  (text "D - Sensors: LSM6DSV16X (SPI1) + sensor hub -> IIS2MDC, LPS22HH; log flash"
     (at 287.27 13.27 0)
     (effects
       (font
@@ -11341,7 +11341,7 @@
         (font
           (size 1.27 1.27))
         (justify left)))
-    (property "Value" "LPS22HB"
+    (property "Value" "LPS22HH"
       (at 382.27 124.46 0)
       (effects
         (font
@@ -11357,7 +11357,7 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "LPS22HBTR on the LPS22DF symbol/footprint (same HLGA-10 pinout, pin 3 to GND). Optional. SA0 = 1 -> 0x5D"
+    (property "Note" "LPS22HHTR (replaces LPS22HBTR, same pinout) on the LPS22DF symbol/footprint (HLGA-10, pin 3 to GND). Optional. SA0 = 1 -> 0x5D"
       (at 377.19 109.22 0)
       (effects
         (font
@@ -11659,7 +11659,7 @@
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
           (reference "#PWR087")
           (unit 1)))))
-  (text "Topology = IKS4A1 Mode 3: the IEKF firmware\nreads the IIS2MDC through the LSM6DSV16X\nsensor hub (samples aligned in the FIFO).\nRev E: the IMU host interface is SPI; DRDY/INT2/baro INT not used (FIFO + timestamps)\nAddresses on the hub bus: IIS2MDC 0x1E, LPS22HB 0x5D"
+  (text "Topology = IKS4A1 Mode 3: the IEKF firmware\nreads the IIS2MDC through the LSM6DSV16X\nsensor hub (samples aligned in the FIFO).\nRev E: the IMU host interface is SPI; DRDY/INT2/baro INT not used (FIFO + timestamps)\nAddresses on the hub bus: IIS2MDC 0x1E, LPS22HH 0x5D"
     (at 289.56 134.62 0)
     (effects
       (font

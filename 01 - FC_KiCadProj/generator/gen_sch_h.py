@@ -283,7 +283,7 @@ sch.wire(sch.pin_end('AE1', '1')[0], (rb[0] + 10.16, rb[1]))
 
 
 # ================================================================ D. SENSORS
-block('D - Sensors: LSM6DSV16X (SPI1) + sensor hub -> IIS2MDC, LPS22HB; log flash', (286, 12), (408, 150))
+block('D - Sensors: LSM6DSV16X (SPI1) + sensor hub -> IIS2MDC, LPS22HH; log flash', (286, 12), (408, 150))
 sch.part('U1', LIB + ':LSM6DSV16X', 'LSM6DSV16X', 335.28, 50.8, 0,
          {'1': 'SPI_MISO', '2': 'SHUB_SDA', '3': 'SHUB_SCL', '4': 'IMU_INT1', '5': ('W', 'VDD'), '6': 'GND',
           '8': ('W', 'VDD'), '9': None, '10': None, '11': None, '12': 'IMU_CS', '13': 'SPI_SCK', '14': 'SPI_MOSI'},
@@ -308,10 +308,10 @@ C('C18', '220nF', 350.52, 121.92, 'MAG_C1', 'GND', fields={'Note': 'IIS2MDC C1: 
 C('C19', '100nF', 297.18, 88.9, 'VDD', 'GND')
 C('C20', '10uF 6.3V', 309.88, 88.9, 'VDD', 'GND', fp=FP_C0603, fields={'Note': 'IIS2MDC DS: 100 nF + 10 uF on Vdd'})
 
-sch.part('U4', 'Sensor_Pressure:LPS22DF', 'LPS22HB', 377.19, 109.22, 0,
+sch.part('U4', 'Sensor_Pressure:LPS22DF', 'LPS22HH', 377.19, 109.22, 0,
          {'1': ('W', 'VDD'), '10': ('W', 'VDD'), '2': 'SHUB_SCL', '4': 'SHUB_SDA', '5': 'VDD', '6': 'VDD',
           '7': None, '8': ('W', 'GND'), '9': ('W', 'GND')},
-         fields={'Note': 'LPS22HBTR on the LPS22DF symbol/footprint (same HLGA-10 pinout, pin 3 to GND). Optional. SA0 = 1 -> 0x5D'},
+         fields={'Note': 'LPS22HHTR (replaces LPS22HBTR, same pinout) on the LPS22DF symbol/footprint (HLGA-10, pin 3 to GND). Optional. SA0 = 1 -> 0x5D'},
          stub=7.62,
          field_pos={'Reference': (382.27, 93.98), 'Value': (382.27, 124.46), 'just': 'left'})
 sch.tie('U4', ['1', '10'], 'VDD', sym_at=1)
@@ -321,7 +321,7 @@ note('Topology = IKS4A1 Mode 3: the IEKF firmware\n'
      'reads the IIS2MDC through the LSM6DSV16X\n'
      'sensor hub (samples aligned in the FIFO).\n'
      'Rev E: the IMU host interface is SPI; DRDY/INT2/baro INT not used (FIFO + timestamps)\n'
-     'Addresses on the hub bus: IIS2MDC 0x1E, LPS22HB 0x5D', (289.56, 134.62))
+     'Addresses on the hub bus: IIS2MDC 0x1E, LPS22HH 0x5D', (289.56, 134.62))
 
 # log flash on SPI1 (rev E)
 sch.part('U10', 'Memory_Flash:W25Q32JVSS', 'W25Q128JV', 388.62, 66.04, 0,

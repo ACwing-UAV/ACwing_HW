@@ -180,6 +180,9 @@ See `ACwing_FC_A_pinmap.md`. Summary:
   (3.7 USD) replaces the TPS62160 + charger + charge gate (≈ 2.4 USD).
 
 ## To check before ordering
+0. **Parts (2026-10-27):** STM32WB55CGU6 out of stock at LCSC/JLC → consigned part (Mouser/DigiKey/ST) or JLC
+   Global Sourcing. Barometer changed to **LPS22HHTR** (C2827824, same footprint and pinout as the LPS22HBTR, out of
+   stock; firmware: WHO_AM_I 0xB3), low LCSC stock. R40 LCSC number fixed (C25792, 47 kΩ 0402).
 1. ERC in KiCad 8/9.
 2. LM5166 stock at LCSC/JLC (350 pcs on 2026-10-18).
 3. Bench test of the buck at 1S (3.0–4.2 V, 100 % duty cycle) and 6S (25.2 V), with the full FC load: VREG ripple

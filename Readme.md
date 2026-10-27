@@ -68,7 +68,7 @@ page locally.
 
 **ACwing FC rev A**
 - MCU **STM32WB55CGU6** (Cortex-M4 + M0+ radio core), BLE 5 with chip antenna and ST MLPF-WB55 front end.
-- Sensors: **LSM6DSV16X** IMU, **LPS22HB** barometer, **IIS2MDC** compass; **W25Q128JV** 16 MB log flash.
+- Sensors: **LSM6DSV16X** IMU, **LPS22HH** barometer, **IIS2MDC** compass; **W25Q128JV** 16 MB log flash.
 - Input **1S–6S** (LM5166 buck, 3–65 V; 100 % duty cycle pass-through on 1S), 4.1 V system rail, 3.1 V and 3.31 V LDOs.
 - **Two ESC links** (JST SH 8-pin, standard 4-in-1 pinout): 8 motor outputs (TIM2 / TIM1 / TIM16), VBAT and current
   sense from the ESC, battery pads for setups without a VBAT pin.
