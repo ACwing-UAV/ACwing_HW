@@ -83,6 +83,7 @@ PRICE.update({
     'CL21A226MAQNNNE': ('LCSC C45783 (JLC Basic)', 0.1953, 0.1953, Q, 'MOQ 20'),
     'CL21A106KAYNNNE': ('LCSC C15850 (JLC Basic)', 0.02, 0.016, E, ''),
     '0402WGF4023TCE': ('LCSC C25785', 0.002, 0.002, E, ''),
+    'SN74LV1T34DCKR': ('LCSC C78541', 0.0593, 0.0593, Q, 'TI, ~24.5k in stock on 2026-10-27 (LED data level shifter)'),
     # rev H
     'LM5166DRCT': ('LCSC C181495', 3.6923, 3.3626, Q, '350 in stock on 2026-10-18 (30+ tier used for 100 boards)'),
     'SWPA5040S220MT': ('LCSC C68434', 0.12, 0.09, E, 'Sunlord 22 uH 5x5x4, price estimated (same series)'),

@@ -383,7 +383,7 @@
 "value": "LSM6DSV16X",
 "fp": "ACwing:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y",
 "fields": {
-"Note": "Board centre (frame CG), axes 45 deg to the airframe. Rev E: 4-wire SPI (mode 3, <= 10 MHz) on SPI1 with the log flash; sensor hub (SDx/SCx) unchanged"
+"Note": "Board centre (frame CG), axes 45 deg to the airframe. Draft E: 4-wire SPI (mode 3, <= 10 MHz) on SPI1 with the log flash; sensor hub (SDx/SCx) unchanged"
 },
 "dnp": false
 },
@@ -676,12 +676,30 @@
 },
 "dnp": false
 },
+"U13": {
+"lib_id": "74xGxx:74LVC1G34",
+"value": "SN74LV1T34DCKR",
+"fp": "ACwing:SOT-353_SC-70-5",
+"fields": {
+"Note": "Single-supply buffer, VCC = VSYS (3.5-4.7 V): input VIH <= 2.0 V (5 V tolerant), output to VSYS. LED data level shifter"
+},
+"dnp": false
+},
+"C50": {
+"lib_id": "Device:C",
+"value": "100nF",
+"fp": "ACwing:C_0402_1005Metric",
+"fields": {
+"Note": "U13 supply"
+},
+"dnp": false
+},
 "R39": {
 "lib_id": "Device:R",
 "value": "33R",
 "fp": "ACwing:R_0402_1005Metric",
 "fields": {
-"Note": "Series resistor at the first LED input (data from PA7)"
+"Note": "Series resistor at the first LED input (data from U13)"
 },
 "dnp": false
 },
@@ -834,7 +852,7 @@
 "value": "D3.2",
 "fp": "ACwing:Grommet_PTH_3.2mm_Pad5.0mm",
 "fields": {
-"Note": "Plated 3.2 hole for an M2 anti-vibration grommet, 20x20 pattern (rev F). Exposed 5.0 mm copper ring on both sides, GND"
+"Note": "Plated 3.2 hole for an M2 anti-vibration grommet, 20x20 pattern (draft F). Exposed 5.0 mm copper ring on both sides, GND"
 },
 "dnp": false
 },
@@ -843,7 +861,7 @@
 "value": "D3.2",
 "fp": "ACwing:Grommet_PTH_3.2mm_Pad5.0mm",
 "fields": {
-"Note": "Plated 3.2 hole for an M2 anti-vibration grommet, 20x20 pattern (rev F). Exposed 5.0 mm copper ring on both sides, GND"
+"Note": "Plated 3.2 hole for an M2 anti-vibration grommet, 20x20 pattern (draft F). Exposed 5.0 mm copper ring on both sides, GND"
 },
 "dnp": false
 },
@@ -852,7 +870,7 @@
 "value": "D3.2",
 "fp": "ACwing:Grommet_PTH_3.2mm_Pad5.0mm",
 "fields": {
-"Note": "Plated 3.2 hole for an M2 anti-vibration grommet, 20x20 pattern (rev F). Exposed 5.0 mm copper ring on both sides, GND"
+"Note": "Plated 3.2 hole for an M2 anti-vibration grommet, 20x20 pattern (draft F). Exposed 5.0 mm copper ring on both sides, GND"
 },
 "dnp": false
 },
@@ -861,7 +879,7 @@
 "value": "D3.2",
 "fp": "ACwing:Grommet_PTH_3.2mm_Pad5.0mm",
 "fields": {
-"Note": "Plated 3.2 hole for an M2 anti-vibration grommet, 20x20 pattern (rev F). Exposed 5.0 mm copper ring on both sides, GND"
+"Note": "Plated 3.2 hole for an M2 anti-vibration grommet, 20x20 pattern (draft F). Exposed 5.0 mm copper ring on both sides, GND"
 },
 "dnp": false
 },
@@ -925,15 +943,6 @@
 "fp": "ACwing:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
 "fields": {
 "Note": "ELRS receiver (CRSF): 1 GND, 2 VSYS (4.1 V), 3 <- RX module TX, 4 -> RX module RX. Not Qwiic: do not plug sensors here"
-},
-"dnp": false
-},
-"R49": {
-"lib_id": "Device:R",
-"value": "0R",
-"fp": "ACwing:R_0402_1005Metric",
-"fields": {
-"Note": "0R link VSYS -> VLED (replaces the RB521S30 Schottky, 2026-10-27): VLED = VSYS keeps the XL-2020 LEDs above their 3.5 V minimum on 1S"
 },
 "dnp": false
 }

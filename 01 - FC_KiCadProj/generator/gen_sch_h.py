@@ -12,10 +12,10 @@ POWER_LIB.update({'GND': 'power:GND', 'VDD': 'power:VDD', 'VBUS': 'power:VBUS',
 
 sch = Schematic(PROJECT, 'A3', title=dict(
     title='ACwing FC rev A - 1S-6S flight controller (STM32WB55CGU6), 4-in-1 ESC links, up to 8 motors',
-    date='2026-10-18', rev='H',
-    company='UAV Control - A. Cirillo',
-    comments=['Outline: frame C (40 x 40, as rev E); holes 20 x 20 (mechanical handoff, update 2026-10-18)',
-              'Power and motors from a 4-in-1 ESC (JST SH 8-pin ESC A J2, ESC B J6) or the DimaQuad 1S power board',
+    date='2026-10-27', rev='A',
+    company='ACwing - Andrea Cirillo',
+    comments=['Outline: frame C (40 x 40, as draft E); holes 20 x 20 (mechanical handoff, update 2026-10-18)',
+              'Power and motors from a 4-in-1 ESC (JST SH 8-pin ESC A J2, ESC B J6) or the ACwing 1S power board',
               'Pin map: ACwing_FC_A_pinmap.md',
               'Generated automatically: run ERC before release']))
 
@@ -226,14 +226,14 @@ sch.part('U2', 'MCU_ST_STM32WB:STM32WB55CGUx', 'STM32WB55CGU6', MX, MY, 0, mcu,
          field_pos={'Reference': (MX + 22.86, MY - 43.18), 'Value': (MX + 22.86, MY + 41.91)})
 sch.tie('U2', ['1', '20', '35', '48', '8', '23', '34', '40'], 'VDD')
 sch.tie('U2', ['22', '49', '32'], 'GND', sym_at=1)
-note('Pin map (IEKF firmware), rev H:\n'
+note('Pin map (IEKF firmware), rev A:\n'
      'Motors M1-M4 PA0-PA3 TIM2_CH1-CH4 -> ESC A J2; M5-M7 PA8-PA10 TIM1_CH1-CH3, M8 PA6 TIM16_CH1 -> ESC B J6\n'
      '(PWM 32 kHz brushed / DShot, bidirectional DShot: every motor timer has DMA)\n'
      'ADC: PA4 ESC_CUR (IN9), PA5 VBAT_SNS (IN10, x10/110); ESC A serial telemetry PB0 (optional)\n'
      'SPI1 PB3 SCK / PB4 MISO / PB5 MOSI: IMU (CS PC14) + log flash (CS PE4), IMU_INT1 PA15\n'
      'USART1 PB6 TX / PB7 RX -> ELRS (CRSF 420 kbaud), J5\n'
      'I2C1 PB8/PB9 -> expansion bus (Qwiic J3 + J4: GPS board, flow board, sensors)\n'
-     'RGB LEDs PA7 (TIM17_CH1 + DMA, 4 x WS2812B); VBUS_DET PB1; PB2 free\n'
+     'RGB LEDs PA7 (TIM17_CH1 + DMA, buffer U13, 4 x XL-2020); VBUS_DET PB1; PB2 free\n'
      'No LSE: RF wake-up HSE/1024, RTC HSE/32. USB PA11/PA12 (DFU, CDC)\n'
      'SWD PA13/PA14, BOOT0 = PH3 (pull-down 10k)', (186.69, 17.78))
 
@@ -287,7 +287,7 @@ block('D - Sensors: LSM6DSV16X (SPI1) + sensor hub -> IIS2MDC, LPS22HH; log flas
 sch.part('U1', LIB + ':LSM6DSV16X', 'LSM6DSV16X', 335.28, 50.8, 0,
          {'1': 'SPI_MISO', '2': 'SHUB_SDA', '3': 'SHUB_SCL', '4': 'IMU_INT1', '5': ('W', 'VDD'), '6': 'GND',
           '8': ('W', 'VDD'), '9': None, '10': None, '11': None, '12': 'IMU_CS', '13': 'SPI_SCK', '14': 'SPI_MOSI'},
-         fields={'Note': 'Board centre (frame CG), axes 45 deg to the airframe. Rev E: 4-wire SPI (mode 3, <= 10 MHz) on SPI1 with the log flash; sensor hub (SDx/SCx) unchanged'},
+         fields={'Note': 'Board centre (frame CG), axes 45 deg to the airframe. Draft E: 4-wire SPI (mode 3, <= 10 MHz) on SPI1 with the log flash; sensor hub (SDx/SCx) unchanged'},
          field_pos={'Reference': (340.36, 33.02), 'Value': (340.36, 68.58), 'just': 'left'})
 sch.tie('U1', ['5', '8'], 'VDD', sym_at=0)
 C('C16', '100nF', 360.68, 30.48, 'VDD', 'GND', fields={'Note': 'Vdd (pin 8)'})
@@ -369,8 +369,8 @@ for n in '345678':
 C('C1', '100nF', 106.68, 241.3, 'ESC_CUR', 'GND', fields={'Note': 'ADC input cap for ESC_CUR (RC 1k / 100 nF with R42)'})
 C('C2', '4.7uF 50V', 121.92, 241.3, 'VBAT', 'GND', fp=FP_C1206, fields={'Note': 'VBAT at the ESC link (up to 6S): local bulk for the cable inductance, X7R 50 V'})
 sch.pwr_flag('VBAT', (134.62, 236.22))
-note('ESC link A (rev H):\n'
-     '- DimaQuad 1S power board (brushed): CUR = 0.1 V/A.\n'
+note('ESC link A (rev A):\n'
+     '- ACwing 1S power board (brushed): CUR = 0.1 V/A.\n'
      '- Brushless 4-in-1 ESC, 2S-6S: CUR scale set in firmware\n'
      '  (about 12 mV/A); telemetry via bidirectional DShot / EDT.\n'
      '- VBAT 1S-6S feeds the FC (buck U12, block A).\n'
@@ -409,24 +409,25 @@ note('ESC link B: second 4-in-1 ESC (motors M5-M8).\nPins 2-4 (VBAT, CUR, TLM) o
 
 # ================================================================ F. LEDS, PROGRAMMING, HOLES
 block('F - RGB LEDs (4 x XL-2020RGBC-WS2812B), programming pads, mounting', (286, 154), (408, 250))
-# RGB LEDs, XL-2020RGBC-WS2812B chained, supplied from VSYS through the 0R link R49
-sch.part('R49', 'Device:R', '0R', 358.14, 162.56, 90, {'1': 'VSYS', '2': ('W', 'VLED')},
-         fp='Resistor_SMD:R_0402_1005Metric', fields={'Note': '0R link VSYS -> VLED (replaces the RB521S30 Schottky, 2026-10-27): VLED = VSYS keeps the XL-2020 LEDs above their 3.5 V minimum on 1S'},
-         field_pos={'Reference': (358.14, 158.75), 'Value': (358.14, 166.37)})
-vl = sch.pin_end('R49', '2')[0]
-sch.wire(vl, (vl[0] + 7.62, vl[1]))
-sch.label('VLED', (vl[0] + 2.54, vl[1]), 0)
-sch._instance('power:PWR_FLAG', '#FLG10', 'PWR_FLAG', vl[0] + 7.62, vl[1], 0)   # VLED is driven by R49
-R('R39', '33R', 297.18, 203.2, 'RGB_DIN', ('W', 'RGB_D1'), rot=90, fields={'Note': 'Series resistor at the first LED input (data from PA7)'})
+# RGB LEDs, XL-2020RGBC-WS2812B chained, supplied straight from VSYS (2026-10-27: the RB521S30 Schottky / 0R link is gone,
+# the XL-2020 needs VDD >= 3.5 V). U13 translates the 3.1 V PA7 data to VSYS levels: the LED input threshold is
+# 0.7 x VDD (3.3 V at VSYS 4.65 V on USB), above the 3.1 V GPIO high level.
+sch.part('U13', '74xGxx:74LVC1G34', 'SN74LV1T34DCKR', 300.99, 182.88, 0,
+         {'2': 'RGB_DIN', '4': 'RGB_DIN5', '5': 'VSYS', '3': 'GND', '1': None},
+         fp='Package_TO_SOT_SMD:SOT-353_SC-70-5',
+         fields={'Note': 'Single-supply buffer, VCC = VSYS (3.5-4.7 V): input VIH <= 2.0 V (5 V tolerant), output to VSYS. LED data level shifter'},
+         field_pos={'Reference': (306.07, 176.53), 'Value': (306.07, 189.23), 'just': 'left'})
+C('C50', '100nF', 290.83, 182.88, 'VSYS', 'GND', fields={'Note': 'U13 supply'})
+R('R39', '33R', 297.18, 203.2, 'RGB_DIN5', ('W', 'RGB_D1'), rot=90, fields={'Note': 'Series resistor at the first LED input (data from U13)'})
 LEDS = [('D1', 'rear-right'), ('D2', 'rear-left'), ('D3', 'front-left'), ('D4', 'front-right')]   # chain starts at the rear pair
 for k, (ref, where) in enumerate(LEDS):
     x = 312.42 + 22.86 * k
     din = 'RGB_D%d' % (k + 1); dout = ('W', 'RGB_D%d' % (k + 2)) if k < 3 else None
-    sch.part(ref, 'LED:WS2812B-2020', 'XL-2020RGBC-WS2812B', x, 203.2, 0, {'3': ('W', din), '1': dout, '4': 'VLED', '2': 'GND'},
+    sch.part(ref, 'LED:WS2812B-2020', 'XL-2020RGBC-WS2812B', x, 203.2, 0, {'3': ('W', din), '1': dout, '4': 'VSYS', '2': 'GND'},
              fields={'Note': 'RGB LED %d of 4, %s corner (pairs mirrored about the front-rear diagonal). %s' % (k + 1, where,
                      'Rear LED' if k < 2 else 'Front LED, >= 5 mm from the compass; use full on/off colours (PWM ripple near the magnetometer)')},
              field_pos={'Reference': (x - 7.62, 196.85), 'Value': (x - 7.62, 217.17), 'just': 'left'})
-    C('C%d' % (40, 41, 42, 45)[k], '100nF', x + 7.62, 184.15, 'VLED', 'GND', fields={'Note': '%s supply' % ref})
+    C('C%d' % (40, 41, 42, 45)[k], '100nF', x + 7.62, 184.15, 'VSYS', 'GND', fields={'Note': '%s supply' % ref})
 for k in range(3):
     sch.wire(sch.pin_end(LEDS[k][0], '1')[0], sch.pin_end(LEDS[k + 1][0], '3')[0])
 sch.wire(sch.pin_end('R39', '2')[0], sch.pin_end('D1', '3')[0])
@@ -451,7 +452,7 @@ for k, (tp, net, nt) in enumerate([('TP1', 'CRSF_TX', 'USART1 TX (PB6), ELRS por
 for k in range(4):
     sch.part('H%d' % (k + 1), 'Mechanical:MountingHole_Pad', 'D3.2', 378.46 + 7.62 * k, 228.6, 0, {'1': 'GND'},
              fp='DimaQuad:Grommet_PTH_3.2mm_Pad5.0mm',
-             fields={'Note': 'Plated 3.2 hole for an M2 anti-vibration grommet, 20x20 pattern (rev F). Exposed 5.0 mm copper ring on both sides, GND'},
+             fields={'Note': 'Plated 3.2 hole for an M2 anti-vibration grommet, 20x20 pattern (draft F). Exposed 5.0 mm copper ring on both sides, GND'},
              field_pos={'Reference': (378.46 + 7.62 * k, 220.98), 'Value': (378.46 + 7.62 * k, 223.52)},
              in_bom=False)
 note('Grommet holes 3.2 PTH, 20x20\n(above the ESC / power board)', (375.92, 240.03))

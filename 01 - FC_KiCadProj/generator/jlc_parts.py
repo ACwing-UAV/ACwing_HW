@@ -101,6 +101,8 @@ LCSC = {
      'Connector, JST SH, 4 positions, 1.0 mm pitch, side entry, SMD', 'Qwiic / STEMMA QT expansion port'),
  ('ELRS', 'JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal'): ('SM04B-SRSS-TB(LF)(SN)', 'JST', 'C160404', 'JST SH 4P 1.0 mm side entry',
      'Connector, JST SH, 4 positions, 1.0 mm pitch, side entry, SMD', 'ELRS receiver port (CRSF)'),
+ ('SN74LV1T34DCKR', 'SOT-353_SC-70-5'): ('SN74LV1T34DCKR', 'Texas Instruments', 'C78541', 'SN74LV1T34DCKR level-shift buffer SC-70-5',
+     'Single buffer, single supply 1.6-5.5 V, TTL-level inputs (VIH 2.0 V at 5 V), 5 V tolerant, SC-70-5', 'LED data level shifter; ~24k in stock at LCSC on 2026-10-27'),
  ('TSC213', 'SOT-363_SC-70-6'): ('TSC213ICT', 'STMicroelectronics', 'C1858319', 'TSC213ICT current sense amplifier', 'Current-sense amplifier, gain 50 V/V, SC70-6', None),
  ('W25Q128JV', 'WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4mm'): ('W25Q128JVPIQ', 'Winbond', 'C190862', 'W25Q128JVPIQ 128 Mbit SPI flash WSON-8',
      'NOR flash, 128 Mbit (16 MB), SPI/QSPI 133 MHz, WSON-8 6x5 mm', None),
