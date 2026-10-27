@@ -5,7 +5,7 @@
   (paper "A3")
   (title_block
     (title "ACwing FC rev A - 1S-6S flight controller (STM32WB55CGU6), 4-in-1 ESC links, up to 8 motors")
-    (date "2026-10-24")
+    (date "2026-10-27")
     (rev "A")
     (company "ACwing - Andrea Cirillo")
     (comment 1 "Outline: frame C (40 x 40, as draft E); holes 20 x 20 (mechanical handoff, update 2026-10-18)")
@@ -4475,6 +4475,112 @@
             (effects
               (font
                 (size 1.27 1.27)))))))
+    (symbol "74xGxx:74LVC1G34"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U"
+        (at 0 7.62 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "74LVC1G34"
+        (at 5.08 -7.62 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74lvc1g34.pdf"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "ki_keywords" "Single Gate Buff LVC CMOS"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "ki_description" "Single Buffer Gate, Low-Voltage CMOS"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "ki_fp_filters" "SOT?23* Texas?R-PDSO-G5?DCK* Texas?R-PDSO-N5?DRL* Texas?X2SON*0.8x0.8mm*P0.48mm*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (symbol "74LVC1G34_0_1"
+        (polyline
+          (pts
+            (xy -7.62 6.35)
+            (xy -7.62 -6.35)
+            (xy 5.08 0)
+            (xy -7.62 6.35))
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type background))))
+      (symbol "74LVC1G34_1_1"
+        (pin free line
+          (at -2.54 -10.16 90)
+          (length 6.35)
+          (name "NC"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin input line
+          (at -15.24 0 0)
+          (length 7.62)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin power_in line
+          (at -5.08 -10.16 90)
+          (length 5.08)
+          (name "GND"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "3"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin output line
+          (at 12.7 0 180)
+          (length 7.62)
+          (name "~"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "4"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin power_in line
+          (at -5.08 10.16 270)
+          (length 5.08)
+          (name "VCC"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "5"
+            (effects
+              (font
+                (size 1.27 1.27)))))))
     (symbol "LED:WS2812B-2020"
       (pin_names
         (offset 0.254))
@@ -8205,13 +8311,13 @@
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
           (reference "#PWR039")
           (unit 1)))))
-  (text "Pin map (IEKF firmware), rev A:\nMotors M1-M4 PA0-PA3 TIM2_CH1-CH4 -> ESC A J2; M5-M7 PA8-PA10 TIM1_CH1-CH3, M8 PA6 TIM16_CH1 -> ESC B J6\n(PWM 32 kHz brushed / DShot, bidirectional DShot: every motor timer has DMA)\nADC: PA4 ESC_CUR (IN9), PA5 VBAT_SNS (IN10, x10/110); ESC A serial telemetry PB0 (optional)\nSPI1 PB3 SCK / PB4 MISO / PB5 MOSI: IMU (CS PC14) + log flash (CS PE4), IMU_INT1 PA15\nUSART1 PB6 TX / PB7 RX -> ELRS (CRSF 420 kbaud), J5\nI2C1 PB8/PB9 -> expansion bus (Qwiic J3 + J4: GPS board, flow board, sensors)\nRGB LEDs PA7 (TIM17_CH1 + DMA, 4 x WS2812B); VBUS_DET PB1; PB2 free\nNo LSE: RF wake-up HSE/1024, RTC HSE/32. USB PA11/PA12 (DFU, CDC)\nSWD PA13/PA14, BOOT0 = PH3 (pull-down 10k)"
+  (text "Pin map (IEKF firmware), rev A:\nMotors M1-M4 PA0-PA3 TIM2_CH1-CH4 -> ESC A J2; M5-M7 PA8-PA10 TIM1_CH1-CH3, M8 PA6 TIM16_CH1 -> ESC B J6\n(PWM 32 kHz brushed / DShot, bidirectional DShot: every motor timer has DMA)\nADC: PA4 ESC_CUR (IN9), PA5 VBAT_SNS (IN10, x10/110); ESC A serial telemetry PB0 (optional)\nSPI1 PB3 SCK / PB4 MISO / PB5 MOSI: IMU (CS PC14) + log flash (CS PE4), IMU_INT1 PA15\nUSART1 PB6 TX / PB7 RX -> ELRS (CRSF 420 kbaud), J5\nI2C1 PB8/PB9 -> expansion bus (Qwiic J3 + J4: GPS board, flow board, sensors)\nRGB LEDs PA7 (TIM17_CH1 + DMA, buffer U13, 4 x XL-2020); VBUS_DET PB1; PB2 free\nNo LSE: RF wake-up HSE/1024, RTC HSE/32. USB PA11/PA12 (DFU, CDC)\nSWD PA13/PA14, BOOT0 = PH3 (pull-down 10k)"
     (at 186.69 17.78 0)
     (effects
       (font
         (size 1.27 1.27))
       (justify left top))
-    (uuid "88a324a0-92b9-59ab-8266-8d3660cea7f5"))
+    (uuid "64313b6a-a0d2-5961-b8c3-34ab94c2eb39"))
   (symbol
     (lib_id "Device:C")
     (at 187.96 48.26 0)
@@ -10010,7 +10116,7 @@
     (fill
       (type none))
     (uuid "ab27d7da-c985-5c44-8da9-5ab557c7e117"))
-  (text "D - Sensors: LSM6DSV16X (SPI1) + sensor hub -> IIS2MDC, LPS22HB; log flash"
+  (text "D - Sensors: LSM6DSV16X (SPI1) + sensor hub -> IIS2MDC, LPS22HH; log flash"
     (at 287.27 13.27 0)
     (effects
       (font
@@ -11341,7 +11447,7 @@
         (font
           (size 1.27 1.27))
         (justify left)))
-    (property "Value" "LPS22HB"
+    (property "Value" "LPS22HH"
       (at 382.27 124.46 0)
       (effects
         (font
@@ -11357,7 +11463,7 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "LPS22HBTR on the LPS22DF symbol/footprint (same HLGA-10 pinout, pin 3 to GND). Optional. SA0 = 1 -> 0x5D"
+    (property "Note" "LPS22HHTR (replaces LPS22HBTR, same pinout) on the LPS22DF symbol/footprint (HLGA-10, pin 3 to GND). Optional. SA0 = 1 -> 0x5D"
       (at 377.19 109.22 0)
       (effects
         (font
@@ -11659,7 +11765,7 @@
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
           (reference "#PWR087")
           (unit 1)))))
-  (text "Topology = IKS4A1 Mode 3: the IEKF firmware\nreads the IIS2MDC through the LSM6DSV16X\nsensor hub (samples aligned in the FIFO).\nRev E: the IMU host interface is SPI; DRDY/INT2/baro INT not used (FIFO + timestamps)\nAddresses on the hub bus: IIS2MDC 0x1E, LPS22HB 0x5D"
+  (text "Topology = IKS4A1 Mode 3: the IEKF firmware\nreads the IIS2MDC through the LSM6DSV16X\nsensor hub (samples aligned in the FIFO).\nRev E: the IMU host interface is SPI; DRDY/INT2/baro INT not used (FIFO + timestamps)\nAddresses on the hub bus: IIS2MDC 0x1E, LPS22HH 0x5D"
     (at 289.56 134.62 0)
     (effects
       (font
@@ -12874,7 +12980,7 @@
       (font
         (size 1.27 1.27))
       (justify left top))
-    (uuid "4bde1588-9d6c-510a-baa8-968e7a724f3f"))
+    (uuid "4698e88e-9a33-50dc-9944-54e73c3b3c4b"))
   (rectangle
     (start 152 221)
     (end 282 285)
@@ -13537,82 +13643,99 @@
     (fill
       (type none))
     (uuid "5fa91c0d-917d-5225-856f-0c0fb7c323f9"))
-  (text "F - RGB LEDs (4 x WS2812B), programming pads, mounting"
+  (text "F - RGB LEDs (4 x XL-2020RGBC-WS2812B), programming pads, mounting"
     (at 287.27 155.27 0)
     (effects
       (font
         (size 2 2) bold)
       (justify left top))
-    (uuid "af9f092a-791d-5fd7-b826-0bcf4b561ca3"))
+    (uuid "1a17789a-a30d-58a3-af94-e3762d20c10d"))
   (symbol
-    (lib_id "Device:D_Schottky")
-    (at 358.14 162.56 180)
+    (lib_id "74xGxx:74LVC1G34")
+    (at 300.99 182.88 0)
     (unit 1)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "15e1a8d8-361c-5f36-8e04-71c6099d3633")
-    (property "Reference" "D11"
-      (at 358.14 158.75 0)
+    (uuid "d3d7548e-f27d-5d2d-ab66-86481d7ce95b")
+    (property "Reference" "U13"
+      (at 306.07 176.53 0)
       (effects
         (font
-          (size 1.27 1.27))))
-    (property "Value" "RB521S30"
-      (at 358.14 166.37 0)
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "SN74LV1T34DCKR"
+      (at 306.07 189.23 0)
       (effects
         (font
-          (size 1.27 1.27))))
-    (property "Footprint" "ACwing:D_SOD-523"
-      (at 358.14 162.56 0)
-      (effects
-        (font
-          (size 1.27 1.27)) hide))
-    (property "Datasheet" "~"
-      (at 358.14 162.56 0)
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Footprint" "ACwing:SOT-353_SC-70-5"
+      (at 300.99 182.88 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "VLED = VSYS - 0.3 V: the LED data threshold (0.7 VLED) stays below the 3.1 V GPIO level on USB too"
-      (at 358.14 162.56 0)
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74lvc1g34.pdf"
+      (at 300.99 182.88 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Note" "Single-supply buffer, VCC = VSYS (3.5-4.7 V): input VIH <= 2.0 V (5 V tolerant), output to VSYS. LED data level shifter"
+      (at 300.99 182.88 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "019abffb-5eb3-5e5b-9103-52b2bf05022e"))
+      (uuid "43269f67-0f59-5d91-9121-50d76e53c240"))
     (pin "2"
-      (uuid "df40f0cc-acc9-50ba-89e6-e2501585047a"))
+      (uuid "2d94fd65-8687-5990-bf0f-c48719757714"))
+    (pin "3"
+      (uuid "f225f8e3-7f0d-52f1-a55a-cd8ec4ea7542"))
+    (pin "4"
+      (uuid "c03a26ac-159c-5ac3-bc44-5bd9ea587d87"))
+    (pin "5"
+      (uuid "1ea047ee-a9c3-52f1-ab3d-ca11352bccd2"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "D11")
+          (reference "U13")
           (unit 1)))))
+  (no_connect
+    (at 298.45 193.04)
+    (uuid "edf1552b-c3fa-5454-8fea-d11fc096d0b7"))
+  (label "RGB_DIN"
+    (at 283.21 182.88 180)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1.27 1.27))
+      (justify right bottom))
+    (uuid "13cf1bdb-89b4-54b4-a404-52f5866fbfda"))
   (symbol
-    (lib_id "ACwing:VSYS")
-    (at 354.33 162.56 90)
+    (lib_id "power:GND")
+    (at 295.91 193.04 0)
     (unit 1)
     (in_bom yes)
     (on_board yes)
     (dnp no)
     (uuid "3b558955-13a8-5367-9dde-3250e8554cfe")
     (property "Reference" "#PWR105"
-      (at 358.14 162.56 90)
+      (at 295.91 199.39 0)
       (effects
         (font
-          (size 1.27 1.27))
-        (justify left) hide))
-    (property "Value" "VSYS"
-      (at 351.03 162.56 90)
+          (size 1.27 1.27)) hide))
+    (property "Value" "GND"
+      (at 295.91 196.85 0)
       (effects
         (font
-          (size 1.27 1.27))
-        (justify left)))
+          (size 1.27 1.27))))
     (property "Footprint" ""
-      (at 354.33 162.56 90)
+      (at 295.91 193.04 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
     (property "Datasheet" "~"
-      (at 354.33 162.56 90)
+      (at 295.91 193.04 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
@@ -13623,48 +13746,162 @@
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
           (reference "#PWR105")
           (unit 1)))))
-  (label "VLED"
-    (at 364.49 162.56 0)
+  (label "RGB_DIN5"
+    (at 316.23 182.88 0)
     (fields_autoplaced)
     (effects
       (font
         (size 1.27 1.27))
       (justify left bottom))
-    (uuid "981ff117-8917-516e-8491-5384a9fe9921"))
+    (uuid "5f40a050-194e-55c7-a39f-9011fe996526"))
   (symbol
-    (lib_id "power:PWR_FLAG")
-    (at 369.57 162.56 0)
+    (lib_id "ACwing:VSYS")
+    (at 295.91 172.72 0)
     (unit 1)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "daac7926-16cf-549b-b0bb-adedbeea0673")
-    (property "Reference" "#FLG10"
-      (at 369.57 160.66 0)
+    (uuid "b148a8f2-f938-57d0-93ff-6e2fcd7ca7d4")
+    (property "Reference" "#PWR106"
+      (at 295.91 176.53 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Value" "PWR_FLAG"
-      (at 369.57 158.75 0)
+    (property "Value" "VSYS"
+      (at 295.91 168.91 0)
       (effects
         (font
           (size 1.27 1.27))))
     (property "Footprint" ""
-      (at 369.57 162.56 0)
+      (at 295.91 172.72 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
     (property "Datasheet" "~"
-      (at 369.57 162.56 0)
+      (at 295.91 172.72 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "764bafc8-e73e-50ff-9485-f29defd1c1e9"))
+      (uuid "ed1c99b5-125f-5cdd-abc6-8eaa9c48e005"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#FLG10")
+          (reference "#PWR106")
+          (unit 1)))))
+  (symbol
+    (lib_id "Device:C")
+    (at 290.83 182.88 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "d8d3cd13-816a-541a-8da0-cff81f1f2708")
+    (property "Reference" "C50"
+      (at 293.37 181.61 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Value" "100nF"
+      (at 293.37 184.15 0)
+      (effects
+        (font
+          (size 1.27 1.27))
+        (justify left)))
+    (property "Footprint" "ACwing:C_0402_1005Metric"
+      (at 291.8 186.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 290.83 182.88 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Note" "U13 supply"
+      (at 290.83 182.88 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "dfdfc320-dbee-5f4b-b3c1-9797c05696fb"))
+    (pin "2"
+      (uuid "38665488-d02e-5cd3-ac21-d5c335a2bd43"))
+    (instances
+      (project "ACwing_FC_A"
+        (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
+          (reference "C50")
+          (unit 1)))))
+  (symbol
+    (lib_id "ACwing:VSYS")
+    (at 290.83 179.07 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "f9942a0b-d7fa-5a33-9905-8513719d475d")
+    (property "Reference" "#PWR107"
+      (at 290.83 182.88 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "VSYS"
+      (at 290.83 175.26 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 290.83 179.07 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 290.83 179.07 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "bfc70033-7056-5982-90f7-18c4a0073262"))
+    (instances
+      (project "ACwing_FC_A"
+        (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
+          (reference "#PWR107")
+          (unit 1)))))
+  (symbol
+    (lib_id "power:GND")
+    (at 290.83 186.69 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "7e939658-b3c4-51b8-91d5-68d1f65fdbf1")
+    (property "Reference" "#PWR108"
+      (at 290.83 193.04 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "GND"
+      (at 290.83 190.5 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 290.83 186.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 290.83 186.69 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "cfd9724a-b1f8-531c-b419-6cff0eb7d426"))
+    (instances
+      (project "ACwing_FC_A"
+        (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
+          (reference "#PWR108")
           (unit 1)))))
   (symbol
     (lib_id "Device:R")
@@ -13694,7 +13931,7 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "Series resistor at the first LED input (data from PA7)"
+    (property "Note" "Series resistor at the first LED input (data from U13)"
       (at 297.18 203.2 90)
       (effects
         (font
@@ -13708,14 +13945,14 @@
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
           (reference "R39")
           (unit 1)))))
-  (label "RGB_DIN"
+  (label "RGB_DIN5"
     (at 290.83 203.2 180)
     (fields_autoplaced)
     (effects
       (font
         (size 1.27 1.27))
       (justify right bottom))
-    (uuid "afe8d732-efb7-5c2e-9c2c-e58c66f0eab9"))
+    (uuid "0272c190-d2bd-5807-8f98-a934bb0d7597"))
   (symbol
     (lib_id "LED:WS2812B-2020")
     (at 312.42 203.2 0)
@@ -13730,7 +13967,7 @@
         (font
           (size 1.27 1.27))
         (justify left)))
-    (property "Value" "WS2812B-2020"
+    (property "Value" "XL-2020RGBC-WS2812B"
       (at 304.8 217.17 0)
       (effects
         (font
@@ -13771,8 +14008,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "b148a8f2-f938-57d0-93ff-6e2fcd7ca7d4")
-    (property "Reference" "#PWR106"
+    (uuid "d288f567-01f9-5f39-b89b-b5b1b93eb1e6")
+    (property "Reference" "#PWR109"
       (at 312.42 217.17 0)
       (effects
         (font
@@ -13793,20 +14030,47 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "ed1c99b5-125f-5cdd-abc6-8eaa9c48e005"))
+      (uuid "e499de99-20ea-52d8-b012-39efaa263d30"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR106")
+          (reference "#PWR109")
           (unit 1)))))
-  (label "VLED"
-    (at 312.42 193.04 0)
-    (fields_autoplaced)
-    (effects
-      (font
-        (size 1.27 1.27))
-      (justify left bottom))
-    (uuid "5ac32c33-f88e-50da-8fbe-5fd1b26857b2"))
+  (symbol
+    (lib_id "ACwing:VSYS")
+    (at 312.42 195.58 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "f7105812-92b9-5569-905e-a1add4fd4a0f")
+    (property "Reference" "#PWR110"
+      (at 312.42 199.39 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "VSYS"
+      (at 312.42 191.77 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 312.42 195.58 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 312.42 195.58 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "8e33c612-f1df-574c-8345-4ca0189f6fb2"))
+    (instances
+      (project "ACwing_FC_A"
+        (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
+          (reference "#PWR110")
+          (unit 1)))))
   (symbol
     (lib_id "Device:C")
     (at 320.04 184.15 0)
@@ -13851,14 +14115,41 @@
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
           (reference "C40")
           (unit 1)))))
-  (label "VLED"
-    (at 320.04 177.8 0)
-    (fields_autoplaced)
-    (effects
-      (font
-        (size 1.27 1.27))
-      (justify left bottom))
-    (uuid "3f6b37ec-369a-5ecb-ba30-5b0a795716ad"))
+  (symbol
+    (lib_id "ACwing:VSYS")
+    (at 320.04 180.34 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "4e325a66-f854-55e1-858c-0ed064787d3f")
+    (property "Reference" "#PWR111"
+      (at 320.04 184.15 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "VSYS"
+      (at 320.04 176.53 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 320.04 180.34 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 320.04 180.34 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "24520edb-66c6-523e-a9db-f2e49054f86f"))
+    (instances
+      (project "ACwing_FC_A"
+        (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
+          (reference "#PWR111")
+          (unit 1)))))
   (symbol
     (lib_id "power:GND")
     (at 320.04 187.96 0)
@@ -13866,8 +14157,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "f9942a0b-d7fa-5a33-9905-8513719d475d")
-    (property "Reference" "#PWR107"
+    (uuid "996e83f3-053b-5b0d-ad9b-4a307a1eb629")
+    (property "Reference" "#PWR112"
       (at 320.04 194.31 0)
       (effects
         (font
@@ -13888,11 +14179,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "bfc70033-7056-5982-90f7-18c4a0073262"))
+      (uuid "39b44cb8-1b81-564a-9c40-d79f5698a400"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR107")
+          (reference "#PWR112")
           (unit 1)))))
   (symbol
     (lib_id "LED:WS2812B-2020")
@@ -13908,7 +14199,7 @@
         (font
           (size 1.27 1.27))
         (justify left)))
-    (property "Value" "WS2812B-2020"
+    (property "Value" "XL-2020RGBC-WS2812B"
       (at 327.66 217.17 0)
       (effects
         (font
@@ -13949,8 +14240,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "7e939658-b3c4-51b8-91d5-68d1f65fdbf1")
-    (property "Reference" "#PWR108"
+    (uuid "9da67d77-1217-571d-b3b2-9ce405851b35")
+    (property "Reference" "#PWR113"
       (at 335.28 217.17 0)
       (effects
         (font
@@ -13971,20 +14262,47 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "cfd9724a-b1f8-531c-b419-6cff0eb7d426"))
+      (uuid "6dce0c7a-a527-5f18-9a30-2704f0dbba1e"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR108")
+          (reference "#PWR113")
           (unit 1)))))
-  (label "VLED"
-    (at 335.28 193.04 0)
-    (fields_autoplaced)
-    (effects
-      (font
-        (size 1.27 1.27))
-      (justify left bottom))
-    (uuid "10fe1645-bb60-5be4-9c94-83c9f8405728"))
+  (symbol
+    (lib_id "ACwing:VSYS")
+    (at 335.28 195.58 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "e3a16483-d8dd-5ff1-a16b-c79dda4179bc")
+    (property "Reference" "#PWR114"
+      (at 335.28 199.39 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "VSYS"
+      (at 335.28 191.77 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 335.28 195.58 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 335.28 195.58 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "43e0c26d-b6fa-58c6-8ceb-d1b6ec94129a"))
+    (instances
+      (project "ACwing_FC_A"
+        (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
+          (reference "#PWR114")
+          (unit 1)))))
   (symbol
     (lib_id "Device:C")
     (at 342.9 184.15 0)
@@ -14029,14 +14347,41 @@
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
           (reference "C41")
           (unit 1)))))
-  (label "VLED"
-    (at 342.9 177.8 0)
-    (fields_autoplaced)
-    (effects
-      (font
-        (size 1.27 1.27))
-      (justify left bottom))
-    (uuid "1eeec2f1-42d7-54fe-9ad1-365e5643be9c"))
+  (symbol
+    (lib_id "ACwing:VSYS")
+    (at 342.9 180.34 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "867ed8c1-51ad-544a-ae4c-9de53326c422")
+    (property "Reference" "#PWR115"
+      (at 342.9 184.15 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "VSYS"
+      (at 342.9 176.53 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 342.9 180.34 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 342.9 180.34 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "bd425bb1-b5c6-581f-8b44-b8c36455eabb"))
+    (instances
+      (project "ACwing_FC_A"
+        (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
+          (reference "#PWR115")
+          (unit 1)))))
   (symbol
     (lib_id "power:GND")
     (at 342.9 187.96 0)
@@ -14044,8 +14389,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "d288f567-01f9-5f39-b89b-b5b1b93eb1e6")
-    (property "Reference" "#PWR109"
+    (uuid "d09463b3-e070-5ecc-99c1-ff4f8b79df1c")
+    (property "Reference" "#PWR116"
       (at 342.9 194.31 0)
       (effects
         (font
@@ -14066,11 +14411,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "e499de99-20ea-52d8-b012-39efaa263d30"))
+      (uuid "1f1cc1bc-704f-5b0c-8d5b-df2648519345"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR109")
+          (reference "#PWR116")
           (unit 1)))))
   (symbol
     (lib_id "LED:WS2812B-2020")
@@ -14086,7 +14431,7 @@
         (font
           (size 1.27 1.27))
         (justify left)))
-    (property "Value" "WS2812B-2020"
+    (property "Value" "XL-2020RGBC-WS2812B"
       (at 350.52 217.17 0)
       (effects
         (font
@@ -14127,8 +14472,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "f7105812-92b9-5569-905e-a1add4fd4a0f")
-    (property "Reference" "#PWR110"
+    (uuid "d0f1d239-bed0-5da1-a157-61baee4653c2")
+    (property "Reference" "#PWR117"
       (at 358.14 217.17 0)
       (effects
         (font
@@ -14149,20 +14494,47 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "8e33c612-f1df-574c-8345-4ca0189f6fb2"))
+      (uuid "5a9dd9fe-863d-51cd-9bda-5655c822f543"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR110")
+          (reference "#PWR117")
           (unit 1)))))
-  (label "VLED"
-    (at 358.14 193.04 0)
-    (fields_autoplaced)
-    (effects
-      (font
-        (size 1.27 1.27))
-      (justify left bottom))
-    (uuid "e25a2466-655c-56b3-9ca3-dd0c5a850603"))
+  (symbol
+    (lib_id "ACwing:VSYS")
+    (at 358.14 195.58 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "5788ad01-c908-58ed-ba02-7f1103e410e6")
+    (property "Reference" "#PWR118"
+      (at 358.14 199.39 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "VSYS"
+      (at 358.14 191.77 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 358.14 195.58 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 358.14 195.58 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "1f39a1ab-cb6a-5149-9cec-4049d243e15d"))
+    (instances
+      (project "ACwing_FC_A"
+        (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
+          (reference "#PWR118")
+          (unit 1)))))
   (symbol
     (lib_id "Device:C")
     (at 365.76 184.15 0)
@@ -14207,14 +14579,41 @@
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
           (reference "C42")
           (unit 1)))))
-  (label "VLED"
-    (at 365.76 177.8 0)
-    (fields_autoplaced)
-    (effects
-      (font
-        (size 1.27 1.27))
-      (justify left bottom))
-    (uuid "c349d217-af76-5926-9288-604540fdcba2"))
+  (symbol
+    (lib_id "ACwing:VSYS")
+    (at 365.76 180.34 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "e9967d64-30b7-544f-96ba-068bec8f6bea")
+    (property "Reference" "#PWR119"
+      (at 365.76 184.15 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "VSYS"
+      (at 365.76 176.53 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 365.76 180.34 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 365.76 180.34 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "71e41a43-e9ec-5b46-9f5d-c8ec93d52152"))
+    (instances
+      (project "ACwing_FC_A"
+        (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
+          (reference "#PWR119")
+          (unit 1)))))
   (symbol
     (lib_id "power:GND")
     (at 365.76 187.96 0)
@@ -14222,8 +14621,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "4e325a66-f854-55e1-858c-0ed064787d3f")
-    (property "Reference" "#PWR111"
+    (uuid "39489ba8-1692-57a4-9e7f-aebd5682f87e")
+    (property "Reference" "#PWR120"
       (at 365.76 194.31 0)
       (effects
         (font
@@ -14244,11 +14643,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "24520edb-66c6-523e-a9db-f2e49054f86f"))
+      (uuid "b6b1cf68-de8d-51a6-9a1c-52414992e9ff"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR111")
+          (reference "#PWR120")
           (unit 1)))))
   (symbol
     (lib_id "LED:WS2812B-2020")
@@ -14264,7 +14663,7 @@
         (font
           (size 1.27 1.27))
         (justify left)))
-    (property "Value" "WS2812B-2020"
+    (property "Value" "XL-2020RGBC-WS2812B"
       (at 373.38 217.17 0)
       (effects
         (font
@@ -14308,8 +14707,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "996e83f3-053b-5b0d-ad9b-4a307a1eb629")
-    (property "Reference" "#PWR112"
+    (uuid "29e0dfc4-f571-5900-986d-e2b6097d61aa")
+    (property "Reference" "#PWR121"
       (at 381 217.17 0)
       (effects
         (font
@@ -14330,20 +14729,47 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "39b44cb8-1b81-564a-9c40-d79f5698a400"))
+      (uuid "04df3e70-ae4d-5349-bee7-a1f2e5a4de04"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR112")
+          (reference "#PWR121")
           (unit 1)))))
-  (label "VLED"
-    (at 381 193.04 0)
-    (fields_autoplaced)
-    (effects
-      (font
-        (size 1.27 1.27))
-      (justify left bottom))
-    (uuid "a4042b30-4134-5652-a2e9-5360c4f82b70"))
+  (symbol
+    (lib_id "ACwing:VSYS")
+    (at 381 195.58 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "6dfc9401-1607-5cad-94c9-fbb4a868ba1e")
+    (property "Reference" "#PWR122"
+      (at 381 199.39 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "VSYS"
+      (at 381 191.77 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 381 195.58 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 381 195.58 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "30004141-9e88-52ed-ad46-e5fcab305ad6"))
+    (instances
+      (project "ACwing_FC_A"
+        (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
+          (reference "#PWR122")
+          (unit 1)))))
   (symbol
     (lib_id "Device:C")
     (at 388.62 184.15 0)
@@ -14388,14 +14814,41 @@
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
           (reference "C45")
           (unit 1)))))
-  (label "VLED"
-    (at 388.62 177.8 0)
-    (fields_autoplaced)
-    (effects
-      (font
-        (size 1.27 1.27))
-      (justify left bottom))
-    (uuid "516e0125-34c4-52d3-9a67-e2f6897da5f3"))
+  (symbol
+    (lib_id "ACwing:VSYS")
+    (at 388.62 180.34 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "8be15a00-03f6-59c5-abd0-9518a2afc6b2")
+    (property "Reference" "#PWR123"
+      (at 388.62 184.15 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "VSYS"
+      (at 388.62 176.53 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 388.62 180.34 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 388.62 180.34 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "b74f9cb3-f634-5dc4-a20d-7e79b4c46934"))
+    (instances
+      (project "ACwing_FC_A"
+        (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
+          (reference "#PWR123")
+          (unit 1)))))
   (symbol
     (lib_id "power:GND")
     (at 388.62 187.96 0)
@@ -14403,8 +14856,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "9da67d77-1217-571d-b3b2-9ce405851b35")
-    (property "Reference" "#PWR113"
+    (uuid "136411c7-2ba8-5d57-b58a-364e24ed1f29")
+    (property "Reference" "#PWR124"
       (at 388.62 194.31 0)
       (effects
         (font
@@ -14425,11 +14878,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "6dce0c7a-a527-5f18-9a30-2704f0dbba1e"))
+      (uuid "fb220825-e469-5e0e-ba00-c597cc2b53bd"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR113")
+          (reference "#PWR124")
           (unit 1)))))
   (text "No buzzer: beeps through the motors (audio PWM).\nA magnetic buzzer would put a magnet under the compasses."
     (at 290.83 161.29 0)
@@ -14787,8 +15240,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "e3a16483-d8dd-5ff1-a16b-c79dda4179bc")
-    (property "Reference" "#PWR114"
+    (uuid "5fd6927c-f019-5fcd-ad48-549d9ffde712")
+    (property "Reference" "#PWR125"
       (at 360.68 229.87 0)
       (effects
         (font
@@ -14809,11 +15262,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "43e0c26d-b6fa-58c6-8ceb-d1b6ec94129a"))
+      (uuid "60dc9664-06d6-5b1d-b359-f3b765bf2f84"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR114")
+          (reference "#PWR125")
           (unit 1)))))
   (symbol
     (lib_id "Connector:TestPoint")
@@ -14864,8 +15317,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "867ed8c1-51ad-544a-ae4c-9de53326c422")
-    (property "Reference" "#PWR115"
+    (uuid "4b32843e-0edc-563d-9aac-30aac0174c6f")
+    (property "Reference" "#PWR126"
       (at 370.84 240.03 0)
       (effects
         (font
@@ -14886,11 +15339,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "bd425bb1-b5c6-581f-8b44-b8c36455eabb"))
+      (uuid "5ba2d0fd-7b1c-56e7-8414-8014d9199978"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR115")
+          (reference "#PWR126")
           (unit 1)))))
   (symbol
     (lib_id "Mechanical:MountingHole_Pad")
@@ -14939,8 +15392,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "d09463b3-e070-5ecc-99c1-ff4f8b79df1c")
-    (property "Reference" "#PWR116"
+    (uuid "1d134351-4068-5c5b-aebb-33c41eb76bbe")
+    (property "Reference" "#PWR127"
       (at 378.46 237.49 0)
       (effects
         (font
@@ -14961,11 +15414,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "1f1cc1bc-704f-5b0c-8d5b-df2648519345"))
+      (uuid "19c9ceb5-e5b5-5199-a125-ef5bcd4d2efc"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR116")
+          (reference "#PWR127")
           (unit 1)))))
   (symbol
     (lib_id "Mechanical:MountingHole_Pad")
@@ -15014,8 +15467,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "d0f1d239-bed0-5da1-a157-61baee4653c2")
-    (property "Reference" "#PWR117"
+    (uuid "27775e5a-fcf1-5485-a749-9580276c2d53")
+    (property "Reference" "#PWR128"
       (at 386.08 237.49 0)
       (effects
         (font
@@ -15036,11 +15489,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "5a9dd9fe-863d-51cd-9bda-5655c822f543"))
+      (uuid "dc4d0e38-a76f-52f2-b5c0-20be5dfa1ed0"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR117")
+          (reference "#PWR128")
           (unit 1)))))
   (symbol
     (lib_id "Mechanical:MountingHole_Pad")
@@ -15089,8 +15542,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "5788ad01-c908-58ed-ba02-7f1103e410e6")
-    (property "Reference" "#PWR118"
+    (uuid "8ac29c63-e19a-5d7e-b5b8-f6b7c991bd2d")
+    (property "Reference" "#PWR129"
       (at 393.7 237.49 0)
       (effects
         (font
@@ -15111,11 +15564,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "1f39a1ab-cb6a-5149-9cec-4049d243e15d"))
+      (uuid "b92e06c6-b890-562f-98aa-89665ee991c0"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR118")
+          (reference "#PWR129")
           (unit 1)))))
   (symbol
     (lib_id "Mechanical:MountingHole_Pad")
@@ -15164,8 +15617,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "e9967d64-30b7-544f-96ba-068bec8f6bea")
-    (property "Reference" "#PWR119"
+    (uuid "e81118b0-6cc0-5d4b-ae8d-385d4df7b36f")
+    (property "Reference" "#PWR130"
       (at 401.32 237.49 0)
       (effects
         (font
@@ -15186,11 +15639,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "71e41a43-e9ec-5b46-9f5d-c8ec93d52152"))
+      (uuid "95b4d123-5344-539d-9f8a-ff74679b6dc3"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR119")
+          (reference "#PWR130")
           (unit 1)))))
   (text "Grommet holes 3.2 PTH, 20x20\n(above the ESC / power board)"
     (at 375.92 240.03 0)
@@ -15270,8 +15723,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "39489ba8-1692-57a4-9e7f-aebd5682f87e")
-    (property "Reference" "#PWR120"
+    (uuid "27bab757-6849-5337-828a-8b77a0fbcc12")
+    (property "Reference" "#PWR131"
       (at 190.5 200.66 90)
       (effects
         (font
@@ -15294,11 +15747,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "b6b1cf68-de8d-51a6-9a1c-52414992e9ff"))
+      (uuid "5fb8a38d-44b7-59d5-afcf-1935bc837b77"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR120")
+          (reference "#PWR131")
           (unit 1)))))
   (label "VEXP"
     (at 194.31 203.2 180)
@@ -15383,8 +15836,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "29e0dfc4-f571-5900-986d-e2b6097d61aa")
-    (property "Reference" "#PWR121"
+    (uuid "19c9f87e-0e82-5645-8595-c255907994a2")
+    (property "Reference" "#PWR132"
       (at 233.68 217.17 0)
       (effects
         (font
@@ -15405,11 +15858,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "04df3e70-ae4d-5349-bee7-a1f2e5a4de04"))
+      (uuid "928f0ab7-1973-5314-b6c6-a4134f174cdc"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR121")
+          (reference "#PWR132")
           (unit 1)))))
   (symbol
     (lib_id "ACwing:VSYS")
@@ -15418,8 +15871,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "6dfc9401-1607-5cad-94c9-fbb4a868ba1e")
-    (property "Reference" "#PWR122"
+    (uuid "22a44794-3859-518b-803d-7e7b1229a34c")
+    (property "Reference" "#PWR133"
       (at 229.87 203.2 90)
       (effects
         (font
@@ -15442,11 +15895,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "30004141-9e88-52ed-ad46-e5fcab305ad6"))
+      (uuid "3af94bf0-9013-526d-92b8-5ffbe83e6040"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR122")
+          (reference "#PWR133")
           (unit 1)))))
   (no_connect
     (at 228.6 205.74)
@@ -15458,8 +15911,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "8be15a00-03f6-59c5-abd0-9518a2afc6b2")
-    (property "Reference" "#PWR123"
+    (uuid "5a6f2c85-3842-5e25-965f-334a135ff2d6")
+    (property "Reference" "#PWR134"
       (at 229.87 200.66 90)
       (effects
         (font
@@ -15482,11 +15935,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "b74f9cb3-f634-5dc4-a20d-7e79b4c46934"))
+      (uuid "313951f5-2529-5259-aa27-dc8c9df44e17"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR123")
+          (reference "#PWR134")
           (unit 1)))))
   (label "VEXP"
     (at 246.38 200.66 0)
@@ -15547,8 +16000,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "136411c7-2ba8-5d57-b58a-364e24ed1f29")
-    (property "Reference" "#PWR124"
+    (uuid "c3c7f3c5-c1db-5a65-86d6-2d69bf62b3fe")
+    (property "Reference" "#PWR135"
       (at 246.38 217.17 0)
       (effects
         (font
@@ -15569,11 +16022,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "fb220825-e469-5e0e-ba00-c597cc2b53bd"))
+      (uuid "102ae4fc-2133-57b0-98a2-3519624b7a1c"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR124")
+          (reference "#PWR135")
           (unit 1)))))
   (symbol
     (lib_id "Device:R")
@@ -15683,8 +16136,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "5fd6927c-f019-5fcd-ad48-549d9ffde712")
-    (property "Reference" "#PWR125"
+    (uuid "da2855dd-f8b9-5b71-8ab4-4db9232e1da0")
+    (property "Reference" "#PWR136"
       (at 214.63 205.74 0)
       (effects
         (font
@@ -15705,11 +16158,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "60dc9664-06d6-5b1d-b359-f3b765bf2f84"))
+      (uuid "db1f5308-9818-5e2a-9541-bfcd480e80b3"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR125")
+          (reference "#PWR136")
           (unit 1)))))
   (symbol
     (lib_id "power:GND")
@@ -15718,8 +16171,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "4b32843e-0edc-563d-9aac-30aac0174c6f")
-    (property "Reference" "#PWR126"
+    (uuid "9bf4329b-da0e-5f47-9c69-185c5bf0f1a0")
+    (property "Reference" "#PWR137"
       (at 214.63 215.9 0)
       (effects
         (font
@@ -15740,11 +16193,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "5ba2d0fd-7b1c-56e7-8414-8014d9199978"))
+      (uuid "ffcc2325-1ec6-5a8c-a93d-b5ced61a7376"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR126")
+          (reference "#PWR137")
           (unit 1)))))
   (symbol
     (lib_id "Device:C")
@@ -15805,8 +16258,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "1d134351-4068-5c5b-aebb-33c41eb76bbe")
-    (property "Reference" "#PWR127"
+    (uuid "e9cc7b28-484f-58b8-bdf4-e1fc5e264705")
+    (property "Reference" "#PWR138"
       (at 276.86 217.17 0)
       (effects
         (font
@@ -15827,11 +16280,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "19c9ceb5-e5b5-5199-a125-ef5bcd4d2efc"))
+      (uuid "af53b631-6553-55d4-b88c-ce6390d612e1"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR127")
+          (reference "#PWR138")
           (unit 1)))))
   (symbol
     (lib_id "Connector_Generic:Conn_01x04")
@@ -15888,8 +16341,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "27775e5a-fcf1-5485-a749-9580276c2d53")
-    (property "Reference" "#PWR128"
+    (uuid "86f9d01f-a276-5c02-ba9b-760f29449087")
+    (property "Reference" "#PWR139"
       (at 298.45 223.52 90)
       (effects
         (font
@@ -15912,11 +16365,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "dc4d0e38-a76f-52f2-b5c0-20be5dfa1ed0"))
+      (uuid "4cda34cd-9d41-57a2-863e-6b8ed506d8e8"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR128")
+          (reference "#PWR139")
           (unit 1)))))
   (symbol
     (lib_id "ACwing:VSYS")
@@ -15925,8 +16378,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "8ac29c63-e19a-5d7e-b5b8-f6b7c991bd2d")
-    (property "Reference" "#PWR129"
+    (uuid "40d76bb7-055f-58bf-a6b0-406f73dd5761")
+    (property "Reference" "#PWR140"
       (at 308.61 226.06 90)
       (effects
         (font
@@ -15949,11 +16402,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "b92e06c6-b890-562f-98aa-89665ee991c0"))
+      (uuid "14a99f0c-ba36-552b-be77-99c3c29c4a1a"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "#PWR129")
+          (reference "#PWR140")
           (unit 1)))))
   (label "CRSF_RX"
     (at 302.26 228.6 180)
@@ -17587,20 +18040,20 @@
     (uuid "26af2a54-3c6c-57fc-91d0-ad6d971141ee"))
   (wire
     (pts
-      (xy 361.95 162.56)
-      (xy 364.49 162.56))
+      (xy 285.75 182.88)
+      (xy 283.21 182.88))
     (stroke
       (width 0)
       (type default))
-    (uuid "d51bdb01-c066-5358-ad5c-1b8651990b16"))
+    (uuid "a6a4973f-f411-51c9-8629-2f8f7e8215e1"))
   (wire
     (pts
-      (xy 364.49 162.56)
-      (xy 369.57 162.56))
+      (xy 313.69 182.88)
+      (xy 316.23 182.88))
     (stroke
       (width 0)
       (type default))
-    (uuid "fe9260c3-493d-5911-a8c6-055f66f35082"))
+    (uuid "f67a2ffe-f7ff-5808-b94f-e1805dd3df94"))
   (wire
     (pts
       (xy 293.37 203.2)
@@ -17609,70 +18062,6 @@
       (width 0)
       (type default))
     (uuid "56ae0707-259b-5af4-b0a4-e354ac901bc3"))
-  (wire
-    (pts
-      (xy 312.42 195.58)
-      (xy 312.42 193.04))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "96616d72-23ec-55c8-af91-b6793e54cd34"))
-  (wire
-    (pts
-      (xy 320.04 180.34)
-      (xy 320.04 177.8))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "6983e589-85f4-5296-b195-a604edb81a8d"))
-  (wire
-    (pts
-      (xy 335.28 195.58)
-      (xy 335.28 193.04))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "40cdefb9-dc54-56dd-968b-49cb2e8c49b6"))
-  (wire
-    (pts
-      (xy 342.9 180.34)
-      (xy 342.9 177.8))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "329d1406-b2cb-51f2-9b11-c02928963c82"))
-  (wire
-    (pts
-      (xy 358.14 195.58)
-      (xy 358.14 193.04))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "537c8129-95df-56b8-9fac-1d96fa52bfb6"))
-  (wire
-    (pts
-      (xy 365.76 180.34)
-      (xy 365.76 177.8))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "1a5148ad-dc9f-53bd-ba1a-10ebb220d6fc"))
-  (wire
-    (pts
-      (xy 381 195.58)
-      (xy 381 193.04))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "b1df5064-7f2e-5020-9ad3-08e149c5b8b3"))
-  (wire
-    (pts
-      (xy 388.62 180.34)
-      (xy 388.62 177.8))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "ccd5b3d1-b275-54f2-b9e3-f2f24b9990c6"))
   (wire
     (pts
       (xy 320.04 203.2)

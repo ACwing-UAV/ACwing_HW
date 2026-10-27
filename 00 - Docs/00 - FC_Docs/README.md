@@ -25,7 +25,7 @@ The FC has one USB-C port for data, DFU flashing and bench supply only. Battery 
 | **J6 ESC link B** | left edge | **front edge, next to J5 (ELRS)**, same mouth direction, centre (−8.2, +16.85) | both cable ports together on the front edge; J6 body ≥ 3.4 mm from the antenna keep-out |
 | **Input buck U12 / L3** | rear-left corner, between the rear LEDs D1 / D2 | **left edge** (old J6 spot): L3 (−16.9, −4.6), U12 (−12.1, −5.0) | L3 no longer between the two LEDs; 41 mm from the magnetometer, 17 mm from the IMU |
 | LDO U5, C8, R3, R4 | south of the IMU | west of the IMU, (−4.6, −7.8) | IMU escape channel |
-| **LEDs D3 / D4** | supply pins toward the magnetometer | **rotated 180°**, supply (VLED) pre-routed on B.Cu from D11 along the board interior | the LED current changes with the colour: kept ≥ 4.8 mm from the magnetometer (was 3.9 mm, and a LED data line crossed it) |
+| **LEDs D3 / D4** | supply pins toward the magnetometer | **rotated 180°**, supply (VSYS since 2026-10-27, was VLED behind D11) pre-routed on B.Cu along the board interior | the LED current changes with the colour: kept ≥ 4.8 mm from the magnetometer (was 3.9 mm, and a LED data line crossed it) |
 
 Stack: the GPS board Qwiic J1 moved to v = +3.6 so it sits right above FC J3 (straight cable). The ESC link (FC J2 /
 ESC J1) stays 8 mm offset: FC J2 can move only 0.8 mm before the USB-C, and ESC J1 cannot reach the rear-edge centre
@@ -38,10 +38,10 @@ layer, In1 GND under the sensors.
 
 | Source at the magnetometer | Before | Now |
 |---|---|---|
-| LED supply VLED (144 mA at full white, **varies with the colour**) | 6.3 µT, LED data line under the sensor | **4.7 µT**, nothing crosses the sensor |
+| LED supply (VSYS branch to the LEDs, 144 mA at full white, **varies with the colour**) | 6.3 µT, LED data line under the sensor | **4.7 µT**, nothing crosses the sensor |
 | VSYS / VBAT / VBUS / VEXP / VDD / VREG (DC, calibrated as hard iron) | 18.0 µT | 14.9 µT |
 | Buck switch node / L3 stray field | 0.23 / 0.02 µT | 0.39 / 0.03 µT |
-| Closest aggressor copper | LED data line 0 mm | LED data line 3.4 mm, VLED 4.1 mm |
+| Closest aggressor copper | LED data line 0 mm | LED data line 3.4 mm, LED supply 4.1 mm |
 
 - Magnetometer: In1 GND 84 % under the sensor (+1 mm), no slots. The only colour-dependent term is the LED supply:
   firmware either compensates it (LED current is known from the commanded colour) or keeps the LED pattern fixed while
@@ -94,13 +94,19 @@ J3 Qwiic, J5 ELRS positions, pogo grid.
 ESC A J2 pin 2 ─┐
 J7 / J8 pads ───┴─ VBAT 1S–6S ── U12 LM5166 (PFM) ── VREG 4.1 V ── Q5 ──┬── VSYS ── U5 LDO 3.1 V (VDD: MCU, sensors)
                          │                                           │         ├─ U11 LDO 3.31 V (VEXP: Qwiic J3/J4)
-                         └─ R8/R9 → VBAT_SNS (PA5)          USB VBUS ── D9 ─┘         ├─ D11 → VLED (4 × WS2812B)
+                         └─ R8/R9 → VBAT_SNS (PA5)          USB VBUS ── D9 ─┘         ├─ 4 × XL-2020RGBC-WS2812B (data: PA7 → U13 buffer)
                                                                                         └─ J5 ELRS supply
 ```
 - Q5 (AO3401A) is on with the battery only; USB on its gate turns it off, so USB never back-feeds the buck or the
   ESC (the LM5166 high-side body diode would otherwise connect VREG to VBAT).
 - Q5's body diode points from VREG to VSYS. With USB and battery both present, VSYS comes from USB (4.65 V > 4.1 V –
   body-diode drop).
+- **LEDs on VSYS, data through U13** (2026-10-27): the XL-2020RGBC-WS2812B needs VDD ≥ 3.5 V and a data high level of
+  0.7 × VDD (2.45–3.26 V over the VSYS range), above or too close to the 3.1 V GPIO. U13 (TI **SN74LV1T34DCKR**,
+  single-supply buffer, SC-70-5, bottom side next to D1) runs from VSYS: its input threshold is TTL-level
+  (VIH ≤ 2.0 V at 5 V, 5 V tolerant) and its push-pull output swings to VSYS, so the LED input always sees a full-level
+  edge, on battery and on USB alone. C50 100 nF decouples it; R39 33 Ω sits between U13 and D1. Propagation delay
+  ≈ 5 ns, negligible against the 800 kHz WS2812 bit time.
 
 ## ESC link A (J2) and ESC link B (J6)
 | Pin | J2 (ESC A, rear edge) | J6 (ESC B, front edge) |
@@ -176,10 +182,20 @@ See `ACwing_FC_A_pinmap.md`. Summary:
   4.7 µF 50 V 1206 X7R C29823 (Basic), 470 kΩ C25790, 200 kΩ C25764, 10 nF 50 V C15195.
 - CPL: rotation corrections as drafts F/G. U12 (VSON-10, DRC) has no learned correction yet: 270° as the DFN/QFN parts of
   this board. **Check U12 pin 1 in the JLC preview**, with J2/J6 (tabs toward the edges) and the LED marks.
-- **Cost:** about **28.2 USD per board at 10 boards, 22.7 USD at 100** (components only; draft G 26.1 / 20.6). The LM5166
+- **Cost:** about **29.4 USD per board at 10 boards, 24.6 USD at 100** (components only, 2026-10-27 prices with the
+  LPS22HH barometer and the U13 buffer; draft G 26.1 / 20.6). The LM5166
   (3.7 USD) replaces the TPS62160 + charger + charge gate (≈ 2.4 USD).
 
 ## To check before ordering
+0. **Parts (2026-10-27):** STM32WB55CGU6 out of stock at LCSC/JLC → consigned part (Mouser/DigiKey/ST) or JLC
+   Global Sourcing. Barometer changed to **LPS22HHTR** (C2827824, same footprint and pinout as the LPS22HBTR, out of
+   stock; firmware: WHO_AM_I 0xB3), low LCSC stock. R40 LCSC number fixed (C25792, 47 kΩ 0402).
+   RGB LEDs changed to **XINGLIGHT XL-2020RGBC-WS2812B** (C5349955, same footprint and pinout; WS2812B-2020 out of
+   stock). Its VDD minimum is 3.5 V (Worldsemi: 3.3 V), so the Schottky D11 is removed and the LEDs run straight from
+   VSYS (3.5–4.2 V on 1S, 4.1 V on 2S–6S, ≈ 4.65 V on USB only; LED max 5.5 V). The LED data line goes through the
+   new level-shifting buffer **U13 SN74LV1T34DCKR** (TI, C78541, SC-70-5) powered from VSYS, so the data level is right
+   in every supply case (see Power architecture). Check the LED and U13 pin-1 marks in the JLC preview (U13 CPL
+   correction 270°, as the SOT-23-6 of this board).
 1. ERC in KiCad 8/9.
 2. LM5166 stock at LCSC/JLC (350 pcs on 2026-10-18).
 3. Bench test of the buck at 1S (3.0–4.2 V, 100 % duty cycle) and 6S (25.2 V), with the full FC load: VREG ripple

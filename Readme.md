@@ -68,11 +68,11 @@ page locally.
 
 **ACwing FC rev A**
 - MCU **STM32WB55CGU6** (Cortex-M4 + M0+ radio core), BLE 5 with chip antenna and ST MLPF-WB55 front end.
-- Sensors: **LSM6DSV16X** IMU, **LPS22HB** barometer, **IIS2MDC** compass; **W25Q128JV** 16 MB log flash.
+- Sensors: **LSM6DSV16X** IMU, **LPS22HH** barometer, **IIS2MDC** compass; **W25Q128JV** 16 MB log flash.
 - Input **1S–6S** (LM5166 buck, 3–65 V; 100 % duty cycle pass-through on 1S), 4.1 V system rail, 3.1 V and 3.31 V LDOs.
 - **Two ESC links** (JST SH 8-pin, standard 4-in-1 pinout): 8 motor outputs (TIM2 / TIM1 / TIM16), VBAT and current
   sense from the ESC, battery pads for setups without a VBAT pin.
-- Two Qwiic ports, ELRS / CRSF UART port, USB-C (data, DFU, bench supply), 4 × WS2812B, SWD pogo grid.
+- Two Qwiic ports, ELRS / CRSF UART port, USB-C (data, DFU, bench supply), 4 × addressable RGB LEDs (XL-2020, level-shifted data), SWD pogo grid.
 
 **ACwing ESC 1S rev A**
 - 4 brushed motor stages (AON7524 N-MOSFETs) for coreless 8520 motors, 470 µF bulk capacitor.
@@ -110,7 +110,7 @@ For each board, from its docs folder:
    number; the CPL already includes the rotation corrections. Check the pin-1 marks in the JLC preview as listed in the
    board README ("To check before ordering").
 
-Indicative component cost per board (10 / 100 boards, components only): FC 28.2 / 22.7 USD, ESC 1S 6.4 / 5.1 USD,
+Indicative component cost per board (10 / 100 boards, components only): FC 29.4 / 24.6 USD, ESC 1S 6.4 / 5.1 USD,
 GPS 27.6 / 23.4 USD, Flow 11.1 / 9.4 USD. Check LCSC stock before ordering.
 
 ## Status

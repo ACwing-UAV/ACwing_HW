@@ -23,6 +23,7 @@ CORR = {
  'Vishay_PowerPAK_1212-8_Single': 270,         # Q1-Q4 (AON7524)
  'SOT-23-6': 270,                              # U7
  'LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y': 180,  # U1
+ 'SOT-353_SC-70-5': 270,                       # U13 (SN74LV1T34, same zero orientation as SOT-23-6: check in the JLC preview)
  'SOT-23': 180,                                # Q5
  'Texas_DRC0010J': 270,                        # U12 (LM5166, same zero orientation as the DFN-6 / QFN-48 of this board: check in the JLC preview)
  'CP_EIA-7343-31_Kemet-D': 180,                # C1 (tantalum polarity)
