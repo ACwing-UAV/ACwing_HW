@@ -180,8 +180,15 @@ See `ACwing_FC_A_pinmap.md`. Summary:
 - 4 layers, 1.0 mm FR-4; parts on both sides (top 36, bottom 57).
 - New LCSC parts: **LM5166DRCT C181495** (350 in stock on 2026-10-18: check before ordering), SWPA5040S220MT C68434,
   4.7 µF 50 V 1206 X7R C29823 (Basic), 470 kΩ C25790, 200 kΩ C25764, 10 nF 50 V C15195.
-- CPL: rotation corrections as drafts F/G. U12 (VSON-10, DRC) has no learned correction yet: 270° as the DFN/QFN parts of
-  this board. **Check U12 pin 1 in the JLC preview**, with J2/J6 (tabs toward the edges) and the LED marks.
+- CPL: rotation corrections learned from the JLC placement previews (2026-10-16 and 2026-10-27, see `generator/cpl.py`).
+  Fixed after the 2026-10-27 preview:
+  - **bottom side**: JLC mirrors bottom parts about the Y axis and counts the angle from below, so the CPL rotation is
+    180° − KiCad rotation + correction (it was KiCad rotation + correction: U10, U11, U13 were 90° / 180° off);
+  - U10 WSON-8 270° (bottom → 90), U11 → 90, U13 SOT-353 180° (bottom → 0), U12 VSON-10 0° (→ 90, was 90° off);
+  - LEDs D1–D4 (XL-2020 library part) 180°: the DO / DI / + / − marks were 180° off;
+  - J1 USB-C: the JLC part origin is the pad-area centre, 1.46 mm behind the KiCad origin (body centre), so the CPL
+    position is moved 1.46 mm toward the pins (the receptacle was drawn ~1.5 mm outside the board edge).
+  Check the new preview once more before paying: pin-1 dots on U2, U10–U13, the LED marks and J1 on its pads.
 - **Cost:** about **29.4 USD per board at 10 boards, 24.6 USD at 100** (components only, 2026-10-27 prices with the
   LPS22HH barometer and the U13 buffer; draft G 26.1 / 20.6). The LM5166
   (3.7 USD) replaces the TPS62160 + charger + charge gate (≈ 2.4 USD).
@@ -194,15 +201,15 @@ See `ACwing_FC_A_pinmap.md`. Summary:
    stock). Its VDD minimum is 3.5 V (Worldsemi: 3.3 V), so the Schottky D11 is removed and the LEDs run straight from
    VSYS (3.5–4.2 V on 1S, 4.1 V on 2S–6S, ≈ 4.65 V on USB only; LED max 5.5 V). The LED data line goes through the
    new level-shifting buffer **U13 SN74LV1T34DCKR** (TI, C78541, SC-70-5) powered from VSYS, so the data level is right
-   in every supply case (see Power architecture). Check the LED and U13 pin-1 marks in the JLC preview (U13 CPL
-   correction 270°, as the SOT-23-6 of this board).
+   in every supply case (see Power architecture). Check the LED and U13 pin-1 marks in the JLC preview (CPL
+   corrections updated after the 2026-10-27 preview).
 1. ERC in KiCad 8/9.
 2. LM5166 stock at LCSC/JLC (350 pcs on 2026-10-18).
 3. Bench test of the buck at 1S (3.0–4.2 V, 100 % duty cycle) and 6S (25.2 V), with the full FC load: VREG ripple
    (PFM, 1.25 A peak) after the LDOs, and LDO dropout at the 1S end of discharge.
 4. C6/C46 effective capacitance at 4.1 V (≈ 50 µF together, against ≈ 100 µF asked for PFM by the datasheet
    formula): fine for the LDOs downstream; add a second 22 µF 0805 near L3 if the ripple is high.
-5. Antenna tuning with the board above the ESC; JLC CPL preview (U12).
+5. Antenna tuning with the board above the ESC; JLC CPL preview (U10–U13, LEDs, J1).
 
 ## Contents
 | File | What |
@@ -211,7 +218,7 @@ See `ACwing_FC_A_pinmap.md`. Summary:
 | [`ACwing_FC_A_schematic.pdf`](ACwing_FC_A_schematic.pdf) | schematic |
 | [`ACwing_FC_A_pinmap.md`](ACwing_FC_A_pinmap.md) | pin map, ESC links, add-on ports |
 | `ACwing_FC_A_BoM.xlsx` | assembly BoM (sheet `BoM`) and costing (sheet `Costing`) |
-| `ACwing_FC_A_BoM_JLCPCB.xlsx`, `ACwing_FC_A_CPL.xlsx` | JLCPCB BoM (LCSC part numbers) and pick-and-place with rotation corrections (93 parts) |
+| `ACwing_FC_A_BoM_JLCPCB.xlsx`, `ACwing_FC_A_CPL.xlsx` | JLCPCB BoM (LCSC part numbers) and pick-and-place with rotation and origin corrections (94 parts) |
 | `ACwing_FC_A_gerber.zip` | Gerber (4 copper layers) + Excellon drill files, origin at the lower-left corner: upload as is to JLCPCB |
 | `ACwing_FC_A_DRC.rpt` | KiCad DRC report (0 violations, 0 unconnected pads) |
 | `ACwing_FC_A.step`, `ACwing_FC_A_3D.png`, `ACwing_FC_A_routing.png` | STEP of the assembled board, 3D renders, copper routing |
