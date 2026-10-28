@@ -1,4 +1,5 @@
-# ACwing silkscreen pass for one board: logo(s), board name, author, connector labels. Places everything in free
+# ACwing silkscreen pass for one board: logo(s), board name + revision ("FC rev A", same on every board and layer),
+# connector labels. Places everything in free
 # space (no pads, courtyards, other silk), then saves. python3 silk_brand.py <board> <config name>
 import sys, os, math, shutil, tempfile, pcbnew
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -110,12 +111,15 @@ def logo_block(kind, bottom, prefer, hmax, lines, hmin=None, th=0.8, gap=0.35):
             print('  block %s logo %d mm + %d lines at (%.2f, %.2f) %s' % (kind, h, len(lines), x, y, 'bottom' if bottom else 'top'))
             return x, y, h
     print('  NO SPOT for logo block'); return None
-def label(ref, s, h=0.8, maxr=6.0):
-    f = b.FindFootprintByReference(ref); c = B(f.GetPosition())
-    return text_any(s, f.IsFlipped(), c, h, maxr)
-def text_any(s, bottom, c, h=0.8, maxr=6.0, alts=()):
+def label(ref, s, h=0.8, maxr=6.0, at=None):
+    # connector label: always on the connector's side (never moved to the other side), centred on the connector
+    # or at the given target (board frame, mm)
+    f = b.FindFootprintByReference(ref); c = at if at else B(f.GetPosition())
+    return text_any(s, f.IsFlipped(), c, h, maxr, same_side=True)
+def text_any(s, bottom, c, h=0.8, maxr=6.0, alts=(), same_side=False):
     # fallbacks (text height stays at the 0.8 mm DRC minimum): rotated 90 deg, a bit farther, shorter wording
-    for side, radii in ((bottom, (maxr,)), (not bottom, (maxr,)), (bottom, (maxr * 1.5,))):
+    tries = ((bottom, (maxr,)), (bottom, (maxr * 1.5,))) if same_side else ((bottom, (maxr,)), (not bottom, (maxr,)), (bottom, (maxr * 1.5,)))
+    for side, radii in tries:
         for txt in (s,) + tuple(alts):
             for rot in (0, 90):
                 for r in radii:
@@ -124,29 +128,31 @@ def text_any(s, bottom, c, h=0.8, maxr=6.0, alts=()):
 
 if CFG == 'fc':
     logo_block('Full', False, (5.0, 3.0), 8, ['FC rev %s' % REV])
-    (logo_block('Full', True, (14.0, -3.0), 8, ['ACwing FC rev %s' % REV])
-     or logo_block('Mark', True, (14.0, -3.0), 6, ['ACwing FC rev %s' % REV]))
-    for ref, s_ in (('J2', 'ESC A'), ('J6', 'ESC B'), ('J3', 'GPS'), ('J4', 'FLOW'), ('J5', 'ELRS'), ('J1', 'USB')):
-        label(ref, s_)
-    text_any('BAT', False, (-16.3, 9.2), 0.8, 3)
+    (logo_block('Full', True, (14.0, -3.0), 8, ['FC rev %s' % REV])
+     or logo_block('Mark', True, (14.0, -3.0), 6, ['FC rev %s' % REV]))
+    # targets of the 2026-10-27 silkscreen review: GPS / FLOW centred on J3 / J4 (rotated, inner side), ESC B and ELRS
+    # on one line under J6 / J5, ESC A beside J2, USB next to J1 (all on the top side, with their connectors)
+    for ref, s_, at in (('J2', 'ESC A', (-7.0, -16.9)), ('J6', 'ESC B', (-8.2, 13.15)), ('J3', 'GPS', (12.66, 3.6)),
+                        ('J4', 'FLOW', (12.66, -4.3)), ('J5', 'ELRS', (2.0, 13.15)), ('J1', 'USB', (11.6, -11.6))):
+        label(ref, s_, at=at, maxr=4.0)
+    text_any('BAT', False, (-15.9, 5.65), 0.8, 3)
 elif CFG == 'esc':
     for d in list(b.GetDrawings()):
         pass
-    text_any('ACwing ESC 1S rev %s' % REV, False, (0.0, 0.5), 0.8, 6.0, ('ESC 1S rev %s' % REV,))
+    text_any('ESC 1S rev %s' % REV, False, (0.0, 0.5), 0.8, 6.0)
     logo_block('Full', False, (10.0, 15.0), 7, [])
-    logo_block('Full', True, (0.0, 1.5), 10, ['ACwing ESC 1S rev %s' % REV])
-    for ref, s_ in (('J1', 'TO FC'), ('J4', 'CHARGE')):
-        label(ref, s_)
+    logo_block('Full', True, (0.0, 1.5), 10, ['ESC 1S rev %s' % REV])
+    for ref, s_, at in (('J1', 'TO FC', (9.6, -12.5)), ('J4', 'CHARGE', (-10.8, 10.8))):   # top, with the connectors
+        label(ref, s_, at=at, maxr=4.0)
 
 elif CFG == 'gps':
-    text_any('ACwing GPS rev %s' % REV, False, (2.6, 13.4), 0.8, 8.0, ('GPS rev %s' % REV,))
+    text_any('GPS rev %s' % REV, False, (2.6, 13.4), 0.8, 8.0)
     logo_block('Full', False, (-11.3, 0.0), 6, [])
-    (logo_block('Full', True, (-3.8, 8.0), 8, ['ACwing GPS rev %s' % REV])
-     or logo_block('Full', True, (-3.8, 8.0), 8, ['GPS rev %s' % REV]) or logo_block('Mark', True, (-3.8, 8.0), 6, []))
-    for ref, s_ in (('J1', 'QWIIC IN'), ('J2', 'QWIIC OUT')):
-        label(ref, s_)
+    (logo_block('Full', True, (-3.8, 8.0), 8, ['GPS rev %s' % REV]) or logo_block('Mark', True, (-3.8, 8.0), 6, []))
+    for ref, s_, at in (('J1', 'QWIIC IN', (11.9, 8.6)), ('J2', 'QWIIC OUT', (-6.5, -12.0))):   # top, beside the connectors
+        label(ref, s_, at=at, maxr=4.0)
 elif CFG == 'flow':
-    logo_block('Full', True, (0.0, 1.5), 9, ['ACwing Flow rev A'])
+    logo_block('Full', True, (0.0, 1.5), 9, ['Flow rev %s' % REV])
 pcbnew.SaveBoard(BOARD, b)
 b = pcbnew.LoadBoard(BOARD)
 pcbnew.WriteDRCReport(b, os.path.join(tempfile.gettempdir(), 'brand_drc.rpt'), pcbnew.EDA_UNITS_MILLIMETRES, True)
