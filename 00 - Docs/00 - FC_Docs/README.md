@@ -236,7 +236,7 @@ KiCad sources in [`01 - FC_KiCadProj/`](../../01%20-%20FC_KiCadProj/):
 `generator/build_all_h.sh` (helpers from the draft E generator, Freerouting 1.9 capped at 20 min). The result changes
 with any placement change: check the DRC after editing the placement.
 
-> The generator scripts were run in the original build environment: absolute paths inside them (`/home/claude/...`) must be adapted before running them again. The ACwing logos and silkscreen labels were added afterwards with the tools in `00 - Docs/05 - Brand/tools/`.
+> The generator scripts were run in the original build environment: absolute paths inside them (`/home/claude/...`) must be adapted before running them again. The ACwing logos and silkscreen labels were added afterwards with the tools in [`brand/tools`](https://github.com/ACwing-UAV/ACwing/tree/main/brand/tools) of the ACwing system repository.
 
 ## Sources
 - [TI LM5166 datasheet](https://www.ti.com/lit/ds/symlink/lm5166.pdf), [LCSC C181495](https://www.lcsc.com/product-detail/DC-DC-Converters_TI_LM5166DRCT_LM5166DRCT_C181495.html)

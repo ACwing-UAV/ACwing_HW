@@ -97,4 +97,4 @@ KiCad sources in [`02 - ESC_1S_KiCadProj/`](../../02%20-%20ESC_1S_KiCadProj/):
 ## Regeneration
 Scripts in `generator/` (`build_all_esc.sh`).
 
-> The generator scripts were run in the original build environment: absolute paths inside them (`/home/claude/...`) must be adapted before running them again. The ACwing logos and silkscreen labels were added afterwards with the tools in `00 - Docs/05 - Brand/tools/`.
+> The generator scripts were run in the original build environment: absolute paths inside them (`/home/claude/...`) must be adapted before running them again. The ACwing logos and silkscreen labels were added afterwards with the tools in [`brand/tools`](https://github.com/ACwing-UAV/ACwing/tree/main/brand/tools) of the ACwing system repository.

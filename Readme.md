@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="00%20-%20Docs/05%20-%20Brand/ACwing_logo_white.png">
-    <img alt="ACwing" src="00%20-%20Docs/05%20-%20Brand/ACwing_logo_black.png" width="260">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ACwing-UAV/ACwing/main/brand/ACwing_logo_white.png">
+    <img alt="ACwing" src="https://raw.githubusercontent.com/ACwing-UAV/ACwing/main/brand/ACwing_logo_black.png" width="260">
   </picture>
 </p>
 
@@ -33,10 +33,13 @@ flight and an **optical-flow + ToF** board for indoor position and height hold.
 
 | Board | Rev | Size | Layers | What it does | Docs | KiCad |
 |---|---|---|---|---|---|---|
-| **ACwing FC** | H | 40 × 40 mm, 20 × 20 holes (grommets) | 4, 1.0 mm | flight controller, 1S–6S input, up to 8 motors, BLE | [FC docs](00%20-%20Docs/00%20-%20FC_Docs/) | [project](01%20-%20FC_KiCadProj/) |
-| **ACwing ESC 1S** | B | 40 × 40 mm, 20 × 20 holes | 4, 1.0 mm | 1S power board: 4 brushed motor stages, current sensor, USB-C charger | [ESC docs](00%20-%20Docs/01%20-%20ESC_1S_Docs/) | [project](02%20-%20ESC_1S_KiCadProj/) |
-| **ACwing GPS** | D | 30 × 30 mm, 20 × 20 holes | 2, 1.0 mm | GNSS (u-blox SAM-M10Q) + compass, stacked above the FC | [GPS docs](00%20-%20Docs/02%20-%20GPS_Docs/) | [project](03%20-%20GPS_KiCadProj/) |
+| **ACwing FC** | A | 40 × 40 mm, 20 × 20 holes (grommets) | 4, 1.0 mm | flight controller, 1S–6S input, up to 8 motors, BLE | [FC docs](00%20-%20Docs/00%20-%20FC_Docs/) | [project](01%20-%20FC_KiCadProj/) |
+| **ACwing ESC 1S** | A | 40 × 40 mm, 20 × 20 holes | 4, 1.0 mm | 1S power board: 4 brushed motor stages, current sensor, USB-C charger | [ESC docs](00%20-%20Docs/01%20-%20ESC_1S_Docs/) | [project](02%20-%20ESC_1S_KiCadProj/) |
+| **ACwing GPS** | A | 30 × 30 mm, 20 × 20 holes | 2, 1.0 mm | GNSS (u-blox SAM-M10Q) + compass, stacked above the FC | [GPS docs](00%20-%20Docs/02%20-%20GPS_Docs/) | [project](03%20-%20GPS_KiCadProj/) |
 | **ACwing Flow** | A | 21 × 25 mm, 2 × M2 | 2, 1.0 mm | optical flow (PMW3901) + ToF height (VL53L1X), under the frame | [Flow docs](00%20-%20Docs/03%20-%20FLOW_Docs/) | [project](04%20-%20FLOW_KiCadProj/) |
+
+All boards are at **rev A**: no PCB has been produced yet. The revision letter moves to B with the first
+change made after a board has been built and tested.
 
 Every board folder in `00 - Docs` holds the schematic PDF, the BoM with costing, the JLCPCB BoM and pick-and-place
 files, the Gerber zip, the DRC report, the STEP model and board views.
@@ -99,13 +102,16 @@ Qwiic in / out; all parts on the sensor side.
 ├── 01 - ESC_1S_Docs/     ESC 1S rev A: same set
 ├── 02 - GPS_Docs/        GPS rev A: same set
 ├── 03 - FLOW_Docs/       Flow rev A: same set + mechanical DXF
-├── 04 - System_Docs/     mechanical handoff, frame C2 answer and reply, stack check (3D page and render)
-└── 05 - Brand/           ACwing logos (SVG/PNG), silkscreen logo footprints, brand and silkscreen tools
+└── 04 - System_Docs/     mechanical handoff, frame C2 answer and reply, stack check (3D page and render)
 01 - FC_KiCadProj/        KiCad project, library, 3D models, generator scripts
 02 - ESC_1S_KiCadProj/
 03 - GPS_KiCadProj/
 04 - FLOW_KiCadProj/
 ```
+
+Logos, silkscreen logo footprints and the brand and silkscreen tools are in
+[`brand/`](https://github.com/ACwing-UAV/ACwing/tree/main/brand) of the ACwing system repository; each board keeps
+a copy of the logo footprints it uses in its own project library.
 
 ## Ordering (JLCPCB)
 

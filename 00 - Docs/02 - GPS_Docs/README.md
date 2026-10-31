@@ -124,4 +124,4 @@ m_fc = R · m_gps,   R = [  0.7071  -0.7071   0 ]
 `gnd_bridge.py` from the flow generator and `make_3d_e.py`). Freerouting is not deterministic: `loop_route.sh` reruns
 it until the DRC is clean.
 
-> The generator scripts were run in the original build environment: absolute paths inside them (`/home/claude/...`) must be adapted before running them again. The ACwing logos and silkscreen labels were added afterwards with the tools in `00 - Docs/05 - Brand/tools/`.
+> The generator scripts were run in the original build environment: absolute paths inside them (`/home/claude/...`) must be adapted before running them again. The ACwing logos and silkscreen labels were added afterwards with the tools in [`brand/tools`](https://github.com/ACwing-UAV/ACwing/tree/main/brand/tools) of the ACwing system repository.
