@@ -14,7 +14,12 @@
 
 ---
 
-ACwing is a modular set of PCBs for small multirotors. The core is a **universal flight controller** that talks to its
+ACwing is a modular set of PCBs for small multirotors. This repository is the hardware part of the
+[ACwing-UAV](https://github.com/ACwing-UAV) project: the firmware is in [ACwing_FW](https://github.com/ACwing-UAV/ACwing_FW),
+the mechanics in [ACwing_Mechs](https://github.com/ACwing-UAV/ACwing_Mechs), and the
+[ACwing](https://github.com/ACwing-UAV/ACwing) system repository pins the versions that belong together.
+
+The core is a **universal flight controller** that talks to its
 power stage through the common **4-in-1 ESC connector** (JST SH 8-pin): on the 1S indoor mini drone it sits on the
 ACwing 1S power board; on a larger 3S–6S brushless drone the same FC runs with one or two commercial 20 × 20 4-in-1
 ESCs. Two optional expansion boards plug into the FC's **Qwiic** (I2C) ports: a **GNSS + compass** board for outdoor
@@ -121,7 +126,7 @@ magnetometer (EMI check in the FC README); GPS Qwiic J1 aligned with FC J3.
 
 All four boards are routed with **0 DRC violations and 0 unconnected pads** (KiCad 7.0). They are not built and tested
 yet: see each board README for the bench checks planned before the first order (ERC in KiCad 8/9, power-stage tests,
-land patterns to verify). Firmware is a separate project.
+land patterns to verify). Firmware: [ACwing_FW](https://github.com/ACwing-UAV/ACwing_FW).
 
 ## Author
 

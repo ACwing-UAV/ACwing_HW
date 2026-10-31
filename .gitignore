@@ -1,0 +1,20 @@
+# KiCad: per-user and temporary files
+*.kicad_prl
+*-backups/
+.history/
+fp-info-cache
+*.lck
+\#auto_saved_files#
+_autosave-*
+*.bak
+*-bak
+
+# Python (generator scripts)
+__pycache__/
+*.pyc
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
