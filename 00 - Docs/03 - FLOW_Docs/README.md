@@ -104,4 +104,4 @@ KiCad sources in [`04 - FLOW_KiCadProj/`](../../04%20-%20FLOW_KiCadProj/):
 `step_mesh.py` from the FC generator and `make_3d_e.py` for the missing STEP models. Freerouting is not deterministic:
 `loop_route.sh` reruns it until the DRC has no unconnected item.
 
-> The generator scripts were run in the original build environment: absolute paths inside them (`/home/claude/...`) must be adapted before running them again. The ACwing logos and silkscreen labels were added afterwards with the tools in `00 - Docs/05 - Brand/tools/`.
+> The generator scripts were run in the original build environment: absolute paths inside them (`/home/claude/...`) must be adapted before running them again. The ACwing logos and silkscreen labels were added afterwards with the tools in [`brand/tools`](https://github.com/ACwing-UAV/ACwing/tree/main/brand/tools) of the ACwing system repository.
