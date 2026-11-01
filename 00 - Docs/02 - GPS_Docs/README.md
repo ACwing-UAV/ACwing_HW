@@ -84,7 +84,7 @@ m_fc = R · m_gps,   R = [  0.7071  -0.7071   0 ]
 
 ## Mechanics
 - 30 × 30 × 1.0 mm, R2 corners, centred on the FC. 4 × M2 (Ø2.2 NPTH) on the 20 × 20 pattern, keep-out r 2.6 mm.
-- Stack: FC on its grommets → 6 mm gap → GPS board (frame C2: printed S2 spacer on the M2 screw column, titanium or
+- Stack: FC on its grommets → 6 mm gap → GPS board (Mech A1: printed S2 spacer on the M2 screw column, titanium or
   A4 stainless screws, see `04 - System_Docs`). Top of the module ≈ 13.3 mm above the FC top.
 - Cables: FC rev A J3 (top, right edge, v = +3.6) → GPS J1 (top, right edge, v = +3.6): the two connectors are
   aligned, the cable goes straight up outside the right edge (layout update 2026-10-24; J1 was at v = 0).

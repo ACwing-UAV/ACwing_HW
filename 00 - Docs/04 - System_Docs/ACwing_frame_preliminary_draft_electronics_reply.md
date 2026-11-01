@@ -1,9 +1,9 @@
-# ACwing frame C2 – electronics reply to the mechanical answer
+# ACwing preliminary draft frame – electronics reply to the mechanical answer
 
 > **Revisions.** This is a design log written before the first release. The boards it describes as current are now the rev A release (FC rev A, ESC 1S rev A, GPS rev A, Flow rev A); letters marked *draft* are earlier internal iterations that were never manufactured.
 
 **Author:** Andrea Cirillo (ACwing). **From:** electronics design. **To:** mechanical / frame design. **Date:** 2026-10-19.
-**Answers:** `ACwing_frame_C2_mechanical_answer.md` (2026-10-19). Boards checked: ACwing ESC 1S rev A, ACwing FC rev A,
+**Answers:** `ACwing_frame_preliminary_draft_mechanical_answer.md` (2026-10-19). Boards checked: ACwing ESC 1S rev A, ACwing FC rev A,
 ACwing GPS rev A, ACwing Flow rev A (as packaged).
 
 ## 1. Checked and confirmed (no board change)
