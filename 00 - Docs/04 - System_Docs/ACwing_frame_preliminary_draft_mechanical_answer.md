@@ -1,4 +1,4 @@
-# ACwing frame C2 – mechanical answer to the electronics handoff
+# ACwing preliminary draft frame – mechanical answer to the electronics handoff
 
 > **Revisions.** This is a design log written before the first release. The boards it describes as current are now the rev A release (FC rev A, ESC 1S rev A, GPS rev A, Flow rev A); letters marked *draft* are earlier internal iterations that were never manufactured.
 
@@ -7,9 +7,10 @@ ACwing FC, ACwing GPS, ACwing Flow).
 **Date:** 2026-10-19. **Answers:** `ACwing_mechanical_handoff.md` (§0.1–0.11, §2–§8) as of 2026-10-19.
 **Inputs used:** the stack-check geometry of the GPS rev A package (`stack_data.js`, config D6 = ESC 1S A + FC A + GPS A,
 6 mm standoffs), the FC A pin map, the ESC 1S A / Flow A hardware notes and the Flow A DXF.
-**Electronics reply:** `ACwing_frame_C2_electronics_reply.md`.
+**Electronics reply:** `ACwing_frame_preliminary_draft_electronics_reply.md`.
 
-> The frame files listed in §10 (STL, GLB, renders) belong to the frame design and are not part of this repository.
+> The frame described here is a **preliminary draft**, superseded by **Mech A1** (frame A1 + battery trays) in
+> [ACwing_Mechs](https://github.com/ACwing-UAV/ACwing_Mechs).
 
 ## 0. Decision 2026-10-19 – baseline configuration of the 1S mini drone: indoor, no GPS
 
@@ -21,9 +22,9 @@ ESC 1S A + FC A + Flow A, no GPS board and no cable B.
 - Mass ≈ 66.5 g, **thrust-to-weight ≈ 2.1** (73.2 g / 1.91 with the GPS board).
 - Sections 2, 4 and 7 below describe the full stack with GPS; they stay valid for the GPS option.
 
-## 1. What changed in the frame (C → C2)
+## 1. What changed in the frame (from the earlier preliminary draft)
 
-| Item | Frame C2 | Handoff item |
+| Item | Preliminary draft (stack version) | Handoff item |
 |---|---|---|
 | Stack bosses | 4 bosses on the **20 × 20** pattern (board (±10, ±10) = frame (0, ±14.14), (±14.14, 0)), Ø5.2 top (= ESC keep-out r 2.6), Ø6.6 at the deck, **3 mm** tall: the ESC sits directly on them, at the old FC height (bottom −2.0) | 0.1, 0.2 |
 | Fastening | **Hangtife HLTI-M2-001** hot-melt insert (M2 × 3 × Ø3.0) in a Ø2.8 × 3.4 seat in each boss; Ø2.2 clearance below | 0.2 |
@@ -31,11 +32,11 @@ ESC 1S A + FC A + Flow A, no GPS board and no cable B.
 | ESC cable | no frame part behind the rear edge between the board and the M1 duct ring; cable modelled and checked (§4) | 0.3, 0.7 |
 | Qwiic slot | new deck slot for the flow cable, board (u 20.4…22.6, v −11.1…−6.9), behind FC J4 | 3 |
 | Flow tray | 1.2 mm plate fused under the bay lips (front part of the bay, clear of the rear latch tongue), 2 downward bosses Ø4.8 × 2.4 with the same M2 inserts, lightening window | 2.4 |
-| Mass | frame 15.6 g PETG (frame C 14.8 g): +0.8 g for the bosses and the flow plate | 0.3 |
+| Mass | frame 15.6 g PETG (earlier preliminary draft 14.8 g): +0.8 g for the bosses and the flow plate | 0.3 |
 
-All the frame-C items that do not depend on the stack (cage ducts, motor holders, TPU sleeves, legs, battery bay and
+All the earlier-draft items that do not depend on the stack (cage ducts, motor holders, TPU sleeves, legs, battery bay and
 latch, motor-lead clips and deck slots, battery-lead notch) are unchanged. The motor leads still reach the ESC pads at
-the edge midpoints exactly as they reached the frame-C FC pads.
+the edge midpoints exactly as they reached the FC pads of the earlier draft.
 
 ## 2. Stack and hardware (per corner, bottom to top)
 
@@ -82,7 +83,7 @@ against the FC A doc (J6 pin 1 at v = +0.1).
 
 - Colours in the model: A = GND black, VBAT red, CUR yellow, TLM white, M1 blue, M2 green, M3 orange, M4 purple;
   Qwiic = GND black, 3V3 red, SDA blue, SCL yellow.
-- **Battery pads polarity:** modelled with pad 1 (inboard) = VBAT+ and pad 2 (corner tip) = GND, as the frame-C
+- **Battery pads polarity:** modelled with pad 1 (inboard) = VBAT+ and pad 2 (corner tip) = GND, as the earlier-draft
   BattPads footprint (confirmed by the electronics reply).
 - Cable C stays ≥ 10 mm from the M2 motor leads (§3 rule), and out of the propeller discs and the optical cones.
 - Checked: wires × frame, × propellers, × all stack parts, × hardware, × the other cables, × optical cones: **0 mm³**.
@@ -104,26 +105,26 @@ against the FC A doc (J6 pin 1 at v = +0.1).
 
 ## 6. Vibration (FC on the damping balls)
 
-Same beam model as frame C for the isolation modes (it reproduces the frame-C isolation band, 62–95 Hz):
+Same beam model as for the earlier preliminary draft (it reproduces the earlier-draft isolation band, 62–95 Hz):
 
 | Grommet stiffness per corner (axial / radial, N/mm) | FC A isolation modes |
 |---|---|
-| 0.7 / 0.6 (frame-C assumption) | **92–120 Hz** |
+| 0.7 / 0.6 (earlier-draft assumption) | **92–120 Hz** |
 | 1.4 / 1.2 (both balls clamped, realistic for this column) | 130–167 Hz |
 | 0.45 / 0.4 | 75–96 Hz |
 
 The FC is lighter (≈ 5.5 g against 7.9 g) and the holes are farther out (r 14.1 against 11.3), so the same grommet
-gives higher modes than in frame C. With both balls of each grommet working, the band is above the 60–100 Hz target.
+gives higher modes than in the earlier preliminary draft. With both balls of each grommet working, the band is above the 60–100 Hz target.
 **Action:** tap test on the first build (FC IMU at ≥ 1 kHz, FFT); if the peak is above ≈ 110 Hz, use softer (gel)
 balls or a longer S1/S2 pair that preloads the balls less. The structural modes of the frame were not re-run with the
-frame-C calibration; the structure is unchanged except for the bosses and the flow plate, but the central mass grew by
+earlier-draft calibration; the structure is unchanged except for the bosses and the flow plate, but the central mass grew by
 ≈ 14 g, so re-check the frame modes on the bench with the same tap test.
 
 ## 7. Weight budget (§0.3)
 
 | Item | g |
 |---|---|
-| Frame C2 (PETG, from the mesh) | 15.6 |
+| Frame, preliminary draft (PETG, from the mesh) | 15.6 |
 | TPU sleeves ×4 | 2.2 |
 | Battery 1S 20 × 40 × 8 | 20.0 |
 | Motors 8520 ×4 | 11.0 |
@@ -134,7 +135,7 @@ frame-C calibration; the structure is unchanged except for the bosses and the fl
 | ACwing Flow A (doc) | 1.5 |
 | Cables + PH pigtail | 1.2 |
 | 4 × M2 × 16 steel, 6 inserts, 4 grommets, spacers | 3.4 |
-| **Total** | **73.2** (frame C: 55.8) |
+| **Total** | **73.2** (earlier preliminary draft: 55.8) |
 
 With ≈ 140 g of static thrust (4 × 8520, 55 mm props, 1S) the thrust-to-weight ratio is **1.91** with everything on
 board, **2.12** without the GPS board, **2.17** without GPS and flow. Below 2 the drone hovers at more than half
@@ -157,13 +158,8 @@ throttle and has little margin for wind and control. Titanium screws save ≈ 1.
 - Cable from FC J5 (front-left edge) ≈ 60 mm, down through a second deck slot at the front.
 - To confirm before modelling: receiver model and antenna type.
 
-## 10. Files (frame design, not in this repository)
+## 10. Files
 
-| File | What |
-|---|---|
-| `C2_frame.stl` | frame C2, PETG, watertight, 15.6 g |
-| `C2_spacers_S1x4_S2x4_PETG.stl` | 4 × S1 (2.57 mm) + 4 × S2 (3.57 mm) |
-| `Variant_C_sleeve_TPU_x4.stl` | TPU sleeves (unchanged from frame C) |
-| `ACwing_C2_assembly_view.glb` | colour assembly (frame, motors, propellers – front ones green, boards, hardware, cables wire by wire) |
-| `ACwing_C2_3D_overview.png`, `ACwing_C2_hero.png`, `ACwing_C2_cables.png` | renders |
-| `assembly_checks.json` | interference results and cable lengths |
+The frame files of this preliminary draft (STL, GLB, renders, checks) were working files and are superseded by
+the released mechanics, **Mech A1**, in [ACwing_Mechs](https://github.com/ACwing-UAV/ACwing_Mechs)
+(`00 - Docs/00 - Mech_A1_Docs`).

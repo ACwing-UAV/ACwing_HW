@@ -61,8 +61,8 @@ files, the Gerber zip, the DRC report, the STEP model and board views.
    └──────────────────────┘   └──────────────────────────┘
 ```
 
-**Stack (1S mini drone, frame C2):** ESC 1S hard-mounted on the frame bosses → 5 mm → FC on M2 damping grommets →
-6 mm → GPS board (optional). The flow board is mounted under the battery bay, sensor side down.
+**Stack (1S mini drone, Mech A1):** ESC 1S hard-mounted on the frame bosses → 5 mm → FC on M2 damping grommets →
+6 mm → GPS board (optional). The flow board is mounted under the battery tray, sensor side down.
 
 <p align="center">
   <img src="00%20-%20Docs/04%20-%20System_Docs/ACwing_stack_3D.png" alt="ACwing stack: ESC 1S, FC and GPS" width="640">
@@ -102,7 +102,7 @@ Qwiic in / out; all parts on the sensor side.
 ├── 01 - ESC_1S_Docs/     ESC 1S rev A: same set
 ├── 02 - GPS_Docs/        GPS rev A: same set
 ├── 03 - FLOW_Docs/       Flow rev A: same set + mechanical DXF
-└── 04 - System_Docs/     mechanical handoff, frame C2 answer and reply, stack check (3D page and render)
+└── 04 - System_Docs/     mechanical handoff, preliminary-draft frame answer and reply, stack check (3D page and render)
 01 - FC_KiCadProj/        KiCad project, library, 3D models, generator scripts
 02 - ESC_1S_KiCadProj/
 03 - GPS_KiCadProj/

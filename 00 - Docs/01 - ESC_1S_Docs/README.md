@@ -19,7 +19,7 @@ this board on the same cable.
 | **Charge switch (new)** | Q5 AON7423 P-MOSFET (20 V, 4.9 mΩ @ −2.5 V) between the shunt and VBAT; R11 100 k gate pull-down (on), D5 RB521S30 from VBUS lifts the gate (off) | with USB plugged in, FC and motors are unpowered: no motor can spin while charging, and the charger terminates on the battery current alone |
 | Current sensor | R9 2 mΩ + U1 TSC213 as draft A; the sensed node is now VBAT_SH (battery → R9 → Q5 → VBAT); U1 supplied from VBAT | charge current does not pass R9 (CUR reads 0 while charging) |
 | Battery connection | J2 solder pads as draft A + a **JST PH 2.0 pigtail** soldered to them (BoM item, not assembled) | a board-mounted PH 2.0 does not fit: 9 mm deep against 7.3 mm between the holes and the edges (checked at every edge and corner) |
-| Outline | frame C + front-left chamfer v − u = 36.2 with 0.8 mm steps at the edges | charge port |
+| Outline | preliminary-draft frame outline (40 × 40, R3) + front-left chamfer v − u = 36.2 with 0.8 mm steps at the edges | charge port |
 
 Unchanged: motor stages Q1–Q4 / D1–D4 / R1–R8 / C2–C5, C1 470 µF bulk, J1 ESC link (rear edge, u = +6.1 … +13.1), holes,
 4 layers 1.0 mm, In1 GND / In2 VBAT planes.

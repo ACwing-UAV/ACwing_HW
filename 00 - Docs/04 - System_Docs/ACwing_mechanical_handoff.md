@@ -1,4 +1,4 @@
-# ACwing – mechanical handoff (frame C → frame C2)
+# ACwing – mechanical handoff (preliminary draft frames)
 
 > **Revisions.** This is a design log written before the first release. The boards it describes as current are now the rev A release (FC rev A, ESC 1S rev A, GPS rev A, Flow rev A); letters marked *draft* are earlier internal iterations that were never manufactured.
 
@@ -16,19 +16,19 @@ four motor stages filled the edge midpoints, so routing was at its limit. The de
 | # | Change | What it means for the frame |
 |---|---|---|
 | 0.1 | **Mounting holes 20.0 × 20.0 mm** (was 16 × 16), centred, on every stacked board | frame bosses move to the 20 × 20 pattern (the FPV standard for M2 stacks); off-the-shelf 20 × 20 brushless 4-in-1 ESCs and FCs fit the same frame later |
-| 0.2 | **New motor board "ACwing ESC 1S"** under the FC | it takes the place of today's FC in frame C (see 0.4) |
+| 0.2 | **New motor board "ACwing ESC 1S"** under the FC | it takes the place of today's FC in the preliminary draft frame (see 0.4) |
 | 0.3 | FC without motor stages, battery pads or shunt | the FC becomes a "logic" board soft-mounted above the motor board |
 | 0.4 | **Four RGB status LEDs**, symmetric about the board centre: two at the front end and two at the rear end of the front–rear diagonal (navigation lights) | leave both ends of the diagonal visible from outside |
 
 ### 0.1 Hole pattern
-- 4 holes at (u, v) = (±10.0, ±10.0), Ø3.2 mm, for M2 anti-vibration grommets (same grommet type as frame C).
+- 4 holes at (u, v) = (±10.0, ±10.0), Ø3.2 mm, for M2 anti-vibration grommets (same grommet type as the preliminary draft frame).
 - Component keep-out unchanged: r 3.0 mm on the top, r 3.6 mm on the bottom (frame boss Ø5.2 + flange).
 - Minimum board for this pattern with these keep-outs: about 28.5 × 28.5 mm.
 
 ### 0.2 Motor board – ACwing ESC 1S draft A (new)
-- **Outline and place in the frame: identical to today's FC in frame C** – 40 × 40 mm, R3 corners, mounted at 45°,
+- **Outline and place in the frame: identical to today's FC in the preliminary draft frame** – 40 × 40 mm, R3 corners, mounted at 45°,
   front = top-right corner (+20, +20). It sits where the FC sits today: 3 mm above the deck, battery under the deck.
-- Carries the parts that drove the frame C layout:
+- Carries the parts that drove the preliminary draft frame layout:
   - motor pads at the four edge midpoints, same positions, same motor-lead slots on the CCW side;
   - battery pads at the rear corner, same lead exit through the deck notch;
   - bulk capacitor, current shunt.
@@ -44,7 +44,7 @@ four motor stages filled the edge midpoints, so routing was at its limit. The de
 - **Mounting:** on M2 grommets on the 20 × 20 pattern, above the motor board.
 - **Gap motor board top surface → FC bottom surface ≥ 4.5 mm**, so that the 2.8 mm capacitor clears the FC bottom
   parts (≤ 1.2 mm) with margin. Recommended: 5 mm grommet/spacer stack.
-- The FC therefore sits about **6 mm higher** than in frame C (5 mm gap + 1.0 mm motor board). Please re-check:
+- The FC therefore sits about **6 mm higher** than in the preliminary draft frame (5 mm gap + 1.0 mm motor board). Please re-check:
   - the propeller-disc clearance above the board outline;
   - the duct/cage height;
   - the USB-C plug access at the right corner (its exact position may move in draft F; it stays on the right corner).
@@ -98,14 +98,14 @@ Same (u, v) frame as §1 (FC top view, front = (+20, +20)). Heights are above th
 | Outline | identical to the draft E FC: 40 × 40 mm, R3 corners, 5 mm chamfer at the rear-right corner (no USB on this board; kept for one outline in the frame) |
 | Board | 4 layers, 1.0 mm; mass ≈ 5 g with parts |
 | Holes | 4 × Ø2.2 mm NPTH (M2) at (±10, ±10); keep-out r 2.6 mm both sides. Hard mount (screws or nylon standoffs) |
-| Motor pads, battery pads | same positions as frame C (edge midpoints; rear corner, leads off the corner tip) |
+| Motor pads, battery pads | same positions as the preliminary draft frame (edge midpoints; rear corner, leads off the corner tip) |
 | **J1 ESC link** | JST SH 8-pin side entry, **top side, rear edge**: pins at u = +6.1 … +13.1, v = −14.9; body u +4.0 … +15.0, v −15.5 … −19.7; mouth toward −v at the edge; height 2.9 mm |
 | Heights | top ≤ 2.9 mm (J1 2.9, C1 2.8 at u −11 … −4, v −19.5 … −15.2); bottom ≤ 1.1 mm (shunt corner only) |
 
 **ACwing FC draft F**
 | Item | Value |
 |---|---|
-| Outline | frame C 40 × 40 (R3) **plus a 0.8 mm step at the USB corner**: right edge u = +20.8 from v = −12.3 down to the chamfer, rear edge v = −20.8 from u = +12.3 to the chamfer (45° steps from (+20, −11.5) and (+11.5, −20)); chamfer line u − v = 36.2 from (+20.8, −15.4) to (+15.4, −20.8) (draft E: u − v = 35). DXF: `ACwing_FC_F_outline.dxf` |
+| Outline | preliminary-draft frame outline 40 × 40 (R3) **plus a 0.8 mm step at the USB corner**: right edge u = +20.8 from v = −12.3 down to the chamfer, rear edge v = −20.8 from u = +12.3 to the chamfer (45° steps from (+20, −11.5) and (+11.5, −20)); chamfer line u − v = 36.2 from (+20.8, −15.4) to (+15.4, −20.8) (draft E: u − v = 35). DXF: `ACwing_FC_F_outline.dxf` |
 | Why the step | the (+10, −10) grommet of the 20 × 20 pattern reached the USB-C pads at the draft E position: the receptacle moved 0.85 mm outward along the diagonal and its front shell legs need the edge to follow |
 | Board | 4 layers, 1.0 mm; mass ≈ 4 g bare |
 | Holes | 4 × Ø3.2 mm plated at (±10, ±10) for M2 grommets; copper keep-out r 2.75, components r 3.0 top / 3.6 bottom (as §0.1) |
@@ -158,7 +158,7 @@ to the frame:
 ### 0.10 Power board rev A and stack check (2026-10-18)
 | Item | Value |
 |---|---|
-| **ACwing ESC 1S rev A outline** | frame C outline with a **new front-left chamfer** v − u = 36.2 and 0.8 mm steps (left edge u = −20.8 from v = +12.3 to +15.4, front edge v = +20.8 from u = −12.3 to −15.4), i.e. the FC USB corner mirrored about u = v. The rear-right chamfer stays |
+| **ACwing ESC 1S rev A outline** | preliminary-draft frame outline with a **new front-left chamfer** v − u = 36.2 and 0.8 mm steps (left edge u = −20.8 from v = +12.3 to +15.4, front edge v = +20.8 from u = −12.3 to −15.4), i.e. the FC USB corner mirrored about u = v. The rear-right chamfer stays |
 | **Charge port** | USB-C on the power board top, centre (−15.77, +15.77), axis at 45°, mouth at the front-left chamfer. Plug zone: 12.5 mm wide × 25 mm along the diagonal, from 1.7 mm below to 4.9 mm above the power-board top |
 | **FC rev A outline** | front-left corner now chamfered too: v − u = 36.6, from (−20, +16.6) to (−16.6, +20) (was R3). Keeps the charge-port plug out from under the FC |
 | Battery | solder pads at the rear-left corner as draft A + a JST PH 2.0 pigtail (30–40 mm) soldered to them; no board-mounted battery connector |
@@ -191,7 +191,7 @@ to the frame:
 ## 1. Coordinate conventions
 
 - **FC frame (u, v):** origin at the FC centre, u to the right, v up, **FC top view**. KiCad: X = 150 + u, Y = 100 − v.
-  As in frame C, the FC is mounted rotated 45°: **flight direction = FC corner (+20, +20)** (top-right corner).
+  As in the preliminary draft frame, the FC is mounted rotated 45°: **flight direction = FC corner (+20, +20)** (top-right corner).
 - **Flow-board frame (s, t):** origin at the flow-board centre, s to the right, t up, **viewed from the sensor side**
   (the side that faces the ground). Seen from above the drone, the board is mirrored (s → −s).
 - Units: mm. Heights are above the PCB surface on the side named.
@@ -291,7 +291,7 @@ Cable rules:
 - **Placement:**
   - mount it on the frame, not on the FC (the FC floats on grommets); a cable of 30–60 mm to J5;
   - keep it **≥ 20 mm from the GPS module** and **outside the FC antenna keep-out** (left edge, BLE chip antenna,
-    see frame C keep-outs);
+    see the preliminary-draft keep-outs);
   - the antenna elements must stick out of any carbon part, **vertical** (or 45° V), away from the propeller discs;
   - the receiver bind button and LED should be reachable / visible, or leave a hole for them.
 - Pilots choose BLE (built into the FC) or ELRS: the receiver is optional, so the frame must fly fine without it.
@@ -312,7 +312,7 @@ We are going to evaluate a **larger 1S battery to at least double the flight tim
 performance. Until that study is done:
 - size the battery bay with **margin** (please report the maximum battery envelope and mass the frame can take);
 - attach the flow board to the **tray**, never to the battery, so a battery change does not move the sensors;
-- the battery is still inserted from the rear (frame C); the flow board and its cable must not block insertion.
+- the battery is still inserted from the rear (preliminary draft frame); the flow board and its cable must not block insertion.
 
 ## 7. Other draft E items visible on the FC (partly superseded, see §0.6)
 

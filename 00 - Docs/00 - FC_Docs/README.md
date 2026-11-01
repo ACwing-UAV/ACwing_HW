@@ -69,7 +69,7 @@ layer, In1 GND under the sensors.
 | C2 (VBAT at J2) | 10 µF 25 V 0805, bottom | 4.7 µF **50 V** 1206 X7R, top | 6S; the 1206 is too tall for the bottom side |
 | Power path | Q5 / D9 rear-left | same circuit, moved east of the IMU | the input buck takes the rear-left corner |
 
-Outline: frame C + 0.8 mm USB-corner step as drafts F/G, plus a **front-left chamfer** v − u = 36.6 (stack check with the
+Outline: preliminary-draft frame outline (40 × 40, R3) + 0.8 mm USB-corner step as drafts F/G, plus a **front-left chamfer** v − u = 36.6 (stack check with the
 power board rev A charge port below; the chip antenna stays inside, DRC 0). Unchanged: 20 × 20 grommet holes, MCU / IMU / compass / baro / flash,
 RF front end and antenna, LDOs U5 (3.1 V) and U11 (VEXP 3.31 V), 4 RGB LEDs and their positions, J1 USB-C, J2 ESC A,
 J3 Qwiic, J5 ELRS positions, pogo grid.
