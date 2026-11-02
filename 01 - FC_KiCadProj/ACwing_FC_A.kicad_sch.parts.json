@@ -2,7 +2,7 @@
 "C6": {
 "lib_id": "Device:C",
 "value": "100uF 6.3V",
-"fp": "ACwing:C_1206_3216Metric",
+"fp": "DimaQuad:C_1206_3216Metric",
 "fields": {
 "Note": "Buck output (LM5166 PFM, ILIM 1.25 A: COUT >= 50 L Ipk^2 / VOUT^2 ~ 100 uF), with C46"
 },
@@ -11,7 +11,7 @@
 "Q5": {
 "lib_id": "Transistor_FET:AO3401A",
 "value": "AO3401A",
-"fp": "ACwing:SOT-23",
+"fp": "DimaQuad:SOT-23",
 "fields": {
 "Note": "Load sharing: ON on battery only, OFF with USB (gate = VBUS)"
 },
@@ -20,7 +20,7 @@
 "R2": {
 "lib_id": "Device:R",
 "value": "100k",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "Gate pull-down: Q5 on when VBUS is absent"
 },
@@ -29,7 +29,7 @@
 "D9": {
 "lib_id": "Device:D_Schottky",
 "value": "PMEG2010AEH",
-"fp": "ACwing:D_SOD-123F",
+"fp": "DimaQuad:D_SOD-123F",
 "fields": {
 "Note": "VBUS -> VSYS, 1 A, Vf ~0.35 V"
 },
@@ -38,14 +38,14 @@
 "C7": {
 "lib_id": "Device:C",
 "value": "4.7uF",
-"fp": "ACwing:C_0603_1608Metric",
+"fp": "DimaQuad:C_0603_1608Metric",
 "fields": {},
 "dnp": false
 },
 "U5": {
 "lib_id": "ACwing:LD39130S-ADJ",
 "value": "LD39130SPUR",
-"fp": "ACwing:DFN-6_1.3x1.2mm_P0.4mm",
+"fp": "DimaQuad:DFN-6_1.3x1.2mm_P0.4mm",
 "fields": {
 "Note": "BoM: LD39130S 3.0 V. The fixed 3.0 V part exists only as a 0.69 mm flip chip (LD39130SJ30R): ADJ version in DFN6 used here, set to 3.1 V to keep VDDUSB >= 3.0 V"
 },
@@ -54,28 +54,28 @@
 "R3": {
 "lib_id": "Device:R",
 "value": "287k 1%",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {},
 "dnp": false
 },
 "R4": {
 "lib_id": "Device:R",
 "value": "100k 1%",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {},
 "dnp": false
 },
 "C8": {
 "lib_id": "Device:C",
 "value": "1uF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {},
 "dnp": false
 },
 "U12": {
 "lib_id": "ACwing:LM5166",
 "value": "LM5166DRCT",
-"fp": "ACwing:Texas_DRC0010J",
+"fp": "DimaQuad:Texas_DRC0010J",
 "fields": {
 "Note": "TI LM5166DRCT: VIN 3-65 V (abs max 68 V), UVLO 2.75 V rising / 2.45 V falling, 500 mA. RT = GND: PFM; ILIM = GND: 1.25 A peak; EN = VIN: always on; SS open: 0.9 ms; HYS, PGOOD not used. 1S: 100% duty cycle, VREG = VBAT - I x (0.93 ohm + DCR)"
 },
@@ -84,7 +84,7 @@
 "L3": {
 "lib_id": "Device:L",
 "value": "22uH",
-"fp": "ACwing:L_Sunlord_SWPA5040S",
+"fp": "DimaQuad:L_Sunlord_SWPA5040S",
 "fields": {
 "Note": "Sunlord SWPA5040S220MT, 22 uH, Isat 1.9 A, 168 mOhm, 5 x 5 x 4 mm (PFM: L >= (VIN - VOUT) x 260 ns / 0.35 A at 25 V)"
 },
@@ -93,7 +93,7 @@
 "C46": {
 "lib_id": "Device:C",
 "value": "22uF 25V",
-"fp": "ACwing:C_0805_2012Metric",
+"fp": "DimaQuad:C_0805_2012Metric",
 "fields": {
 "Note": "Buck output, X5R 0805, next to L3 / U12 (with C6)"
 },
@@ -102,7 +102,7 @@
 "R47": {
 "lib_id": "Device:R",
 "value": "470k 1%",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "VREG = 1.223 V x (1 + 470k/200k) = 4.10 V"
 },
@@ -111,14 +111,14 @@
 "R48": {
 "lib_id": "Device:R",
 "value": "200k 1%",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {},
 "dnp": false
 },
 "C47": {
 "lib_id": "Device:C",
 "value": "4.7uF 50V",
-"fp": "ACwing:C_1206_3216Metric",
+"fp": "DimaQuad:C_1206_3216Metric",
 "fields": {
 "Note": "Buck input, X7R 50 V 1206, at the VIN / GND pins (6S: 25.2 V)"
 },
@@ -127,7 +127,7 @@
 "C49": {
 "lib_id": "Device:C",
 "value": "10nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "Buck input HF bypass, X7R 50 V, closest to VIN"
 },
@@ -136,42 +136,42 @@
 "R8": {
 "lib_id": "Device:R",
 "value": "100k 1%",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {},
 "dnp": false
 },
 "R9": {
 "lib_id": "Device:R",
 "value": "10k",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {},
 "dnp": false
 },
 "C12": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {},
 "dnp": false
 },
 "R10": {
 "lib_id": "Device:R",
 "value": "100k",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {},
 "dnp": false
 },
 "R11": {
 "lib_id": "Device:R",
 "value": "100k",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {},
 "dnp": false
 },
 "J1": {
 "lib_id": "Connector:USB_C_Receptacle_USB2.0_16P",
 "value": "USB-C (HRO TYPE-C-31-M-12)",
-"fp": "ACwing:USB_C_Receptacle_HRO_TYPE-C-31-M-12",
+"fp": "DimaQuad:USB_C_Receptacle_HRO_TYPE-C-31-M-12",
 "fields": {
 "Note": "Right-corner chamfer, plug from the frame side"
 },
@@ -180,28 +180,28 @@
 "R12": {
 "lib_id": "Device:R",
 "value": "5.1k",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {},
 "dnp": false
 },
 "R13": {
 "lib_id": "Device:R",
 "value": "5.1k",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {},
 "dnp": false
 },
 "U7": {
 "lib_id": "Power_Protection:USBLC6-2SC6",
 "value": "USBLC6-2SC6",
-"fp": "ACwing:SOT-23-6",
+"fp": "DimaQuad:SOT-23-6",
 "fields": {},
 "dnp": false
 },
 "U2": {
 "lib_id": "MCU_ST_STM32WB:STM32WB55CGUx",
 "value": "STM32WB55CGU6",
-"fp": "ACwing:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm",
+"fp": "DimaQuad:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm",
 "fields": {
 "Note": "Top side, board centre. Exposed pad to GND with a via array (RF ground); RF line to the chip antenna at the left edge"
 },
@@ -210,7 +210,7 @@
 "C23": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "VDD pin 20"
 },
@@ -219,7 +219,7 @@
 "C24": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "VDD pin 35"
 },
@@ -228,7 +228,7 @@
 "C25": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "VDD pin 48 / VBAT pin 1"
 },
@@ -237,7 +237,7 @@
 "C14": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "VDDA pin 8"
 },
@@ -246,7 +246,7 @@
 "C22": {
 "lib_id": "Device:C",
 "value": "1uF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "VDDA pin 8"
 },
@@ -255,7 +255,7 @@
 "C26": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "VDDRF pin 23 (DS: 100 nF // 100 pF)"
 },
@@ -264,7 +264,7 @@
 "C27": {
 "lib_id": "Device:C",
 "value": "100pF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "VDDRF pin 23, C0G"
 },
@@ -273,7 +273,7 @@
 "C28": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "VDDUSB pin 40"
 },
@@ -282,7 +282,7 @@
 "C9": {
 "lib_id": "Device:C",
 "value": "4.7uF",
-"fp": "ACwing:C_0603_1608Metric",
+"fp": "DimaQuad:C_0603_1608Metric",
 "fields": {
 "Note": "VDD bulk"
 },
@@ -291,7 +291,7 @@
 "C15": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "DS13252: 100 nF on NRST"
 },
@@ -300,16 +300,16 @@
 "R14": {
 "lib_id": "Device:R",
 "value": "10k",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
-"Note": "Boot from flash; TP3 to VDD for the USB DFU bootloader"
+"Note": "Boot from flash; TP1 to TP8 (VDD) for the USB DFU bootloader"
 },
 "dnp": false
 },
 "L1": {
 "lib_id": "Device:L",
 "value": "2.2uH",
-"fp": "ACwing:L_0805_2012Metric",
+"fp": "DimaQuad:L_0805_2012Metric",
 "fields": {
 "Note": "SMPS inductor, 8 MHz mode (Wurth 74479774222, DS13252 table 6): set the SMPS clock to 8 MHz in firmware"
 },
@@ -318,7 +318,7 @@
 "L2": {
 "lib_id": "Device:L",
 "value": "10nH",
-"fp": "ACwing:L_0402_1005Metric",
+"fp": "DimaQuad:L_0402_1005Metric",
 "fields": {
 "Note": "Series 10 nH for receiver performance (DS13252 table 6)"
 },
@@ -327,7 +327,7 @@
 "C29": {
 "lib_id": "Device:C",
 "value": "4.7uF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "SMPS output (DS13252 table 6)"
 },
@@ -336,7 +336,7 @@
 "Y1": {
 "lib_id": "Device:Crystal_GND24",
 "value": "32MHz",
-"fp": "ACwing:Crystal_SMD_2016-4Pin_2.0x1.6mm",
+"fp": "DimaQuad:Crystal_SMD_2016-4Pin_2.0x1.6mm",
 "fields": {
 "Note": "NDK NX2016SA 32 MHz (DS13252 table 5); load caps integrated in the MCU (trimmed in firmware)"
 },
@@ -345,7 +345,7 @@
 "U8": {
 "lib_id": "ACwing:MLPF-WB55-01E3",
 "value": "MLPF-WB55-01E3",
-"fp": "ACwing:ST_MLPF-WB55-01E3_CSP-6",
+"fp": "DimaQuad:ST_MLPF-WB55-01E3_CSP-6",
 "fields": {
 "Note": "Directly at RF1: 62 ohm line from the MCU, 50 ohm to the antenna"
 },
@@ -354,7 +354,7 @@
 "R34": {
 "lib_id": "Device:R",
 "value": "0R",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "Antenna tuning: series position, 0 ohm until tuned"
 },
@@ -363,7 +363,7 @@
 "C36": {
 "lib_id": "Device:C",
 "value": "DNP",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "Antenna tuning: shunt position at the antenna side (C0G or inductor), DNP until tuned"
 },
@@ -372,7 +372,7 @@
 "AE1": {
 "lib_id": "Device:Antenna_Chip",
 "value": "2450AT18A0100001E",
-"fp": "ACwing:Johanson_2450AT18x100",
+"fp": "DimaQuad:Johanson_2450AT18x100",
 "fields": {
 "Note": "Johanson 2.4 GHz chip antenna at the left board edge; pad 2 NC; copper-free area around it"
 },
@@ -381,7 +381,7 @@
 "U1": {
 "lib_id": "ACwing:LSM6DSV16X",
 "value": "LSM6DSV16X",
-"fp": "ACwing:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y",
+"fp": "DimaQuad:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y",
 "fields": {
 "Note": "Board centre (frame CG), axes 45 deg to the airframe. Draft E: 4-wire SPI (mode 3, <= 10 MHz) on SPI1 with the log flash; sensor hub (SDx/SCx) unchanged"
 },
@@ -390,7 +390,7 @@
 "C16": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "Vdd (pin 8)"
 },
@@ -399,7 +399,7 @@
 "C17": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "Vdd_IO (pin 5)"
 },
@@ -408,7 +408,7 @@
 "R15": {
 "lib_id": "Device:R",
 "value": "2.2k",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "Expansion bus (I2C1) pull-up to the Qwiic 3.3 V rail; add-on boards have their pull-ups DNP"
 },
@@ -417,14 +417,14 @@
 "R16": {
 "lib_id": "Device:R",
 "value": "2.2k",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {},
 "dnp": false
 },
 "R38": {
 "lib_id": "Device:R",
 "value": "10k",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "IMU CS pull-up: deselected during boot"
 },
@@ -433,7 +433,7 @@
 "R17": {
 "lib_id": "Device:R",
 "value": "4.7k",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "Sensor hub bus pull-up (or the internal SHUB_PU_EN)"
 },
@@ -442,14 +442,14 @@
 "R18": {
 "lib_id": "Device:R",
 "value": "4.7k",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {},
 "dnp": false
 },
 "U3": {
 "lib_id": "Sensor_Magnetic:LIS2MDL",
 "value": "IIS2MDC",
-"fp": "ACwing:LGA-12_2x2mm_P0.5mm",
+"fp": "DimaQuad:LGA-12_2x2mm_P0.5mm",
 "fields": {
 "Note": "IIS2MDCTR (industrial grade of the LIS2MDL: same LGA-12 pinout and registers). Front corner, farthest from battery and motor currents. No motor current under it"
 },
@@ -458,7 +458,7 @@
 "C18": {
 "lib_id": "Device:C",
 "value": "220nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "IIS2MDC C1: 220 nF, ESR < 200 mOhm, close to pins 5-6"
 },
@@ -467,14 +467,14 @@
 "C19": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {},
 "dnp": false
 },
 "C20": {
 "lib_id": "Device:C",
 "value": "10uF 6.3V",
-"fp": "ACwing:C_0603_1608Metric",
+"fp": "DimaQuad:C_0603_1608Metric",
 "fields": {
 "Note": "IIS2MDC DS: 100 nF + 10 uF on Vdd"
 },
@@ -483,7 +483,7 @@
 "U4": {
 "lib_id": "Sensor_Pressure:LPS22DF",
 "value": "LPS22HH",
-"fp": "ACwing:ST_HLGA-10_2x2mm_P0.5mm_LayoutBorder3x2y",
+"fp": "DimaQuad:ST_HLGA-10_2x2mm_P0.5mm_LayoutBorder3x2y",
 "fields": {
 "Note": "LPS22HHTR (replaces LPS22HBTR, same pinout) on the LPS22DF symbol/footprint (HLGA-10, pin 3 to GND). Optional. SA0 = 1 -> 0x5D"
 },
@@ -492,14 +492,14 @@
 "C21": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {},
 "dnp": false
 },
 "U10": {
 "lib_id": "Memory_Flash:W25Q32JVSS",
 "value": "W25Q128JV",
-"fp": "ACwing:WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4mm",
+"fp": "DimaQuad:WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4mm",
 "fields": {
 "Note": "Winbond W25Q128JVPIQ, 16 MB SPI NOR (WSON-8 6x5, bottom side): flight logs (blackbox). /WP and /HOLD tied high"
 },
@@ -508,7 +508,7 @@
 "C39": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "Flash VCC"
 },
@@ -517,7 +517,7 @@
 "R37": {
 "lib_id": "Device:R",
 "value": "10k",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "Flash CS pull-up: deselected during boot"
 },
@@ -526,7 +526,7 @@
 "J2": {
 "lib_id": "Connector_Generic:Conn_01x08",
 "value": "ESC link",
-"fp": "ACwing:JST_SH_SM08B-SRSS-TB_1x08-1MP_P1.00mm_Horizontal",
+"fp": "DimaQuad:JST_SH_SM08B-SRSS-TB_1x08-1MP_P1.00mm_Horizontal",
 "fields": {
 "Note": "ESC link A, JST SH 8-pin side entry, top side, rear edge: 1 GND, 2 VBAT (1S-6S, FC supply), 3 CUR, 4 TLM, 5-8 M1-M4. 1:1 cable. Check the pinout of a third-party ESC"
 },
@@ -535,7 +535,7 @@
 "R42": {
 "lib_id": "Device:R",
 "value": "1k",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "ADC input protection: limits the injected current if an ESC drives CUR above 3.3 V; RC with C1"
 },
@@ -544,7 +544,7 @@
 "R24": {
 "lib_id": "Device:R",
 "value": "100R",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "Series resistor, ESC serial telemetry input to PB0 (optional; EDT on the motor lines preferred)"
 },
@@ -553,7 +553,7 @@
 "R20": {
 "lib_id": "Device:R",
 "value": "100R",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "Series resistor on the cable line (edge rate, ESD, a fault on the ESC side)"
 },
@@ -562,7 +562,7 @@
 "R21": {
 "lib_id": "Device:R",
 "value": "100R",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "Series resistor on the cable line (edge rate, ESD, a fault on the ESC side)"
 },
@@ -571,7 +571,7 @@
 "R22": {
 "lib_id": "Device:R",
 "value": "100R",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "Series resistor on the cable line (edge rate, ESD, a fault on the ESC side)"
 },
@@ -580,7 +580,7 @@
 "R23": {
 "lib_id": "Device:R",
 "value": "100R",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "Series resistor on the cable line (edge rate, ESD, a fault on the ESC side)"
 },
@@ -589,7 +589,7 @@
 "C1": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "ADC input cap for ESC_CUR (RC 1k / 100 nF with R42)"
 },
@@ -598,7 +598,7 @@
 "C2": {
 "lib_id": "Device:C",
 "value": "4.7uF 50V",
-"fp": "ACwing:C_1206_3216Metric",
+"fp": "DimaQuad:C_1206_3216Metric",
 "fields": {
 "Note": "VBAT at the ESC link (up to 6S): local bulk for the cable inductance, X7R 50 V"
 },
@@ -607,7 +607,7 @@
 "J6": {
 "lib_id": "Connector_Generic:Conn_01x08",
 "value": "ESC link B",
-"fp": "ACwing:JST_SH_SM08B-SRSS-TB_1x08-1MP_P1.00mm_Horizontal",
+"fp": "DimaQuad:JST_SH_SM08B-SRSS-TB_1x08-1MP_P1.00mm_Horizontal",
 "fields": {
 "Note": "ESC link B, JST SH 8-pin side entry, top side, left edge: second 4-in-1 ESC for hexa / octo frames. Same pinout as J2; motors M5-M8 on pins 5-8; VBAT, CUR and TLM not connected (the FC is supplied and measures current through ESC A)"
 },
@@ -616,7 +616,7 @@
 "R25": {
 "lib_id": "Device:R",
 "value": "100R",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "Series resistor on the cable line (edge rate, ESD, a fault on the ESC side)"
 },
@@ -625,7 +625,7 @@
 "R26": {
 "lib_id": "Device:R",
 "value": "100R",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "Series resistor on the cable line (edge rate, ESD, a fault on the ESC side)"
 },
@@ -634,7 +634,7 @@
 "R27": {
 "lib_id": "Device:R",
 "value": "100R",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "Series resistor on the cable line (edge rate, ESD, a fault on the ESC side)"
 },
@@ -643,7 +643,7 @@
 "R28": {
 "lib_id": "Device:R",
 "value": "100R",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "Series resistor on the cable line (edge rate, ESD, a fault on the ESC side)"
 },
@@ -652,7 +652,7 @@
 "J7": {
 "lib_id": "Connector:TestPoint",
 "value": "VBAT+",
-"fp": "ACwing:TestPoint_Pad_2.0x2.0mm",
+"fp": "DimaQuad:TestPoint_Pad_2.0x2.0mm",
 "fields": {
 "Note": "Battery / power input pad VBAT+ (1S-6S), 2 x 2 mm solder pad, top side, left edge. FC supply only, no motor current: use it when the ESC has no VBAT pin (separate ESCs, PDB); otherwise the FC is supplied through ESC A J2"
 },
@@ -661,7 +661,7 @@
 "J8": {
 "lib_id": "Connector:TestPoint",
 "value": "GND",
-"fp": "ACwing:TestPoint_Pad_2.0x2.0mm",
+"fp": "DimaQuad:TestPoint_Pad_2.0x2.0mm",
 "fields": {
 "Note": "Battery / power input pad GND, 2 x 2 mm solder pad, next to J7"
 },
@@ -670,7 +670,7 @@
 "J4": {
 "lib_id": "Connector_Generic:Conn_01x04",
 "value": "Qwiic",
-"fp": "ACwing:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+"fp": "DimaQuad:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
 "fields": {
 "Note": "Second Qwiic port, in parallel with J3. Right edge, rear: flow board (under the frame). Each add-on board gets its own cable, no daisy chain needed"
 },
@@ -679,7 +679,7 @@
 "U13": {
 "lib_id": "74xGxx:74LVC1G34",
 "value": "SN74LV1T34DCKR",
-"fp": "ACwing:SOT-353_SC-70-5",
+"fp": "DimaQuad:SOT-353_SC-70-5",
 "fields": {
 "Note": "Single-supply buffer, VCC = VSYS (3.5-4.7 V): input VIH <= 2.0 V (5 V tolerant), output to VSYS. LED data level shifter"
 },
@@ -688,7 +688,7 @@
 "C50": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "U13 supply"
 },
@@ -697,7 +697,7 @@
 "R39": {
 "lib_id": "Device:R",
 "value": "33R",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "Series resistor at the first LED input (data from U13)"
 },
@@ -706,7 +706,7 @@
 "D1": {
 "lib_id": "LED:WS2812B-2020",
 "value": "XL-2020RGBC-WS2812B",
-"fp": "ACwing:LED_WS2812B-2020_PLCC4_2.0x2.0mm",
+"fp": "DimaQuad:LED_WS2812B-2020_PLCC4_2.0x2.0mm",
 "fields": {
 "Note": "RGB LED 1 of 4, rear-right corner (pairs mirrored about the front-rear diagonal). Rear LED"
 },
@@ -715,7 +715,7 @@
 "C40": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "D1 supply"
 },
@@ -724,7 +724,7 @@
 "D2": {
 "lib_id": "LED:WS2812B-2020",
 "value": "XL-2020RGBC-WS2812B",
-"fp": "ACwing:LED_WS2812B-2020_PLCC4_2.0x2.0mm",
+"fp": "DimaQuad:LED_WS2812B-2020_PLCC4_2.0x2.0mm",
 "fields": {
 "Note": "RGB LED 2 of 4, rear-left corner (pairs mirrored about the front-rear diagonal). Rear LED"
 },
@@ -733,7 +733,7 @@
 "C41": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "D2 supply"
 },
@@ -742,7 +742,7 @@
 "D3": {
 "lib_id": "LED:WS2812B-2020",
 "value": "XL-2020RGBC-WS2812B",
-"fp": "ACwing:LED_WS2812B-2020_PLCC4_2.0x2.0mm",
+"fp": "DimaQuad:LED_WS2812B-2020_PLCC4_2.0x2.0mm",
 "fields": {
 "Note": "RGB LED 3 of 4, front-left corner (pairs mirrored about the front-rear diagonal). Front LED, >= 5 mm from the compass; use full on/off colours (PWM ripple near the magnetometer)"
 },
@@ -751,7 +751,7 @@
 "C42": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "D3 supply"
 },
@@ -760,7 +760,7 @@
 "D4": {
 "lib_id": "LED:WS2812B-2020",
 "value": "XL-2020RGBC-WS2812B",
-"fp": "ACwing:LED_WS2812B-2020_PLCC4_2.0x2.0mm",
+"fp": "DimaQuad:LED_WS2812B-2020_PLCC4_2.0x2.0mm",
 "fields": {
 "Note": "RGB LED 4 of 4, front-right corner (pairs mirrored about the front-rear diagonal). Front LED, >= 5 mm from the compass; use full on/off colours (PWM ripple near the magnetometer)"
 },
@@ -769,79 +769,79 @@
 "C45": {
 "lib_id": "Device:C",
 "value": "100nF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "D4 supply"
 },
 "dnp": false
 },
-"TP6": {
-"lib_id": "Connector:TestPoint",
-"value": "SWDIO",
-"fp": "ACwing:TestPoint_Pad_D1.0mm",
-"fields": {
-"Note": "SWDIO (PA13) - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
-},
-"dnp": false
-},
-"TP7": {
-"lib_id": "Connector:TestPoint",
-"value": "SWCLK",
-"fp": "ACwing:TestPoint_Pad_D1.0mm",
-"fields": {
-"Note": "SWCLK (PA14) - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
-},
-"dnp": false
-},
-"TP8": {
+"TP2": {
 "lib_id": "Connector:TestPoint",
 "value": "NRST",
-"fp": "ACwing:TestPoint_Pad_D1.0mm",
+"fp": "DimaQuad:TestPoint_Pad_D1.0mm",
 "fields": {
 "Note": "NRST - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
 },
 "dnp": false
 },
-"TP1": {
-"lib_id": "Connector:TestPoint",
-"value": "CRSF_TX",
-"fp": "ACwing:TestPoint_Pad_D1.0mm",
-"fields": {
-"Note": "USART1 TX (PB6), ELRS port J5 (factory test / monitor) - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
-},
-"dnp": false
-},
-"TP2": {
-"lib_id": "Connector:TestPoint",
-"value": "CRSF_RX",
-"fp": "ACwing:TestPoint_Pad_D1.0mm",
-"fields": {
-"Note": "USART1 RX (PB7), ELRS port J5 (factory test / monitor) - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
-},
-"dnp": false
-},
 "TP3": {
 "lib_id": "Connector:TestPoint",
-"value": "BOOT0",
-"fp": "ACwing:TestPoint_Pad_D1.0mm",
+"value": "SWCLK",
+"fp": "DimaQuad:TestPoint_Pad_D1.0mm",
 "fields": {
-"Note": "BOOT0: bridge to TP4 for DFU - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
+"Note": "SWCLK (PA14) - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
 },
 "dnp": false
 },
 "TP4": {
 "lib_id": "Connector:TestPoint",
-"value": "VDD",
-"fp": "ACwing:TestPoint_Pad_D1.0mm",
+"value": "SWDIO",
+"fp": "DimaQuad:TestPoint_Pad_D1.0mm",
 "fields": {
-"Note": "VDD 3.1 V - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
+"Note": "SWDIO (PA13) - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
+},
+"dnp": false
+},
+"TP6": {
+"lib_id": "Connector:TestPoint",
+"value": "CRSF_TX",
+"fp": "DimaQuad:TestPoint_Pad_D1.0mm",
+"fields": {
+"Note": "USART1 TX (PB6), ELRS port J5 (factory test / monitor) - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
 },
 "dnp": false
 },
 "TP5": {
 "lib_id": "Connector:TestPoint",
+"value": "CRSF_RX",
+"fp": "DimaQuad:TestPoint_Pad_D1.0mm",
+"fields": {
+"Note": "USART1 RX (PB7), ELRS port J5 (factory test / monitor) - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
+},
+"dnp": false
+},
+"TP1": {
+"lib_id": "Connector:TestPoint",
+"value": "BOOT0",
+"fp": "DimaQuad:TestPoint_Pad_D1.0mm",
+"fields": {
+"Note": "BOOT0: bridge to TP8 (VDD) for DFU - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
+},
+"dnp": false
+},
+"TP8": {
+"lib_id": "Connector:TestPoint",
+"value": "VDD",
+"fp": "DimaQuad:TestPoint_Pad_D1.0mm",
+"fields": {
+"Note": "VDD 3.1 V - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
+},
+"dnp": false
+},
+"TP7": {
+"lib_id": "Connector:TestPoint",
 "value": "GND",
-"fp": "ACwing:TestPoint_Pad_D1.0mm",
+"fp": "DimaQuad:TestPoint_Pad_D1.0mm",
 "fields": {
 "Note": "GND - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
 },
@@ -850,7 +850,7 @@
 "H1": {
 "lib_id": "Mechanical:MountingHole_Pad",
 "value": "D3.2",
-"fp": "ACwing:Grommet_PTH_3.2mm_Pad5.0mm",
+"fp": "DimaQuad:Grommet_PTH_3.2mm_Pad5.0mm",
 "fields": {
 "Note": "Plated 3.2 hole for an M2 anti-vibration grommet, 20x20 pattern (draft F). Exposed 5.0 mm copper ring on both sides, GND"
 },
@@ -859,7 +859,7 @@
 "H2": {
 "lib_id": "Mechanical:MountingHole_Pad",
 "value": "D3.2",
-"fp": "ACwing:Grommet_PTH_3.2mm_Pad5.0mm",
+"fp": "DimaQuad:Grommet_PTH_3.2mm_Pad5.0mm",
 "fields": {
 "Note": "Plated 3.2 hole for an M2 anti-vibration grommet, 20x20 pattern (draft F). Exposed 5.0 mm copper ring on both sides, GND"
 },
@@ -868,7 +868,7 @@
 "H3": {
 "lib_id": "Mechanical:MountingHole_Pad",
 "value": "D3.2",
-"fp": "ACwing:Grommet_PTH_3.2mm_Pad5.0mm",
+"fp": "DimaQuad:Grommet_PTH_3.2mm_Pad5.0mm",
 "fields": {
 "Note": "Plated 3.2 hole for an M2 anti-vibration grommet, 20x20 pattern (draft F). Exposed 5.0 mm copper ring on both sides, GND"
 },
@@ -877,7 +877,7 @@
 "H4": {
 "lib_id": "Mechanical:MountingHole_Pad",
 "value": "D3.2",
-"fp": "ACwing:Grommet_PTH_3.2mm_Pad5.0mm",
+"fp": "DimaQuad:Grommet_PTH_3.2mm_Pad5.0mm",
 "fields": {
 "Note": "Plated 3.2 hole for an M2 anti-vibration grommet, 20x20 pattern (draft F). Exposed 5.0 mm copper ring on both sides, GND"
 },
@@ -886,7 +886,7 @@
 "J3": {
 "lib_id": "Connector_Generic:Conn_01x04",
 "value": "Qwiic",
-"fp": "ACwing:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+"fp": "DimaQuad:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
 "fields": {
 "Note": "Qwiic / STEMMA QT (JST SH 4P): 1 GND, 2 3.3 V, 3 SDA, 4 SCL. Right edge, front: GPS board (stacked above, its J1)"
 },
@@ -895,7 +895,7 @@
 "U11": {
 "lib_id": "Regulator_Linear:LDK130-ADJ_DFN6",
 "value": "LDK130PU-R",
-"fp": "ACwing:DFN-6_1.3x1.2mm_P0.4mm",
+"fp": "DimaQuad:DFN-6_1.3x1.2mm_P0.4mm",
 "fields": {
 "Note": "Adjustable LDK130 (LCSC C157446, same part as the flow board), 3.3 V 300 mA for the expansion bus only (GPS board up to 100 mA + flow board 35 mA): a short or a hot-plug on a Qwiic cable cannot pull down the MCU rail"
 },
@@ -904,7 +904,7 @@
 "R41": {
 "lib_id": "Device:R",
 "value": "15k 1%",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "VEXP divider, bottom"
 },
@@ -913,7 +913,7 @@
 "R40": {
 "lib_id": "Device:R",
 "value": "47k 1%",
-"fp": "ACwing:R_0402_1005Metric",
+"fp": "DimaQuad:R_0402_1005Metric",
 "fields": {
 "Note": "VEXP divider, top: VOUT = 0.8 V x (1 + 47k/15k) = 3.31 V"
 },
@@ -922,7 +922,7 @@
 "C43": {
 "lib_id": "Device:C",
 "value": "1uF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "U11 input"
 },
@@ -931,7 +931,7 @@
 "C44": {
 "lib_id": "Device:C",
 "value": "2.2uF",
-"fp": "ACwing:C_0402_1005Metric",
+"fp": "DimaQuad:C_0402_1005Metric",
 "fields": {
 "Note": "U11 output / Qwiic"
 },
@@ -940,7 +940,7 @@
 "J5": {
 "lib_id": "Connector_Generic:Conn_01x04",
 "value": "ELRS",
-"fp": "ACwing:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+"fp": "DimaQuad:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
 "fields": {
 "Note": "ELRS receiver (CRSF): 1 GND, 2 VSYS (4.1 V), 3 <- RX module TX, 4 -> RX module RX. Not Qwiic: do not plug sensors here"
 },

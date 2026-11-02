@@ -43,9 +43,9 @@ All alternate functions below were checked against ST's pin data (STM32_open_pin
 | 6 | PB9 | I2C_SDA | I2C1 | east |
 | 29 | PB1 | VBUS_DET | GPIO (VBUS/2): USB present | west |
 | 37 / 38 | PA11 / PA12 | USB_DM / USB_DP | USB FS (DFU, CDC) | south |
-| 39 / 41 | PA13 / PA14 | SWDIO / SWCLK | SWD (pogo pads) | south |
-| 4 | PH3-BOOT0 | BOOT0 | 10 k pull-down, pogo pad | east |
-| 7 | NRST | NRST | 100 nF, pogo pad | east |
+| 39 / 41 | PA13 / PA14 | SWDIO / SWCLK | SWD (pogo pads TP4 / TP3) | south |
+| 4 | PH3-BOOT0 | BOOT0 | 10 k pull-down, pogo pad TP1 | east |
+| 7 | NRST | NRST | 100 nF, pogo pad TP2 | east |
 | 21 | RF1 | RF_IN | MLPF-WB55-01E3 → 50 Ω line → chip antenna at the left edge | north |
 | 24 / 25 | OSC_OUT / OSC_IN | HSE | 32 MHz crystal (no LSE) | north / west |
 | 31–33 | VFBSMPS / VSSSMPS / VLXSMPS | SMPS | 2.2 µH + 10 nH + 4.7 µF (8 MHz option) | west |
@@ -59,12 +59,12 @@ All alternate functions below were checked against ST's pin data (STM32_open_pin
   with an I2C/Qwiic port.
 
 ## Board side of the MCU (U2 rotated 180°, board frame u right, v front)
-- East (pins 1–12): motors M1–M4, I2C, BOOT0, NRST → ESC A (rear) and Qwiic (right edge).
+- East (pins 1–12): motors M1–M4, I2C, BOOT0, NRST → ESC A (front edge since 2026-11-02) and Qwiic (right edge).
 - North (pins 13–24): ADC inputs, M5/M6/M8, RGB, RF, HSE → ESC B (left edge) through bottom-side resistors R25, R26, R28.
 - West (pins 25–36): HSE_IN, SMPS, TLM, VBUS_DET, flash CS, M7 (R27) → ESC B.
-- South (pins 37–48): USB, SWD, SPI, ELRS (PB6/PB7).
+- South (pins 37–48): USB, SWD, SPI, ELRS (PB6/PB7) → ELRS J5 on the rear edge (since 2026-11-02).
 
-## ESC link A (J2, JST SH 8-pin, top side, rear edge at (u, v) = (+1.5, −16.9), mouth toward the rear)
+## ESC link A (J2, JST SH 8-pin, top side, front edge next to J6 at (u, v) = (+3.6, +16.85), mouth toward the front)
 | Pin | Signal | FC side |
 |---|---|---|
 | 1 | GND | GND |
@@ -73,7 +73,7 @@ All alternate functions below were checked against ST's pin data (STM32_open_pin
 | 4 | TLM | 100 Ω → PB0 (optional) |
 | 5–8 | M1–M4 | 100 Ω → PA0–PA3 (TIM2 CH1–CH4) |
 
-## ESC link B (J6, JST SH 8-pin, top side, front edge next to J5, pins at v = +14.85, mouth toward the front)
+## ESC link B (J6, JST SH 8-pin, top side, front edge next to J2, pins at v = +14.85, mouth toward the front)
 | Pin | Signal | FC side |
 |---|---|---|
 | 1 | GND | GND |
@@ -103,3 +103,12 @@ daisy-chain through their own pass-through ports.
   **VREG 4.1 V** (2S–6S). On 1S the buck runs at 100 % duty cycle: VREG ≈ VBAT − I × 1.1 Ω.
 - USB-C: data, DFU and bench supply only (VBUS → D9 → VSYS; Q5 cuts VREG off while USB is present). No charger.
 - VSYS → LDO U5 3.1 V (VDD), LDO U11 3.31 V (VEXP, Qwiic), LEDs D1–D4 (direct), LED data buffer U13, ELRS port.
+
+## Test pads (pogo grid, bottom side, 2026-11-02 numbering)
+Numbered in reading order seen from below (upper row left to right, then lower row):
+| Pad | Net | Pad | Net |
+|---|---|---|---|
+| TP1 | BOOT0 | TP5 | CRSF_RX (ELRS UART, PB7) |
+| TP2 | NRST | TP6 | CRSF_TX (PB6) |
+| TP3 | SWCLK (PA14) | TP7 | GND |
+| TP4 | SWDIO (PA13) | TP8 | VDD 3.1 V |

@@ -17,7 +17,7 @@
   )
   (fp_circle (center 0 0) (end 2.2 0)
     (stroke (width 0.15) (type solid)) (fill none) (layer "Cmts.User") (tstamp 7e991283-2d9b-4ad7-a881-2eb41b451956))
-  (fp_circle (center 0 0) (end 2.45 0)
+  (fp_circle (center 0 0) (end 2.0 0)
     (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd") (tstamp de9b237f-aa60-4c66-a9f7-dfa44b26b7c7))
   (pad "" np_thru_hole circle (at 0 0) (size 2.2 2.2) (drill 2.2) (layers "*.Cu" "*.Mask") (tstamp f44241d3-7ac9-466d-85a3-ee82c6f502aa))
 )

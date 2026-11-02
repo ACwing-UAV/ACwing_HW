@@ -9,7 +9,7 @@
 
 <p align="center">
   STM32WB55 flight controller, 1S power board, GNSS and optical-flow expansions<br>
-  KiCad 7 · JLCPCB-ready · by Andrea Cirillo
+  KiCad 9 · JLCPCB-ready · by Andrea Cirillo
 </p>
 
 ---
@@ -126,11 +126,18 @@ GPS 27.6 / 23.4 USD, Flow 11.1 / 9.4 USD. Check LCSC stock before ordering.
 
 ## Status
 
+**Layout and routing update 2026-11-02 (still rev A):** both FC ESC links on the front edge (ESC A next to ESC B,
+ELRS moved to the rear edge); Qwiic IN / OUT on one edge on every board (GPS right edge, Flow top edge); no via in any
+SMD pad (exposed thermal pads excepted); fine-pitch pads resized so every pad gap is ≥ 0.19 mm (JLCPCB mask dam),
+board mask expansion 0.05 mm / minimum web 0.09 mm; CSP / BGA pads 0.25 mm; FC test pads TP1–TP8 in ascending order;
+Flow test pads along the perimeter, symmetric; silkscreen reduced to connector labels, logos and board names. Board
+files are now saved by KiCad 9.
+
 **Layout update 2026-10-24 (still rev A):** FC microcontroller at the board centre, ESC link B next to the ELRS port on
 the front edge, input buck moved to the left edge (no longer between the rear LEDs), LED supply kept away from the
 magnetometer (EMI check in the FC README); GPS Qwiic J1 aligned with FC J3.
 
-All four boards are routed with **0 DRC violations and 0 unconnected pads** (KiCad 7.0). They are not built and tested
+All four boards are routed with **0 DRC violations and 0 unconnected pads** (KiCad 9, 2026-11-02). They are not built and tested
 yet: see each board README for the bench checks planned before the first order (ERC in KiCad 8/9, power-stage tests,
 land patterns to verify). Firmware: [ACwing_FW](https://github.com/ACwing-UAV/ACwing_FW).
 

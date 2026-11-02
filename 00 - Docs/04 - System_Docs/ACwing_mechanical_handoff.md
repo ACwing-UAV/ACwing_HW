@@ -188,6 +188,18 @@ to the frame:
 | ESC 1S, Flow | unchanged |
 | Stack check (ESC 1S A + FC A + GPS A, 6 mm) | 0 clashes, closest items 0.39 mm (grommet hardware, unchanged) |
 
+### 0.13 Layout and routing update (2026-11-02, boards still rev A)
+| Item | Value |
+|---|---|
+| **FC J2 ESC link A** | moved from the rear edge to the **front edge**, next to J6: centre (+3.6, +16.85), mouth +v (same body and height as J6). Both ESC cables now leave the FC from the front edge |
+| **FC J5 ELRS** | moved to J2's old place on the **rear edge**: (+1.5, −16.9), mouth −v |
+| **Cable A (FC J2 → ESC 1S J1)** | ESC 1S J1 stays on the rear side of the power board: the cable now runs from the FC front edge to the ESC rear edge, past the stack (it was a 17 mm S behind the stack in Mech A1). **New length and route to be set in the mechanics**; keep the front-edge exit free (u −14 … +10, 8 mm out, FC top to 4 mm above) |
+| **ELRS lead** | now leaves from the FC rear edge (J5) |
+| **GPS J2 (Qwiic OUT)** | moved from the rear edge to the **right edge**, under J1: (+11.88, −4.05), mouth +u. J1 IN (+11.88, +3.85), mouth +u (0.25 mm from the 2026-10-24 position) |
+| **Flow J1 / J2 (Qwiic IN / OUT)** | moved from the left / right edges to the **top edge** (sensor-side view): J1 (−6.3, +8.95), J2 (+6.3, +8.95), both mouth +t. **Cable C (FC J4 → flow J1)** enters from the top edge now |
+| Flow test pads | TP1, TP2 under J1, TP4, TP5 under J2, TP3 at the bottom edge centre (flat pads, no height) |
+| Heights, holes, outlines | unchanged |
+
 ## 1. Coordinate conventions
 
 - **FC frame (u, v):** origin at the FC centre, u to the right, v up, **FC top view**. KiCad: X = 150 + u, Y = 100 − v.
@@ -221,12 +233,12 @@ Both optical axes are **perpendicular to the board**. The board must be mounted 
 ### 2.3 Connectors
 | Ref | Type | Position | Mouth |
 |---|---|---|---|
-| J1 | Qwiic / STEMMA QT (JST SH 1.0 mm, 4-pin, side entry) | left edge, t = +7.0 | toward −s |
-| J2 | same | right edge, t = +7.0 | toward +s |
+| J1 | Qwiic / STEMMA QT (JST SH 1.0 mm, 4-pin, side entry), IN | top edge, (−6.3, +8.95) (2026-11-02; was left edge, t = +7.0) | toward +t |
+| J2 | same, OUT | top edge, (+6.3, +8.95) (2026-11-02; was right edge) | toward +t |
 
 J1 and J2 are wired in parallel (pass-through). Only one is used in a simple FC → flow chain; both are used when the
-flow board is in the middle of a chain. Leave **≈ 10 mm beyond the used edge** (t +3.5 … +10.5) for the plug and the
-cable bend (`QWIIC_PLUG_ZONE` in the DXF).
+flow board is in the middle of a chain. Leave **≈ 10 mm beyond the top edge** (above J1 / J2) for the plugs and the
+cable bend (`QWIIC_PLUG_ZONE` in the DXF, updated 2026-11-02).
 
 ### 2.4 Mounting rules
 1. **Location:** under the battery tray, sensor side down, as close as possible to the vertical axis through the

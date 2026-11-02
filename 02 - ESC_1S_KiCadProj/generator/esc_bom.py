@@ -77,7 +77,7 @@ def style_header(ws, r):
 wb = Workbook(); ws = wb.active; ws.title = 'BoM'
 hdr = ['Item', 'Quantity', 'Part Reference', 'Value', 'MPN', 'Manufacturer', 'LCSC / JLCPCB #', 'Package', 'Description', 'Side', 'Notes']
 ws.append(['ACwing ESC 1S rev A - assembly BoM (1 board)'])
-ws.append(['Source: ACwing_ESC1S_A.kicad_sch / ACwing_ESC1S_A.kicad_pcb. LCSC part numbers from the rev E FC BoM (2026-10-15/17); J1 C160407, rev B parts (Q5 AON7423 C99711, U2 STC4054GR C262930, J4 TYPE-C-31-M-12 C165948) checked 2026-10-18. D1-D4: SS34F fitted in place of STPS3L45AF (same outline).'])
+ws.append(['Source: ACwing_ESC1S_A.kicad_sch / ACwing_ESC1S_A.kicad_pcb. LCSC part numbers from the draft E FC BoM (2026-10-15/17); J1 C160407, rev B parts (Q5 AON7423 C99711, U2 STC4054GR C262930, J4 TYPE-C-31-M-12 C165948) checked 2026-10-18. D1-D4: SS34F fitted in place of STPS3L45AF (same outline).'])
 ws.append([]); ws.append(hdr); H = 4
 rows = sorted(groups.items(), key=lambda kv: key(sorted(kv[1], key=key)[0]))
 for i, ((k, sd), refs) in enumerate(rows, 1):

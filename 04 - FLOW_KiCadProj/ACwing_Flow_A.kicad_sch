@@ -5,7 +5,7 @@
   (paper "A4")
   (title_block
     (title "ACwing Flow rev A - optical flow + ToF expansion for ACwing FC rev A")
-    (date "2026-10-19")
+    (date "2026-11-02")
     (rev "A")
     (company "ACwing - Andrea Cirillo")
     (comment 1 "Mounted under the battery tray, sensor side facing the ground (handoff doc for the frame)")
@@ -4903,20 +4903,25 @@
         (size 1.27 1.27))
       (justify left bottom))
     (uuid "6978786e-f862-560e-80f6-1c788f6da0c0"))
-  (label "LED_K"
+  (label "TOF_XSHUT"
     (at 149.86 142.24 0)
     (fields_autoplaced)
     (effects
       (font
         (size 1.27 1.27))
       (justify left bottom))
-    (uuid "7cf70723-3365-5888-a008-00c33b425481"))
+    (uuid "760941e0-2300-5e55-8189-c029c3f5d649"))
   (no_connect
     (at 147.32 144.78)
     (uuid "cf4ff388-c2a3-5192-9493-ce5836736a80"))
-  (no_connect
-    (at 147.32 147.32)
-    (uuid "86e8149f-3dda-5258-b710-c60c30900ad4"))
+  (label "LED_K"
+    (at 149.86 147.32 0)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1.27 1.27))
+      (justify left bottom))
+    (uuid "203530cb-8bda-56c4-a053-1fb635593bb7"))
   (label "SWDIO"
     (at 149.86 149.86 0)
     (fields_autoplaced)
@@ -5030,14 +5035,9 @@
         (size 1.27 1.27))
       (justify right bottom))
     (uuid "d67ad2d6-f361-5ed6-af5f-056cae5b13c0"))
-  (label "TOF_XSHUT"
-    (at 149.86 121.92 0)
-    (fields_autoplaced)
-    (effects
-      (font
-        (size 1.27 1.27))
-      (justify left bottom))
-    (uuid "c0c0a3f2-34c6-5e88-8262-904389b63930"))
+  (no_connect
+    (at 147.32 121.92)
+    (uuid "eda37aef-c2dc-5c1d-8dda-af26e0d3000b"))
   (label "TOF_INT"
     (at 149.86 124.46 0)
     (fields_autoplaced)
@@ -5489,7 +5489,7 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "Status LED (PA8 low = on)"
+    (property "Note" "Status LED (PA10, pin 15, low = on)"
       (at 195.58 102.87 90)
       (effects
         (font
@@ -5525,7 +5525,7 @@
         (font
           (size 1.27 1.27))
         (justify left)))
-    (property "Value" "SWDIO"
+    (property "Value" "+3V3"
       (at 214.63 95.25 0)
       (effects
         (font
@@ -5541,7 +5541,7 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "SWDIO (PA13) - SWD programming pad"
+    (property "Note" "3.3 V - SWD programming pad"
       (at 213.36 104.14 0)
       (effects
         (font
@@ -5553,14 +5553,41 @@
         (path "/dc84106e-4fe0-5e9c-b14e-4823103c3234"
           (reference "TP1")
           (unit 1)))))
-  (label "SWDIO"
-    (at 213.36 106.68 0)
-    (fields_autoplaced)
-    (effects
-      (font
-        (size 1.27 1.27))
-      (justify left bottom))
-    (uuid "9f58ab0a-10a6-5466-98e5-e7bfe6f55a8f"))
+  (symbol
+    (lib_id "power:+3V3")
+    (at 213.36 104.14 180)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "f1c3d5e2-a22b-5bb3-9635-7c4531a6dd2a")
+    (property "Reference" "#PWR050"
+      (at 213.36 100.33 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "+3V3"
+      (at 213.36 107.7 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 213.36 104.14 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 213.36 104.14 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "21bc5fd8-9af6-515b-9e95-f19fd993300b"))
+    (instances
+      (project "ACwing_Flow_A"
+        (path "/dc84106e-4fe0-5e9c-b14e-4823103c3234"
+          (reference "#PWR050")
+          (unit 1)))))
   (symbol
     (lib_id "Connector:TestPoint")
     (at 226.06 104.14 0)
@@ -5575,7 +5602,7 @@
         (font
           (size 1.27 1.27))
         (justify left)))
-    (property "Value" "SWCLK"
+    (property "Value" "MCU_NRST"
       (at 227.33 95.25 0)
       (effects
         (font
@@ -5591,7 +5618,7 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "SWCLK (PA14) - SWD programming pad"
+    (property "Note" "NRST - SWD programming pad"
       (at 226.06 104.14 0)
       (effects
         (font
@@ -5603,14 +5630,14 @@
         (path "/dc84106e-4fe0-5e9c-b14e-4823103c3234"
           (reference "TP2")
           (unit 1)))))
-  (label "SWCLK"
+  (label "MCU_NRST"
     (at 226.06 106.68 0)
     (fields_autoplaced)
     (effects
       (font
         (size 1.27 1.27))
       (justify left bottom))
-    (uuid "a3033a47-d5f7-5d64-b573-786ba805da28"))
+    (uuid "46cceaa2-cb63-55d1-9e66-8c605ff8aac9"))
   (symbol
     (lib_id "Connector:TestPoint")
     (at 238.76 104.14 0)
@@ -5625,7 +5652,7 @@
         (font
           (size 1.27 1.27))
         (justify left)))
-    (property "Value" "MCU_NRST"
+    (property "Value" "GND"
       (at 240.03 95.25 0)
       (effects
         (font
@@ -5641,7 +5668,7 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "NRST - SWD programming pad"
+    (property "Note" "GND - SWD programming pad"
       (at 238.76 104.14 0)
       (effects
         (font
@@ -5653,14 +5680,41 @@
         (path "/dc84106e-4fe0-5e9c-b14e-4823103c3234"
           (reference "TP3")
           (unit 1)))))
-  (label "MCU_NRST"
-    (at 238.76 106.68 0)
-    (fields_autoplaced)
-    (effects
-      (font
-        (size 1.27 1.27))
-      (justify left bottom))
-    (uuid "4db843c2-6530-5073-af91-991790a25c85"))
+  (symbol
+    (lib_id "power:GND")
+    (at 238.76 104.14 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "367cd7af-7563-5d52-8288-4d2470de5f48")
+    (property "Reference" "#PWR051"
+      (at 238.76 110.49 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "GND"
+      (at 238.76 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 238.76 104.14 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 238.76 104.14 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "b26a3278-624e-5fa4-b76f-ce2222861fc3"))
+    (instances
+      (project "ACwing_Flow_A"
+        (path "/dc84106e-4fe0-5e9c-b14e-4823103c3234"
+          (reference "#PWR051")
+          (unit 1)))))
   (symbol
     (lib_id "Connector:TestPoint")
     (at 251.46 104.14 0)
@@ -5675,7 +5729,7 @@
         (font
           (size 1.27 1.27))
         (justify left)))
-    (property "Value" "+3V3"
+    (property "Value" "SWDIO"
       (at 252.73 95.25 0)
       (effects
         (font
@@ -5691,7 +5745,7 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "3.3 V - SWD programming pad"
+    (property "Note" "SWDIO (PA13) - SWD programming pad"
       (at 251.46 104.14 0)
       (effects
         (font
@@ -5703,41 +5757,14 @@
         (path "/dc84106e-4fe0-5e9c-b14e-4823103c3234"
           (reference "TP4")
           (unit 1)))))
-  (symbol
-    (lib_id "power:+3V3")
-    (at 251.46 104.14 180)
-    (unit 1)
-    (in_bom yes)
-    (on_board yes)
-    (dnp no)
-    (uuid "f1c3d5e2-a22b-5bb3-9635-7c4531a6dd2a")
-    (property "Reference" "#PWR050"
-      (at 251.46 100.33 0)
-      (effects
-        (font
-          (size 1.27 1.27)) hide))
-    (property "Value" "+3V3"
-      (at 251.46 107.7 0)
-      (effects
-        (font
-          (size 1.27 1.27))))
-    (property "Footprint" ""
-      (at 251.46 104.14 0)
-      (effects
-        (font
-          (size 1.27 1.27)) hide))
-    (property "Datasheet" "~"
-      (at 251.46 104.14 0)
-      (effects
-        (font
-          (size 1.27 1.27)) hide))
-    (pin "1"
-      (uuid "21bc5fd8-9af6-515b-9e95-f19fd993300b"))
-    (instances
-      (project "ACwing_Flow_A"
-        (path "/dc84106e-4fe0-5e9c-b14e-4823103c3234"
-          (reference "#PWR050")
-          (unit 1)))))
+  (label "SWDIO"
+    (at 251.46 106.68 0)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1.27 1.27))
+      (justify left bottom))
+    (uuid "4efdf85d-3850-5f9a-9c8e-bd10f6c215bf"))
   (symbol
     (lib_id "Connector:TestPoint")
     (at 264.16 104.14 0)
@@ -5752,7 +5779,7 @@
         (font
           (size 1.27 1.27))
         (justify left)))
-    (property "Value" "GND"
+    (property "Value" "SWCLK"
       (at 265.43 95.25 0)
       (effects
         (font
@@ -5768,7 +5795,7 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "GND - SWD programming pad"
+    (property "Note" "SWCLK (PA14) - SWD programming pad"
       (at 264.16 104.14 0)
       (effects
         (font
@@ -5780,41 +5807,14 @@
         (path "/dc84106e-4fe0-5e9c-b14e-4823103c3234"
           (reference "TP5")
           (unit 1)))))
-  (symbol
-    (lib_id "power:GND")
-    (at 264.16 104.14 0)
-    (unit 1)
-    (in_bom yes)
-    (on_board yes)
-    (dnp no)
-    (uuid "367cd7af-7563-5d52-8288-4d2470de5f48")
-    (property "Reference" "#PWR051"
-      (at 264.16 110.49 0)
-      (effects
-        (font
-          (size 1.27 1.27)) hide))
-    (property "Value" "GND"
-      (at 264.16 107.95 0)
-      (effects
-        (font
-          (size 1.27 1.27))))
-    (property "Footprint" ""
-      (at 264.16 104.14 0)
-      (effects
-        (font
-          (size 1.27 1.27)) hide))
-    (property "Datasheet" "~"
-      (at 264.16 104.14 0)
-      (effects
-        (font
-          (size 1.27 1.27)) hide))
-    (pin "1"
-      (uuid "b26a3278-624e-5fa4-b76f-ce2222861fc3"))
-    (instances
-      (project "ACwing_Flow_A"
-        (path "/dc84106e-4fe0-5e9c-b14e-4823103c3234"
-          (reference "#PWR051")
-          (unit 1)))))
+  (label "SWCLK"
+    (at 264.16 106.68 0)
+    (fields_autoplaced)
+    (effects
+      (font
+        (size 1.27 1.27))
+      (justify left bottom))
+    (uuid "8f319734-3bd2-58cc-86bb-f0670add43e2"))
   (symbol
     (lib_id "Mechanical:MountingHole")
     (at 220.98 139.7 0)
@@ -6204,6 +6204,14 @@
     (uuid "b003ad21-39e4-51b6-81b0-2b216b150458"))
   (wire
     (pts
+      (xy 147.32 147.32)
+      (xy 149.86 147.32))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "ab5257c7-be19-5011-b98d-fa3c8f716d79"))
+  (wire
+    (pts
       (xy 147.32 149.86)
       (xy 149.86 149.86))
     (stroke
@@ -6242,14 +6250,6 @@
       (width 0)
       (type default))
     (uuid "83e8b293-6cf9-572e-a7ce-452560772a15"))
-  (wire
-    (pts
-      (xy 147.32 121.92)
-      (xy 149.86 121.92))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "2c79949b-4438-5a59-8c67-701975cf891d"))
   (wire
     (pts
       (xy 147.32 124.46)
@@ -6300,14 +6300,6 @@
     (uuid "d5d4fa0c-1d37-50ea-8bdf-9000de26f0a1"))
   (wire
     (pts
-      (xy 213.36 104.14)
-      (xy 213.36 106.68))
-    (stroke
-      (width 0)
-      (type default))
-    (uuid "8de28d00-3200-5f26-9262-c57b50959762"))
-  (wire
-    (pts
       (xy 226.06 104.14)
       (xy 226.06 106.68))
     (stroke
@@ -6316,12 +6308,20 @@
     (uuid "69936e8e-6794-5457-b5b6-9dfc5b1dc18e"))
   (wire
     (pts
-      (xy 238.76 104.14)
-      (xy 238.76 106.68))
+      (xy 251.46 104.14)
+      (xy 251.46 106.68))
     (stroke
       (width 0)
       (type default))
-    (uuid "4761af4a-e4f6-5395-a190-26e620731d15"))
+    (uuid "c4a6e4d7-7060-5439-bb3f-dc82d45c0b35"))
+  (wire
+    (pts
+      (xy 264.16 104.14)
+      (xy 264.16 106.68))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "b75979da-280a-547e-b59d-4c25b97048e8"))
   (sheet_instances
     (path "/"
       (page "1"))))

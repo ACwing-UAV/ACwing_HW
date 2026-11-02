@@ -6,7 +6,7 @@
 
 > **Revisions.** Rev A is the first released revision. Earlier letters, marked *draft* in this document (drafts C–G), are internal design iterations that were never manufactured.
 
-KiCad 7 project (it also opens in KiCad 8/9). Rev A turns the FC into a **standard FC that works with any power
+KiCad project, saved by KiCad 9 since the 2026-11-02 update (opens in KiCad 9 and 10). Rev A turns the FC into a **standard FC that works with any power
 stage that uses the common 4-in-1 ESC connector**:
 - **Mini drone (1S, brushed coreless):** the ACwing 1S power board (ACwing ESC 1S rev A) carries the
   motor stages, the battery connector and pads, the 1S USB-C charger and the current sensor. To the FC it looks like
@@ -31,6 +31,22 @@ Stack: the GPS board Qwiic J1 moved to v = +3.6 so it sits right above FC J3 (st
 ESC J1) stays 8 mm offset: FC J2 can move only 0.8 mm before the USB-C, and ESC J1 cannot reach the rear-edge centre
 (motor M1 pads, fixed by the frame).
 
+## Layout and routing update (2026-11-02, still rev A: no board made yet)
+| Item | Before | Now | Why |
+|---|---|---|---|
+| **J2 ESC link A** | rear edge, (+1.5, −16.9), mouth −v | **front edge, next to J6**, (+3.6, +16.85), mouth +v | both ESC links on the same edge (one cable direction for one or two 4-in-1 ESCs) |
+| **J5 ELRS** | front edge, (+2.0, +16.85) | **rear edge**, J2's old spot, (+1.5, −16.9), mouth −v | swapped with J2 |
+| C2 (VBAT at J2), R42 (CUR) | (−1.6, −12.4) / bottom (+0.6, −17.2) | top (+5.2, +12.35) / bottom (+0.6, +12.4) | follow J2 |
+| R21–R23 (PWM M2–M4, bottom) | — | moved 2 mm east | room for the new J2 escape |
+| **Test pads TP1–TP8** (pogo grid, bottom) | numbered out of order | **ascending in reading order (bottom view)**: TP1 BOOT0, TP2 NRST, TP3 SWCLK, TP4 SWDIO (upper row), TP5 CRSF_RX, TP6 CRSF_TX, TP7 GND, TP8 VDD (lower row) | readable pogo fixture; schematic renumbered to match |
+| **Vias in pads** | vias on several SMD pads (GND, PWM, HSE, VBAT_SNS, USB ESD) | **none**: vias moved next to the pad with a short stub (dog-bone), or the net rerouted | no solder wicking, no via plugging needed. Only the exposed thermal pads of U2 (STM32WB55, its VSS is the EP) and U12 (LM5166) keep their vias, by design |
+| **U8 MLPF-WB55 (CSP-6, 0.5 × 0.587 mm pitch)** | 0.20 mm pads, own mask margin | **0.25 mm pads**, board mask expansion; 0.25 mm gap between pads | the 0.25 mm minimum asked for the ball pads; still ≥ 0.19 mm pad-to-pad for the mask dams |
+| **U1 / U3 / U4 LGA pads** | 0.35 mm wide, 0.15 mm gaps | **0.31 mm wide** (U3 IIS2MDC 0.30 × 0.35, U4 LPS22HH 0.31 × 0.38): every gap ≥ 0.19 mm | solder mask dam between every pad (see Fabrication) |
+| Silkscreen | references of passives and ICs removed (2026-11) | connector labels only: ESC A / ESC B (front), ELRS (rear), GPS / FLOW, USB, BAT with **+ / −** at J7 / J8, TP1–TP8 on the bottom, logo and board name on both sides | |
+
+ESC link A now leaves from the front edge: the cable to the ESC 1S (its J1 is on the rear side) is longer than the
+17 mm of the Mech A1 stack. **Update the cable A length and route in the mechanical handoff before ordering cables.**
+
 ## EMI check (magnetometer U3, IMU U1)
 `generator/emi_check.py`: Biot–Savart on every routed track of the current-carrying nets (contributions added in
 magnitude, no cancellation by the return path: an upper bound), dipole estimate for the inductors, distances on every
@@ -42,6 +58,12 @@ layer, In1 GND under the sensors.
 | VSYS / VBAT / VBUS / VEXP / VDD / VREG (DC, calibrated as hard iron) | 18.0 µT | 14.9 µT |
 | Buck switch node / L3 stray field | 0.23 / 0.02 µT | 0.39 / 0.03 µT |
 | Closest aggressor copper | LED data line 0 mm | LED data line 3.4 mm, LED supply 4.1 mm |
+
+**2026-11-02 rerun** (J2 on the front edge, rerouted board): static field at the magnetometer, upper bound,
+**42.6 µT** (was 32.1 µT on the 2026-10-27 board with the same script): VSYS 31.6 µT (was 23.7), VBAT 5.3 µT
+(was 2.7: the battery now enters 9.8 mm from the sensor, on the top layer), the rest unchanged. All DC terms, removed
+by the hard-iron calibration; the closest switching / colour-dependent copper is unchanged (LED data line 3.4 mm).
+IMU: unchanged (VBUS on In2 under the sensor, UART ≥ 1.7 mm).
 
 - Magnetometer: In1 GND 84 % under the sensor (+1 mm), no slots. The only colour-dependent term is the LED supply:
   firmware either compensates it (LED current is known from the commanded colour) or keeps the LED pattern fixed while
@@ -109,7 +131,7 @@ J7 / J8 pads ───┴─ VBAT 1S–6S ── U12 LM5166 (PFM) ── VREG 4.
   ≈ 5 ns, negligible against the 800 kHz WS2812 bit time.
 
 ## ESC link A (J2) and ESC link B (J6)
-| Pin | J2 (ESC A, rear edge) | J6 (ESC B, front edge) |
+| Pin | J2 (ESC A, front edge) | J6 (ESC B, front edge) |
 |---|---|---|
 | 1 | GND | GND |
 | 2 | VBAT 1S–6S → U12, VBAT_SNS, C2 | open |
@@ -149,35 +171,42 @@ See `ACwing_FC_A_pinmap.md`. Summary:
 | U1 IMU | top, (0, −7.6), rot 270; LDO U5 (−4.6, −7.8) west of it |
 | U12 LM5166, L3 (5 × 5 × 4 mm), C47, C49, R47/R48 | top, **left edge**: L3 (−16.9, −4.6), U12 (−12.1, −5.0), C47 (−11.8, −1.9) rot 180 (VBAT pad toward U12 pin 7), C49 (−9.0, −2.8) |
 | C6, C46 (VREG bulk) | top, (−15.9, −9.7), (−13.7, −13.0) |
-| C2 (VBAT at J2) | top, (−1.6, −12.4) |
+| C2 (VBAT at J2) | top, (+5.2, +12.35) |
 | Q5, D9, C7, R2 (power path) | top, east of the IMU, (+6.6, −4.4) / (+5.2, −7.3) |
-| J2 ESC A | top, rear edge, (+1.5, −16.9), mouth −v |
+| J2 ESC A | top, **front edge** next to J6, (+3.6, +16.85), mouth +v |
 | **J6 ESC B** | top, **front edge**, (−8.2, +16.85), mouth +v; pins v = +14.85, u = −4.7 (pin 1) … −11.7 (pin 8) |
-| J5 ELRS | top, front edge, (+2.0, +16.85), mouth +v |
+| J5 ELRS | top, **rear edge**, (+1.5, −16.9), mouth −v |
 | **J7 VBAT+ / J8 GND** | top, left edge, (−18.4, +7.2) / (−18.4, +4.1); "+" / "−" on the silkscreen |
 | J3 Qwiic (GPS) | top, right edge, (+16.9, +3.6), mouth +u; GPS J1 right above it |
 | J4 Qwiic (flow) | top, right edge, (+16.9, −4.3), mouth +u |
 | LEDs D1–D4 | top: D1 (−11.0, −18.4), D2 (−18.4, −11.0), D3 (+11.0, +18.4) rot 180, D4 (+18.4, +11.0) rot 270 |
 | U3 magnetometer, U4 baro | top, front-right corner, (+17.4, +17.4) / (+16.6, +14.2) |
-| J1 USB-C, antenna AE1, pogo grid, flash U10 (bottom) | J1 (+15.8, −15.8) at the chamfer, AE1 left edge front, pogo grid bottom rear centre, U10 bottom (+8.9, −3.6) |
+| J1 USB-C, antenna AE1, pogo grid, flash U10 (bottom) | J1 (+15.8, −15.8) at the chamfer, AE1 left edge front, pogo grid TP1–TP8 bottom rear centre (ascending, bottom view), U10 bottom (+8.9, −3.6) |
 
 ## PCB
 - 4 layers, 1.0 mm, stack-up and rules as drafts F/G. Net class **HV** (VBAT, BUCK_SW): 0.3 mm tracks, 0.15 mm
   clearance (6S). VREG in the Power class (0.3 mm).
 - U12: GND pins (3 ILIM, 5 RT, 10) tied straight into the exposed pad, two 0.3 mm vias in the pad to the In1 GND plane;
   VIN pin 7 pre-routed (0.3 mm) to C47.
-- Routing: 1342 tracks, 212 vias. Locked pre-routes: RF chain, crystal, MCU ground, DFN / VSON details, pogo stubs, GND
-  fan-out, IMU fan-out (INT1, MISO) and escape vias (SHUB_SCL / SDA, SPI_SCK), LED supply to D3 / D4; the rest
-  Freerouting plus A* for the last connections. Some VSYS / VBUS runs on In2 are 0.2 mm (≤ 0.3 A, inner layer).
+- Routing (2026-11-02): 1498 tracks, 205 vias, **no via in an SMD pad** (exposed thermal pads of U2 and U12 excepted).
+  Locked pre-routes: RF chain, crystal, MCU ground, DFN / VSON details, pogo stubs, IMU fan-out; the rest Freerouting
+  plus a grid A* router for the reroutes around J2 and the via-in-pad fixes. Some VSYS / VBUS runs on In2 are 0.2 mm
+  (≤ 0.3 A, inner layer); PWM_M2 has one 0.127 mm section between the MCU and R21.
 
 ## Checks
 - Netlist: 0 errors (`check_net.py`, 91 nets).
 - KiCad DRC (`ACwing_FC_A_DRC.rpt`): **0 violations, 0 unconnected pads, 0 footprint errors**.
 - EMI check (`emi_check.py`): see above.
-- Silkscreen: 102 references on the board (R21, R42 on the Fab layer only: no free spot), 9 with a leader line.
+- Silkscreen: connector labels, + / − at the battery pads, TP1–TP8, logo and board name; no references of passives
+  or ICs (they stay on the Fab layer for the assembly drawing). No text over pads or clipped by the mask.
 
 ## Fabrication (JLCPCB)
 - 4 layers, 1.0 mm FR-4; parts on both sides (top 36, bottom 57).
+- **Solder mask (2026-11-02):** JLCPCB keeps a mask dam between pads only if the pad spacing is ≥ 0.19 mm (green,
+  blue, red, purple). Board setup: mask expansion **0.05 mm** per side, minimum mask web **0.09 mm** (0.19 − 2 × 0.05),
+  so the KiCad DRC flags any pad pair closer than 0.19 mm. All pads pass, except the two DFN-6 LDOs U5 and U11
+  (0.4 mm pitch, 0.12 mm gaps, footprint flag "allow solder mask bridges"): JLC opens the mask over the whole pad row
+  there (gang relief), which is normal for this package.
 - New LCSC parts: **LM5166DRCT C181495** (350 in stock on 2026-10-18: check before ordering), SWPA5040S220MT C68434,
   4.7 µF 50 V 1206 X7R C29823 (Basic), 470 kΩ C25790, 200 kΩ C25764, 10 nF 50 V C15195.
 - CPL: rotation corrections learned from the JLC placement previews (2026-10-16 and 2026-10-27, see `generator/cpl.py`).
@@ -214,7 +243,7 @@ See `ACwing_FC_A_pinmap.md`. Summary:
 ## Contents
 | File | What |
 |---|---|
-| `ACwing_FC_A_pcb.png` | top and bottom PCB views (mask, pads, silkscreen) |
+| `ACwing_FC_A_pcb.png` | top and bottom renders of the assembled board |
 | [`ACwing_FC_A_schematic.pdf`](ACwing_FC_A_schematic.pdf) | schematic |
 | [`ACwing_FC_A_pinmap.md`](ACwing_FC_A_pinmap.md) | pin map, ESC links, add-on ports |
 | `ACwing_FC_A_BoM.xlsx` | assembly BoM (sheet `BoM`) and costing (sheet `Costing`) |
@@ -228,7 +257,7 @@ KiCad sources in [`01 - FC_KiCadProj/`](../../01%20-%20FC_KiCadProj/):
 
 | File | What |
 |---|---|
-| `ACwing_FC_A.kicad_pro / .kicad_sch / .kicad_pcb` | KiCad 7 project, schematic, routed PCB |
+| `ACwing_FC_A.kicad_pro / .kicad_sch / .kicad_pcb` | KiCad project (board saved by KiCad 9), schematic, routed PCB |
 | `ACwing.kicad_sym`, `ACwing.pretty/`, `3d/` | project library (symbols, footprints incl. the ACwing logos) and STEP models |
 | `generator/` | scripts that generated and checked the design (see Regeneration) |
 

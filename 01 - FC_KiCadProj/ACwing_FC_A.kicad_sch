@@ -5,7 +5,7 @@
   (paper "A3")
   (title_block
     (title "ACwing FC rev A - 1S-6S flight controller (STM32WB55CGU6), 4-in-1 ESC links, up to 8 motors")
-    (date "2026-10-27")
+    (date "2026-11-02")
     (rev "A")
     (company "ACwing - Andrea Cirillo")
     (comment 1 "Outline: frame C (40 x 40, as draft E); holes 20 x 20 (mechanical handoff, update 2026-10-18)")
@@ -9461,7 +9461,7 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "Boot from flash; TP3 to VDD for the USB DFU bootloader"
+    (property "Note" "Boot from flash; TP1 to TP8 (VDD) for the USB DFU bootloader"
       (at 187.96 137.16 0)
       (effects
         (font
@@ -14898,14 +14898,14 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "938563f6-4c1e-5f15-9c9f-9b6908717a2a")
-    (property "Reference" "TP6"
+    (uuid "4bdc5433-011b-52e5-99e3-17bf2b74786f")
+    (property "Reference" "TP2"
       (at 377.19 161.29 0)
       (effects
         (font
           (size 1.27 1.27))
         (justify left)))
-    (property "Value" "SWDIO"
+    (property "Value" "NRST"
       (at 377.19 158.75 0)
       (effects
         (font
@@ -14921,26 +14921,26 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "SWDIO (PA13) - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
+    (property "Note" "NRST - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
       (at 378.46 167.64 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "c8b8d18e-a8c8-5a59-9e87-ea8bc84fefa2"))
+      (uuid "475b9ad9-5b84-53e0-b48c-d2105f90f2b7"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "TP6")
+          (reference "TP2")
           (unit 1)))))
-  (label "SWDIO"
+  (label "NRST"
     (at 378.46 170.18 0)
     (fields_autoplaced)
     (effects
       (font
         (size 1.27 1.27))
       (justify left bottom))
-    (uuid "95a1aa41-b1f8-5a34-9b6d-3b59352c3ef1"))
+    (uuid "b4625611-b869-5c24-9539-da5c60dc05ec"))
   (symbol
     (lib_id "Connector:TestPoint")
     (at 388.62 167.64 0)
@@ -14948,8 +14948,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "968c1f0f-3a3f-506d-ab7e-fcaebfd9225c")
-    (property "Reference" "TP7"
+    (uuid "c23f54bb-e322-5fac-ab18-d30e49276621")
+    (property "Reference" "TP3"
       (at 387.35 161.29 0)
       (effects
         (font
@@ -14977,11 +14977,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "abd01bf5-63b4-5aa0-a630-d0e474850e1b"))
+      (uuid "78719eb7-cf77-51a2-bc17-e2089a5b64a4"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "TP7")
+          (reference "TP3")
           (unit 1)))))
   (label "SWCLK"
     (at 388.62 170.18 0)
@@ -14998,14 +14998,14 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "25cd212e-3b34-5042-ab50-48f77ffc6eee")
-    (property "Reference" "TP8"
+    (uuid "bb9f0b3a-640b-56b8-9fc8-9ebf03770e79")
+    (property "Reference" "TP4"
       (at 397.51 161.29 0)
       (effects
         (font
           (size 1.27 1.27))
         (justify left)))
-    (property "Value" "NRST"
+    (property "Value" "SWDIO"
       (at 397.51 158.75 0)
       (effects
         (font
@@ -15021,26 +15021,26 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "NRST - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
+    (property "Note" "SWDIO (PA13) - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
       (at 398.78 167.64 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "47b87f5e-8e77-5b5d-931a-58648c3241e4"))
+      (uuid "a26e7faa-e26f-508a-8299-b679d51dc9eb"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "TP8")
+          (reference "TP4")
           (unit 1)))))
-  (label "NRST"
+  (label "SWDIO"
     (at 398.78 170.18 0)
     (fields_autoplaced)
     (effects
       (font
         (size 1.27 1.27))
       (justify left bottom))
-    (uuid "78525911-bade-528f-8192-22b47a4f8e40"))
+    (uuid "aae2dd1c-f44c-5ad5-b059-2e36877a3970"))
   (symbol
     (lib_id "Connector:TestPoint")
     (at 330.2 233.68 0)
@@ -15048,8 +15048,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "85840b67-3ef6-5c8d-bfb2-df71764a7f82")
-    (property "Reference" "TP1"
+    (uuid "938563f6-4c1e-5f15-9c9f-9b6908717a2a")
+    (property "Reference" "TP6"
       (at 328.93 227.33 0)
       (effects
         (font
@@ -15077,11 +15077,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "e79b331d-6e4e-5e64-8538-6cb1ce2d41f9"))
+      (uuid "c8b8d18e-a8c8-5a59-9e87-ea8bc84fefa2"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "TP1")
+          (reference "TP6")
           (unit 1)))))
   (label "CRSF_TX"
     (at 330.2 236.22 0)
@@ -15098,8 +15098,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "4bdc5433-011b-52e5-99e3-17bf2b74786f")
-    (property "Reference" "TP2"
+    (uuid "1563af78-4160-55a3-8f6e-cf9e279530b1")
+    (property "Reference" "TP5"
       (at 339.09 227.33 0)
       (effects
         (font
@@ -15127,11 +15127,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "475b9ad9-5b84-53e0-b48c-d2105f90f2b7"))
+      (uuid "453ec2b0-a1ab-5f95-98a1-81aa0c3c797f"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "TP2")
+          (reference "TP5")
           (unit 1)))))
   (label "CRSF_RX"
     (at 340.36 236.22 0)
@@ -15148,8 +15148,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "c23f54bb-e322-5fac-ab18-d30e49276621")
-    (property "Reference" "TP3"
+    (uuid "85840b67-3ef6-5c8d-bfb2-df71764a7f82")
+    (property "Reference" "TP1"
       (at 349.25 227.33 0)
       (effects
         (font
@@ -15171,17 +15171,17 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "BOOT0: bridge to TP4 for DFU - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
+    (property "Note" "BOOT0: bridge to TP8 (VDD) for DFU - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
       (at 350.52 233.68 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "78719eb7-cf77-51a2-bc17-e2089a5b64a4"))
+      (uuid "e79b331d-6e4e-5e64-8538-6cb1ce2d41f9"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "TP3")
+          (reference "TP1")
           (unit 1)))))
   (label "BOOT0"
     (at 350.52 236.22 0)
@@ -15198,8 +15198,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "bb9f0b3a-640b-56b8-9fc8-9ebf03770e79")
-    (property "Reference" "TP4"
+    (uuid "25cd212e-3b34-5042-ab50-48f77ffc6eee")
+    (property "Reference" "TP8"
       (at 359.41 227.33 0)
       (effects
         (font
@@ -15227,11 +15227,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "a26e7faa-e26f-508a-8299-b679d51dc9eb"))
+      (uuid "47b87f5e-8e77-5b5d-931a-58648c3241e4"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "TP4")
+          (reference "TP8")
           (unit 1)))))
   (symbol
     (lib_id "power:VDD")
@@ -15275,8 +15275,8 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "1563af78-4160-55a3-8f6e-cf9e279530b1")
-    (property "Reference" "TP5"
+    (uuid "968c1f0f-3a3f-506d-ab7e-fcaebfd9225c")
+    (property "Reference" "TP7"
       (at 369.57 227.33 0)
       (effects
         (font
@@ -15304,11 +15304,11 @@
         (font
           (size 1.27 1.27)) hide))
     (pin "1"
-      (uuid "453ec2b0-a1ab-5f95-98a1-81aa0c3c797f"))
+      (uuid "abd01bf5-63b4-5aa0-a630-d0e474850e1b"))
     (instances
       (project "ACwing_FC_A"
         (path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-          (reference "TP5")
+          (reference "TP7")
           (unit 1)))))
   (symbol
     (lib_id "power:GND")

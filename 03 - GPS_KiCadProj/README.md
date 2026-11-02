@@ -2,7 +2,7 @@
 
 **Project:** ACwing · **Author:** Andrea Cirillo
 
-KiCad 7 sources of the ACwing GPS rev A board (they also open in KiCad 8/9). The board description, schematic PDF, BoM,
+KiCad sources of the ACwing GPS rev A board (boards saved by KiCad 9; they open in KiCad 9 and 10). The board description, schematic PDF, BoM,
 JLCPCB files, Gerber, STEP and board views are in [`00 - Docs/02 - GPS_Docs`](../00%20-%20Docs/02%20-%20GPS_Docs/).
 
 | File / folder | What |

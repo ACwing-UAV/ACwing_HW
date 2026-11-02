@@ -98,8 +98,8 @@ R('R9', '10k', 78.74, 116.84, '+3V3', 'TOF_XSHUT', fields={'Note': 'XSHUT pull-u
 R('R10', '10k', 88.9, 116.84, '+3V3', 'TOF_INT', fields={'Note': 'GPIO1 open-drain pull-up'})
 mcu = {'2': '+3V3', '3': 'GND', '4': 'MCU_NRST',
        '9': 'PMW_NCS', '10': 'SPI_SCK', '11': 'SPI_MISO', '12': 'SPI_MOSI', '8': 'PMW_MOTION', '7': 'PMW_NRESET',
-       '5': 'TOF_XSHUT', '6': 'TOF_INT', '18': 'I2C_SCL', '19': 'I2C_SDA', '16': 'SWDIO', '17': 'SWCLK',
-       '13': 'LED_K', '1': None, '14': None, '15': None, '20': None}
+       '13': 'TOF_XSHUT', '6': 'TOF_INT', '18': 'I2C_SCL', '19': 'I2C_SDA', '16': 'SWDIO', '17': 'SWCLK',
+       '15': 'LED_K', '1': None, '5': None, '14': None, '20': None}
 sch.part('U4', 'MCU_ST_STM32C0:STM32C011F4Ux', 'STM32C011F4U6', 132.08, 139.7, 0, mcu,
          fp='Package_DFN_QFN:ST_UFQFPN-20_3x3mm_P0.5mm',
          fields={'Note': 'Flow bridge: SPI1 PA4-PA7 to the PMW3901, I2C1 PB6/PB7 slave 0x3B on the Qwiic bus. Firmware: read motion at 100 Hz, publish dX/dY/SQUAL/shutter'},
@@ -109,10 +109,12 @@ C('C13', '4.7uF', 111.76, 116.84, '+3V3', 'GND', fp=FP_C0603, fields={'Note': 'M
 C('C14', '100nF', 104.14, 165.1, 'MCU_NRST', 'GND', side='left', fields={'Note': 'NRST'})
 R('R11', '1k', 195.58, 95.25, '+3V3', ('W', 'LED_A'), side='left')
 sch.part('D1', 'Device:LED', 'green', 195.58, 102.87, 90, {'2': ('W', 'LED_A'), '1': 'LED_K'},
-         fp='LED_SMD:LED_0402_1005Metric', fields={'Note': 'Status LED (PA8 low = on)'},
+         fp='LED_SMD:LED_0402_1005Metric', fields={'Note': 'Status LED (PA10, pin 15, low = on)'},
          field_pos={'Reference': (198.12, 101.6), 'Value': (198.12, 104.14), 'just': 'left'})
-for k, (tp, net, nt) in enumerate([('TP1', 'SWDIO', 'SWDIO (PA13)'), ('TP2', 'SWCLK', 'SWCLK (PA14)'), ('TP3', 'MCU_NRST', 'NRST'),
-                                   ('TP4', '+3V3', '3.3 V'), ('TP5', 'GND', 'GND')]):
+# test pads along the board perimeter, symmetric about the centre line, numbered left to right (top view):
+# TP1 3.3 V, TP2 NRST (left of the Qwiic pair), TP3 GND (bottom edge, centre), TP4 SWDIO, TP5 SWCLK (right)
+for k, (tp, net, nt) in enumerate([('TP1', '+3V3', '3.3 V'), ('TP2', 'MCU_NRST', 'NRST'), ('TP3', 'GND', 'GND'),
+                                   ('TP4', 'SWDIO', 'SWDIO (PA13)'), ('TP5', 'SWCLK', 'SWCLK (PA14)')]):
     x = 213.36 + 12.7 * k
     sch.part(tp, 'Connector:TestPoint', net, x, 104.14, 0, {'1': net}, fp='TestPoint:TestPoint_Pad_D1.0mm',
              fields={'Note': nt + ' - SWD programming pad'}, stub=2.54,
