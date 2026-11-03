@@ -303,20 +303,20 @@
   "dnp": false
  },
  "H1": {
-  "lib_id": "Mechanical:MountingHole",
+  "lib_id": "Mechanical:MountingHole_Pad",
   "value": "M2",
-  "fp": "ACwing_Flow:MountingHole_2.2mm_M2",
+  "fp": "ACwing_Flow:MountingHole_PTH_2.2mm_M2_Pad3.6mm",
   "fields": {
-   "Note": "M2 mounting hole (frame boss, see handoff)"
+   "Note": "M2 plated mounting hole (frame boss, see handoff), 3.6 mm copper ring on both sides tied to GND"
   },
   "dnp": false
  },
  "H2": {
-  "lib_id": "Mechanical:MountingHole",
+  "lib_id": "Mechanical:MountingHole_Pad",
   "value": "M2",
-  "fp": "ACwing_Flow:MountingHole_2.2mm_M2",
+  "fp": "ACwing_Flow:MountingHole_PTH_2.2mm_M2_Pad3.6mm",
   "fields": {
-   "Note": "M2 mounting hole (frame boss, see handoff)"
+   "Note": "M2 plated mounting hole (frame boss, see handoff), 3.6 mm copper ring on both sides tied to GND"
   },
   "dnp": false
  }

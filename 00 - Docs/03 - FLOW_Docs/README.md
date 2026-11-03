@@ -10,8 +10,13 @@
 > - **Both Qwiic connectors on the top edge** (they were on the left and right edges): J1 IN at (−6.3, +8.95), J2 OUT
 >   at (+6.3, +8.95), mouth +t, labels QWIIC IN / QWIIC OUT under them. The cables to the FC and to the GPS board now
 >   leave from the same edge: update cable C in the mechanical handoff.
-> - **SWD test pads on the perimeter, symmetric about the centre line:** TP1 3.3 V and TP2 NRST under J1, TP4 SWDIO
->   and TP5 SWCLK under J2, TP3 GND at the bottom edge centre. Schematic renumbered to match.
+> - **SWD test pads on the back side (2026-11-03), along the top edge, symmetric**, behind the Qwiic connectors and
+>   close to the bridge MCU: TP1 3.3 V (−8.4, +7.9), TP2 NRST (−5.6, +10.9), TP3 GND (0, +10.9), TP4 SWDIO (+5.2, +10.9),
+>   TP5 SWCLK (+8.3, +7.8) (sensor-side view; the layout chosen by A. Cirillo mirrored to the top edge). SWD lines
+>   SWDIO 7 mm, SWCLK 6 mm (they were 41 / 17 mm with the pads on the bottom edge). The board is programmed off the
+>   drone. Schematic numbering as 2026-11-02.
+> - **Plated mounting holes (2026-11-03):** H1 / H2 are now Ø2.2 mm PTH with a 3.6 mm copper ring on both sides,
+>   tied to GND (as the FC holes).
 > - **Bridge MCU pins changed for the routing:** ToF XSHUT on **PA8** (pin 13, was PA0), status LED on **PA10**
 >   (pin 15, was PA8). Firmware must follow.
 > - No via in an SMD pad (the STM32C011 exposed pad keeps its ground vias); DRC 0.
@@ -73,9 +78,9 @@ KiCad sources in [`04 - FLOW_KiCadProj/`](../../04%20-%20FLOW_KiCadProj/):
 - **Bus map (whole drone).** GPS 0x42, GPS compass 0x1E, ToF 0x29, flow bridge 0x3B: no clash.
 
 ## Mechanics
-- 21.0 × 25.0 × 1.0 mm, R1.5 corners, 2 layers. Two M2 holes (Ø2.2 NPTH) at (±8.0, +0.4), keep-out r 2.4 mm.
+- 21.0 × 25.0 × 1.0 mm, R1.5 corners, 2 layers. Two M2 holes (Ø2.2 PTH, 3.6 mm GND ring both sides) at (±8.0, +0.4), keep-out r 2.4 mm.
 - **All parts on one side** (the sensor side). Tallest: Qwiic connectors ≈ 2.9 mm, PMW3901 lens 2.28 mm, VL53L1X 1.56 mm.
-  The back side is flat (board name only).
+  The back side has no parts: board name, logo and the five flat SWD test pads (program the board before mounting it).
 - Sensor axes (sensor-side view): PMW3901 at (0, −6.2), field of view 42°; VL53L1X at (0, +0.8), 27°.
 - Mount it parallel to the propeller plane, no window in front of the sensors. Everything for the frame designer is
   in [`ACwing_mechanical_handoff.md`](../04%20-%20System_Docs/ACwing_mechanical_handoff.md) and the DXF.
@@ -86,12 +91,12 @@ KiCad sources in [`04 - FLOW_KiCadProj/`](../../04%20-%20FLOW_KiCadProj/):
   4 vias at the PMW3901 ground pad corners, GND stitching on a grid, and a final check that joins any isolated
   ground island with a via.
 - The LDK130 DFN-6 (0.4 mm pitch) escape is pre-routed and locked: IN/EN joined outside pin 5, GND via, short stubs.
-- Routing: 754 tracks, 98 vias (2026-11-02: Freerouting + locked escapes + hand-placed SWD dog-bones), no via in an SMD pad.
+- Routing: 733 tracks, 92 vias (2026-11-03: SWD lines re-routed to the back-side test pads), no via in an SMD or test pad.
 
 ## Checks
 - Netlist: 0 errors (`check_net.py`, 44 nets).
 - KiCad DRC (`ACwing_Flow_A_DRC.rpt`): 0 violations, 0 unconnected pads, 0 footprint errors.
-- Silkscreen: QWIIC IN / QWIIC OUT and TP1–TP5 on the sensor side, logo and board name on the back; no part references.
+- Silkscreen: QWIIC IN / QWIIC OUT on the sensor side; TP1–TP5, logo and board name on the back; no part references.
 
 ## Fabrication (JLCPCB)
 - 2 layers, 1.0 mm FR-4, 1 oz. All parts on the top (sensor) side: single-sided assembly.

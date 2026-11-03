@@ -13,6 +13,68 @@
     (comment 3 "u-blox SAM-M10Q (integrated patch antenna, pin compatible with SAM-M8Q)")
     (comment 4 "Generated automatically: run ERC before release"))
   (lib_symbols
+    (symbol "Mechanical:MountingHole_Pad"
+      (pin_numbers hide)
+      (pin_names
+        (offset 1.016) hide)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "H"
+        (at 0 6.35 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "MountingHole_Pad"
+        (at 0 4.445 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "ki_keywords" "mounting hole"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "ki_description" "Mounting Hole with connection"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "ki_fp_filters" "MountingHole*Pad*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (symbol "MountingHole_Pad_0_1"
+        (circle
+          (center 0 1.27)
+          (radius 1.27)
+          (stroke
+            (width 1.27)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "MountingHole_Pad_1_1"
+        (pin input line
+          (at 0 -2.54 90)
+          (length 2.54)
+          (name "1"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))))
     (symbol "Connector_Generic:Conn_01x04"
       (pin_names
         (offset 1.016) hide)
@@ -3786,7 +3848,7 @@
           (reference "#PWR021")
           (unit 1)))))
   (symbol
-    (lib_id "Mechanical:MountingHole")
+    (lib_id "Mechanical:MountingHole_Pad")
     (at 213.36 132.08 0)
     (unit 1)
     (in_bom no)
@@ -3803,7 +3865,7 @@
       (effects
         (font
           (size 1.27 1.27))))
-    (property "Footprint" "ACwing_GPS:MountingHole_2.2mm_M2"
+    (property "Footprint" "ACwing_GPS:MountingHole_PTH_2.2mm_M2_Pad3.6mm"
       (at 213.36 132.08 0)
       (effects
         (font
@@ -3813,18 +3875,55 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "M2 hole, 20 x 20 pattern (same as the FC draft F). Nylon standoff to the FC stack"
+    (property "Note" "M2 plated hole, 20 x 20 pattern (same as the FC), 3.6 mm copper ring on both sides tied to GND. Nylon standoff to the FC stack"
       (at 213.36 132.08 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "f302fccb-e6a4-5800-8567-819c60ea8080"))
     (instances
       (project "ACwing_GPS_A"
         (path "/e840546c-4f4c-56e0-ac2e-d2858299d11b"
           (reference "H1")
           (unit 1)))))
   (symbol
-    (lib_id "Mechanical:MountingHole")
+    (lib_id "power:GND")
+    (at 213.36 134.62 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "81b8afcc-89c0-5eb5-8f8c-bdb756f57955")
+    (property "Reference" "#PWR022"
+      (at 213.36 140.97 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "GND"
+      (at 213.36 138.43 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 213.36 134.62 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 213.36 134.62 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "5d5925c7-6730-5333-b313-3ae2baffaa54"))
+    (instances
+      (project "ACwing_GPS_A"
+        (path "/e840546c-4f4c-56e0-ac2e-d2858299d11b"
+          (reference "#PWR022")
+          (unit 1)))))
+  (symbol
+    (lib_id "Mechanical:MountingHole_Pad")
     (at 223.52 132.08 0)
     (unit 1)
     (in_bom no)
@@ -3841,7 +3940,7 @@
       (effects
         (font
           (size 1.27 1.27))))
-    (property "Footprint" "ACwing_GPS:MountingHole_2.2mm_M2"
+    (property "Footprint" "ACwing_GPS:MountingHole_PTH_2.2mm_M2_Pad3.6mm"
       (at 223.52 132.08 0)
       (effects
         (font
@@ -3851,18 +3950,55 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "M2 hole, 20 x 20 pattern (same as the FC draft F). Nylon standoff to the FC stack"
+    (property "Note" "M2 plated hole, 20 x 20 pattern (same as the FC), 3.6 mm copper ring on both sides tied to GND. Nylon standoff to the FC stack"
       (at 223.52 132.08 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "614b37f5-485c-568e-8878-07eced8e55a4"))
     (instances
       (project "ACwing_GPS_A"
         (path "/e840546c-4f4c-56e0-ac2e-d2858299d11b"
           (reference "H2")
           (unit 1)))))
   (symbol
-    (lib_id "Mechanical:MountingHole")
+    (lib_id "power:GND")
+    (at 223.52 134.62 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "f2e358b6-af39-535f-93fe-21dfb2cd9df9")
+    (property "Reference" "#PWR023"
+      (at 223.52 140.97 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "GND"
+      (at 223.52 138.43 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 223.52 134.62 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 223.52 134.62 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "37061bad-56e2-5fd5-83cf-2b3452f00478"))
+    (instances
+      (project "ACwing_GPS_A"
+        (path "/e840546c-4f4c-56e0-ac2e-d2858299d11b"
+          (reference "#PWR023")
+          (unit 1)))))
+  (symbol
+    (lib_id "Mechanical:MountingHole_Pad")
     (at 233.68 132.08 0)
     (unit 1)
     (in_bom no)
@@ -3879,7 +4015,7 @@
       (effects
         (font
           (size 1.27 1.27))))
-    (property "Footprint" "ACwing_GPS:MountingHole_2.2mm_M2"
+    (property "Footprint" "ACwing_GPS:MountingHole_PTH_2.2mm_M2_Pad3.6mm"
       (at 233.68 132.08 0)
       (effects
         (font
@@ -3889,18 +4025,55 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "M2 hole, 20 x 20 pattern (same as the FC draft F). Nylon standoff to the FC stack"
+    (property "Note" "M2 plated hole, 20 x 20 pattern (same as the FC), 3.6 mm copper ring on both sides tied to GND. Nylon standoff to the FC stack"
       (at 233.68 132.08 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "26055ebc-1cb0-57fd-bee8-5098b68a7b92"))
     (instances
       (project "ACwing_GPS_A"
         (path "/e840546c-4f4c-56e0-ac2e-d2858299d11b"
           (reference "H3")
           (unit 1)))))
   (symbol
-    (lib_id "Mechanical:MountingHole")
+    (lib_id "power:GND")
+    (at 233.68 134.62 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "993c6e9d-e2d3-55cc-93f5-adeb1757a391")
+    (property "Reference" "#PWR024"
+      (at 233.68 140.97 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "GND"
+      (at 233.68 138.43 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 233.68 134.62 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 233.68 134.62 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "54ff1a86-48a0-5850-95ae-3d9658967bc7"))
+    (instances
+      (project "ACwing_GPS_A"
+        (path "/e840546c-4f4c-56e0-ac2e-d2858299d11b"
+          (reference "#PWR024")
+          (unit 1)))))
+  (symbol
+    (lib_id "Mechanical:MountingHole_Pad")
     (at 243.84 132.08 0)
     (unit 1)
     (in_bom no)
@@ -3917,7 +4090,7 @@
       (effects
         (font
           (size 1.27 1.27))))
-    (property "Footprint" "ACwing_GPS:MountingHole_2.2mm_M2"
+    (property "Footprint" "ACwing_GPS:MountingHole_PTH_2.2mm_M2_Pad3.6mm"
       (at 243.84 132.08 0)
       (effects
         (font
@@ -3927,15 +4100,52 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "M2 hole, 20 x 20 pattern (same as the FC draft F). Nylon standoff to the FC stack"
+    (property "Note" "M2 plated hole, 20 x 20 pattern (same as the FC), 3.6 mm copper ring on both sides tied to GND. Nylon standoff to the FC stack"
       (at 243.84 132.08 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "8a9a09a2-064f-54d2-baf5-27739e249742"))
     (instances
       (project "ACwing_GPS_A"
         (path "/e840546c-4f4c-56e0-ac2e-d2858299d11b"
           (reference "H4")
+          (unit 1)))))
+  (symbol
+    (lib_id "power:GND")
+    (at 243.84 134.62 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "846067ee-e552-5348-bbbb-6f1c7b5bf24c")
+    (property "Reference" "#PWR025"
+      (at 243.84 140.97 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "GND"
+      (at 243.84 138.43 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 243.84 134.62 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 243.84 134.62 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "77396d39-c8a7-5af1-8233-e4e64ad16f5e"))
+    (instances
+      (project "ACwing_GPS_A"
+        (path "/e840546c-4f4c-56e0-ac2e-d2858299d11b"
+          (reference "#PWR025")
           (unit 1)))))
   (text "Stack: FC on its grommets, M2 nylon standoffs (6 mm), GNSS board on top.\nKeep-out r 2.6 mm around each hole on both sides."
     (at 205.74 143.51 0)

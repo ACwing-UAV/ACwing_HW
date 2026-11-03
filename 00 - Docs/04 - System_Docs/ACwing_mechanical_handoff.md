@@ -197,7 +197,8 @@ to the frame:
 | **ELRS lead** | now leaves from the FC rear edge (J5) |
 | **GPS J2 (Qwiic OUT)** | moved from the rear edge to the **right edge**, under J1: (+11.88, −4.05), mouth +u. J1 IN (+11.88, +3.85), mouth +u (0.25 mm from the 2026-10-24 position) |
 | **Flow J1 / J2 (Qwiic IN / OUT)** | moved from the left / right edges to the **top edge** (sensor-side view): J1 (−6.3, +8.95), J2 (+6.3, +8.95), both mouth +t. **Cable C (FC J4 → flow J1)** enters from the top edge now |
-| Flow test pads | TP1, TP2 under J1, TP4, TP5 under J2, TP3 at the bottom edge centre (flat pads, no height) |
+| Flow test pads | moved to the **back side** on 2026-11-03, top edge behind the Qwiic connectors: TP1 (−8.4, +7.9), TP2 (−5.6, +10.9), TP3 (0, +10.9), TP4 (+5.2, +10.9), TP5 (+8.3, +7.8), flat pads, no height; programming with the board off the drone |
+| **Mounting holes (ESC 1S, GPS, Flow)** | 2026-11-03: Ø2.2 mm **plated**, 3.6 mm copper ring on both sides tied to GND (as the FC grommet holes). Same position and drill; metal screws / standoffs touch board GND |
 | Heights, holes, outlines | unchanged |
 
 ## 1. Coordinate conventions
@@ -219,7 +220,7 @@ to the frame:
 | Holes | 2 × M2, Ø2.2 mm plain (NPTH), at **(−8.0, +0.4)** and **(+8.0, +0.4)** → 16.0 mm apart along s |
 | Hole keep-out | r 2.4 mm around each hole, both sides: no copper, room for M2 nylon screw heads / standoffs (Ø ≤ 4.5 mm) |
 | Sensor side | **all parts are on this side**; tallest: Qwiic connectors ≈ 3.0 mm, PMW3901 lens 2.28 mm, VL53L1X 1.56 mm, the rest ≤ 1.0 mm |
-| Back side | **no parts** (flat; vias and copper only). Mount it against the tray with ≥ 1 mm nylon spacers, or an insulating layer (Kapton, 3D-printed plate) if the tray is carbon |
+| Back side | **no parts** (flat; vias, copper, the GND rings of the holes and the five SWD test pads). Mount it against the tray with ≥ 1 mm nylon spacers, or an insulating layer (Kapton, 3D-printed plate) if the tray is carbon |
 
 ### 2.2 Sensors (sensor-side view)
 | Sensor | Centre (s, t) | Body | Field of view | Range |
