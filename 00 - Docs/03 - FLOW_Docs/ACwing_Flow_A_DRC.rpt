@@ -1,16 +1,8 @@
 ** Drc report for ACwing_Flow_A.kicad_pcb **
-** Created on 2026-11-03T09:39:43+0100 **
+** Created on 2026-11-03T09:48:20+0100 **
 ** Report includes: Errors, Warnings **
 
-** Found 2 DRC violations **
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: board setup constraints silk; warning
-    @(159.0000 mm, 112.5000 mm): Segment on Edge.Cuts
-    @(144.2500 mm, 112.4300 mm): Reference field of TP2
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: board setup constraints silk; warning
-    @(159.0000 mm, 112.5000 mm): Segment on Edge.Cuts
-    @(155.3500 mm, 112.4300 mm): Reference field of TP4
+** Found 0 DRC violations **
 
 ** Found 0 unconnected pads **
 

@@ -7639,7 +7639,7 @@
 		(descr "SMD pad as test Point, diameter 1.0mm")
 		(tags "test point SMD pad")
 		(property "Reference" "TP2"
-			(at 0.15 -1.53 0)
+			(at 1.95 0 0)
 			(unlocked yes)
 			(layer "B.SilkS")
 			(uuid "3d0b2893-3530-4eff-86cd-7ff0f5894f83")
@@ -7741,7 +7741,7 @@
 		(descr "SMD pad as test Point, diameter 1.0mm")
 		(tags "test point SMD pad")
 		(property "Reference" "TP4"
-			(at -0.15 -1.53 0)
+			(at -1.95 0 0)
 			(unlocked yes)
 			(layer "B.SilkS")
 			(uuid "ba10c757-0e77-43a5-8e11-e051ace4b9e2")

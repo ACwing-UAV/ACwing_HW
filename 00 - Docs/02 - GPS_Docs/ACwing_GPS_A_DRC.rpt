@@ -1,19 +1,8 @@
 ** Drc report for ACwing_GPS_A.kicad_pcb **
-** Created on 2026-11-03T09:39:02+0100 **
+** Created on 2026-11-03T09:47:39+0100 **
 ** Report includes: Errors, Warnings **
 
-** Found 3 DRC violations **
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; warning
-    @(151.7922 mm, 93.7600 mm): Segment of C3 on B.Silkscreen
-    @(150.0000 mm, 94.1000 mm): PCB text 'GPS rev A' on B.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; warning
-    @(151.7922 mm, 93.0400 mm): Segment of C3 on B.Silkscreen
-    @(151.8555 mm, 92.9879 mm): Polygon of LOGO2 on B.Silkscreen
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; warning
-    @(150.0000 mm, 94.1000 mm): PCB text 'GPS rev A' on B.Silkscreen
+** Found 0 DRC violations **
 
 ** Found 0 unconnected pads **
 

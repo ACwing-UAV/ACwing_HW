@@ -4238,7 +4238,7 @@
 	(footprint "ACwing_GPS:ACwing_Logo_Full_6mm"
 		(layer "B.Cu")
 		(uuid "6ebae353-152c-4ff1-b279-74d5eb177eab")
-		(at 149.999523 90.35 180)
+		(at 149.765052 88.565399 180)
 		(descr "ACwing full logo on the silkscreen, 6 mm high")
 		(tags "logo ACwing")
 		(property "Reference" "LOGO2"
@@ -6450,7 +6450,7 @@
 		)
 	)
 	(gr_text "GPS rev A"
-		(at 150 94.1 0)
+		(at 149.765529 92.315399 0)
 		(layer "B.SilkS")
 		(uuid "8576bcda-f6ff-4638-b600-bb74301dcad8")
 		(effects
