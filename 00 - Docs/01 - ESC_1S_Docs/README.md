@@ -6,7 +6,7 @@
 
 > **Revisions.** Rev A is the first released revision. The earlier letter, marked *draft* in this document (draft A, the first motor board), is an internal design iteration that was never manufactured.
 
-KiCad 7 project (it also opens in KiCad 8/9). The power board of the 1S mini drone: battery entry, current sensor,
+KiCad project, board saved by KiCad 9 since the 2026-11-02 update (opens in KiCad 9 and 10). The power board of the 1S mini drone: battery entry, current sensor,
 four brushed motor stages, and (new in rev A) a **USB-C charge port with a 1S charger**. To the FC it looks like any
 4-in-1 ESC: VBAT (1S) and CUR on the standard JST SH 8-pin cable. On larger drones a commercial 4-in-1 ESC replaces
 this board on the same cable.
@@ -49,7 +49,10 @@ USB-C J4 VBUS ─ U2 VCC, D6 LED, D5
 ## Checks
 - Netlist: 0 errors (`check_net.py`, 33 nets).
 - KiCad DRC (`ACwing_ESC1S_A_DRC.rpt`): **0 violations, 0 unconnected pads, 0 footprint errors**.
-- Routing: 133 tracks, 248 vias (power pours and fixed paths + Freerouting for the charger signals).
+- Routing: 133 tracks, 238 vias (power pours and fixed paths + Freerouting for the charger signals); no via in an SMD
+  pad (2026-11-02).
+- Silkscreen (2026-11-02): motor labels (M1–M4, CW / CCW, + / − at every motor pad pair), CHARGE, TO FC, FRONT, logo
+  and board name; no part references. M1 / M4 labels turned 90° to fit between the pads with the new mask expansion.
 
 ## Stack check (ESC 1S A + FC A + GPS draft C, then GPS A)
 Interactive 3D page: [`ACwing_stack_check.html`](../04%20-%20System_Docs/ACwing_stack_check.html) (open it locally; latest data: ESC 1S A + FC A + GPS A). Every part is a prism (courtyard × datasheet height), every connector gets
@@ -63,6 +66,7 @@ a mated-plug envelope. Results:
 
 ## Fabrication (JLCPCB)
 - 4 layers, 1.0 mm FR-4, parts on both sides (top 30, bottom 10).
+- Solder mask (2026-11-02): expansion 0.05 mm, minimum web 0.09 mm; every pad gap ≥ 0.19 mm (JLCPCB dam rule).
 - New LCSC parts: AON7423 C99711, STC4054GR C262930, TYPE-C-31-M-12 C165948, RB521S30T1G C8523, XL-1005UGC C965793.
 - CPL: corrections as draft A (PowerPAK +270°, 7343 +180°, SMAF +180°), TSOT-23-5 +180° as the FC charger. Check Q5 pin 1,
   U2 and J4 in the JLC preview.
@@ -90,7 +94,7 @@ KiCad sources in [`02 - ESC_1S_KiCadProj/`](../../02%20-%20ESC_1S_KiCadProj/):
 
 | File | What |
 |---|---|
-| `ACwing_ESC1S_A.kicad_pro / .kicad_sch / .kicad_pcb` | KiCad 7 project, schematic, routed PCB |
+| `ACwing_ESC1S_A.kicad_pro / .kicad_sch / .kicad_pcb` | KiCad project (board saved by KiCad 9), schematic, routed PCB |
 | `ACwing.kicad_sym`, `ACwing.pretty/`, `3d/` | project library (symbols, footprints incl. the ACwing logos) and STEP models |
 | `generator/` | scripts that generated and checked the design (see Regeneration) |
 

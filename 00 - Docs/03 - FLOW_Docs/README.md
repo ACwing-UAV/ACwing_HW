@@ -6,7 +6,19 @@
 
 > **Revisions.** Rev A is the first released revision.
 
-KiCad 7 project (it also opens in KiCad 8/9). A 21 × 25 mm board for indoor flight: it measures ground motion
+> **Layout and routing update (2026-11-02, still rev A).**
+> - **Both Qwiic connectors on the top edge** (they were on the left and right edges): J1 IN at (−6.3, +8.95), J2 OUT
+>   at (+6.3, +8.95), mouth +t, labels QWIIC IN / QWIIC OUT under them. The cables to the FC and to the GPS board now
+>   leave from the same edge: update cable C in the mechanical handoff.
+> - **SWD test pads on the perimeter, symmetric about the centre line:** TP1 3.3 V and TP2 NRST under J1, TP4 SWDIO
+>   and TP5 SWCLK under J2, TP3 GND at the bottom edge centre. Schematic renumbered to match.
+> - **Bridge MCU pins changed for the routing:** ToF XSHUT on **PA8** (pin 13, was PA0), status LED on **PA10**
+>   (pin 15, was PA8). Firmware must follow.
+> - No via in an SMD pad (the STM32C011 exposed pad keeps its ground vias); DRC 0.
+> - Solder mask expansion 0.05 mm, minimum web 0.09 mm: every pad gap ≥ 0.19 mm, except the LDK130 DFN-6 (0.4 mm
+>   pitch, 0.12 mm gaps, "allow solder mask bridges" on the footprint: JLC opens the mask over the pad row).
+
+KiCad project, board saved by KiCad 9 since the 2026-11-02 update (opens in KiCad 9 and 10). A 21 × 25 mm board for indoor flight: it measures ground motion
 (optical flow) and height (time of flight). It sits under the battery tray, sensor side down, and connects to the
 FC expansion bus (Qwiic) with a standard JST SH 4-pin cable.
 
@@ -36,12 +48,12 @@ KiCad sources in [`04 - FLOW_KiCadProj/`](../../04%20-%20FLOW_KiCadProj/):
 
 | File | What |
 |---|---|
-| `ACwing_Flow_A.kicad_pro / .kicad_sch / .kicad_pcb` | KiCad 7 project, schematic, routed PCB |
+| `ACwing_Flow_A.kicad_pro / .kicad_sch / .kicad_pcb` | KiCad project (board saved by KiCad 9), schematic, routed PCB |
 | `ACwing_Flow.pretty/`, `3d/` | project library (symbols, footprints incl. the ACwing logos) and STEP models |
 | `generator/` | scripts that generated and checked the design (see Regeneration) |
 
 ## Circuit
-- **J1, J2 (Qwiic).** JST SM04B-SRSS-TB, left and right edges at t = +7.0, wired in parallel: 1 GND, 2 3.3 V,
+- **J1, J2 (Qwiic).** JST SM04B-SRSS-TB, both on the top edge (J1 IN left, J2 OUT right), wired in parallel: 1 GND, 2 3.3 V,
   3 SDA, 4 SCL. No pull-ups here (they are on the FC).
 - **Power.** +3V3 from the bus (FC U11, 300 mA shared with the GPS board). The board draws about 35 mA (flow 9 mA,
   ToF up to 20 mA peak, MCU 3 mA).
@@ -50,14 +62,14 @@ KiCad sources in [`04 - FLOW_KiCadProj/`](../../04%20-%20FLOW_KiCadProj/):
     C7 100 nF. This is the datasheet reference circuit (Fig. 8).
 - **U1 PMW3901MB.** SPI mode 3, 2 MHz, to the bridge: NCS PA4, SCK PA5, MISO PA6, MOSI PA7, MOTION PA3, NRESET PA2.
   R2/R3/R4 10 k pull-ups keep it deselected and out of reset while the bridge boots.
-- **U3 VL53L1X.** On the Qwiic bus at 0x29. XSHUT (PA0) and GPIO1/INT (PA1) go to the bridge, with 10 k pull-ups.
+- **U3 VL53L1X.** On the Qwiic bus at 0x29. XSHUT (PA8) and GPIO1/INT (PA1) go to the bridge, with 10 k pull-ups.
   The bridge can hold the ToF in reset, which allows an address change if a second ToF is ever added.
 - **U4 STM32C011F4U6 (flow bridge).** I2C1 target at **0x3B** on PB6/PB7. Planned firmware: read the PMW3901 motion
   burst at 100 Hz, accumulate dX/dY and publish them with SQUAL and shutter, plus a data-ready counter. The register
   map is part of the indoor firmware work.
-  - SWD on test pads TP1 SWDIO, TP2 SWCLK, TP3 NRST, TP4 3.3 V, TP5 GND (first programming; later updates through the
+  - SWD on test pads TP1 3.3 V, TP2 NRST, TP3 GND, TP4 SWDIO, TP5 SWCLK (first programming; later updates through the
     FC are possible with an I2C bootloader).
-  - D1 green status LED on PA8 (low = on).
+  - D1 green status LED on PA10 (low = on).
 - **Bus map (whole drone).** GPS 0x42, GPS compass 0x1E, ToF 0x29, flow bridge 0x3B: no clash.
 
 ## Mechanics
@@ -74,12 +86,12 @@ KiCad sources in [`04 - FLOW_KiCadProj/`](../../04%20-%20FLOW_KiCadProj/):
   4 vias at the PMW3901 ground pad corners, GND stitching on a grid, and a final check that joins any isolated
   ground island with a via.
 - The LDK130 DFN-6 (0.4 mm pitch) escape is pre-routed and locked: IN/EN joined outside pin 5, GND via, short stubs.
-- Routing: 301 tracks, 103 vias (Freerouting + locked escapes).
+- Routing: 754 tracks, 98 vias (2026-11-02: Freerouting + locked escapes + hand-placed SWD dog-bones), no via in an SMD pad.
 
 ## Checks
 - Netlist: 0 errors (`check_net.py`, 44 nets).
 - KiCad DRC (`ACwing_Flow_A_DRC.rpt`): 0 violations, 0 unconnected pads, 0 footprint errors.
-- Silkscreen: 35 references on the board (5 with a short leader line), none over pads.
+- Silkscreen: QWIIC IN / QWIIC OUT and TP1–TP5 on the sensor side, logo and board name on the back; no part references.
 
 ## Fabrication (JLCPCB)
 - 2 layers, 1.0 mm FR-4, 1 oz. All parts on the top (sensor) side: single-sided assembly.

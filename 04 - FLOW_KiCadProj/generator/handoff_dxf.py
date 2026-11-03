@@ -24,13 +24,14 @@ def cross(cx, cy, lay, s=1.0):
     msp.add_line((cx - s, cy), (cx + s, cy), dxfattribs={'layer': lay}); msp.add_line((cx, cy - s), (cx, cy + s), dxfattribs={'layer': lay})
 rect(0.0, -6.2, 6.0, 6.0, 'PMW3901_LENS_6x6'); cross(0.0, -6.2, 'PMW3901_OPTICAL_AXIS')
 rect(0.0, 0.8, 4.9, 2.5, 'VL53L1X_PACKAGE'); cross(0.0, 0.8, 'VL53L1X_AXIS')
-# Qwiic plug zones: plug body + wire bend outside the left / right edge, at v = 7.0
+# Qwiic plug zones (2026-11-02): J1 / J2 on the top edge at u = -/+6.3, mouth +v: plug body + wire bend above the edge
 for s in (-1, 1):
-    x0 = s * HX
-    msp.add_lwpolyline([(x0, 3.5), (x0 + s * 10.0, 3.5), (x0 + s * 10.0, 10.5), (x0, 10.5)], close=False, dxfattribs={'layer': 'QWIIC_PLUG_ZONE'})
+    xa, xb = s * 2.0, s * HX
+    msp.add_lwpolyline([(xa, HY), (xa, HY + 10.0), (xb, HY + 10.0), (xb, HY)], close=False, dxfattribs={'layer': 'QWIIC_PLUG_ZONE'})
 msp.add_lwpolyline(pts, close=True, dxfattribs={'layer': 'SENSOR_SIDE_PARTS_MAX_3.0MM'})
-for txt, (x, y) in (('SENSOR SIDE VIEW (faces the ground)', (-10.5, 14.5)), ('PMW3901 lens 6x6x2.28, FOV 42 deg', (-10.5, -16.0)),
-                    ('VL53L1X 4.9x2.5x1.56, FOV 27 deg', (-10.5, -17.5)), ('J1', (-12.0, 7.0)), ('J2', (11.0, 7.0))):
+for txt, (x, y) in (('SENSOR SIDE VIEW (faces the ground)', (-10.5, 23.5)), ('PMW3901 lens 6x6x2.28, FOV 42 deg', (-10.5, -16.0)),
+                    ('VL53L1X 4.9x2.5x1.56, FOV 27 deg', (-10.5, -17.5)), ('J1 IN', (-7.5, 13.0)), ('J2 OUT', (4.5, 13.0))):
     msp.add_text(txt, height=0.8, dxfattribs={'layer': 'NOTES'}).set_placement((x, y))
-doc.saveas('/home/claude/outFlow/handoff/ACwing_Flow_A_mech_outline.dxf')
+import sys
+doc.saveas(sys.argv[1] if len(sys.argv) > 1 else 'ACwing_Flow_A_mech_outline.dxf')
 print('ok')

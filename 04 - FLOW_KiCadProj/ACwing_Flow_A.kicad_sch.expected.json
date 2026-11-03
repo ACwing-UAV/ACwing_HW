@@ -76,7 +76,8 @@
 "U4.10": "SPI_SCK",
 "U4.11": "SPI_MISO",
 "U4.12": "SPI_MOSI",
-"U4.13": "LED_K",
+"U4.13": "TOF_XSHUT",
+"U4.15": "LED_K",
 "U4.16": "SWDIO",
 "U4.17": "SWCLK",
 "U4.18": "I2C_SCL",
@@ -84,7 +85,6 @@
 "U4.2": "+3V3",
 "U4.3": "GND",
 "U4.4": "MCU_NRST",
-"U4.5": "TOF_XSHUT",
 "U4.6": "TOF_INT",
 "U4.7": "PMW_NRESET",
 "U4.8": "PMW_MOTION",
@@ -99,9 +99,9 @@
 "R11.2": "LED_A",
 "D1.1": "LED_K",
 "D1.2": "LED_A",
-"TP1.1": "SWDIO",
-"TP2.1": "SWCLK",
-"TP3.1": "MCU_NRST",
-"TP4.1": "+3V3",
-"TP5.1": "GND"
+"TP1.1": "+3V3",
+"TP2.1": "MCU_NRST",
+"TP3.1": "GND",
+"TP4.1": "SWDIO",
+"TP5.1": "SWCLK"
 }

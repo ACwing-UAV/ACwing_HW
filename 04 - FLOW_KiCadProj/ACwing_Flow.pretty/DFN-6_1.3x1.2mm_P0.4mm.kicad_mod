@@ -2,7 +2,7 @@
   (layer "F.Cu")
   (descr "6-Lead Plastic DFN (1.3mm x 1.2mm) ")
   (tags "DFN 0.4")
-  (attr smd)
+  (attr smd allow_soldermask_bridges)
   (fp_text reference "REF**" (at 0 -1.7) (layer "F.SilkS")
       (effects (font (size 1 1) (thickness 0.15)))
     (tstamp 5c57fd17-f52c-4fd5-ad94-be40017f6bc1)

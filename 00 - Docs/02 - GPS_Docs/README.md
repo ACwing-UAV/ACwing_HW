@@ -9,7 +9,17 @@
 > **Layout update (2026-10-24, still rev A).** Qwiic J1 moved from v = 0 to v = +3.6, right above FC J3; re-routed,
 > DRC 0. Nothing else changed.
 
-KiCad 7 project (it also opens in KiCad 8/9). A 30 × 30 mm board that stacks on top of the flight controller on the
+> **Layout and routing update (2026-11-02, still rev A).**
+> - **Both Qwiic connectors on the right edge:** J1 IN at (u, v) = (+11.9, +3.85), right above FC J3 (v = +3.6);
+>   J2 OUT at (+11.9, −4.05), both mouth +u. Labels "QWIIC IN" / "QWIIC OUT" at the two ends of the connector column.
+>   The pass-through cable to the flow board now leaves from the right edge too.
+> - No via in an SMD pad; re-routed, DRC 0.
+> - Compass U3 (IIS2MDC LGA-12) pads 0.35 × 0.30 mm (were 0.375 × 0.35): every pad gap ≥ 0.19 mm, the JLCPCB
+>   minimum for a solder mask dam. Board mask expansion 0.05 mm, minimum web 0.09 mm.
+> - Mounting-hole courtyard r 2.0 mm (was 2.45: it blocked the connector column).
+> - Silkscreen: connector labels, FRONT arrow, TP1–TP5, logo and board name only.
+
+KiCad project, board saved by KiCad 9 since the 2026-11-02 update (opens in KiCad 9 and 10). A 30 × 30 mm board that stacks on top of the flight controller on the
 same **20 × 20 mm** holes, on **6 mm** nylon standoffs. Circuit identical to drafts B/C (Qwiic expansion bus, GNSS on
 DDC, compass).
 
@@ -55,13 +65,13 @@ KiCad sources in [`03 - GPS_KiCadProj/`](../../03%20-%20GPS_KiCadProj/):
 
 | File | What |
 |---|---|
-| `ACwing_GPS_A.kicad_pro / .kicad_sch / .kicad_pcb` | KiCad 7 project, schematic, routed PCB |
+| `ACwing_GPS_A.kicad_pro / .kicad_sch / .kicad_pcb` | KiCad project (board saved by KiCad 9), schematic, routed PCB |
 | `ACwing_GPS.pretty/`, `3d/` | project library (symbols, footprints incl. the ACwing logos) and STEP models |
 | `generator/` | scripts that generated and checked the design (see Regeneration) |
 
 ## Circuit
-- **J1 / J2 (Qwiic).** JST SM04B-SRSS-TB on the top side (rev A). J1 at the right edge (mouth +X), J2 at the rear edge
-  (mouth −Y). Wired in parallel: 1 GND, 2 3.3 V, 3 SDA, 4 SCL. Standard 1:1 Qwiic cables.
+- **J1 / J2 (Qwiic).** JST SM04B-SRSS-TB on the top side (rev A), both on the right edge (mouth +X, since
+  2026-11-02): J1 IN toward the front, J2 OUT toward the rear. Wired in parallel: 1 GND, 2 3.3 V, 3 SDA, 4 SCL. Standard 1:1 Qwiic cables.
 - **3.3 V.** From the bus (FC U11, VEXP 3.31 V). C1 10 µF at the input covers the GNSS start-up inrush (up to 100 mA).
 - **GNSS U1, SAM-M10Q-00B.** VCC/V_IO on 3.3 V (C3/C4 100 nF under the pins).
   - DDC (I2C) on the bus: SDA pin 9, SCL pin 12, address 0x42, up to 400 kHz. The FC polls the DDC stream (register
@@ -98,16 +108,17 @@ m_fc = R · m_gps,   R = [  0.7071  -0.7071   0 ]
 - Rules (JLC 2-layer standard): Default 0.2/0.15 mm, Power (+3V3, GND) 0.4 mm, Fine (I2C, MAG_C1) 0.15 mm with
   0.15 mm clearance (draft B: the I2C runs are longer and pass vias). Vias 0.5/0.3 mm.
 - GND pours on both layers, SAM-M10Q ground pads solid to the top pour. 127 GND vias (stitching grid + fan-out).
-- Compass escape pre-routed and locked as draft A; the rest autorouted. 174 tracks, 138 vias.
+- Compass escape pre-routed and locked as draft A; the rest autorouted. 208 tracks, 123 vias (2026-11-02), no via in an SMD pad.
 
 ## Checks
 - Netlist: 0 errors (`check_net.py`, 19 nets).
 - KiCad DRC: 0 violations, 0 unconnected pads, 0 footprint errors.
-- Silkscreen: 22 references, plus the FRONT arrow and the board name.
-- Connectors: J1 at (u, v) = (+11.9, 0), J2 at (0, −11.9), both top side.
+- Silkscreen: QWIIC IN / QWIIC OUT, TP1–TP5, the FRONT arrow, logo and board name (no part references).
+- Connectors: J1 at (u, v) = (+11.9, +3.85), J2 at (+11.9, −4.05), both top side, right edge, mouth +u.
 
 ## Fabrication (JLCPCB)
 - 2 layers, 1.0 mm FR-4. Parts on both sides (top: U1, D2, J1, J2).
+- Solder mask: expansion 0.05 mm, minimum web 0.09 mm, every pad gap ≥ 0.19 mm (JLCPCB dam rule for green / blue / red / purple mask).
 - U1 SAM-M10Q and C5 CPH3225A are not stocked by LCSC: consigned parts or hand soldering (as draft A).
 - CPL: SOT-23 +180° (Q1). Check U1 pin 1, J1/J2 (tabs toward the edges), C5 polarity and D1 in the JLC preview.
 - Cost: about **27.6 USD per board at 10 boards, 23.4 USD at 100** (components only, the SAM-M10Q is ~80 %).

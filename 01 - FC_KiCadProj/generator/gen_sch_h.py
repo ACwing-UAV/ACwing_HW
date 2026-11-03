@@ -245,7 +245,7 @@ DEC = [('C23', '100nF', FP_C, 'VDD pin 20'), ('C24', '100nF', FP_C, 'VDD pin 35'
 for k, (ref, val, fp_, nt) in enumerate(DEC):
     C(ref, val, 187.96 + 11.43 * (k % 2), 48.26 + 17.78 * (k // 2), 'VDD', 'GND', fp=fp_, fields={'Note': nt})
 C('C15', '100nF', 199.39, 119.38, 'NRST', 'GND', fields={'Note': 'DS13252: 100 nF on NRST'})
-R('R14', '10k', 187.96, 137.16, 'BOOT0', 'GND', fields={'Note': 'Boot from flash; TP3 to VDD for the USB DFU bootloader'})
+R('R14', '10k', 187.96, 137.16, 'BOOT0', 'GND', fields={'Note': 'Boot from flash; TP1 to TP8 (VDD) for the USB DFU bootloader'})
 
 # SMPS network (DS13252 table 6): VLXSMPS - 10 uH - 10 nH - VFBSMPS, 4.7 uF; works in bypass (reset default) and SMPS mode
 sch.part('L1', 'Device:L', '2.2uH', 196.85, 172.72, 90, {'1': 'SMPS_LX', '2': ('W', 'SMPS_L2')},
@@ -436,15 +436,16 @@ sch.wire(sch.pin_end('R39', '2')[0], sch.pin_end('D1', '3')[0])
 # or at low duty), as on the Crazyflie.
 note('No buzzer: beeps through the motors (audio PWM).\nA magnetic buzzer would put a magnet under the compasses.', (290.83, 161.29))
 
-for k, (tp, net, nt) in enumerate([('TP6', 'SWDIO', 'SWDIO (PA13)'), ('TP7', 'SWCLK', 'SWCLK (PA14)'),
-                                   ('TP8', 'NRST', 'NRST')]):
+# test points: numbered in reading order on the bottom side (seen from below, 2 x 4 grid):
+# top row TP1-TP4 = BOOT0, NRST, SWCLK, SWDIO (programming), bottom row TP5-TP8 = CRSF RX, CRSF TX, GND, VDD
+for k, (tp, net, nt) in enumerate([('TP2', 'NRST', 'NRST'), ('TP3', 'SWCLK', 'SWCLK (PA14)'), ('TP4', 'SWDIO', 'SWDIO (PA13)')]):
     x = 378.46 + 10.16 * k
     sch.part(tp, 'Connector:TestPoint', net, x, 167.64, 0, {'1': net}, fp='TestPoint:TestPoint_Pad_D1.0mm',
              fields={'Note': nt + ' - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom'}, stub=2.54,
              field_pos={'Reference': (x - 1.27, 161.29), 'Value': (x - 1.27, 158.75), 'just': 'left'})
-for k, (tp, net, nt) in enumerate([('TP1', 'CRSF_TX', 'USART1 TX (PB6), ELRS port J5 (factory test / monitor)'), ('TP2', 'CRSF_RX', 'USART1 RX (PB7), ELRS port J5 (factory test / monitor)'),
-                                   ('TP3', 'BOOT0', 'BOOT0: bridge to TP4 for DFU'),
-                                   ('TP4', 'VDD', 'VDD 3.1 V'), ('TP5', 'GND', 'GND')]):
+for k, (tp, net, nt) in enumerate([('TP6', 'CRSF_TX', 'USART1 TX (PB6), ELRS port J5 (factory test / monitor)'), ('TP5', 'CRSF_RX', 'USART1 RX (PB7), ELRS port J5 (factory test / monitor)'),
+                                   ('TP1', 'BOOT0', 'BOOT0: bridge to TP8 (VDD) for DFU'),
+                                   ('TP8', 'VDD', 'VDD 3.1 V'), ('TP7', 'GND', 'GND')]):
     x = 330.2 + 10.16 * k
     sch.part(tp, 'Connector:TestPoint', net, x, 233.68, 0, {'1': net}, fp='TestPoint:TestPoint_Pad_D1.0mm',
              fields={'Note': nt + ' - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom'}, stub=2.54,
