@@ -7068,7 +7068,7 @@
 		(locked yes)
 		(layer "B.Cu")
 		(uuid "025ca380-4f44-40ef-b03f-2683efa6f76f")
-		(at 150.056905 98 180)
+		(at 150 99.2 180)
 		(descr "ACwing full logo on the silkscreen, 9 mm high")
 		(tags "logo ACwing")
 		(property "Reference" "LOGO1"
@@ -8071,7 +8071,8 @@
 		)
 	)
 	(gr_text "Flow rev A"
-		(at 150.057 103.25 0)
+		(locked yes)
+		(at 150.000095 104.45 0)
 		(layer "B.SilkS")
 		(uuid "d064e41b-a2a8-40cc-bd81-3a01b1002198")
 		(effects
