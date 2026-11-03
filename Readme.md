@@ -127,7 +127,7 @@ GPS 27.6 / 23.4 USD, Flow 11.1 / 9.4 USD. Check LCSC stock before ordering.
 ## Status
 
 **Update 2026-11-03 (still rev A):** plated M2 mounting holes with a GND copper ring on the ESC 1S, GPS and Flow
-boards (as the FC); Flow SWD test pads moved to the back side and re-routed; silkscreen as edited by A. Cirillo.
+boards (as the FC); Flow SWD test pads moved to the back side (top edge, short SWD lines) and re-routed; silkscreen as edited by A. Cirillo.
 
 **Layout and routing update 2026-11-02 (still rev A):** both FC ESC links on the front edge (ESC A next to ESC B,
 ELRS moved to the rear edge); Qwiic IN / OUT on one edge on every board (GPS right edge, Flow top edge); no via in any

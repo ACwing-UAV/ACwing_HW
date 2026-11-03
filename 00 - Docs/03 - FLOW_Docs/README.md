@@ -10,10 +10,11 @@
 > - **Both Qwiic connectors on the top edge** (they were on the left and right edges): J1 IN at (−6.3, +8.95), J2 OUT
 >   at (+6.3, +8.95), mouth +t, labels QWIIC IN / QWIIC OUT under them. The cables to the FC and to the GPS board now
 >   leave from the same edge: update cable C in the mechanical handoff.
-> - **SWD test pads on the back side (2026-11-03), along the bottom edge, symmetric:** TP1 3.3 V (−8.4, −7.9),
->   TP2 NRST (−5.6, −10.9), TP3 GND (0, −10.9), TP4 SWDIO (+5.2, −10.9), TP5 SWCLK (+8.3, −7.8) (sensor-side view,
->   positions chosen by A. Cirillo). Re-routed to the bottom pads (SWD on F + B, 0.15 mm, low speed); schematic
->   numbering as 2026-11-02.
+> - **SWD test pads on the back side (2026-11-03), along the top edge, symmetric**, behind the Qwiic connectors and
+>   close to the bridge MCU: TP1 3.3 V (−8.4, +7.9), TP2 NRST (−5.6, +10.9), TP3 GND (0, +10.9), TP4 SWDIO (+5.2, +10.9),
+>   TP5 SWCLK (+8.3, +7.8) (sensor-side view; the layout chosen by A. Cirillo mirrored to the top edge). SWD lines
+>   SWDIO 7 mm, SWCLK 6 mm (they were 41 / 17 mm with the pads on the bottom edge). The board is programmed off the
+>   drone. Schematic numbering as 2026-11-02.
 > - **Plated mounting holes (2026-11-03):** H1 / H2 are now Ø2.2 mm PTH with a 3.6 mm copper ring on both sides,
 >   tied to GND (as the FC holes).
 > - **Bridge MCU pins changed for the routing:** ToF XSHUT on **PA8** (pin 13, was PA0), status LED on **PA10**
@@ -90,7 +91,7 @@ KiCad sources in [`04 - FLOW_KiCadProj/`](../../04%20-%20FLOW_KiCadProj/):
   4 vias at the PMW3901 ground pad corners, GND stitching on a grid, and a final check that joins any isolated
   ground island with a via.
 - The LDK130 DFN-6 (0.4 mm pitch) escape is pre-routed and locked: IN/EN joined outside pin 5, GND via, short stubs.
-- Routing: 794 tracks, 107 vias (2026-11-03: SWD lines re-routed to the back-side test pads with the A* router), no via in an SMD pad.
+- Routing: 733 tracks, 92 vias (2026-11-03: SWD lines re-routed to the back-side test pads), no via in an SMD or test pad.
 
 ## Checks
 - Netlist: 0 errors (`check_net.py`, 44 nets).
