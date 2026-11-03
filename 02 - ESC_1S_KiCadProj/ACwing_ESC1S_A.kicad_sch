@@ -13,6 +13,68 @@
     (comment 3 "Larger drones: a commercial 4-in-1 ESC replaces this board on the same FC cable")
     (comment 4 "Generated automatically: run ERC before release"))
   (lib_symbols
+    (symbol "Mechanical:MountingHole_Pad"
+      (pin_numbers hide)
+      (pin_names
+        (offset 1.016) hide)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "H"
+        (at 0 6.35 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "MountingHole_Pad"
+        (at 0 4.445 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "ki_keywords" "mounting hole"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "ki_description" "Mounting Hole with connection"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "ki_fp_filters" "MountingHole*Pad*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (symbol "MountingHole_Pad_0_1"
+        (circle
+          (center 0 1.27)
+          (radius 1.27)
+          (stroke
+            (width 1.27)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "MountingHole_Pad_1_1"
+        (pin input line
+          (at 0 -2.54 90)
+          (length 2.54)
+          (name "1"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))))
     (symbol "ACwing:LSM6DSV16X"
       (in_bom yes)
       (on_board yes)
@@ -5989,7 +6051,7 @@
       (justify left top))
     (uuid "b921d070-40d9-5490-be01-60c68ce51f5a"))
   (symbol
-    (lib_id "Mechanical:MountingHole")
+    (lib_id "Mechanical:MountingHole_Pad")
     (at 213.36 76.2 0)
     (unit 1)
     (in_bom no)
@@ -6006,7 +6068,7 @@
       (effects
         (font
           (size 1.27 1.27))))
-    (property "Footprint" "ACwing:MountingHole_2.2mm_M2"
+    (property "Footprint" "ACwing:MountingHole_PTH_2.2mm_M2_Pad3.6mm"
       (at 213.36 76.2 0)
       (effects
         (font
@@ -6016,18 +6078,55 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "M2 hole, 20 x 20 pattern, hard mount to the frame bosses; FC grommet stack above"
+    (property "Note" "M2 plated hole, 20 x 20 pattern, 3.6 mm copper ring on both sides tied to GND; hard mount to the frame bosses, FC grommet stack above"
       (at 213.36 76.2 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "f2829876-b881-5c09-99e9-c63cb6cee974"))
     (instances
       (project "ACwing_ESC1S_A"
         (path "/530b939e-4b3e-59f5-86ae-2bdb51961390"
           (reference "H1")
           (unit 1)))))
   (symbol
-    (lib_id "Mechanical:MountingHole")
+    (lib_id "power:GND")
+    (at 213.36 78.74 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "6f57052f-f018-5539-8428-8e94a7f10903")
+    (property "Reference" "#PWR048"
+      (at 213.36 85.09 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "GND"
+      (at 213.36 82.55 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 213.36 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 213.36 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "81f33651-26f9-5c67-87f8-5c5c17f8752f"))
+    (instances
+      (project "ACwing_ESC1S_A"
+        (path "/530b939e-4b3e-59f5-86ae-2bdb51961390"
+          (reference "#PWR048")
+          (unit 1)))))
+  (symbol
+    (lib_id "Mechanical:MountingHole_Pad")
     (at 226.06 76.2 0)
     (unit 1)
     (in_bom no)
@@ -6044,7 +6143,7 @@
       (effects
         (font
           (size 1.27 1.27))))
-    (property "Footprint" "ACwing:MountingHole_2.2mm_M2"
+    (property "Footprint" "ACwing:MountingHole_PTH_2.2mm_M2_Pad3.6mm"
       (at 226.06 76.2 0)
       (effects
         (font
@@ -6054,18 +6153,55 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "M2 hole, 20 x 20 pattern, hard mount to the frame bosses; FC grommet stack above"
+    (property "Note" "M2 plated hole, 20 x 20 pattern, 3.6 mm copper ring on both sides tied to GND; hard mount to the frame bosses, FC grommet stack above"
       (at 226.06 76.2 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "c89ca4c9-0313-5047-89ad-3ecf318e58c2"))
     (instances
       (project "ACwing_ESC1S_A"
         (path "/530b939e-4b3e-59f5-86ae-2bdb51961390"
           (reference "H2")
           (unit 1)))))
   (symbol
-    (lib_id "Mechanical:MountingHole")
+    (lib_id "power:GND")
+    (at 226.06 78.74 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "83328970-fab6-5b03-bcf3-df056698965b")
+    (property "Reference" "#PWR049"
+      (at 226.06 85.09 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "GND"
+      (at 226.06 82.55 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 226.06 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 226.06 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "61b93aa3-f9b9-59ae-bb4d-3de5191324d3"))
+    (instances
+      (project "ACwing_ESC1S_A"
+        (path "/530b939e-4b3e-59f5-86ae-2bdb51961390"
+          (reference "#PWR049")
+          (unit 1)))))
+  (symbol
+    (lib_id "Mechanical:MountingHole_Pad")
     (at 238.76 76.2 0)
     (unit 1)
     (in_bom no)
@@ -6082,7 +6218,7 @@
       (effects
         (font
           (size 1.27 1.27))))
-    (property "Footprint" "ACwing:MountingHole_2.2mm_M2"
+    (property "Footprint" "ACwing:MountingHole_PTH_2.2mm_M2_Pad3.6mm"
       (at 238.76 76.2 0)
       (effects
         (font
@@ -6092,18 +6228,55 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "M2 hole, 20 x 20 pattern, hard mount to the frame bosses; FC grommet stack above"
+    (property "Note" "M2 plated hole, 20 x 20 pattern, 3.6 mm copper ring on both sides tied to GND; hard mount to the frame bosses, FC grommet stack above"
       (at 238.76 76.2 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "4ff67621-15a0-561a-bbff-5d2e1a3c94ae"))
     (instances
       (project "ACwing_ESC1S_A"
         (path "/530b939e-4b3e-59f5-86ae-2bdb51961390"
           (reference "H3")
           (unit 1)))))
   (symbol
-    (lib_id "Mechanical:MountingHole")
+    (lib_id "power:GND")
+    (at 238.76 78.74 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "d95c44e9-c1b6-5e5a-90b5-dea69c57ce30")
+    (property "Reference" "#PWR050"
+      (at 238.76 85.09 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "GND"
+      (at 238.76 82.55 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 238.76 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 238.76 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "487024fd-3866-5a96-9765-cafeb9fe84b5"))
+    (instances
+      (project "ACwing_ESC1S_A"
+        (path "/530b939e-4b3e-59f5-86ae-2bdb51961390"
+          (reference "#PWR050")
+          (unit 1)))))
+  (symbol
+    (lib_id "Mechanical:MountingHole_Pad")
     (at 251.46 76.2 0)
     (unit 1)
     (in_bom no)
@@ -6120,7 +6293,7 @@
       (effects
         (font
           (size 1.27 1.27))))
-    (property "Footprint" "ACwing:MountingHole_2.2mm_M2"
+    (property "Footprint" "ACwing:MountingHole_PTH_2.2mm_M2_Pad3.6mm"
       (at 251.46 76.2 0)
       (effects
         (font
@@ -6130,15 +6303,52 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "M2 hole, 20 x 20 pattern, hard mount to the frame bosses; FC grommet stack above"
+    (property "Note" "M2 plated hole, 20 x 20 pattern, 3.6 mm copper ring on both sides tied to GND; hard mount to the frame bosses, FC grommet stack above"
       (at 251.46 76.2 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "3094811c-9ec8-5b8e-b6c5-cd1d31cc5639"))
     (instances
       (project "ACwing_ESC1S_A"
         (path "/530b939e-4b3e-59f5-86ae-2bdb51961390"
           (reference "H4")
+          (unit 1)))))
+  (symbol
+    (lib_id "power:GND")
+    (at 251.46 78.74 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "f2446cbc-0a03-5c63-97d3-30713eca5856")
+    (property "Reference" "#PWR051"
+      (at 251.46 85.09 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "GND"
+      (at 251.46 82.55 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 251.46 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 251.46 78.74 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "9044d13a-2885-5071-b80d-f3b170562aee"))
+    (instances
+      (project "ACwing_ESC1S_A"
+        (path "/530b939e-4b3e-59f5-86ae-2bdb51961390"
+          (reference "#PWR051")
           (unit 1)))))
   (rectangle
     (start 10.16 166.37)

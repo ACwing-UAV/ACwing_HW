@@ -270,38 +270,38 @@
 "dnp": false
 },
 "H1": {
-"lib_id": "Mechanical:MountingHole",
+"lib_id": "Mechanical:MountingHole_Pad",
 "value": "M2",
-"fp": "ACwing:MountingHole_2.2mm_M2",
+"fp": "ACwing:MountingHole_PTH_2.2mm_M2_Pad3.6mm",
 "fields": {
-"Note": "M2 hole, 20 x 20 pattern, hard mount to the frame bosses; FC grommet stack above"
+"Note": "M2 plated hole, 20 x 20 pattern, 3.6 mm copper ring on both sides tied to GND; hard mount to the frame bosses, FC grommet stack above"
 },
 "dnp": false
 },
 "H2": {
-"lib_id": "Mechanical:MountingHole",
+"lib_id": "Mechanical:MountingHole_Pad",
 "value": "M2",
-"fp": "ACwing:MountingHole_2.2mm_M2",
+"fp": "ACwing:MountingHole_PTH_2.2mm_M2_Pad3.6mm",
 "fields": {
-"Note": "M2 hole, 20 x 20 pattern, hard mount to the frame bosses; FC grommet stack above"
+"Note": "M2 plated hole, 20 x 20 pattern, 3.6 mm copper ring on both sides tied to GND; hard mount to the frame bosses, FC grommet stack above"
 },
 "dnp": false
 },
 "H3": {
-"lib_id": "Mechanical:MountingHole",
+"lib_id": "Mechanical:MountingHole_Pad",
 "value": "M2",
-"fp": "ACwing:MountingHole_2.2mm_M2",
+"fp": "ACwing:MountingHole_PTH_2.2mm_M2_Pad3.6mm",
 "fields": {
-"Note": "M2 hole, 20 x 20 pattern, hard mount to the frame bosses; FC grommet stack above"
+"Note": "M2 plated hole, 20 x 20 pattern, 3.6 mm copper ring on both sides tied to GND; hard mount to the frame bosses, FC grommet stack above"
 },
 "dnp": false
 },
 "H4": {
-"lib_id": "Mechanical:MountingHole",
+"lib_id": "Mechanical:MountingHole_Pad",
 "value": "M2",
-"fp": "ACwing:MountingHole_2.2mm_M2",
+"fp": "ACwing:MountingHole_PTH_2.2mm_M2_Pad3.6mm",
 "fields": {
-"Note": "M2 hole, 20 x 20 pattern, hard mount to the frame bosses; FC grommet stack above"
+"Note": "M2 plated hole, 20 x 20 pattern, 3.6 mm copper ring on both sides tied to GND; hard mount to the frame bosses, FC grommet stack above"
 },
 "dnp": false
 },

@@ -121,7 +121,7 @@ for k, (tp, net, nt) in enumerate([('TP1', '+3V3', '3.3 V'), ('TP2', 'MCU_NRST',
              field_pos={'Reference': (x + 1.27, 97.79), 'Value': (x + 1.27, 95.25), 'just': 'left'})
 for k in range(2):
     x = 220.98 + 12.7 * k
-    sch.part('H%d' % (k + 1), 'Mechanical:MountingHole', 'M2', x, 139.7, 0, {}, fp='MountingHole:MountingHole_2.2mm_M2',
+    sch.part('H%d' % (k + 1), 'Mechanical:MountingHole_Pad', 'M2', x, 139.7, 0, {'1': 'GND'}, fp='ACwing_Flow:MountingHole_PTH_2.2mm_M2_Pad3.6mm',
              fields={'Note': 'M2 mounting hole (frame boss, see handoff)'},
              field_pos={'Reference': (x, 133.35), 'Value': (x, 135.89)}, in_bom=False)
 note('Bus map: ToF 0x29 (VL53L1X default), flow bridge 0x3B.\nThe bridge can hold the ToF in reset (XSHUT) to change its address.', (12.7, 175.26))

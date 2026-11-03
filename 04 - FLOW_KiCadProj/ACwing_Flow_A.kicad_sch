@@ -13,6 +13,68 @@
     (comment 3 "PixArt PMW3901MB (flow, SPI) behind an ST STM32C011 I2C bridge; ST VL53L1X ToF on the bus")
     (comment 4 "Generated automatically: run ERC before release"))
   (lib_symbols
+    (symbol "Mechanical:MountingHole_Pad"
+      (pin_numbers hide)
+      (pin_names
+        (offset 1.016) hide)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "H"
+        (at 0 6.35 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "MountingHole_Pad"
+        (at 0 4.445 0)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "Datasheet" "~"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "ki_keywords" "mounting hole"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "ki_description" "Mounting Hole with connection"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (property "ki_fp_filters" "MountingHole*Pad*"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)) hide))
+      (symbol "MountingHole_Pad_0_1"
+        (circle
+          (center 0 1.27)
+          (radius 1.27)
+          (stroke
+            (width 1.27)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "MountingHole_Pad_1_1"
+        (pin input line
+          (at 0 -2.54 90)
+          (length 2.54)
+          (name "1"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))))
     (symbol "ACwing_Flow:PMW3901MB"
       (in_bom yes)
       (on_board yes)
@@ -5816,7 +5878,7 @@
       (justify left bottom))
     (uuid "8f319734-3bd2-58cc-86bb-f0670add43e2"))
   (symbol
-    (lib_id "Mechanical:MountingHole")
+    (lib_id "Mechanical:MountingHole_Pad")
     (at 220.98 139.7 0)
     (unit 1)
     (in_bom no)
@@ -5833,7 +5895,7 @@
       (effects
         (font
           (size 1.27 1.27))))
-    (property "Footprint" "ACwing_Flow:MountingHole_2.2mm_M2"
+    (property "Footprint" "ACwing_Flow:MountingHole_PTH_2.2mm_M2_Pad3.6mm"
       (at 220.98 139.7 0)
       (effects
         (font
@@ -5843,18 +5905,55 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "M2 mounting hole (frame boss, see handoff)"
+    (property "Note" "M2 plated mounting hole (frame boss, see handoff), 3.6 mm copper ring on both sides tied to GND"
       (at 220.98 139.7 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "c0321528-f28e-5906-b0b4-31f5d211052a"))
     (instances
       (project "ACwing_Flow_A"
         (path "/dc84106e-4fe0-5e9c-b14e-4823103c3234"
           (reference "H1")
           (unit 1)))))
   (symbol
-    (lib_id "Mechanical:MountingHole")
+    (lib_id "power:GND")
+    (at 220.98 142.24 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "b80d0681-a2cb-501d-9d38-e645294176e1")
+    (property "Reference" "#PWR052"
+      (at 220.98 148.59 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "GND"
+      (at 220.98 146.05 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 220.98 142.24 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 220.98 142.24 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "0ad81554-039d-5378-863d-5bc9ec96abed"))
+    (instances
+      (project "ACwing_Flow_A"
+        (path "/dc84106e-4fe0-5e9c-b14e-4823103c3234"
+          (reference "#PWR052")
+          (unit 1)))))
+  (symbol
+    (lib_id "Mechanical:MountingHole_Pad")
     (at 233.68 139.7 0)
     (unit 1)
     (in_bom no)
@@ -5871,7 +5970,7 @@
       (effects
         (font
           (size 1.27 1.27))))
-    (property "Footprint" "ACwing_Flow:MountingHole_2.2mm_M2"
+    (property "Footprint" "ACwing_Flow:MountingHole_PTH_2.2mm_M2_Pad3.6mm"
       (at 233.68 139.7 0)
       (effects
         (font
@@ -5881,15 +5980,52 @@
       (effects
         (font
           (size 1.27 1.27)) hide))
-    (property "Note" "M2 mounting hole (frame boss, see handoff)"
+    (property "Note" "M2 plated mounting hole (frame boss, see handoff), 3.6 mm copper ring on both sides tied to GND"
       (at 233.68 139.7 0)
       (effects
         (font
           (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "b8b320bc-1ca9-564b-845f-84ace6f632c5"))
     (instances
       (project "ACwing_Flow_A"
         (path "/dc84106e-4fe0-5e9c-b14e-4823103c3234"
           (reference "H2")
+          (unit 1)))))
+  (symbol
+    (lib_id "power:GND")
+    (at 233.68 142.24 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "eb8a2e88-8b58-5434-954b-88475bde045d")
+    (property "Reference" "#PWR053"
+      (at 233.68 148.59 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Value" "GND"
+      (at 233.68 146.05 0)
+      (effects
+        (font
+          (size 1.27 1.27))))
+    (property "Footprint" ""
+      (at 233.68 142.24 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (property "Datasheet" "~"
+      (at 233.68 142.24 0)
+      (effects
+        (font
+          (size 1.27 1.27)) hide))
+    (pin "1"
+      (uuid "0c6b9e94-d45a-59eb-9505-197f151df20d"))
+    (instances
+      (project "ACwing_Flow_A"
+        (path "/dc84106e-4fe0-5e9c-b14e-4823103c3234"
+          (reference "#PWR053")
           (unit 1)))))
   (text "Bus map: ToF 0x29 (VL53L1X default), flow bridge 0x3B.\nThe bridge can hold the ToF in reset (XSHUT) to change its address."
     (at 12.7 175.26 0)

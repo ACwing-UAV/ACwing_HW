@@ -134,8 +134,8 @@ note('Rg 22 ohm limits the FC output peak current (Ciss 2250 pF). Rpd 100k keeps
      'or when the cable is unplugged. Brushed PWM 32 kHz from the FC (TIM2 CH1-CH4).', (12.7, 154.94))
 for k in range(4):
     x = 213.36 + 12.7 * k
-    sch.part('H%d' % (k + 1), 'Mechanical:MountingHole', 'M2', x, 76.2, 0, {},
-             fp='MountingHole:MountingHole_2.2mm_M2',
+    sch.part('H%d' % (k + 1), 'Mechanical:MountingHole_Pad', 'M2', x, 76.2, 0, {'1': 'GND'},
+             fp='ACwing:MountingHole_PTH_2.2mm_M2_Pad3.6mm',
              fields={'Note': 'M2 hole, 20 x 20 pattern, hard mount to the frame bosses; FC grommet stack above'},
              field_pos={'Reference': (x, 69.85), 'Value': (x, 72.39)}, in_bom=False)
 

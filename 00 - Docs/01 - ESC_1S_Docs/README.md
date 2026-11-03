@@ -67,6 +67,8 @@ a mated-plug envelope. Results:
 ## Fabrication (JLCPCB)
 - 4 layers, 1.0 mm FR-4, parts on both sides (top 30, bottom 10).
 - Solder mask (2026-11-02): expansion 0.05 mm, minimum web 0.09 mm; every pad gap ≥ 0.19 mm (JLCPCB dam rule).
+- Mounting holes (2026-11-03): 4 × Ø2.2 mm PTH with a 3.6 mm copper ring on both sides, tied to GND (as the FC); PWM_M3,
+  PWM_M4 and the charger VBAT_RAW branch re-routed around the rings.
 - New LCSC parts: AON7423 C99711, STC4054GR C262930, TYPE-C-31-M-12 C165948, RB521S30T1G C8523, XL-1005UGC C965793.
 - CPL: corrections as draft A (PowerPAK +270°, 7343 +180°, SMAF +180°), TSOT-23-5 +180° as the FC charger. Check Q5 pin 1,
   U2 and J4 in the JLC preview.

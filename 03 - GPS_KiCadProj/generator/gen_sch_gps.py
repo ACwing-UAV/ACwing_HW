@@ -122,8 +122,8 @@ sch.part('Q1', 'Transistor_FET:2N7002', '2N7002', 165.1, 143.51, 0, {'3': ('W', 
          field_pos={'Reference': (171.45, 143.51), 'Value': (171.45, 146.05), 'just': 'left'})
 for k in range(4):
     x = 213.36 + 10.16 * k
-    sch.part('H%d' % (k + 1), 'Mechanical:MountingHole', 'M2', x, 132.08, 0, {},
-             fp='MountingHole:MountingHole_2.2mm_M2',
+    sch.part('H%d' % (k + 1), 'Mechanical:MountingHole_Pad', 'M2', x, 132.08, 0, {'1': 'GND'},
+             fp='ACwing_GPS:MountingHole_PTH_2.2mm_M2_Pad3.6mm',
              fields={'Note': 'M2 hole, 20 x 20 pattern (same as the FC rev F). Nylon standoff to the FC stack'},
              field_pos={'Reference': (x, 125.73), 'Value': (x, 128.27)}, in_bom=False)
 note('Stack: FC on its grommets, M2 nylon standoffs (6 mm), GNSS board on top.\nKeep-out r 2.6 mm around each hole on both sides.', (205.74, 143.51))

@@ -194,38 +194,38 @@
 "dnp": false
 },
 "H1": {
-"lib_id": "Mechanical:MountingHole",
+"lib_id": "Mechanical:MountingHole_Pad",
 "value": "M2",
-"fp": "ACwing_GPS:MountingHole_2.2mm_M2",
+"fp": "ACwing_GPS:MountingHole_PTH_2.2mm_M2_Pad3.6mm",
 "fields": {
-"Note": "M2 hole, 20 x 20 pattern (same as the FC rev F). Nylon standoff to the FC stack"
+"Note": "M2 plated hole, 20 x 20 pattern (same as the FC), 3.6 mm copper ring on both sides tied to GND. Nylon standoff to the FC stack"
 },
 "dnp": false
 },
 "H2": {
-"lib_id": "Mechanical:MountingHole",
+"lib_id": "Mechanical:MountingHole_Pad",
 "value": "M2",
-"fp": "ACwing_GPS:MountingHole_2.2mm_M2",
+"fp": "ACwing_GPS:MountingHole_PTH_2.2mm_M2_Pad3.6mm",
 "fields": {
-"Note": "M2 hole, 20 x 20 pattern (same as the FC rev F). Nylon standoff to the FC stack"
+"Note": "M2 plated hole, 20 x 20 pattern (same as the FC), 3.6 mm copper ring on both sides tied to GND. Nylon standoff to the FC stack"
 },
 "dnp": false
 },
 "H3": {
-"lib_id": "Mechanical:MountingHole",
+"lib_id": "Mechanical:MountingHole_Pad",
 "value": "M2",
-"fp": "ACwing_GPS:MountingHole_2.2mm_M2",
+"fp": "ACwing_GPS:MountingHole_PTH_2.2mm_M2_Pad3.6mm",
 "fields": {
-"Note": "M2 hole, 20 x 20 pattern (same as the FC rev F). Nylon standoff to the FC stack"
+"Note": "M2 plated hole, 20 x 20 pattern (same as the FC), 3.6 mm copper ring on both sides tied to GND. Nylon standoff to the FC stack"
 },
 "dnp": false
 },
 "H4": {
-"lib_id": "Mechanical:MountingHole",
+"lib_id": "Mechanical:MountingHole_Pad",
 "value": "M2",
-"fp": "ACwing_GPS:MountingHole_2.2mm_M2",
+"fp": "ACwing_GPS:MountingHole_PTH_2.2mm_M2_Pad3.6mm",
 "fields": {
-"Note": "M2 hole, 20 x 20 pattern (same as the FC rev F). Nylon standoff to the FC stack"
+"Note": "M2 plated hole, 20 x 20 pattern (same as the FC), 3.6 mm copper ring on both sides tied to GND. Nylon standoff to the FC stack"
 },
 "dnp": false
 }

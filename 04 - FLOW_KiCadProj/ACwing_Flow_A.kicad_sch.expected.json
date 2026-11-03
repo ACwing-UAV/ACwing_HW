@@ -103,5 +103,7 @@
 "TP2.1": "MCU_NRST",
 "TP3.1": "GND",
 "TP4.1": "SWDIO",
-"TP5.1": "SWCLK"
+"TP5.1": "SWCLK",
+"H1.1": "GND",
+"H2.1": "GND"
 }
