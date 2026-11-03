@@ -361,7 +361,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "../00 - Docs/03 - FLOW_Docs/",
       "specctra_dsn": "",
       "step": "",
       "vrml": ""
