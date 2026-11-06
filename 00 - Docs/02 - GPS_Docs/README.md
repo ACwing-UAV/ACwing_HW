@@ -53,13 +53,13 @@ PPS LED (D2/Q1/R2), safeboot/reset pads, M2 holes and the stack.
 ## Contents
 | File | What |
 |---|---|
-| `ACwing_GPS_A_pcb.png` | top and bottom PCB views (mask, pads, silkscreen) |
+| `ACwing_GPS_A_pcb.png` | top and bottom renders of the assembled board |
 | [`ACwing_GPS_A_schematic.pdf`](ACwing_GPS_A_schematic.pdf) | schematic |
 | `ACwing_GPS_A_BoM.xlsx` | assembly BoM (sheet `BoM`) and costing (sheet `Costing`) |
 | `ACwing_GPS_A_BoM_JLCPCB.xlsx`, `ACwing_GPS_A_CPL.xlsx` | JLCPCB BoM (LCSC part numbers) and pick-and-place with rotation corrections (15 parts) |
 | `ACwing_GPS_A_gerber.zip` | Gerber (2 copper layers) + Excellon drill files, origin at the lower-left corner: upload as is to JLCPCB |
 | `ACwing_GPS_A_DRC.rpt` | KiCad DRC report (0 violations, 0 unconnected pads) |
-| `ACwing_GPS_A.step`, `ACwing_GPS_A_3D.png` | STEP of the assembled board, 3D renders |
+| `ACwing_GPS_A.step`, `ACwing_GPS_A_3D.png` | STEP of the assembled board; 3D renders (top, isometric, bottom) |
 
 KiCad sources in [`03 - GPS_KiCadProj/`](../../03%20-%20GPS_KiCadProj/):
 

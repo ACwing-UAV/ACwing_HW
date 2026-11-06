@@ -129,6 +129,9 @@ GPS 27.6 / 23.4 USD, Flow 11.1 / 9.4 USD. Check LCSC stock before ordering.
 **Update 2026-11-03 (still rev A):** plated M2 mounting holes with a GND copper ring on the ESC 1S, GPS and Flow
 boards (as the FC); Flow SWD test pads moved to the back side (top edge, short SWD lines) and re-routed; silkscreen as edited by A. Cirillo.
 
+**Update 2026-11-06 (still rev A):** ESC 1S link connector J1 moved to the front edge, under FC J2 (short ESC cable);
+stack check of all inter-board cables in the [mechanical handoff](00%20-%20Docs/04%20-%20System_Docs/ACwing_mechanical_handoff.md) §0.14; new realistic renders of every board and of the stack.
+
 **Layout and routing update 2026-11-02 (still rev A):** both FC ESC links on the front edge (ESC A next to ESC B,
 ELRS moved to the rear edge); Qwiic IN / OUT on one edge on every board (GPS right edge, Flow top edge); no via in any
 SMD pad (exposed thermal pads excepted); fine-pitch pads resized so every pad gap is ≥ 0.19 mm (JLCPCB mask dam),

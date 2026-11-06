@@ -40,13 +40,13 @@ FC expansion bus (Qwiic) with a standard JST SH 4-pin cable.
 ## Contents
 | File | What |
 |---|---|
-| `ACwing_Flow_A_pcb.png` | top and bottom PCB views (mask, pads, silkscreen) |
+| `ACwing_Flow_A_pcb.png` | top and bottom renders of the assembled board |
 | [`ACwing_Flow_A_schematic.pdf`](ACwing_Flow_A_schematic.pdf) | schematic |
 | `ACwing_Flow_A_BoM.xlsx` | assembly BoM (sheet `BoM`) and costing (sheet `Costing`) |
 | `ACwing_Flow_A_BoM_JLCPCB.xlsx`, `ACwing_Flow_A_CPL.xlsx` | JLCPCB BoM (LCSC part numbers) and pick-and-place with rotation corrections (30 parts) |
 | `ACwing_Flow_A_gerber.zip` | Gerber (2 copper layers) + Excellon drill files, origin at the lower-left corner: upload as is to JLCPCB |
 | `ACwing_Flow_A_DRC.rpt` | KiCad DRC report (0 violations, 0 unconnected pads) |
-| `ACwing_Flow_A.step`, `ACwing_Flow_A_3D.png` | STEP of the assembled board, 3D renders |
+| `ACwing_Flow_A.step`, `ACwing_Flow_A_3D.png` | STEP of the assembled board; 3D renders (top, isometric, bottom) |
 | `ACwing_Flow_A_mech_outline.dxf` | mechanical outline for the frame design |
 
 KiCad sources in [`04 - FLOW_KiCadProj/`](../../04%20-%20FLOW_KiCadProj/):

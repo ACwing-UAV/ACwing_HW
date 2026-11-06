@@ -193,13 +193,28 @@ to the frame:
 |---|---|
 | **FC J2 ESC link A** | moved from the rear edge to the **front edge**, next to J6: centre (+3.6, +16.85), mouth +v (same body and height as J6). Both ESC cables now leave the FC from the front edge |
 | **FC J5 ELRS** | moved to J2's old place on the **rear edge**: (+1.5, −16.9), mouth −v |
-| **Cable A (FC J2 → ESC 1S J1)** | ESC 1S J1 stays on the rear side of the power board: the cable now runs from the FC front edge to the ESC rear edge, past the stack (it was a 17 mm S behind the stack in Mech A1). **New length and route to be set in the mechanics**; keep the front-edge exit free (u −14 … +10, 8 mm out, FC top to 4 mm above) |
+| **Cable A (FC J2 → ESC 1S J1)** | superseded by §0.14: ESC 1S J1 moved to the front edge too (short U-loop) |
 | **ELRS lead** | now leaves from the FC rear edge (J5) |
 | **GPS J2 (Qwiic OUT)** | moved from the rear edge to the **right edge**, under J1: (+11.88, −4.05), mouth +u. J1 IN (+11.88, +3.85), mouth +u (0.25 mm from the 2026-10-24 position) |
 | **Flow J1 / J2 (Qwiic IN / OUT)** | moved from the left / right edges to the **top edge** (sensor-side view): J1 (−6.3, +8.95), J2 (+6.3, +8.95), both mouth +t. **Cable C (FC J4 → flow J1)** enters from the top edge now |
 | Flow test pads | moved to the **back side** on 2026-11-03, top edge behind the Qwiic connectors: TP1 (−8.4, +7.9), TP2 (−5.6, +10.9), TP3 (0, +10.9), TP4 (+5.2, +10.9), TP5 (+8.3, +7.8), flat pads, no height; programming with the board off the drone |
 | **Mounting holes (ESC 1S, GPS, Flow)** | 2026-11-03: Ø2.2 mm **plated**, 3.6 mm copper ring on both sides tied to GND (as the FC grommet holes). Same position and drill; metal screws / standoffs touch board GND |
 | Heights, holes, outlines | unchanged |
+
+### 0.14 Stack connectors (2026-11-06, boards still rev A)
+Check of every inter-board link with the boards stacked (ESC 1S top = 0, FC bottom at +5.0, GPS bottom at +12.0 mm):
+| Link | From | To | Result |
+|---|---|---|---|
+| **Cable A (ESC)** | FC J2, front edge, (+3.64, +16.85), mouth +v | **ESC 1S J1 moved to the front edge**: (+9.6, +16.88), mouth +v | short 1:1 U-loop, ≈ 25–30 mm (was ≈ 100 mm around the stack with J1 at the rear). Pin 1 at the +u end on both. J1 is 6 mm east of FC J2 (M4 motor pads at the front-edge centre) |
+| Cable B (Qwiic) | FC J3, right edge, (+16.9, +3.6), mouth +u | GPS J1 IN, right edge, (+11.88, +3.85), mouth +u | straight up the right edge, unchanged |
+| Cable C (Qwiic) | GPS J2 OUT (+11.88, −4.05) or FC J4 (+16.9, −4.3), right edge | Flow J1, top edge of the flow board | **route it down behind the rear grommets, not straight down the right edge**: the ESC 1S M2 motor pads sit at the right-edge centre (v = 0), keep ≥ 10 mm from the motor leads. Mount the flow board with its connector edge toward the right side of the stack for the shortest cable |
+| ESC B | FC J6, front edge | second 4-in-1 ESC (hexa / octo) | same edge as cable A |
+| ELRS | FC J5, rear edge | receiver | rear edge now free under it |
+
+Keep-outs: front edge **u −14 … +16**, 8 mm out, from the ESC top to 4 mm above the FC top (cable A + ESC B plugs);
+the loop of cable A sits next to the M4 motor leads (front-edge centre): keep them apart with a tie point.
+Stack interference check with all plugs mated: no clash (closest items are the grommet hardware, as before).
+Render: `ACwing_stack_3D.png`.
 
 ## 1. Coordinate conventions
 

@@ -12,8 +12,8 @@ and the stack check of the boards with all connectors mated.
 | [`ACwing_mechanical_handoff.md`](ACwing_mechanical_handoff.md) | electronics → frame handoff: hole patterns, stack heights, board outlines, connectors, cables, keep-outs (started with FC draft E, updated through the rev A boards) |
 | [`ACwing_frame_preliminary_draft_mechanical_answer.md`](ACwing_frame_preliminary_draft_mechanical_answer.md) | mechanical answer on the preliminary draft frame: stack hardware, cables wire by wire, flow board mounting, vibration, weight budget |
 | [`ACwing_frame_preliminary_draft_electronics_reply.md`](ACwing_frame_preliminary_draft_electronics_reply.md) | electronics reply: checks confirmed, non-magnetic stack screws requested |
-| `ACwing_stack_check.html` + `stack_data.js` | interactive 3D stack check (ESC 1S A + FC A + GPS A, 6 mm FC → GPS gap): download both files and open the page in a browser |
-| `ACwing_stack_3D.png` | render of the stack |
+| `ACwing_stack_check.html` + `stack_data.js` | interactive 3D stack check (ESC 1S A + FC A + GPS A, 6 mm FC → GPS gap): download both files and open the page in a browser. Board data of 2026-10-27 (ESC link still at the rear edge); the 2026-11-06 check is in the handoff §0.14 |
+| `ACwing_stack_3D.png` | render of the stack (2026-11-06): ESC cable on the front edge, Qwiic FC → GPS on the right edge |
 
 > The handoff and the two preliminary-draft frame documents are design logs from before the release: their *draft*
 > letters are internal iterations, never manufactured. All current boards are rev A. The released mechanics is
