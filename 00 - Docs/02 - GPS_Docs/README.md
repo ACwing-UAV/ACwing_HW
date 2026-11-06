@@ -93,7 +93,7 @@ m_fc = R · m_gps,   R = [  0.7071  -0.7071   0 ]
 ```
 
 ## Mechanics
-- 30 × 30 × 1.0 mm, R2 corners, centred on the FC. 4 × M2 (Ø2.2 PTH, 3.6 mm copper ring on both sides tied to GND, since 2026-11-03) on the 20 × 20 pattern, keep-out r 2.6 mm.
+- 30 × 30 × 1.6 mm, R2 corners, centred on the FC. 4 × M2 (Ø2.2 PTH, 3.6 mm copper ring on both sides tied to GND, since 2026-11-03) on the 20 × 20 pattern, keep-out r 2.6 mm.
 - Stack: FC on its grommets → 6 mm gap → GPS board (Mech A1: printed S2 spacer on the M2 screw column, titanium or
   A4 stainless screws, see `04 - System_Docs`). Top of the module ≈ 13.3 mm above the FC top.
 - Cables: FC rev A J3 (top, right edge, v = +3.6) → GPS J1 (top, right edge, v = +3.6): the two connectors are
@@ -117,7 +117,7 @@ m_fc = R · m_gps,   R = [  0.7071  -0.7071   0 ]
 - Connectors: J1 at (u, v) = (+11.9, +3.85), J2 at (+11.9, −4.05), both top side, right edge, mouth +u.
 
 ## Fabrication (JLCPCB)
-- 2 layers, 1.0 mm FR-4. Parts on both sides (top: U1, D2, J1, J2).
+- 2 layers, 1.6 mm FR-4 (since 2026-11-06; was 1.0 mm). Parts on both sides (top: U1, D2, J1, J2).
 - Solder mask: expansion 0.05 mm, minimum web 0.09 mm, every pad gap ≥ 0.19 mm (JLCPCB dam rule for green / blue / red / purple mask).
 - U1 SAM-M10Q and C5 CPH3225A are not stocked by LCSC: consigned parts or hand soldering (as draft A).
 - CPL: SOT-23 +180° (Q1). Check U1 pin 1, J1/J2 (tabs toward the edges), C5 polarity and D1 in the JLC preview.

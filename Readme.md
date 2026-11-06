@@ -33,10 +33,10 @@ flight and an **optical-flow + ToF** board for indoor position and height hold.
 
 | Board | Rev | Size | Layers | What it does | Docs | KiCad |
 |---|---|---|---|---|---|---|
-| **ACwing FC** | A | 40 × 40 mm, 20 × 20 holes (grommets) | 4, 1.0 mm | flight controller, 1S–6S input, up to 8 motors, BLE | [FC docs](00%20-%20Docs/00%20-%20FC_Docs/) | [project](01%20-%20FC_KiCadProj/) |
-| **ACwing ESC 1S** | A | 40 × 40 mm, 20 × 20 holes | 4, 1.0 mm | 1S power board: 4 brushed motor stages, current sensor, USB-C charger | [ESC docs](00%20-%20Docs/01%20-%20ESC_1S_Docs/) | [project](02%20-%20ESC_1S_KiCadProj/) |
-| **ACwing GPS** | A | 30 × 30 mm, 20 × 20 holes | 2, 1.0 mm | GNSS (u-blox SAM-M10Q) + compass, stacked above the FC | [GPS docs](00%20-%20Docs/02%20-%20GPS_Docs/) | [project](03%20-%20GPS_KiCadProj/) |
-| **ACwing Flow** | A | 21 × 25 mm, 2 × M2 | 2, 1.0 mm | optical flow (PMW3901) + ToF height (VL53L1X), under the frame | [Flow docs](00%20-%20Docs/03%20-%20FLOW_Docs/) | [project](04%20-%20FLOW_KiCadProj/) |
+| **ACwing FC** | A | 40 × 40 mm, 20 × 20 holes (grommets) | 4, 1.6 mm | flight controller, 1S–6S input, up to 8 motors, BLE | [FC docs](00%20-%20Docs/00%20-%20FC_Docs/) | [project](01%20-%20FC_KiCadProj/) |
+| **ACwing ESC 1S** | A | 40 × 40 mm, 20 × 20 holes | 4, 1.6 mm | 1S power board: 4 brushed motor stages, current sensor, USB-C charger | [ESC docs](00%20-%20Docs/01%20-%20ESC_1S_Docs/) | [project](02%20-%20ESC_1S_KiCadProj/) |
+| **ACwing GPS** | A | 30 × 30 mm, 20 × 20 holes | 2, 1.6 mm | GNSS (u-blox SAM-M10Q) + compass, stacked above the FC | [GPS docs](00%20-%20Docs/02%20-%20GPS_Docs/) | [project](03%20-%20GPS_KiCadProj/) |
+| **ACwing Flow** | A | 21 × 25 mm, 2 × M2 | 2, 1.6 mm | optical flow (PMW3901) + ToF height (VL53L1X), under the frame | [Flow docs](00%20-%20Docs/03%20-%20FLOW_Docs/) | [project](04%20-%20FLOW_KiCadProj/) |
 
 All boards are at **rev A**: no PCB has been produced yet. The revision letter moves to B with the first
 change made after a board has been built and tested.
@@ -116,7 +116,7 @@ a copy of the logo footprints it uses in its own project library.
 ## Ordering (JLCPCB)
 
 For each board, from its docs folder:
-1. Upload `<board>_gerber.zip` (1.0 mm FR-4; 4 layers for FC and ESC, 2 layers for GPS and Flow).
+1. Upload `<board>_gerber.zip` (1.6 mm FR-4; 4 layers for FC and ESC, 2 layers for GPS and Flow).
 2. Enable assembly and upload `<board>_BoM_JLCPCB.xlsx` and `<board>_CPL.xlsx`. Every BoM line carries its LCSC part
    number; the CPL already includes the rotation corrections. Check the pin-1 marks in the JLC preview as listed in the
    board README ("To check before ordering").

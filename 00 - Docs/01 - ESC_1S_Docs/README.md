@@ -22,7 +22,7 @@ this board on the same cable.
 | Outline | preliminary-draft frame outline (40 × 40, R3) + front-left chamfer v − u = 36.2 with 0.8 mm steps at the edges | charge port |
 
 Unchanged: motor stages Q1–Q4 / D1–D4 / R1–R8 / C2–C5, C1 470 µF bulk, J1 ESC link (rear edge, u = +6.1 … +13.1), holes,
-4 layers 1.0 mm, In1 GND / In2 VBAT planes.
+4 layers 1.6 mm, In1 GND / In2 VBAT planes.
 
 ## Power path
 ```
@@ -65,7 +65,7 @@ a mated-plug envelope. Results:
   overmold ran 0.1 mm under the FC corner.
 
 ## Fabrication (JLCPCB)
-- 4 layers, 1.0 mm FR-4, parts on both sides (top 30, bottom 10).
+- 4 layers, 1.6 mm FR-4 (since 2026-11-06; was 1.0 mm), parts on both sides (top 30, bottom 10).
 - Solder mask (2026-11-02): expansion 0.05 mm, minimum web 0.09 mm; every pad gap ≥ 0.19 mm (JLCPCB dam rule).
 - Mounting holes (2026-11-03): 4 × Ø2.2 mm PTH with a 3.6 mm copper ring on both sides, tied to GND (as the FC); PWM_M3,
   PWM_M4 and the charger VBAT_RAW branch re-routed around the rings.

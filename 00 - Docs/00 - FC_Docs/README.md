@@ -184,7 +184,7 @@ See `ACwing_FC_A_pinmap.md`. Summary:
 | J1 USB-C, antenna AE1, pogo grid, flash U10 (bottom) | J1 (+15.8, −15.8) at the chamfer, AE1 left edge front, pogo grid TP1–TP8 bottom rear centre (ascending, bottom view), U10 bottom (+8.9, −3.6) |
 
 ## PCB
-- 4 layers, 1.0 mm, stack-up and rules as drafts F/G. Net class **HV** (VBAT, BUCK_SW): 0.3 mm tracks, 0.15 mm
+- 4 layers, **1.6 mm** (since 2026-11-06; was 1.0 mm), rules as drafts F/G. The gerber job file carries KiCad's generic stack-up (3 × 0.48 mm dielectric). **Before ordering:** pick the fab's 1.6 mm 4-layer stack-up and check the RF_IN width (0.25 mm on F.Cu over In1) for 50 Ω on its L1–L2 prepreg; the 0.2/0.45 mm vias reach 8:1 aspect ratio on 1.6 mm (at the fab's limit). Net class **HV** (VBAT, BUCK_SW): 0.3 mm tracks, 0.15 mm
   clearance (6S). VREG in the Power class (0.3 mm).
 - U12: GND pins (3 ILIM, 5 RT, 10) tied straight into the exposed pad, two 0.3 mm vias in the pad to the In1 GND plane;
   VIN pin 7 pre-routed (0.3 mm) to C47.
@@ -201,7 +201,7 @@ See `ACwing_FC_A_pinmap.md`. Summary:
   or ICs (they stay on the Fab layer for the assembly drawing). No text over pads or clipped by the mask.
 
 ## Fabrication (JLCPCB)
-- 4 layers, 1.0 mm FR-4; parts on both sides (top 36, bottom 57).
+- 4 layers, 1.6 mm FR-4; parts on both sides (top 36, bottom 57).
 - **Solder mask (2026-11-02):** JLCPCB keeps a mask dam between pads only if the pad spacing is ≥ 0.19 mm (green,
   blue, red, purple). Board setup: mask expansion **0.05 mm** per side, minimum mask web **0.09 mm** (0.19 − 2 × 0.05),
   so the KiCad DRC flags any pad pair closer than 0.19 mm. All pads pass, except the two DFN-6 LDOs U5 and U11
