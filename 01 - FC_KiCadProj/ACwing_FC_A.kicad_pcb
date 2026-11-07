@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(general
-		(thickness 1)
+		(thickness 1.6)
 		(legacy_teardrops no)
 	)
 	(paper "A4")
@@ -41,6 +41,67 @@
 		(55 "User.9" user)
 	)
 	(setup
+		(stackup
+			(layer "F.SilkS"
+				(type "Top Silk Screen")
+			)
+			(layer "F.Paste"
+				(type "Top Solder Paste")
+			)
+			(layer "F.Mask"
+				(type "Top Solder Mask")
+				(thickness 0.01)
+			)
+			(layer "F.Cu"
+				(type "copper")
+				(thickness 0.035)
+			)
+			(layer "dielectric 1"
+				(type "prepreg")
+				(thickness 0.2104)
+				(material "7628")
+				(epsilon_r 4.4)
+				(loss_tangent 0.02)
+			)
+			(layer "In1.Cu"
+				(type "copper")
+				(thickness 0.0152)
+			)
+			(layer "dielectric 2"
+				(type "core")
+				(thickness 1.065)
+				(material "FR4")
+				(epsilon_r 4.6)
+				(loss_tangent 0.02)
+			)
+			(layer "In2.Cu"
+				(type "copper")
+				(thickness 0.0152)
+			)
+			(layer "dielectric 3"
+				(type "prepreg")
+				(thickness 0.2104)
+				(material "7628")
+				(epsilon_r 4.4)
+				(loss_tangent 0.02)
+			)
+			(layer "B.Cu"
+				(type "copper")
+				(thickness 0.035)
+			)
+			(layer "B.Mask"
+				(type "Bottom Solder Mask")
+				(thickness 0.01)
+			)
+			(layer "B.Paste"
+				(type "Bottom Solder Paste")
+			)
+			(layer "B.SilkS"
+				(type "Bottom Silk Screen")
+			)
+			(copper_finish "None")
+			(dielectric_constraints no)
+		)
 		(pad_to_mask_clearance 0.05)
 		(solder_mask_min_width 0.09)
 		(allow_soldermask_bridges_in_footprints no)
@@ -144,6 +205,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "cf31a7fe-9051-46e1-8030-9720440e7c19")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "VBUS -> VSYS, 1 A, Vf ~0.35 V"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0a78830e-30d2-47c6-ac83-5be87df172d5")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -427,6 +500,18 @@
 				)
 			)
 		)
+		(property "Note" "Plated 3.2 hole for an M2 anti-vibration grommet, 20x20 pattern (draft F). Exposed 5.0 mm copper ring on both sides, GND"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d34f02b7-3939-4e76-af55-1bf67bf2d27f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/16a452cb-2ed4-52ee-8bac-6ffab7f3b16c")
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -518,7 +603,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/ld39130s.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -535,6 +620,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "6c36f89c-4850-495f-97af-f5bf3e59055b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "BoM: LD39130S 3.0 V. The fixed 3.0 V part exists only as a 0.69 mm flip chip (LD39130SJ30R): ADJ version in DFN6 used here, set to 3.1 V to keep VDDUSB >= 3.0 V"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "53cf8b11-18a5-47e2-9f88-2e717daa5802")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -787,6 +884,18 @@
 				)
 			)
 		)
+		(property "Note" "Buck input, X7R 50 V 1206, at the VIN / GND pins (6S: 25.2 V)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "08413eb3-5eeb-4e9c-bf41-a0666f8deb4b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/a0aff258-87f4-56e3-81c5-977c19884d40")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -978,6 +1087,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "47d5b3db-9d22-4ee2-ac76-628d4c26cda7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Second Qwiic port, in parallel with J3. Right edge, rear: flow board (under the frame). Each add-on board gets its own cable, no daisy chain needed"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "493630e9-9ad5-480c-94bc-a53c8ed69671")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1248,7 +1369,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "http://www.aosmd.com/pdfs/datasheet/AO3401A.pdf"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1265,6 +1386,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e2339ce2-de41-427f-8b50-1457316cf2f8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Load sharing: ON on battery only, OFF with USB (gate = VBUS)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9b0466a0-7246-4a9b-93cc-b2dc2888b1dc")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1519,6 +1652,18 @@
 				)
 			)
 		)
+		(property "Note" "Buck output, X5R 0805, next to L3 / U12 (with C6)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fd59b3bb-24ac-4c3c-9a97-14fa716eced7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/773c00df-1627-50f2-82c6-590590b606b4")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -1717,6 +1862,18 @@
 				)
 			)
 		)
+		(property "Note" "Battery / power input pad VBAT+ (1S-6S), 2 x 2 mm solder pad, top side, left edge. FC supply only, no motor current: use it when the ESC has no VBAT pin (separate ESCs, PDB); otherwise the FC is supplied through ESC A J2"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "21b5be55-501e-4e8f-aa6b-742bb8ac3f8e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/7455d3a6-ff05-5330-a93c-33af0a6af140")
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -1868,6 +2025,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "01f95fc9-1cd1-4f13-a7aa-f70ab04a95cf")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Antenna tuning: series position, 0 ohm until tuned"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3c52d719-8900-4072-abbd-c4aa5fa70571")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2065,6 +2234,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e432f3fa-216f-445f-a726-56e0968cd5c3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Sunlord SWPA5040S220MT, 22 uH, Isat 1.9 A, 168 mOhm, 5 x 5 x 4 mm (PFM: L >= (VIN - VOUT) x 260 ns / 0.35 A at 25 V)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e77883b5-d099-470d-adaa-ad50fbc91b8b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2273,7 +2454,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/lm5166.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -2290,6 +2471,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ecf85a16-dfa1-4dec-a90f-18ab0d5d8545")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "TI LM5166DRCT: VIN 3-65 V (abs max 68 V), UVLO 2.75 V rising / 2.45 V falling, 500 mA. RT = GND: PFM; ILIM = GND: 1.25 A peak; EN = VIN: always on; SS open: 0.9 ms; HYS, PGOOD not used. 1S: 100% duty cycle, VREG = VBAT - I x (0.93 ohm + DCR)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "091080ac-11cb-4c42-abcc-672f1c679d8e")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2675,7 +2868,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32wb55cg.pdf"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -2692,6 +2885,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "4ab5cde1-5d57-4c96-b39b-dbe451ac262c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Top side, board centre. Exposed pad to GND with a via array (RF ground); RF line to the chip antenna at the left edge"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "aa4b81e9-a232-4edf-af99-2d54c4fe3b8f")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3817,6 +4022,18 @@
 				)
 			)
 		)
+		(property "Note" "Plated 3.2 hole for an M2 anti-vibration grommet, 20x20 pattern (draft F). Exposed 5.0 mm copper ring on both sides, GND"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "643f3947-3e87-4bca-8c3c-04ec75a35f55")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/1efeeeab-48d0-5eda-ad51-f6813652ce08")
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -3909,7 +4126,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -3926,6 +4143,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "aa598608-4c30-40ef-81cd-48c2e95464a7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "RGB LED 1 of 4, rear-right corner (pairs mirrored about the front-rear diagonal). Rear LED"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c27254f7-533c-447d-85c6-beadd5794ef6")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4176,6 +4405,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "4300b06e-6853-4777-910b-e3efc516e937")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Plated 3.2 hole for an M2 anti-vibration grommet, 20x20 pattern (draft F). Exposed 5.0 mm copper ring on both sides, GND"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dda06ed4-0519-440b-9322-2eb0f5ba596e")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4471,7 +4712,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/usblc6-2.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -4940,7 +5181,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -4957,6 +5198,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b9d3b039-7770-426b-962f-c3e79e3d059f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "RGB LED 2 of 4, rear-left corner (pairs mirrored about the front-rear diagonal). Rear LED"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d8283c85-f7d8-47af-9875-4ff9cd72bb26")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5413,6 +5666,18 @@
 				)
 			)
 		)
+		(property "Note" "ESC link B, JST SH 8-pin side entry, top side, left edge: second 4-in-1 ESC for hexa / octo frames. Same pinout as J2; motors M5-M8 on pins 5-8; VBAT, CUR and TLM not connected (the FC is supplied and measures current through ESC A)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "adb35ec3-80ad-411b-8953-ff2d0615d510")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/126fb63c-75c1-59fc-a1e8-006f816ce20c")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -5696,7 +5961,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/lps22df.pdf"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -5713,6 +5978,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "d163cd09-1354-4eb7-a36c-ae2b44fe3415")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "LPS22HHTR (replaces LPS22HBTR, same pinout) on the LPS22DF symbol/footprint (HLGA-10, pin 3 to GND). Optional. SA0 = 1 -> 0x5D"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3c8ccbf8-3757-48fd-9dde-969b08aa94d3")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6046,6 +6323,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b8f602f0-087e-4cae-8087-f20ab006b1b5")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Antenna tuning: shunt position at the antenna side (C0G or inductor), DNP until tuned"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b91096c9-7d9c-4416-ae18-ebec1db5cdbf")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6621,7 +6910,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -6638,6 +6927,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ed81c0d7-5376-45a7-bf2c-39b63123c823")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "RGB LED 3 of 4, front-left corner (pairs mirrored about the front-rear diagonal). Front LED, >= 5 mm from the compass; use full on/off colours (PWM ripple near the magnetometer)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b8a02741-954f-4337-b36d-4cc50f9b8810")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6897,6 +7198,18 @@
 				)
 			)
 		)
+		(property "Note" "Battery / power input pad GND, 2 x 2 mm solder pad, next to J7"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "df367c20-c937-47a5-a512-9a3ed83de0ff")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/c7ddf4c8-bf6e-581e-901c-d7d02f84fcaf")
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -7053,6 +7366,18 @@
 				)
 			)
 		)
+		(property "Note" "Plated 3.2 hole for an M2 anti-vibration grommet, 20x20 pattern (draft F). Exposed 5.0 mm copper ring on both sides, GND"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ce1b066e-a9c9-42e9-b563-40655679ddfa")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/33fdc3d9-72cc-521b-969f-ef9d473cd457")
 		(attr exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -7161,6 +7486,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e016bbac-57ff-4b33-a4d5-9dbd9de08f6f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Gate pull-down: Q5 on when VBUS is absent"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "889dba7e-6de8-48a0-8df8-71fdb93d6bfd")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7342,7 +7679,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/lsm6dsv16x.pdf"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -7359,6 +7696,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "6793e0da-fc6a-40c6-bfa3-7b3653362a45")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Board centre (frame CG), axes 45 deg to the airframe. Draft E: 4-wire SPI (mode 3, <= 10 MHz) on SPI1 with the log flash; sensor hub (SDx/SCx) unchanged"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4c4a1605-56a7-4b7d-ba1f-2c19e4733621")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7728,6 +8077,18 @@
 				)
 			)
 		)
+		(property "Note" "VREG = 1.223 V x (1 + 470k/200k) = 4.10 V"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "042a562a-dd63-488b-a1a8-f096b49d10fd")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/64e28d30-2139-5550-9de6-0776a3e8bcbe")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -7902,7 +8263,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.usb.org/sites/default/files/documents/usb_type-c.zip"
 			(at 0 0 45)
 			(layer "F.Fab")
 			(hide yes)
@@ -7919,6 +8280,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "6c997496-cdd9-4308-955d-d2819ad4f86c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Right-corner chamfer, plug from the frame side"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "47a926b1-7dd1-43bb-b6de-ca39b0110b16")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8244,7 +8617,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -8261,6 +8634,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "3735922f-3dd8-4987-a30d-d047df2a1ac0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "RGB LED 4 of 4, front-right corner (pairs mirrored about the front-rear diagonal). Front LED, >= 5 mm from the compass; use full on/off colours (PWM ripple near the magnetometer)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bf0944f3-f7f6-4b76-b620-36b65402303f")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8512,6 +8897,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "8e038bca-581f-47c5-9c81-09ce57228f43")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Qwiic / STEMMA QT (JST SH 4P): 1 GND, 2 3.3 V, 3 SDA, 4 SCL. Right edge, front: GPS board (stacked above, its J1)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1eac8feb-8935-4112-a9cd-b93b72bf4180")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8783,7 +9180,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/lis2mdl.pdf"
 			(at 0 0 45)
 			(layer "F.Fab")
 			(hide yes)
@@ -8800,6 +9197,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "fc8711ae-7ffd-4d9c-9ab3-85512177d0b5")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "IIS2MDCTR (industrial grade of the LIS2MDL: same LGA-12 pinout and registers). Front corner, farthest from battery and motor currents. No motor current under it"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ef92c16c-4bc1-438d-80df-8d9da7862c3c")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9167,7 +9576,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/mlpf-wb55-01e3.pdf"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -9184,6 +9593,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "c2eb3cf5-261d-4a1b-8165-dfefa567ef51")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Directly at RF1: 62 ohm line from the MCU, 50 ohm to the antenna"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "500c72be-88d8-4eee-a417-3e4639f24a4d")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9329,6 +9750,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "4d4ceef7-9969-41ec-9aaa-e05f1c8b818e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Buck output (LM5166 PFM, ILIM 1.25 A: COUT >= 50 L Ipk^2 / VOUT^2 ~ 100 uF), with C46"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5d2d1336-ace5-4a00-9ec1-d92c8f8df136")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9527,6 +9960,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "0a434cd0-9cf6-4758-906e-b12bd1fb4a3d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "ELRS receiver (CRSF): 1 GND, 2 VSYS (4.1 V), 3 <- RX module TX, 4 -> RX module RX. Not Qwiic: do not plug sensors here"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b51e59b6-53c6-4542-9797-e6f3d1ffd326")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9815,6 +10260,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "13d5340c-b129-4c60-a153-48ad59606a91")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "ESC link A, JST SH 8-pin side entry, top side, rear edge: 1 GND, 2 VBAT (1S-6S, FC supply), 3 CUR, 4 TLM, 5-8 M1-M4. 1:1 cable. Check the pinout of a third-party ESC"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c3366a30-5abc-47c1-8b4b-5f10a2e4edaf")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10131,6 +10588,18 @@
 				)
 			)
 		)
+		(property "Note" "Buck input HF bypass, X7R 50 V, closest to VIN"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "739e28f4-fda2-4806-9b4d-1d7491556e97")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/3492c4da-bc16-5d3d-891c-1984c804fe1d")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -10328,6 +10797,18 @@
 				)
 			)
 		)
+		(property "Note" "VBAT at the ESC link (up to 6S): local bulk for the cable inductance, X7R 50 V"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "31d8f1c9-0f37-4b1f-a168-4b90267e5fec")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/06e676e1-4298-5668-94f3-4dfb6f72eefa")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -10518,6 +10999,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "43231db3-2d44-4591-9eaa-7774e11d0fe6")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "NDK NX2016SA 32 MHz (DS13252 table 5); load caps integrated in the MCU (trimmed in firmware)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "592d8e0d-03a9-44e8-a3ee-e9f6263ea541")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10785,6 +11278,18 @@
 				)
 			)
 		)
+		(property "Note" "Johanson 2.4 GHz chip antenna at the left board edge; pad 2 NC; copper-free area around it"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e6cbe411-7ffe-4cbf-b968-22932f9e7ead")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/acf059a2-4a75-5e27-b522-95dff4eab2c2")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -10966,6 +11471,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "bb35487c-33f8-4a52-abf8-472504aa804d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "IIS2MDC DS: 100 nF + 10 uF on Vdd"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "2f1e638b-bb60-4dbb-9e05-e44b56be76bf")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11373,6 +11890,18 @@
 				)
 			)
 		)
+		(property "Note" "GND - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "8a805221-a5ad-4c45-b64e-ed5682830ef5")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/968c1f0f-3a3f-506d-ab7e-fcaebfd9225c")
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -11468,6 +11997,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9993a10e-ec3d-4dac-8ab2-760ef2e35653")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "DS13252: 100 nF on NRST"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "79ce2f8f-e9e1-478d-8ab0-d396d0bebe8c")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11675,6 +12216,18 @@
 				)
 			)
 		)
+		(property "Note" "D3 supply"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "1d370704-0d46-4203-9bf9-230cf1a39b8a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/1ccd5134-8357-5856-a41c-e344ca61c66c")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -11850,7 +12403,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74lvc1g34.pdf"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -11867,6 +12420,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "628a9422-c8f2-4086-bc02-1cb402e78555")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Single-supply buffer, VCC = VSYS (3.5-4.7 V): input VIH <= 2.0 V (5 V tolerant), output to VSYS. LED data level shifter"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "7eba818f-e489-403d-a354-dee507c0a28e")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12119,6 +12684,18 @@
 				)
 			)
 		)
+		(property "Note" "BOOT0: bridge to TP8 (VDD) for DFU - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "0fc36203-d5f0-43b6-a762-1f98a2f5ae0b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/85840b67-3ef6-5c8d-bfb2-df71764a7f82")
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -12214,6 +12791,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "6cb91a11-df1b-4c06-8e9a-2e315bcb076c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "SWDIO (PA13) - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "e97951ed-d4a8-471c-b5b9-7f1e11918913")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12323,6 +12912,18 @@
 				)
 			)
 		)
+		(property "Note" "NRST - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "57405d0e-5013-4571-b227-c7ce8706a1c5")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/4bdc5433-011b-52e5-99e3-17bf2b74786f")
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -12418,6 +13019,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "5dc7d8d8-3fae-429b-902a-7b1f4fdfdb8a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "D2 supply"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "bf87b772-f430-4724-b61d-4096dff02ee7")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12625,6 +13238,18 @@
 				)
 			)
 		)
+		(property "Note" "VDD 3.1 V - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "136d1e7b-7570-4eec-9788-38a5cc94592d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/25cd212e-3b34-5042-ab50-48f77ffc6eee")
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -12720,6 +13345,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "8619f93e-4812-4112-a459-0481b138aac1")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "SMPS output (DS13252 table 6)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "99146a8c-deff-4307-8923-9ace1374017e")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13127,6 +13764,18 @@
 				)
 			)
 		)
+		(property "Note" "VDDRF pin 23 (DS: 100 nF // 100 pF)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "8e8841c2-a1be-4673-ba17-70471abf3649")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/f53a5559-fc08-584a-8eeb-775badda106b")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -13327,6 +13976,18 @@
 				)
 			)
 		)
+		(property "Note" "Series 10 nH for receiver performance (DS13252 table 6)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "d7e79c54-2516-40b4-9cb6-844c408e6c23")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/615948ad-8b76-504c-b825-1215367b63bc")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -13483,7 +14144,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "http://www.st.com/content/ccc/resource/technical/document/datasheet/29/10/f7/87/2f/66/47/f4/DM00076097.pdf/files/DM00076097.pdf/jcr:content/translations/en.DM00076097.pdf"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -13500,6 +14161,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "5d7de859-ec49-4a71-a6ff-8aefe18dda2f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Adjustable LDK130 (LCSC C157446, same part as the flow board), 3.3 V 300 mA for the expansion bus only (GPS board up to 100 mA + flow board 35 mA): a short or a hot-plug on a Qwiic cable cannot pull down the MCU rail"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "a26e182c-3332-4eb0-9fb4-529f50ad1ac4")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13954,6 +14627,18 @@
 				)
 			)
 		)
+		(property "Note" "VDD pin 20"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "a0c915d0-c16d-429d-a930-01a676bf8066")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/e406c87d-ee7a-5e05-9eb9-16550a532a10")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -14354,6 +15039,18 @@
 				)
 			)
 		)
+		(property "Note" "USART1 TX (PB6), ELRS port J5 (factory test / monitor) - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "532e208b-9dfb-465a-b9a1-be78090d3edd")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/938563f6-4c1e-5f15-9c9f-9b6908717a2a")
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -14449,6 +15146,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "629738bc-40b6-42a2-969a-fd05dbd50cf4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "IMU CS pull-up: deselected during boot"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "0e0635e4-15b6-4d08-8566-52bab286de2e")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14656,6 +15365,18 @@
 				)
 			)
 		)
+		(property "Note" "Flash VCC"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "f96f4af0-8f80-4013-9962-9731465e9082")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/dfad4e49-2d47-5d37-8f2c-e34ba13ee94e")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -14849,6 +15570,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "2f412557-d7c1-49ba-94e7-3c80dd8f09ed")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "VDD pin 35"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "14b5ae37-fa76-4752-ae49-9f4d694ca921")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15249,6 +15982,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "f6e06710-bb22-484e-a6c6-201815a21f9b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "ADC input cap for ESC_CUR (RC 1k / 100 nF with R42)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "ad2ac62e-04ba-4ea7-b007-722c226dadd7")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15816,6 +16561,18 @@
 				)
 			)
 		)
+		(property "Note" "Series resistor on the cable line (edge rate, ESD, a fault on the ESC side)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "63fb3386-bd80-483a-a265-f9c9b2a7ad85")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/4fda79d0-5f78-57ec-8910-d5e11e99a9b4")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -16009,6 +16766,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "71065a5b-1024-4e87-a465-a482ab1a646e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Series resistor on the cable line (edge rate, ESD, a fault on the ESC side)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "09e29c95-5620-483f-a246-548e85f1b9ba")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16216,6 +16985,18 @@
 				)
 			)
 		)
+		(property "Note" "Series resistor on the cable line (edge rate, ESD, a fault on the ESC side)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "41a23501-40bd-44b3-bd41-f945b58390a1")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/77375f6f-5926-5645-b19e-fb60842fe533")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -16409,6 +17190,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "12e13dfc-71d9-4562-a91c-8d579ee6e961")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Series resistor at the first LED input (data from U13)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "2d5465f3-a1ce-4300-bfaf-786e86aa2008")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16616,6 +17409,18 @@
 				)
 			)
 		)
+		(property "Note" "ADC input protection: limits the injected current if an ESC drives CUR above 3.3 V; RC with C1"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "90b7e390-2cc5-4551-9a22-9674945a0f68")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/f45ce262-14cf-5a28-b7df-db5958c6376d")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -16809,6 +17614,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "71d6ec17-8d72-4e65-a82f-d9274819d4ef")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "VDDA pin 8"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "d78aaa54-8681-4c6f-a9aa-1816e5184d92")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17016,6 +17833,18 @@
 				)
 			)
 		)
+		(property "Note" "SMPS inductor, 8 MHz mode (Wurth 74479774222, DS13252 table 6): set the SMPS clock to 8 MHz in firmware"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "98b30dc3-3939-4e4b-a776-e65f40c461b4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/aac101a3-6fed-5584-8116-dd96726847a2")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -17209,6 +18038,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b9b7bb3a-ffe9-44c4-ab79-b4a842ae8b07")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "U11 output / Qwiic"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "197da1ca-6568-40cc-8777-b20eb896f2aa")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17416,6 +18257,18 @@
 				)
 			)
 		)
+		(property "Note" "Series resistor on the cable line (edge rate, ESD, a fault on the ESC side)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "8c07f279-a296-4fa4-b641-3f21d5c02363")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/09141ebe-2c31-5c8d-a1a4-d0077fa3c389")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -17609,6 +18462,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9ec00794-c56e-484b-9c0b-75a633ee520a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Boot from flash; TP1 to TP8 (VDD) for the USB DFU bootloader"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "66843fe9-b02a-4666-86da-a4a4b889ed05")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17816,6 +18681,18 @@
 				)
 			)
 		)
+		(property "Note" "USART1 RX (PB7), ELRS port J5 (factory test / monitor) - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "2839ceda-a8ab-4fd7-b733-327142cf0de4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/1563af78-4160-55a3-8f6e-cf9e279530b1")
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -17911,6 +18788,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "3baa2fb5-88bc-4167-9aa3-a8857bbedddb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "D1 supply"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "8fb56ef4-524e-4214-8b69-948ac7bd230f")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18110,6 +18999,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "1aa487c6-2b49-4b6b-8327-6647be97fd76")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Series resistor on the cable line (edge rate, ESD, a fault on the ESC side)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "c36a3420-2eeb-4ec5-b3f0-6ec5331755e1")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18317,6 +19218,18 @@
 				)
 			)
 		)
+		(property "Note" "U13 supply"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "c7c8f3d1-5815-4c3c-ac2c-d6a080768205")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/d8d3cd13-816a-541a-8da0-cff81f1f2708")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -18517,6 +19430,18 @@
 				)
 			)
 		)
+		(property "Note" "VEXP divider, bottom"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "d9951e87-ace2-4428-95dd-654ca44b0efc")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/72a1e7e6-8b9d-5211-a10b-c8442a62d3f5")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -18710,6 +19635,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "16e4e18f-02c9-4261-8fb7-de7ef8b1f3e2")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Sensor hub bus pull-up (or the internal SHUB_PU_EN)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "98e3e177-43dd-4ecc-8fc7-89c4a3798252")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19117,6 +20054,18 @@
 				)
 			)
 		)
+		(property "Note" "VDDRF pin 23, C0G"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "74bdfa4b-39ab-402c-aaf9-f1f04351a336")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/7fa1c397-266f-54b5-98cb-9a1d8458c5a5")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -19517,6 +20466,18 @@
 				)
 			)
 		)
+		(property "Note" "VEXP divider, top: VOUT = 0.8 V x (1 + 47k/15k) = 3.31 V"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "65f04cab-533f-4c7c-bfaf-55a48d337a43")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/8385fedc-ff7b-5d8c-aaf5-427e8e491b6c")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -19717,6 +20678,18 @@
 				)
 			)
 		)
+		(property "Note" "Series resistor on the cable line (edge rate, ESD, a fault on the ESC side)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "34f3e092-5ab7-4c9b-ba81-47e193c55810")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/2216abad-ac18-5b3d-b2e6-2b0f4f879e93")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -19893,7 +20866,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "http://www.winbond.com/resource-files/w25q32jv%20revg%2003272018%20plus.pdf"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -19910,6 +20883,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "f289dde1-42bb-4442-8df0-a055038ec941")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Winbond W25Q128JVPIQ, 16 MB SPI NOR (WSON-8 6x5, bottom side): flight logs (blackbox). /WP and /HOLD tied high"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "09f1041d-09b2-4ec4-8d0d-2ec90869e8e5")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20423,6 +21408,18 @@
 				)
 			)
 		)
+		(property "Note" "VDDUSB pin 40"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "546b3f43-71e1-41dc-9dd9-e918a1bde045")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/0ab8e24f-1aa8-5f00-803a-5af452e72546")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -20616,6 +21613,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "14d27087-48cd-4416-9570-6f22c8a9a001")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "VDD bulk"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "9b02c182-0c76-41e4-9ebe-202e526eb1df")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20823,6 +21832,18 @@
 				)
 			)
 		)
+		(property "Note" "VDDA pin 8"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "45801f81-f169-4dea-9cb7-6403e530a6d9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/855ce136-13d2-5cb3-b52a-ad3c9e31448b")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -21023,6 +22044,18 @@
 				)
 			)
 		)
+		(property "Note" "VDD pin 48 / VBAT pin 1"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "9013b111-76f8-4829-b211-99a69782770e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/a66f07a7-51d9-56fa-8d06-a710f0a9ab09")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -21216,6 +22249,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "5c27f887-acfc-4418-96dd-c5a0f6ea64d8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Vdd_IO (pin 5)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "3db5b825-305c-4a87-8898-5100b0bca394")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21623,6 +22668,18 @@
 				)
 			)
 		)
+		(property "Note" "Series resistor, ESC serial telemetry input to PB0 (optional; EDT on the motor lines preferred)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "578dc596-6396-46de-af49-6cc60345540a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/36151ba8-ea13-5dda-a0a3-8a06e6c970bc")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -21816,6 +22873,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "fe0dff24-ade5-4be3-8b58-ffd66b0aa444")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "IIS2MDC C1: 220 nF, ESR < 200 mOhm, close to pins 5-6"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "4fa5dbee-89ce-4963-8745-e0c0e13eab52")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22023,6 +23092,18 @@
 				)
 			)
 		)
+		(property "Note" "U11 input"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "a4c9cb14-035f-4a50-ab74-142e3efcd6de")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/253e3462-1f8e-577b-a79d-b806f64d9ec3")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -22216,6 +23297,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a3bd0e83-f414-4682-ac42-4865ccf19b39")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Flash CS pull-up: deselected during boot"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "8079c10a-ca76-4580-8916-9d583a940290")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22423,6 +23516,18 @@
 				)
 			)
 		)
+		(property "Note" "D4 supply"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "e61c9221-b00f-47da-9f52-92b0fb2c52a3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/733cec00-7674-54d3-9fb4-d55c59d5a556")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -22616,6 +23721,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "c43e76b4-fc24-4f34-bbc0-26038afa74ae")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Vdd (pin 8)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "678efe63-5baf-4099-951d-b54904247f7a")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23023,6 +24140,18 @@
 				)
 			)
 		)
+		(property "Note" "Expansion bus (I2C1) pull-up to the Qwiic 3.3 V rail; add-on boards have their pull-ups DNP"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "4f1344be-ee23-4242-afe0-0c0492e8bcef")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/f4e50ec3-8595-5128-a82d-5c3c6829ef7a")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -23423,6 +24552,18 @@
 				)
 			)
 		)
+		(property "Note" "Series resistor on the cable line (edge rate, ESD, a fault on the ESC side)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "6d0d4072-47de-4c1d-b9be-12d2a47f46a8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/a5f24fb2-be79-5faa-a686-253d5cd19a46")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -23623,6 +24764,18 @@
 				)
 			)
 		)
+		(property "Note" "Series resistor on the cable line (edge rate, ESD, a fault on the ESC side)"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "3f696722-9081-4e27-b64f-a007c3aa2a24")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/dada3b9e-237b-5bf1-8964-e75d46d6fc32")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -23816,6 +24969,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "cee1bc00-7e7b-4619-987d-620f96f9f6ca")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "SWCLK (PA14) - pogo pad, 2x4 grid at 2.54 mm pitch on the bottom"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "c226b237-9e83-403e-a530-ec23b967ce96")
 			(effects
 				(font
 					(size 1.27 1.27)

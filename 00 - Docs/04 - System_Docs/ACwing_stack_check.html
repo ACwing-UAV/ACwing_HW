@@ -83,16 +83,14 @@ ul.find li[aria-selected="true"] { border-color: var(--accent); box-shadow: inse
 
     <dl class="stackline">
       <dt id="gpsName">GPS rev A</dt><dd id="zGps">on 6 mm nylon standoffs</dd>
-      <dt>FC rev A</dt><dd>1.0 mm, on M2 grommets, 5 mm above</dd>
-      <dt>ESC 1S rev A</dt><dd>1S power board, 1.0 mm, frame bosses</dd>
+      <dt>FC rev A</dt><dd>1.6 mm, on M2 grommets, 5 mm above</dd>
+      <dt>ESC 1S rev A</dt><dd>1S power board, 1.6 mm, frame bosses</dd>
     </dl>
 
     <div class="panel">
       <h2>GPS board and standoffs</h2>
       <div class="seg" role="group" aria-label="GPS configuration">
         <button id="cD6" aria-pressed="true">GPS rev A · 6 mm</button>
-        <button id="cC6" aria-pressed="false">GPS draft C · 6 mm</button>
-        <button id="cC8" aria-pressed="false">GPS draft C · 8 mm</button>
       </div>
       <div class="verdict"><span class="big" id="nClash">–</span><span class="vlabel" id="vClash">clashes</span>
         <span class="big" id="nTight" style="font-size:1.4rem">–</span><span class="vlabel">under 0.5 mm</span></div>
@@ -106,7 +104,7 @@ ul.find li[aria-selected="true"] { border-color: var(--accent); box-shadow: inse
     <div class="panel">
       <h2>Not modelled</h2>
       <ul class="notes">
-        <li>Cables after the plug (ESC A S-loop, Qwiic leads, battery pigtail, motor leads, J7/J8 wires).</li>
+        <li>Cables after the plug (ESC cable U-loop at the front edge, Qwiic leads, battery pigtail, motor leads, J7/J8 wires).</li>
         <li>The ELRS receiver module and the flow board under the frame.</li>
         <li>Frame walls and bosses.</li>
       </ul>
@@ -155,13 +153,13 @@ ul.find li[aria-selected="true"] { border-color: var(--accent); box-shadow: inse
   const fill = new THREE.DirectionalLight(0xffffff, 0.25); fill.position.set(-60, -20, -40); scene.add(fill);
 
   // board frame (u right, v front, z up) -> three (X = u, Y = z, Z = -v)
-  const BASE = { ESC: 0, FC: 6, GPS: 13 };
+  const BASE = { ESC: 0, FC: 6.6, GPS: 14.2 };   // 1.6 mm boards (2026-11-07)
   let cfg = 'D6', standoff = 6, explode = 0;
-  const zOf = (b) => b === 'ESC' ? 0 : b === 'FC' ? 6 + explode : 13 + (standoff - 6) + 2 * explode;
+  const zOf = (b) => b === 'ESC' ? 0 : b === 'FC' ? BASE.FC + explode : BASE.GPS + (standoff - 6) + 2 * explode;
 
   function b64(s) { const bin = atob(s); const u = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return u; }
   const groups = {};
-  for (const k of ['ESC', 'FC', 'GPSC', 'GPSD']) {
+  for (const k of ['ESC', 'FC', 'GPSD']) {
     const m = D.mesh[k];
     const q = new Int16Array(b64(m.pos).buffer); const c = b64(m.col);
     const pos = new Float32Array(q.length); const col = new Float32Array(q.length);
@@ -275,16 +273,16 @@ ul.find li[aria-selected="true"] { border-color: var(--accent); box-shadow: inse
   // controls
   function setCfg(c) {
     cfg = c; standoff = +c.slice(1);
-    for (const k of ['D6', 'C6', 'C8']) document.getElementById('c' + k).setAttribute('aria-pressed', k === c);
+    for (const k of ['D6']) document.getElementById('c' + k).setAttribute('aria-pressed', k === c);
     placeBoards(); buildExtras(); renderList();
   }
-  for (const k of ['D6', 'C6', 'C8']) document.getElementById('c' + k).onclick = () => setCfg(k);
+  for (const k of ['D6']) document.getElementById('c' + k).onclick = () => setCfg(k);
   const ex = document.getElementById('ex');
   ex.addEventListener('input', () => { explode = +ex.value; document.getElementById('exv').textContent = explode + ' mm'; placeBoards(); buildExtras(); hi.clear(); tip.hidden = true;
     list.querySelectorAll('li').forEach(x => x.setAttribute('aria-selected', 'false')); });
   function applyVis() {
     groups.ESC.visible = document.getElementById('vESC').checked; groups.FC.visible = document.getElementById('vFC').checked;
-    groups.GPSC.visible = cfg[0] === 'C' && document.getElementById('vGPS').checked; groups.GPSD.visible = cfg[0] === 'D' && document.getElementById('vGPS').checked;
+    groups.GPSD.visible = cfg[0] === 'D' && document.getElementById('vGPS').checked;
     extra.children.forEach(m => { m.visible = document.getElementById(m.userData.kind === 'plug' ? 'vPlug' : 'vHw').checked; });
   }
   document.querySelectorAll('#tg input').forEach(i => i.addEventListener('change', applyVis));

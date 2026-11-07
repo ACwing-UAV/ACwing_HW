@@ -202,7 +202,7 @@ to the frame:
 | Heights, holes, outlines | unchanged |
 
 ### 0.14 Stack connectors (2026-11-06, boards still rev A)
-Check of every inter-board link with the boards stacked (ESC 1S top = 0, FC bottom at +5.0, GPS bottom at +12.0 mm):
+Check of every inter-board link with the boards stacked (ESC 1S top = 0, FC bottom at +5.0, GPS bottom at +12.6 mm with the 1.6 mm boards, see §0.15):
 | Link | From | To | Result |
 |---|---|---|---|
 | **Cable A (ESC)** | FC J2, front edge, (+3.64, +16.85), mouth +v | **ESC 1S J1 moved to the front edge**: (+9.6, +16.88), mouth +v | short 1:1 U-loop, ≈ 25–30 mm (was ≈ 100 mm around the stack with J1 at the rear). Pin 1 at the +u end on both. J1 is 6 mm east of FC J2 (M4 motor pads at the front-edge centre) |
@@ -215,6 +215,24 @@ Keep-outs: front edge **u −14 … +16**, 8 mm out, from the ESC top to 4 mm ab
 the loop of cable A sits next to the M4 motor leads (front-edge centre): keep them apart with a tie point.
 Stack interference check with all plugs mated: no clash (closest items are the grommet hardware, as before).
 Render: `ACwing_stack_3D.png`.
+
+### 0.15 Board thickness 1.6 mm (2026-11-07, boards still rev A)
+All boards are now **1.6 mm** FR-4 (were 1.0 mm). Footprints, outlines, holes and connector positions are unchanged.
+| Item | 1.0 mm (before) | 1.6 mm (now) |
+|---|---|---|
+| ESC 1S top surface (from its bottom) | 1.0 | **1.6** |
+| FC bottom / top (5 mm grommet gap) | 6.0 / 7.0 | **6.6 / 8.2** |
+| GPS bottom / top (6 mm standoffs) | 13.0 / 14.0 | **14.2 / 15.8** |
+| Stack top (SAM-M10Q, 6.3 mm) | 20.3 | **22.1** |
+| Grommet column (ESC + gap + FC) | 7.0 | **8.2**: M2 grommets for 1.6 mm boards (the common FPV size) |
+| M2 screw through ESC + FC + standoffs + GPS | — | **+1.8 mm** longer than before |
+| Flow board screws to the tray | — | **+0.6 mm** longer |
+| Board mass (bare FR-4) | FC 3.0, ESC 3.0, GPS 1.7, Flow 1.0 g | FC 4.8, ESC 4.8, GPS 2.7, Flow 1.6 g: **+4.2 g** indoor (ESC + FC + Flow), **+5.2 g** with the GPS |
+
+Checks with the 1.6 mm boards (KiCad 10): DRC 0 / 0 on all boards; stack interference check (ESC + FC + GPS, all plugs
+mated): no clash, closest part FC C2 0.28 mm from the +10, +10 grommet flange; the FC USB-C shell legs no longer stick
+out under the FC; RF and USB impedance unchanged (same 0.21 mm 7628 prepreg under F.Cu). Render: `ACwing_stack_3D.png`,
+interactive check: `ACwing_stack_check.html`.
 
 ## 1. Coordinate conventions
 
@@ -230,7 +248,7 @@ Render: `ACwing_stack_3D.png`.
 | Item | Value |
 |---|---|
 | Outline | 21.0 (s) × 25.0 (t) mm, corner radius 1.5 mm |
-| Thickness | 1.0 mm FR-4, 2 layers |
+| Thickness | 1.6 mm FR-4, 2 layers (1.0 mm until 2026-11-07) |
 | Mass | ≈ 1.5 g (board + parts, no cable) |
 | Holes | 2 × M2, Ø2.2 mm plain (NPTH), at **(−8.0, +0.4)** and **(+8.0, +0.4)** → 16.0 mm apart along s |
 | Hole keep-out | r 2.4 mm around each hole, both sides: no copper, room for M2 nylon screw heads / standoffs (Ø ≤ 4.5 mm) |

@@ -6,6 +6,9 @@
 
 > **Revisions.** Rev A is the first released revision.
 
+> **1.6 mm boards (2026-11-07, still rev A).** All ACwing boards are now **1.6 mm** thick (were 1.0 mm), KiCad 10 files. 2 layers, 1.51 mm core. Vias 0.45 / 0.2 and 0.5 / 0.3 mm. Sensor heights above the board unchanged; the board back
+> is 0.6 mm further from the tray face, so the M2 screws to the tray bosses need +0.6 mm. Board mass +0.6 g. DRC 0 / 0.
+
 > **Layout and routing update (2026-11-02, still rev A).**
 > - **Both Qwiic connectors on the top edge** (they were on the left and right edges): J1 IN at (−6.3, +8.95), J2 OUT
 >   at (+6.3, +8.95), mouth +t, labels QWIIC IN / QWIIC OUT under them. The cables to the FC and to the GPS board now
@@ -23,7 +26,7 @@
 > - Solder mask expansion 0.05 mm, minimum web 0.09 mm: every pad gap ≥ 0.19 mm, except the LDK130 DFN-6 (0.4 mm
 >   pitch, 0.12 mm gaps, "allow solder mask bridges" on the footprint: JLC opens the mask over the pad row).
 
-KiCad project, board saved by KiCad 9 since the 2026-11-02 update (opens in KiCad 9 and 10). A 21 × 25 mm board for indoor flight: it measures ground motion
+KiCad 10 project (2026-11-07). A 21 × 25 mm board for indoor flight: it measures ground motion
 (optical flow) and height (time of flight). It sits under the battery tray, sensor side down, and connects to the
 FC expansion bus (Qwiic) with a standard JST SH 4-pin cable.
 
@@ -53,7 +56,7 @@ KiCad sources in [`04 - FLOW_KiCadProj/`](../../04%20-%20FLOW_KiCadProj/):
 
 | File | What |
 |---|---|
-| `ACwing_Flow_A.kicad_pro / .kicad_sch / .kicad_pcb` | KiCad project (board saved by KiCad 9), schematic, routed PCB |
+| `ACwing_Flow_A.kicad_pro / .kicad_sch / .kicad_pcb` | KiCad 10 project, schematic, routed PCB |
 | `ACwing_Flow.pretty/`, `3d/` | project library (symbols, footprints incl. the ACwing logos) and STEP models |
 | `generator/` | scripts that generated and checked the design (see Regeneration) |
 
@@ -78,7 +81,7 @@ KiCad sources in [`04 - FLOW_KiCadProj/`](../../04%20-%20FLOW_KiCadProj/):
 - **Bus map (whole drone).** GPS 0x42, GPS compass 0x1E, ToF 0x29, flow bridge 0x3B: no clash.
 
 ## Mechanics
-- 21.0 × 25.0 × 1.0 mm, R1.5 corners, 2 layers. Two M2 holes (Ø2.2 PTH, 3.6 mm GND ring both sides) at (±8.0, +0.4), keep-out r 2.4 mm.
+- 21.0 × 25.0 × 1.6 mm (1.0 mm until 2026-11-07), R1.5 corners, 2 layers. Two M2 holes (Ø2.2 PTH, 3.6 mm GND ring both sides) at (±8.0, +0.4), keep-out r 2.4 mm.
 - **All parts on one side** (the sensor side). Tallest: Qwiic connectors ≈ 2.9 mm, PMW3901 lens 2.28 mm, VL53L1X 1.56 mm.
   The back side has no parts: board name, logo and the five flat SWD test pads (program the board before mounting it).
 - Sensor axes (sensor-side view): PMW3901 at (0, −6.2), field of view 42°; VL53L1X at (0, +0.8), 27°.
@@ -99,7 +102,7 @@ KiCad sources in [`04 - FLOW_KiCadProj/`](../../04%20-%20FLOW_KiCadProj/):
 - Silkscreen: QWIIC IN / QWIIC OUT on the sensor side; TP1–TP5, logo and board name on the back; no part references.
 
 ## Fabrication (JLCPCB)
-- 2 layers, 1.0 mm FR-4, 1 oz. All parts on the top (sensor) side: single-sided assembly.
+- 2 layers, **1.6 mm** FR-4 (1.51 mm core), 1 oz. All parts on the top (sensor) side: single-sided assembly.
 - BoM `ACwing_Flow_A_BoM_JLCPCB.xlsx`; every line has an LCSC number (PMW3901 C43496881, VL53L1X C190004,
   STM32C011F4U6TR C5456188, LDK130PU-R C157446).
 - **PMW3901 lens.** The LN03-ZSZ lens is a separate item in the PixArt ordering table. Check that the LCSC/JLC part

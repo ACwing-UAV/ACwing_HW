@@ -6,7 +6,13 @@
 
 > **Revisions.** Rev A is the first released revision. Earlier letters, marked *draft* in this document (drafts C–G), are internal design iterations that were never manufactured.
 
-KiCad project, saved by KiCad 9 since the 2026-11-02 update (opens in KiCad 9 and 10). Rev A turns the FC into a **standard FC that works with any power
+> **1.6 mm boards (2026-11-07, still rev A).** All ACwing boards are now **1.6 mm** thick (were 1.0 mm), KiCad 10 files. Stack-up JLC04161H-7628, stored in the board file; the F.Cu → In1 prepreg is the same 0.21 mm 7628, so the 50 Ω RF
+> line (0.36 mm) and the USB pair keep their impedance. Vias 0.45 / 0.2 mm (8:1, inside JLC's standard range, no
+> thickness limit for 0.2 mm holes). J1 USB-C shell legs (HRO TYPE-C-31-M-12) no longer stick out under the board.
+> Board mass +1.8 g (≈ 4.8 g bare). M2 grommets for 1.6 mm boards are the common FPV size. DRC 0 / 0, stack check
+> with all plugs mated: no clash (C2 0.28 mm from the +10, +10 grommet flange, the closest part).
+
+KiCad 10 project (2026-11-07). Rev A turns the FC into a **standard FC that works with any power
 stage that uses the common 4-in-1 ESC connector**:
 - **Mini drone (1S, brushed coreless):** the ACwing 1S power board (ACwing ESC 1S rev A) carries the
   motor stages, the battery connector and pads, the 1S USB-C charger and the current sensor. To the FC it looks like
@@ -184,7 +190,10 @@ See `ACwing_FC_A_pinmap.md`. Summary:
 | J1 USB-C, antenna AE1, pogo grid, flash U10 (bottom) | J1 (+15.8, −15.8) at the chamfer, AE1 left edge front, pogo grid TP1–TP8 bottom rear centre (ascending, bottom view), U10 bottom (+8.9, −3.6) |
 
 ## PCB
-- 4 layers, 1.0 mm, stack-up and rules as drafts F/G. Net class **HV** (VBAT, BUCK_SW): 0.3 mm tracks, 0.15 mm
+- **4 layers, 1.6 mm (since 2026-11-07), JLCPCB JLC04161H-7628:** F.Cu 35 µm · 7628 prepreg 0.21 mm · In1 15 µm ·
+  core 1.065 mm · In2 15 µm · 7628 prepreg 0.21 mm · B.Cu 35 µm (stack-up stored in the board file). The F.Cu → In1
+  dielectric is the same 0.21 mm 7628 as the 1.0 mm stack-up, so the **0.36 mm RF line stays 50 Ω** and the USB pair
+  is unchanged. Rules as drafts F/G. Net class **HV** (VBAT, BUCK_SW): 0.3 mm tracks, 0.15 mm
   clearance (6S). VREG in the Power class (0.3 mm).
 - U12: GND pins (3 ILIM, 5 RT, 10) tied straight into the exposed pad, two 0.3 mm vias in the pad to the In1 GND plane;
   VIN pin 7 pre-routed (0.3 mm) to C47.
@@ -201,7 +210,7 @@ See `ACwing_FC_A_pinmap.md`. Summary:
   or ICs (they stay on the Fab layer for the assembly drawing). No text over pads or clipped by the mask.
 
 ## Fabrication (JLCPCB)
-- 4 layers, 1.0 mm FR-4; parts on both sides (top 36, bottom 57).
+- 4 layers, **1.6 mm** FR-4 (JLC04161H-7628); parts on both sides (top 36, bottom 57).
 - **Solder mask (2026-11-02):** JLCPCB keeps a mask dam between pads only if the pad spacing is ≥ 0.19 mm (green,
   blue, red, purple). Board setup: mask expansion **0.05 mm** per side, minimum mask web **0.09 mm** (0.19 − 2 × 0.05),
   so the KiCad DRC flags any pad pair closer than 0.19 mm. All pads pass, except the two DFN-6 LDOs U5 and U11
@@ -257,7 +266,7 @@ KiCad sources in [`01 - FC_KiCadProj/`](../../01%20-%20FC_KiCadProj/):
 
 | File | What |
 |---|---|
-| `ACwing_FC_A.kicad_pro / .kicad_sch / .kicad_pcb` | KiCad project (board saved by KiCad 9), schematic, routed PCB |
+| `ACwing_FC_A.kicad_pro / .kicad_sch / .kicad_pcb` | KiCad 10 project, schematic, routed PCB |
 | `ACwing.kicad_sym`, `ACwing.pretty/`, `3d/` | project library (symbols, footprints incl. the ACwing logos) and STEP models |
 | `generator/` | scripts that generated and checked the design (see Regeneration) |
 

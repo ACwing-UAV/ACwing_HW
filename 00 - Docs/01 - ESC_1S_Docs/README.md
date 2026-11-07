@@ -6,6 +6,10 @@
 
 > **Revisions.** Rev A is the first released revision. The earlier letter, marked *draft* in this document (draft A, the first motor board), is an internal design iteration that was never manufactured.
 
+> **1.6 mm boards (2026-11-07, still rev A).** All ACwing boards are now **1.6 mm** thick (were 1.0 mm), KiCad 10 files. Stack-up JLC04161H-7628 in the board file; In1 GND / In2 VBAT planes unchanged. Vias 0.5 / 0.3, 0.6 / 0.3 and
+> 0.45 / 0.2 mm, all standard at 1.6 mm. The FC sits 0.6 mm higher (grommet gap unchanged, 5 mm). Board mass +1.8 g.
+> **No via in any SMD pad** (checked again with KiCad 10). DRC 0 / 0.
+
 > **Stack update (2026-11-06, still rev A).** **J1 ESC link moved from the rear edge to the front edge**, under FC J2:
 > centre (+9.6, +16.88), mouth +v, pin 1 at the +u end (pins u = +13.1 … +6.1), as FC J2 (pins u = +7.14 … +0.14).
 > The FC → ESC cable becomes a short 1:1 U-loop on the front edge (≈ 25–30 mm) instead of running around the stack.
@@ -14,7 +18,7 @@
 > connector removed; logo moved to the rear-right corner, "TO FC" label under J1. DRC 0 / 0, no via in pads; stack check
 > with all plugs mated: no clash (J1 under the FC bottom parts with 1.1 mm margin, as before at the rear).
 
-KiCad project, board saved by KiCad 9 since the 2026-11-02 update (opens in KiCad 9 and 10). The power board of the 1S mini drone: battery entry, current sensor,
+KiCad 10 project (2026-11-07). The power board of the 1S mini drone: battery entry, current sensor,
 four brushed motor stages, and (new in rev A) a **USB-C charge port with a 1S charger**. To the FC it looks like any
 4-in-1 ESC: VBAT (1S) and CUR on the standard JST SH 8-pin cable. On larger drones a commercial 4-in-1 ESC replaces
 this board on the same cable.
@@ -30,7 +34,7 @@ this board on the same cable.
 | Outline | preliminary-draft frame outline (40 × 40, R3) + front-left chamfer v − u = 36.2 with 0.8 mm steps at the edges | charge port |
 
 Unchanged: motor stages Q1–Q4 / D1–D4 / R1–R8 / C2–C5, C1 470 µF bulk, J1 ESC link (rear edge until 2026-11-06, now front edge), holes,
-4 layers 1.0 mm, In1 GND / In2 VBAT planes.
+4 layers (1.6 mm since 2026-11-07, JLC04161H-7628), In1 GND / In2 VBAT planes.
 
 ## Power path
 ```
@@ -75,7 +79,7 @@ a mated-plug envelope. Results:
   overmold ran 0.1 mm under the FC corner.
 
 ## Fabrication (JLCPCB)
-- 4 layers, 1.0 mm FR-4, parts on both sides (top 30, bottom 10).
+- 4 layers, **1.6 mm** FR-4 (JLC04161H-7628, stack-up in the board file), parts on both sides (top 30, bottom 10).
 - Solder mask (2026-11-02): expansion 0.05 mm, minimum web 0.09 mm; every pad gap ≥ 0.19 mm (JLCPCB dam rule).
 - Mounting holes (2026-11-03): 4 × Ø2.2 mm PTH with a 3.6 mm copper ring on both sides, tied to GND (as the FC); PWM_M3,
   PWM_M4 and the charger VBAT_RAW branch re-routed around the rings.
@@ -106,7 +110,7 @@ KiCad sources in [`02 - ESC_1S_KiCadProj/`](../../02%20-%20ESC_1S_KiCadProj/):
 
 | File | What |
 |---|---|
-| `ACwing_ESC1S_A.kicad_pro / .kicad_sch / .kicad_pcb` | KiCad project (board saved by KiCad 9), schematic, routed PCB |
+| `ACwing_ESC1S_A.kicad_pro / .kicad_sch / .kicad_pcb` | KiCad 10 project, schematic, routed PCB |
 | `ACwing.kicad_sym`, `ACwing.pretty/`, `3d/` | project library (symbols, footprints incl. the ACwing logos) and STEP models |
 | `generator/` | scripts that generated and checked the design (see Regeneration) |
 
