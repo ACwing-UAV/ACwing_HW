@@ -127,9 +127,13 @@ m_fc = R · m_gps,   R = [  0.7071  -0.7071   0 ]
 - Cost: about **27.6 USD per board at 10 boards, 23.4 USD at 100** (components only, the SAM-M10Q is ~80 %).
 
 ## To check before ordering
-1. ERC in KiCad 8/9.
-2. SAM-M10Q land pattern (SAM-M8Q footprint) and DDC operation at 400 kHz with the flow board on the same bus.
-3. CPH3225A land pattern.
+1. ERC: **done with KiCad 10.0.6 (2026-11-07): 0 errors** (library warnings only, from the KiCad setup).
+2. SAM-M10Q land pattern. u-blox gives the SAM-M10Q as pin- and footprint-compatible with the SAM-M8Q. The
+   footprint has 20 pads of 1.5 × 1.8 mm at 1.9 mm pitch on a 15.5 mm body, with the copper / paste keep-out pattern
+   under the module, as the SAM-M8Q integration manual. DDC at 400 kHz with the flow board on the bus: bench test,
+   issue #10.
+3. CPH3225A on the 1210 (3225 metric) footprint: pads 1.15 × 2.7 mm, 2.95 mm apart. Check them against the Seiko
+   land pattern in the JLC preview: the part has end terminals and needs no special pad.
 4. JLC CPL preview.
 5. Compass rotation on the bench.
 

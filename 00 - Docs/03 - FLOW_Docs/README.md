@@ -113,9 +113,13 @@ KiCad sources in [`04 - FLOW_KiCadProj/`](../../04%20-%20FLOW_KiCadProj/):
 - Cost: about **11.1 USD per board at 10 boards, 9.4 USD at 100** (components only). The PMW3901 is about half of it.
 
 ## To check before ordering
-1. ERC in KiCad 8/9.
-2. PMW3901 land pattern and optical centre against the datasheet drawing (footprint made from it).
-3. Lens supply (above).
+1. ERC: **done with KiCad 10.0.6 (2026-11-07)**. The 1 error is a power-flag case: PMW_VDD is fed through R1 (a
+   passive pin), so add a PWR_FLAG on it. The library warnings come from the KiCad setup.
+2. PMW3901 land pattern: COB-28, 6 × 6 mm, 28 pads at 0.65 mm pitch on rows ±2.625 mm, centre pad 2.4 × 1.9 mm.
+   The optical axis is at the footprint centre, which the mechanics use (t = −6.2 on the board, frame centre).
+3. Lens: LCSC stocks the PMW3901MB-TXQT (C43496881, 162 pcs on 2026-11-07), not the LM19-LSI lens. JLC does not list
+   lens fitting during assembly. Buy the LM19-LSI from a PixArt distributor and fit it by hand after assembly, following the PixArt
+   lens mounting note.
 4. JLC preview of the CPL.
 5. The STM32C011 bridge firmware is not written yet: the board can be tested first with the ToF only (direct on the bus).
 

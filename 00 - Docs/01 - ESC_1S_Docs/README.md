@@ -90,9 +90,15 @@ a mated-plug envelope. Results:
 - Off-board: PH 2.0 pigtail (30–40 mm, 24 AWG) soldered to J2; check the battery plug polarity (not standardised).
 
 ## To check before ordering
-1. ERC in KiCad 8/9.
-2. AON7423 land pattern (Vishay PowerPAK 1212-8 footprint, as Q1–Q4) against the AOS drawing.
-3. Frame: new front-left chamfer on both the power board and the FC; USB-C access at that corner.
+1. ERC: **done with KiCad 10.0.6 (2026-11-07)**. The only error is two power-output pins on one net: the PWR_FLAG
+   #FLG10 sits on the charger BAT output (U2 pin 3), which already drives the net. Remove #FLG10 to clear it. The
+   library warnings come from the KiCad setup, not the design.
+2. AON7423 land pattern. The footprint is the Vishay PowerPAK 1212-8, as Q1–Q4: 4 pads at 0.66 mm pitch plus the
+   drain pad. The AOS package is DFN 3.3 × 3.3 EP, 0.65 mm pitch, the same family. The AOS datasheet (rev 1.0,
+   2023-10) gives the body size only, so check the pad sizes against the AOS package drawing in the JLC preview.
+3. Frame: **checked in ACwing_Mechs Mech A1 (2026-11-07)**. The front-left chamfer and the J4 USB-C plug are clear
+   of the frame and the electronics cover: plug envelope × frame and × cover = 0 mm³. J1 on the front edge needs the
+   motor ring moved out 2 mm (RM 51 → 53): see the handoff §0.16.
 4. Charger temperature at 455 mA (raise R14 to 3.3 k for 300 mA if it runs hot).
 
 ## Contents

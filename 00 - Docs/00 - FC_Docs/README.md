@@ -241,12 +241,22 @@ See `ACwing_FC_A_pinmap.md`. Summary:
    new level-shifting buffer **U13 SN74LV1T34DCKR** (TI, C78541, SC-70-5) powered from VSYS, so the data level is right
    in every supply case (see Power architecture). Check the LED and U13 pin-1 marks in the JLC preview (CPL
    corrections updated after the 2026-10-27 preview).
-1. ERC in KiCad 8/9.
-2. LM5166 stock at LCSC/JLC (350 pcs on 2026-10-18).
+1. ERC: **done with KiCad 10.0.6 (2026-11-07)**, no real error. The 2 errors are power-flag cases:
+   - VREG is driven by the buck through L3 (a passive pin);
+   - VLXSMPS (U2 pin 33) is the SMPS switch node, typed power input in the symbol.
+   Add a PWR_FLAG on each net to clear them. Warnings: the QSPI flash IO2 / IO3 tied high to the LDO output, and one
+   2.54 mm dangling wire stub near U5 OUT (cosmetic). The library warnings come from a KiCad setup without the global
+   symbol libraries, not from the design.
+2. Stock on 2026-11-07:
+   - LM5166DRCR C481392: 2,509 at LCSC (the DRCT reel C181495 had 350 on 2026-10-18);
+   - LPS22HHTR C2827824: 70 at LCSC, enough for a first batch but order now;
+   - STM32WB55CGU6 C404023: still out of stock at LCSC (extended part, assembly possible): use a consigned part or
+     JLC Global Sourcing.
 3. Bench test of the buck at 1S (3.0–4.2 V, 100 % duty cycle) and 6S (25.2 V), with the full FC load: VREG ripple
    (PFM, 1.25 A peak) after the LDOs, and LDO dropout at the 1S end of discharge.
 4. C6/C46 effective capacitance at 4.1 V (≈ 50 µF together, against ≈ 100 µF asked for PFM by the datasheet
-   formula): fine for the LDOs downstream; add a second 22 µF 0805 near L3 if the ripple is high.
+   formula): fine for the LDOs downstream. **Decision (2026-11-07): order as is**, and keep the footprint option of a
+   second 22 µF 0805 near L3 for the bench, if the VREG ripple is high (bring-up list, issue #10).
 5. Antenna tuning with the board above the ESC; JLC CPL preview (U10–U13, LEDs, J1).
 
 ## Contents
