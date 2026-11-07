@@ -141,7 +141,7 @@ ELRS moved to the rear edge); Qwiic IN / OUT on one edge on every board (GPS rig
 SMD pad (exposed thermal pads excepted); fine-pitch pads resized so every pad gap is ≥ 0.19 mm (JLCPCB mask dam),
 board mask expansion 0.05 mm / minimum web 0.09 mm; CSP / BGA pads 0.25 mm; FC test pads TP1–TP8 in ascending order;
 Flow test pads along the perimeter, symmetric; silkscreen reduced to connector labels, logos and board names. Board
-files are now saved by KiCad 9.
+files are now saved by KiCad 9 (KiCad 10 since 2026-11-07).
 
 **Layout update 2026-10-24 (still rev A):** FC microcontroller at the board centre, ESC link B next to the ELRS port on
 the front edge, input buck moved to the left edge (no longer between the rear LEDs), LED supply kept away from the
