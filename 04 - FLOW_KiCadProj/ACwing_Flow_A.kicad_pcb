@@ -39,6 +39,45 @@
 		(55 "User.9" user)
 	)
 	(setup
+		(stackup
+			(layer "F.SilkS"
+				(type "Top Silk Screen")
+			)
+			(layer "F.Paste"
+				(type "Top Solder Paste")
+			)
+			(layer "F.Mask"
+				(type "Top Solder Mask")
+				(thickness 0.01)
+			)
+			(layer "F.Cu"
+				(type "copper")
+				(thickness 0.035)
+			)
+			(layer "dielectric 1"
+				(type "core")
+				(thickness 1.51)
+				(material "FR4")
+				(epsilon_r 4.5)
+				(loss_tangent 0.02)
+			)
+			(layer "B.Cu"
+				(type "copper")
+				(thickness 0.035)
+			)
+			(layer "B.Mask"
+				(type "Bottom Solder Mask")
+				(thickness 0.01)
+			)
+			(layer "B.Paste"
+				(type "Bottom Solder Paste")
+			)
+			(layer "B.SilkS"
+				(type "Bottom Silk Screen")
+			)
+			(copper_finish "None")
+			(dielectric_constraints no)
+		)
 		(pad_to_mask_clearance 0.05)
 		(solder_mask_min_width 0.09)
 		(allow_soldermask_bridges_in_footprints no)
@@ -125,7 +164,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32c011f4.pdf"
 			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
@@ -142,6 +181,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "da508215-d56b-427a-b9c7-ad986907b33d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Flow bridge: SPI1 PA4-PA7 to the PMW3901, I2C1 PB6/PB7 slave 0x3B on the Qwiic bus. Firmware: read motion at 100 Hz, publish dX/dY/SQUAL/shutter"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "554aa5f2-4617-4bed-b956-c8ec4f77fd4d")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -648,6 +699,18 @@
 				)
 			)
 		)
+		(property "Note" "GPIO1 open-drain pull-up"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "68836411-740e-4794-b02e-af0bd4b70f48")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/c4db5195-701b-50b0-8d53-1472c1acb5f9")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -838,6 +901,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "875004f1-0d10-4cd4-b684-c4b6439da411")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "U2 output"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f96d6cb2-8b05-4eb9-8925-d94115c809d4")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1239,6 +1314,18 @@
 				)
 			)
 		)
+		(property "Note" "VDDIO"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d9f47a92-f52c-4447-ad9c-1f30d46c50fc")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/51b1c7a5-fe35-5408-a094-6f9d9ab10c1f")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -1413,7 +1500,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "PMW3901MB-TXQT-DS-R1.00 (PixArt, 2017-03-20)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -1430,6 +1517,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "3aad1a1d-9656-442c-b43f-da8f2a51e2b3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Sensor side (faces the ground). Lens LN03 on the package: keep the 42 deg field of view clear"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7be5bb5a-4727-4cf0-ab8a-78ca7c69c0c5")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2037,6 +2136,18 @@
 				)
 			)
 		)
+		(property "Note" "NCS pull-up: deselected at boot"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "84103d40-a58d-4081-9d0f-5e2fc0864170")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/f06687e1-249d-5649-9d5b-093624ebb2ba")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -2233,6 +2344,18 @@
 				)
 			)
 		)
+		(property "Note" "M2 plated mounting hole (frame boss, see handoff), 3.6 mm copper ring on both sides tied to GND"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "48479763-56e8-4ea9-bab5-a72460a97efe")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/1efeeeab-48d0-5eda-ad51-f6813652ce08")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -2301,7 +2424,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/vl53l1x.pdf"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -2318,6 +2441,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "2d5c164c-956b-445e-a71d-0a0fadfaa7b1")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Sensor side, next to the flow sensor. 27 deg field of view. Cover: ST AN cover-glass rules, or no cover"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "227893eb-9709-44bc-ba47-d6a379edb3b9")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2652,6 +2787,18 @@
 				)
 			)
 		)
+		(property "Note" "Qwiic / STEMMA QT: 1 GND, 2 3.3 V, 3 SDA, 4 SCL. Out (daisy chain)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "24a3636c-118d-4c99-8534-fc820b6cdcd8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/743bccfe-9070-5381-927e-6190d940ffbe")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -2939,6 +3086,18 @@
 				)
 			)
 		)
+		(property "Note" "MCU VDD bulk"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bf4ff189-4f54-4740-b267-7366871092eb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/6a42a1b2-a42a-53f1-9dc1-6a65b415fba5")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -3130,6 +3289,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "48b5b41d-6b12-48dc-9b30-57c5c40eb1f3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Qwiic / STEMMA QT: 1 GND, 2 3.3 V, 3 SDA, 4 SCL. In (from the FC or the GPS board)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6930fc74-19e6-448c-b20e-62a43bbec717")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3424,6 +3595,18 @@
 				)
 			)
 		)
+		(property "Note" "XSHUT pull-up (ToF on unless the bridge resets it)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4a768847-e611-4f39-bda1-514ff977ea9a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/b49ce717-b112-5e84-beb5-d5bef1a652c3")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -3614,6 +3797,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "c2a52e38-126d-405c-b403-549f4446e4a8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "VREG"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b3b5789b-1753-4b01-8c2d-9d1bd41ffffa")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3818,6 +4013,18 @@
 				)
 			)
 		)
+		(property "Note" "ToF AVDD"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "372b6f39-376b-43f7-b576-9d14e1e5bddb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/c66f6324-bef5-5ba7-b65a-c55e2436dcea")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -4008,6 +4215,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "72de09de-290b-436a-8c26-af5204b5ca8e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "VDDIO"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e21a4248-1fb1-4b34-bd02-a7648e84830e")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4212,6 +4431,18 @@
 				)
 			)
 		)
+		(property "Note" "MOTION pull-up"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7a5af26a-fce5-45f9-ae8b-2d742461ba8f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/f30dddc7-7fe3-5ea5-b8de-a1b29beae465")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -4402,6 +4633,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "619d6ebc-e382-4c33-8605-fb22d8ded91c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "NRST"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6050883b-95c5-46d2-a744-587358758581")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4803,6 +5046,18 @@
 				)
 			)
 		)
+		(property "Note" "U2 input"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6a2280f0-7acd-4a51-8419-c479dc9292f8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/131df683-3283-5c5a-8af0-94bcc95c47ab")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -5000,6 +5255,18 @@
 				)
 			)
 		)
+		(property "Note" "MCU VDD"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e877cedb-5321-4da5-b0ee-1099a1e67c20")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/ac4369ce-7067-51ab-92f5-99fbd3eca8e6")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -5173,7 +5440,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "http://www.st.com/content/ccc/resource/technical/document/datasheet/29/10/f7/87/2f/66/47/f4/DM00076097.pdf/files/DM00076097.pdf/jcr:content/translations/en.DM00076097.pdf"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -5190,6 +5457,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "93981a42-42ba-411b-a181-b09daddc5810")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Adjustable LDO (DFN-6 1.2 x 1.3, LCSC C157446), VOUT = 0.8 V x (1 + R5/R6) = 2.0 V (PMW3901 VDD 1.8-2.1 V)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "abd3c4e7-eb63-4e2d-8335-d986d59d4615")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5638,6 +5917,18 @@
 				)
 			)
 		)
+		(property "Note" "NRESET pull-up"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f66c88de-a11f-425b-b25e-17266e621d1b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/9801c3a7-2396-5dab-aaf7-355e4bfee8e5")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -5828,6 +6119,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "0eb468b9-0714-4116-b24c-d3f82b3434fb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Datasheet reference RC filter on VDD"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "65cbd66a-c188-4c65-87a0-ad3cf2c740b1")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6229,6 +6532,18 @@
 				)
 			)
 		)
+		(property "Note" "ToF AVDDVCSEL"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3cd3e729-02fb-4967-98ab-9500e71a1622")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/3a972e74-67ee-52b2-a77c-f1d577e1d01b")
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -6419,6 +6734,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "81fea28e-45a3-4e35-85ff-13908e866202")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "VREG"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c6b6481d-d545-4965-830e-f2d0368e546d")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6819,6 +7146,18 @@
 				)
 			)
 		)
+		(property "Note" "M2 plated mounting hole (frame boss, see handoff), 3.6 mm copper ring on both sides tied to GND"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "34ced10c-ce94-452a-8298-cae8cbcc0eec")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/16a452cb-2ed4-52ee-8bac-6ffab7f3b16c")
 		(attr exclude_from_pos_files exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -6903,6 +7242,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "03f12d4e-7cc8-4d58-8e3e-3e4832d36d5f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Note" "Status LED (PA10, pin 15, low = on)"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fed4aca3-12ed-4ee2-8c37-ce8de2fdfd78")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7506,6 +7857,18 @@
 				(justify mirror)
 			)
 		)
+		(property "Note" "3.3 V - SWD programming pad"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "a854ecf6-7ff8-4c3f-9fa9-fcc523b8032c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/85840b67-3ef6-5c8d-bfb2-df71764a7f82")
 		(attr exclude_from_pos_files)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -7607,6 +7970,18 @@
 					(thickness 0.15)
 				)
 				(justify mirror)
+			)
+		)
+		(property "Note" "SWCLK (PA14) - SWD programming pad"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "b6b78474-b55b-468d-a427-f1ff1e1ef223")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
 			)
 		)
 		(path "/1563af78-4160-55a3-8f6e-cf9e279530b1")
@@ -7712,6 +8087,18 @@
 				(justify mirror)
 			)
 		)
+		(property "Note" "NRST - SWD programming pad"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "63c80ac8-c790-4982-82bc-47918349c214")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/4bdc5433-011b-52e5-99e3-17bf2b74786f")
 		(attr exclude_from_pos_files)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -7815,6 +8202,18 @@
 				(justify mirror)
 			)
 		)
+		(property "Note" "SWDIO (PA13) - SWD programming pad"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "efaa1d3e-00e3-4d0c-84c3-f3546f27202a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/bb9f0b3a-640b-56b8-9fc8-9ebf03770e79")
 		(attr exclude_from_pos_files)
 		(duplicate_pad_numbers_are_jumpers no)
@@ -7916,6 +8315,18 @@
 					(thickness 0.15)
 				)
 				(justify mirror)
+			)
+		)
+		(property "Note" "GND - SWD programming pad"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "07d918cc-8cab-42f3-af66-ee707530b1b4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
 			)
 		)
 		(path "/c23f54bb-e322-5fac-ab18-d30e49276621")

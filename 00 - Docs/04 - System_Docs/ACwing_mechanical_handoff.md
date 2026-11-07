@@ -8,11 +8,6 @@
 **Status:** §0 is a decided architecture change; **§0.7 gives the draft F boards as designed** (ACwing ESC 1S draft A, ACwing FC
 draft F, ACwing GPS draft C: connector coordinates, USB corner, LEDs, heights). §2 (flow board) is final.
 
-> **PCB thickness, 2026-11-06.** All four rev A boards are now **1.6 mm** FR-4 (FC and ESC 1S 4 layers, GPS and Flow
-> 2 layers). Where this log says 1.0 mm it records the earlier choice. Stack heights with 1.6 mm boards (frame z, ESC
-> bottom −2.0): ESC −2.0…−0.4, FC 4.6…6.2 (5.0 mm gap), GPS 12.2…13.8 (6 mm standoffs). The stack check gives no
-> clash. Mass: about +1.8 g each for FC and ESC, +1.0 g GPS, +0.6 g Flow. Mechanics answer: ACwing_Mechs, Mech A1.
-
 ## 0. Update 2026-10-18 – new stack: motor board + FC, 20 × 20 mm holes
 
 The draft E FC was not ordered. Its microcontroller sat in a corner with one pin row 0.6 mm from the board edge, and the
@@ -101,7 +96,7 @@ Same (u, v) frame as §1 (FC top view, front = (+20, +20)). Heights are above th
 | Item | Value |
 |---|---|
 | Outline | identical to the draft E FC: 40 × 40 mm, R3 corners, 5 mm chamfer at the rear-right corner (no USB on this board; kept for one outline in the frame) |
-| Board | 4 layers, 1.6 mm (was 1.0 mm); mass ≈ 6.8 g with parts |
+| Board | 4 layers, 1.0 mm; mass ≈ 5 g with parts |
 | Holes | 4 × Ø2.2 mm NPTH (M2) at (±10, ±10); keep-out r 2.6 mm both sides. Hard mount (screws or nylon standoffs) |
 | Motor pads, battery pads | same positions as the preliminary draft frame (edge midpoints; rear corner, leads off the corner tip) |
 | **J1 ESC link** | JST SH 8-pin side entry, **top side, rear edge**: pins at u = +6.1 … +13.1, v = −14.9; body u +4.0 … +15.0, v −15.5 … −19.7; mouth toward −v at the edge; height 2.9 mm |
@@ -112,7 +107,7 @@ Same (u, v) frame as §1 (FC top view, front = (+20, +20)). Heights are above th
 |---|---|
 | Outline | preliminary-draft frame outline 40 × 40 (R3) **plus a 0.8 mm step at the USB corner**: right edge u = +20.8 from v = −12.3 down to the chamfer, rear edge v = −20.8 from u = +12.3 to the chamfer (45° steps from (+20, −11.5) and (+11.5, −20)); chamfer line u − v = 36.2 from (+20.8, −15.4) to (+15.4, −20.8) (draft E: u − v = 35). DXF: `ACwing_FC_F_outline.dxf` |
 | Why the step | the (+10, −10) grommet of the 20 × 20 pattern reached the USB-C pads at the draft E position: the receptacle moved 0.85 mm outward along the diagonal and its front shell legs need the edge to follow |
-| Board | 4 layers, 1.6 mm (was 1.0 mm); mass ≈ 5.8 g bare |
+| Board | 4 layers, 1.0 mm; mass ≈ 4 g bare |
 | Holes | 4 × Ø3.2 mm plated at (±10, ±10) for M2 grommets; copper keep-out r 2.75, components r 3.0 top / 3.6 bottom (as §0.1) |
 | **J1 USB-C** | top side, centre (+15.77, −15.77), axis at 45° toward the corner, mouth at the chamfer (0.35 mm beyond it, as draft E); plug zone: 10 mm wide × 15 mm along the diagonal beyond the chamfer |
 | **J2 ESC link** | JST SH 8-pin side entry, **top side, rear edge**: pins u = −2.0 … +5.0, v = −14.9; body u −4.1 … +7.1, v −15.5 … −19.7; mouth toward −v; height 2.9 mm |
@@ -131,10 +126,10 @@ Same (u, v) frame as §1 (FC top view, front = (+20, +20)). Heights are above th
 **ACwing GPS draft C**
 | Item | Value |
 |---|---|
-| Outline | 30 × 30 mm, R2 corners, centred on the FC, 1.6 mm (was 1.0 mm), 2 layers |
+| Outline | 30 × 30 mm, R2 corners, centred on the FC, 1.0 mm, 2 layers |
 | Holes | 4 × Ø2.2 mm NPTH at (±10, ±10), keep-out r 2.6 mm both sides |
 | J1 / J2 Qwiic | bottom side; J1 right edge mouth +u, J2 rear edge mouth −v (as draft B, on the larger board) |
-| Height | SAM-M10Q on top: stack top ≈ 14.1 mm above the FC top (6 mm standoffs + 1.6 mm + 6.3 mm) |
+| Height | SAM-M10Q on top: stack top ≈ 13.5 mm above the FC top (6 mm standoffs + 1.0 mm + 6.3 mm) |
 
 ### 0.8 FC draft G: commercial brushless 4-in-1 ESC option (2026-10-18)
 - FC draft G = draft F mechanics (same outline, holes, connector positions, heights). New on the FC: two solder pads
@@ -198,13 +193,46 @@ to the frame:
 |---|---|
 | **FC J2 ESC link A** | moved from the rear edge to the **front edge**, next to J6: centre (+3.6, +16.85), mouth +v (same body and height as J6). Both ESC cables now leave the FC from the front edge |
 | **FC J5 ELRS** | moved to J2's old place on the **rear edge**: (+1.5, −16.9), mouth −v |
-| **Cable A (FC J2 → ESC 1S J1)** | ESC 1S J1 stays on the rear side of the power board: the cable now runs from the FC front edge to the ESC rear edge, past the stack (it was a 17 mm S behind the stack in Mech A1). **New length and route to be set in the mechanics**; keep the front-edge exit free (u −14 … +10, 8 mm out, FC top to 4 mm above) |
+| **Cable A (FC J2 → ESC 1S J1)** | superseded by §0.14: ESC 1S J1 moved to the front edge too (short U-loop) |
 | **ELRS lead** | now leaves from the FC rear edge (J5) |
 | **GPS J2 (Qwiic OUT)** | moved from the rear edge to the **right edge**, under J1: (+11.88, −4.05), mouth +u. J1 IN (+11.88, +3.85), mouth +u (0.25 mm from the 2026-10-24 position) |
 | **Flow J1 / J2 (Qwiic IN / OUT)** | moved from the left / right edges to the **top edge** (sensor-side view): J1 (−6.3, +8.95), J2 (+6.3, +8.95), both mouth +t. **Cable C (FC J4 → flow J1)** enters from the top edge now |
 | Flow test pads | moved to the **back side** on 2026-11-03, top edge behind the Qwiic connectors: TP1 (−8.4, +7.9), TP2 (−5.6, +10.9), TP3 (0, +10.9), TP4 (+5.2, +10.9), TP5 (+8.3, +7.8), flat pads, no height; programming with the board off the drone |
 | **Mounting holes (ESC 1S, GPS, Flow)** | 2026-11-03: Ø2.2 mm **plated**, 3.6 mm copper ring on both sides tied to GND (as the FC grommet holes). Same position and drill; metal screws / standoffs touch board GND |
 | Heights, holes, outlines | unchanged |
+
+### 0.14 Stack connectors (2026-11-06, boards still rev A)
+Check of every inter-board link with the boards stacked (ESC 1S top = 0, FC bottom at +5.0, GPS bottom at +12.6 mm with the 1.6 mm boards, see §0.15):
+| Link | From | To | Result |
+|---|---|---|---|
+| **Cable A (ESC)** | FC J2, front edge, (+3.64, +16.85), mouth +v | **ESC 1S J1 moved to the front edge**: (+9.6, +16.88), mouth +v | short 1:1 U-loop, ≈ 25–30 mm (was ≈ 100 mm around the stack with J1 at the rear). Pin 1 at the +u end on both. J1 is 6 mm east of FC J2 (M4 motor pads at the front-edge centre) |
+| Cable B (Qwiic) | FC J3, right edge, (+16.9, +3.6), mouth +u | GPS J1 IN, right edge, (+11.88, +3.85), mouth +u | straight up the right edge, unchanged |
+| Cable C (Qwiic) | GPS J2 OUT (+11.88, −4.05) or FC J4 (+16.9, −4.3), right edge | Flow J1, top edge of the flow board | **route it down behind the rear grommets, not straight down the right edge**: the ESC 1S M2 motor pads sit at the right-edge centre (v = 0), keep ≥ 10 mm from the motor leads. Mount the flow board with its connector edge toward the right side of the stack for the shortest cable |
+| ESC B | FC J6, front edge | second 4-in-1 ESC (hexa / octo) | same edge as cable A |
+| ELRS | FC J5, rear edge | receiver | rear edge now free under it |
+
+Keep-outs: front edge **u −14 … +16**, 8 mm out, from the ESC top to 4 mm above the FC top (cable A + ESC B plugs);
+the loop of cable A sits next to the M4 motor leads (front-edge centre): keep them apart with a tie point.
+Stack interference check with all plugs mated: no clash (closest items are the grommet hardware, as before).
+Render: `ACwing_stack_3D.png`.
+
+### 0.15 Board thickness 1.6 mm (2026-11-07, boards still rev A)
+All boards are now **1.6 mm** FR-4 (were 1.0 mm). Footprints, outlines, holes and connector positions are unchanged.
+| Item | 1.0 mm (before) | 1.6 mm (now) |
+|---|---|---|
+| ESC 1S top surface (from its bottom) | 1.0 | **1.6** |
+| FC bottom / top (5 mm grommet gap) | 6.0 / 7.0 | **6.6 / 8.2** |
+| GPS bottom / top (6 mm standoffs) | 13.0 / 14.0 | **14.2 / 15.8** |
+| Stack top (SAM-M10Q, 6.3 mm) | 20.3 | **22.1** |
+| Grommet column (ESC + gap + FC) | 7.0 | **8.2**: M2 grommets for 1.6 mm boards (the common FPV size) |
+| M2 screw through ESC + FC + standoffs + GPS | — | **+1.8 mm** longer than before |
+| Flow board screws to the tray | — | **+0.6 mm** longer |
+| Board mass (bare FR-4) | FC 3.0, ESC 3.0, GPS 1.7, Flow 1.0 g | FC 4.8, ESC 4.8, GPS 2.7, Flow 1.6 g: **+4.2 g** indoor (ESC + FC + Flow), **+5.2 g** with the GPS |
+
+Checks with the 1.6 mm boards (KiCad 10): DRC 0 / 0 on all boards; stack interference check (ESC + FC + GPS, all plugs
+mated): no clash, closest part FC C2 0.28 mm from the +10, +10 grommet flange; the FC USB-C shell legs no longer stick
+out under the FC; RF and USB impedance unchanged (same 0.21 mm 7628 prepreg under F.Cu). Render: `ACwing_stack_3D.png`,
+interactive check: `ACwing_stack_check.html`.
 
 ## 1. Coordinate conventions
 
@@ -220,7 +248,7 @@ to the frame:
 | Item | Value |
 |---|---|
 | Outline | 21.0 (s) × 25.0 (t) mm, corner radius 1.5 mm |
-| Thickness | 1.6 mm FR-4, 2 layers (was 1.0 mm) |
+| Thickness | 1.6 mm FR-4, 2 layers (1.0 mm until 2026-11-07) |
 | Mass | ≈ 1.5 g (board + parts, no cable) |
 | Holes | 2 × M2, Ø2.2 mm plain (NPTH), at **(−8.0, +0.4)** and **(+8.0, +0.4)** → 16.0 mm apart along s |
 | Hole keep-out | r 2.4 mm around each hole, both sides: no copper, room for M2 nylon screw heads / standoffs (Ø ≤ 4.5 mm) |
@@ -316,10 +344,10 @@ Cable rules:
 
 ## 5. GPS board (optional) – see §0.5: holes 20 × 20, board ≈ 30 × 30
 
-- 26 × 26 × 1.6 mm board **stacked on top of the FC** on the same 16 × 16 mm pattern, with **6 mm M2 nylon
+- 26 × 26 × 1.0 mm board **stacked on top of the FC** on the same 16 × 16 mm pattern, with **6 mm M2 nylon
   standoffs** (FC on its grommets → standoffs → GPS board), as in GPS draft A.
 - The SAM-M10Q module (15.5 × 15.5 × 6.3 mm) is on top: the top of the stack is ≈ **13.5 mm above the FC top
-  surface** (6 mm + 1.6 mm board + 6.3 mm module).
+  surface** (6 mm + 1.0 mm board + 6.3 mm module).
 - **Sky view:** nothing conductive above the module. Any canopy over it must be RF-transparent (no carbon, no metal
   paint, no metallised film). Keep the battery and carbon parts from shading its top.
 - The stack moves with the FC on the grommets: leave ≥ 1.5 mm clearance around the GPS board edges.
