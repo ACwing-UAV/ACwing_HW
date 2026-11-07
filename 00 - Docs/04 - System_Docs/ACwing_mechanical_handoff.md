@@ -4,7 +4,7 @@
 
 **From:** electronics design (ACwing FC, ACwing ESC 1S, ACwing Flow, ACwing GPS)
 **To:** mechanical / frame design agent
-**Date:** 2026-10-17, **updated 2026-11-07** (§0 supersedes the older items it names; §0.9 = FC rev A, §0.10 = power board rev A + stack check; §0.11 = GPS rev A, 6 mm standoffs; §0.12 = layout update 2026-10-24; §0.13 = layout and routing 2026-11-02/03; §0.14 = stack connectors 2026-11-06; §0.15 = 1.6 mm boards 2026-11-07; §0.16 = mechanical answer; §0.17 = ESC J1 toward the front corner)
+**Date:** 2026-10-17, **updated 2026-11-07** (§0 supersedes the older items it names; §0.9 = FC rev A, §0.10 = power board rev A + stack check; §0.11 = GPS rev A, 6 mm standoffs; §0.12 = layout update 2026-10-24; §0.13 = layout and routing 2026-11-02/03; §0.14 = stack connectors 2026-11-06; §0.15 = 1.6 mm boards 2026-11-07; §0.16 = mechanical answer; §0.17 = ESC J1 toward the front corner; §0.18 = mechanical answer to §0.17)
 **Status:** §0 is a decided architecture change; **§0.7 gives the draft F boards as designed** (ACwing ESC 1S draft A, ACwing FC
 draft F, ACwing GPS draft C: connector coordinates, USB corner, LEDs, heights). §2 (flow board) is final.
 
@@ -261,6 +261,16 @@ Answer to §0.16 / frame A1 handoff §10 ("keep low connectors toward the board 
 | Cable A | FC J2 (+3.64) → ESC J1 (+13.3): 1:1 U-loop with a 9.7 mm shift along u (was 6 mm); the loop moves away from the M4 motor leads (front-edge centre). Wire ≈ 14 mm between the housings: 20 mm wires still fit |
 | FC, GPS, Flow | unchanged |
 | Checks | ESC DRC 0 / 0, no via in pads; stack check (ESC + FC + GPS, all plugs mated): no clash. Render: `ACwing_stack_3D.png` |
+
+### 0.18 Mechanical answer to §0.17 (2026-11-07, ACwing_Mechs Mech A1, PR ACwing-UAV/ACwing_Mechs#6)
+| Item | Answer |
+|---|---|
+| **RM** | With J1 at (+13.3, +16.08) the frame goes **back to RM 51**. The RM 53 of §0.16 is dropped: frame 131.5 mm again, lighter and stiffer. |
+| **Guard ring** | Cable A rises right behind the J1 plug and clears the front-left guard top ring by **0.42 mm**. The propeller disc is 2.8 mm away. |
+| **Cable A** | 1:1 U-loop with the 9.7 mm shift along u done in the upper half (above the ring). **15.4 mm of wire between the housings: make it 20 mm**, as you estimated. |
+| **Cable C** | Unchanged route. The deck slot sits behind the rear grommets at board u 20.5 … 23.7, v −13.5 … −10.1. Make the cable 60 mm (54 mm between the housings). Clearances: frame 0.49 mm, tray 0.69 mm, FC J1 USB-C plug 2.4 mm. Distance from the M2 leads: 6.4 mm. |
+| **Checks** | T400 indoor and GPS, T800, T1200: 0 mm³ for every pair, except the battery resting on the tray lips. |
+| **Frame** | First free-free mode with T400 and the 1.6 mm stack + cover: see the Mech A1 handoff §10. |
 
 ## 1. Coordinate conventions
 
