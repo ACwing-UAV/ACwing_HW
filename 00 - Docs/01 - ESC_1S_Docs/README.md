@@ -6,6 +6,14 @@
 
 > **Revisions.** Rev A is the first released revision. The earlier letter, marked *draft* in this document (draft A, the first motor board), is an internal design iteration that was never manufactured.
 
+> **J1 toward the front corner (2026-11-07, still rev A).** Answer to the frame A1 handoff (§10, front-left guard ring
+> above J1): **J1 moved 3.7 mm toward the front corner and 0.8 mm inward**: centre **(+13.3, +16.08)**, mouth +v, pins
+> u = +16.8 (pin 1) … +9.8, v = +14.08. Limits: the R3 corner (mounting pad ≥ 0.3 mm from the edge, with 0.2 mm spare)
+> and the +10, +10 grommet (0.31 mm in the stack check). The end of the mated plug nearest the motor axis moves ≈ 1.6 mm
+> further from the guard ring (estimate; the frame checks confirm it). FC J2 → ESC J1 offset 9.7 mm (was 6).
+> PWM_M1–M4, CUR and the J1 GND / VBAT stubs re-routed; 3 GND stitching vias under the new J1 position removed; "TO FC"
+> label moved right of the grommet. DRC 0 / 0, no via in pads, stack check with all plugs mated: no clash.
+
 > **1.6 mm boards (2026-11-07, still rev A).** All ACwing boards are now **1.6 mm** thick (were 1.0 mm), KiCad 10 files. Stack-up JLC04161H-7628 in the board file; In1 GND / In2 VBAT planes unchanged. Vias 0.5 / 0.3, 0.6 / 0.3 and
 > 0.45 / 0.2 mm, all standard at 1.6 mm. The FC sits 0.6 mm higher (grommet gap unchanged, 5 mm). Board mass +1.8 g.
 > **No via in any SMD pad** (checked again with KiCad 10). DRC 0 / 0.
@@ -48,12 +56,12 @@ USB-C J4 VBUS ─ U2 VCC, D6 LED, D5
 
 ## ESC link J1
 1 GND, 2 VBAT, 3 CUR (0.1 V/A), 4 TLM (n.c.), 5–8 M1–M4. 1:1 JST SH 8-pin cable to FC rev A J2. Top side, **front edge**,
-centre (+9.6, +16.88), mouth +v (2026-11-06; was the rear edge).
+centre (+13.3, +16.08), mouth +v (2026-11-07; front edge since 2026-11-06, was the rear edge).
 
 ## Placement (board frame, FC top view: front = +u +v)
 | Part | Where |
 |---|---|
-| J1 ESC link | top, front edge, (+9.6, +16.88), mouth +v, under FC J2 |
+| J1 ESC link | top, front edge toward the front corner, (+13.3, +16.08), mouth +v, 9.7 mm east of FC J2 |
 | J4 USB-C | top, (−15.77, +15.77), axis at 45°, mouth at the front-left chamfer |
 | U2, C8, C9, D6 | top, front-left, next to J4 (U2 at (−16.0, +6.6)); R12–R16 bottom |
 | Q5 | top, left edge, (−17.1, −6.5), source pins toward the shunt; 7 + 7 vias for VBAT_SH / VBAT |
