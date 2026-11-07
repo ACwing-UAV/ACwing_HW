@@ -239,6 +239,18 @@ mated): no clash, closest part FC C2 0.28 mm from the +10, +10 grommet flange; t
 out under the FC; RF and USB impedance unchanged (same 0.21 mm 7628 prepreg under F.Cu). Render: `ACwing_stack_3D.png`,
 interactive check: `ACwing_stack_check.html`.
 
+### 0.16 Mechanical answer to §0.14 / §0.15 (2026-11-07, ACwing_Mechs Mech A1, PR ACwing-UAV/ACwing_Mechs#6)
+| Item | Answer |
+|---|---|
+| **ESC 1S J1 on the front edge** | The board front edge faces the front-left motor. The **top ring of its prop guard** (z 2.5 … 3.9 above the propeller plane, radius 28.5 … 29.5 mm from the motor axis) passed right above the J1 plug back: the plug fitted under it with 0 mm to spare, and the cable had no room to rise. **Frame change: motors at RM 53 instead of 51** (motor axis 2 mm further out, same propellers, same guards). The frame grows 4 mm on the diagonals (2.8 mm in width and length). |
+| **Cable A (ESC J1 → FC J2)** | 1:1 U-loop. It rises right behind the J1 plug, below the guard ring, bulges 2.5 mm out above the ring and enters FC J2 from the front. It shifts 6 mm along u on the way up. **12 mm of wire between the housings, make it 20 mm.** Clearances: propeller disc 2.8 mm, frame > 0. |
+| **Cable C (FC J4 → Flow J1)** | Back along the FC right edge, then through a **new deck slot behind the rear grommets** (board u 21.2 … 23.8, v −12.5 … −9.9). The 4 wires run as a round bundle (twist them) from the FC edge down to the flow plate, then fan out into J1. **49–53 mm of wire, make it 60 mm** (or a standard 100 mm Qwiic, with the slack folded under the tray plate). Distance from the motor pads: ≥ 10.6 mm. Distance from the M2 motor leads where they rise beside the ESC edge: 6.4 mm, the most that the FC J1 USB-C plug envelope at the rear-right corner allows. |
+| **Flow board** | **Turned 90°: connector (top) edge toward the frame right (+X)**, as asked. The PMW3901 optical axis stays on the frame centre (board centre at x 6.2). The flow bosses move to frame (6.6, ±8.0), and the tray plate is extended rearward to y −11.6 on every tray. Lens tip 10.7 mm above the ground (T400). |
+| **Stack heights (§0.15)** | Same numbers in the frame (ESC bottom = frame z −2.0): ESC top −0.4, FC 4.6 … 6.2, GPS 12.2 … 13.8. Silicone grommets H 6.0, groove 1.6 mm. Spacers S1 2.8 mm and S2 3.8 mm. |
+| **Electronics cover** | Translucent PLA, 0.8 mm walls. Indoor: roof at z 11.85, 0.85 mm over the FC L3 inductor (tallest FC part, z 10.2), since no cable runs over the FC any more. Stack screws M2 × 14 ISO 7380 (indoor) and M2 × 25 (GPS). |
+| **Checks** | T400 indoor and GPS, T800, T1200: 0 mm³ for every pair (frame, propellers, stack, plugs, wires, hardware, tray, flow cones, cover), except the battery resting on the tray lips. |
+| **Keep-outs for rev B** | Front edge: the J1 plug back is 1.1 mm inside the guard-ring radius at the old RM. Keep connectors at the board-edge centres ≥ 3 mm inside the edge, or put them toward the corners, where the guard rings are further away. |
+
 ## 1. Coordinate conventions
 
 - **FC frame (u, v):** origin at the FC centre, u to the right, v up, **FC top view**. KiCad: X = 150 + u, Y = 100 − v.
