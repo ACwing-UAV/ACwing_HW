@@ -4,7 +4,7 @@
 
 **From:** electronics design (ACwing FC, ACwing ESC 1S, ACwing Flow, ACwing GPS)
 **To:** mechanical / frame design agent
-**Date:** 2026-10-17, **updated 2026-11-07** (§0 supersedes the older items it names; §0.9 = FC rev A, §0.10 = power board rev A + stack check; §0.11 = GPS rev A, 6 mm standoffs; §0.12 = layout update 2026-10-24; §0.13 = layout and routing 2026-11-02/03; §0.14 = stack connectors 2026-11-06; §0.15 = 1.6 mm boards 2026-11-07; §0.16 = mechanical answer; §0.17 = ESC J1 toward the front corner; §0.18 = mechanical answer to §0.17)
+**Date:** 2026-10-17, **updated 2026-11-07** (§0 supersedes the older items it names; §0.9 = FC rev A, §0.10 = power board rev A + stack check; §0.11 = GPS rev A, 6 mm standoffs; §0.12 = layout update 2026-10-24; §0.13 = layout and routing 2026-11-02/03; §0.14 = stack connectors 2026-11-06; §0.15 = 1.6 mm boards 2026-11-07; §0.16 = mechanical answer; §0.17 = ESC J1 toward the front corner; §0.18 = mechanical answer to §0.17; §0.19 = layout update 2; §0.20 = ESC J1 at the FC edge distance, no FC battery pads, 45° routing)
 **Status:** §0 is a decided architecture change; **§0.7 gives the draft F boards as designed** (ACwing ESC 1S draft A, ACwing FC
 draft F, ACwing GPS draft C: connector coordinates, USB corner, LEDs, heights). §2 (flow board) is final.
 
@@ -292,6 +292,17 @@ Answer to §0.18 plus a layout change asked by the user (ESC A to the left, LEDs
 | Checks | DRC 0 / 0 on all boards (KiCad 10), no via in SMD pads (MCU / buck exposed pads excepted); stack check (ESC + FC + GPS, all plugs mated): only the USB-C plug pair above; magnetometer static-field estimate 39 µT upper bound (was 43 µT). Render: `ACwing_stack_3D.png` |
 
 What we need back: guard-ring check and RM with J1 at u −10.5; cable A length (straight loop); spacers, grommets and screw lengths for 1.0 mm boards; cover opening for both USB-C ports at +X (one plug at a time) and for the corner LEDs.
+
+### 0.20 ESC J1 at the FC edge distance, no FC battery pads, 45° routing (2026-11-08, boards still rev A)
+| Item | Value |
+|---|---|
+| **ESC 1S J1 (ESC link)** | moved **0.77 mm toward the front edge**: centre **(−10.5, +16.85)** (was +16.08), mouth +v, pins v = +14.85; body v +13.55 … +20.15 (courtyard), the same edge distance as FC J2 / J6. Pin u unchanged |
+| Cable A | still a straight 1:1 loop, J1 and FC J2 now at the same (u, v) |
+| **Guard ring (front-left motor)** | the J1 plug end moves 0.77 mm toward the ring. With §0.19 already at ≈ −0.3 mm at RM 51 (estimate), expect ≈ −1.1 mm at RM 51: **rerun the guard-ring / cable A check**; RM 52–53 is probably needed, or a local notch in the guard top ring above J1 |
+| **FC battery pads J7 / J8** | **removed** (and the "- BAT +" label). The FC is supplied only through ESC link A (J2 pin 2), so no battery lead goes to the FC any more: drop the battery-lead route to the FC left edge if the frame had one |
+| Routing | all tracks on all boards at 0 / 45 / 90°; copper only, no part moved apart from ESC J1 |
+| **ESC 1S battery pads J2** | side by side across the **rear-left corner**, rotated 45°: BAT+ (−17.38, −14.42), GND (−14.42, −17.38), pads 2.2 × 3.2 mm, 2.0 mm apart. The battery pigtail (PH 2.0, 24 AWG) leaves the ESC at the rear-left corner, both wires parallel along the diagonal, solder joints ≈ 1.6 mm high: route the battery lead down past that corner to the tray |
+| Stack check | page and render updated (KiCad 10.0.6 boards): 1 expected clash (the two USB-C plugs), ESC J1 now 0.7 mm further from the −10, +10 grommet |
 
 ## 1. Coordinate conventions
 

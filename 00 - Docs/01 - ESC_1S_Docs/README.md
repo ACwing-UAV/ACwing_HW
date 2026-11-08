@@ -6,6 +6,23 @@
 
 > **Revisions.** Rev A is the first released revision. The earlier letter, marked *draft* in this document (draft A, the first motor board), is an internal design iteration that was never manufactured.
 
+> **J1 at the FC edge distance and 45° routing (2026-11-08, still rev A).**
+> - **J1 moved 0.77 mm toward the front edge**: centre **(−10.5, +16.85)**, the same edge distance as FC J2 / J6
+>   (pins v = +14.85, mouth +v; body front at the board edge as on the FC). Copper under and around J1 (PWM_M1–M4, CUR,
+>   GND / VBAT stubs, 4 vias) moved with it; the GND stitching via at (−4.8, +19.2) removed (too close to the J1
+>   mounting pad). "TO FC" label moved with J1. CPL updated (J1 Mid Y 36.85 mm).
+> - **Every track at 0 / 45 / 90°**: 51 off-angle runs replaced, same end points and vias; 0 segments off 45° left.
+> - **Frame:** the J1 plug end moves 0.77 mm toward the front-left guard ring (§0.20 of the mechanical handoff): the
+>   guard-ring / cable A check must be rerun before the frame is printed.
+> - **Battery pads J2 across the rear-left corner** (asked on 2026-11-08): the two pads now sit **side by side on the
+>   corner diagonal, rotated 45°**, centre (−15.9, −15.9): BAT+ (VBAT_RAW) at (−17.38, −14.42) toward the left edge, GND at
+>   (−14.42, −17.38) toward the rear edge, so both leads are soldered from the outside and leave **parallel toward the
+>   corner**. Pads 2.2 × 3.2 mm (were 2.5 × 3.5), pitch 4.2 mm, 2.0 mm between them, ≥ 0.85 mm from the board edge;
+>   the smaller pads keep the J2 courtyard clear of C1, which stays where it was. VBAT_RAW and GND_J2 pours reshaped,
+>   3 VBAT_RAW vias to the bottom pour (R9 shunt) and 3 GND stitching vias moved out of the pads; "+" / "−" next to them.
+> - Checks with KiCad 10.0.6: zones refilled, DRC 0 / 0, ERC unchanged; Gerber, drill, STEP, schematic PDF, DRC report and
+>   renders regenerated.
+
 > **Layout update 2 (2026-11-07 evening, still rev A).** With FC ESC A moved to the front-left corner:
 > - **USB-C J4 and the charger** (U2, C8, C9, D6, R12–R16) moved to the **rear-right corner**, mouth at the rear-right
 >   chamfer, right under the FC USB-C (point reflection of the old group: J4 centre (+15.77, −15.77), axis at 45°).
@@ -69,12 +86,13 @@ USB-C J4 VBUS ─ U2 VCC, D6 LED, D5
 
 ## ESC link J1
 1 GND, 2 VBAT, 3 CUR (0.1 V/A), 4 TLM (n.c.), 5–8 M1–M4. 1:1 JST SH 8-pin cable to FC rev A J2. Top side, **front edge**,
-centre (−10.5, +16.08), mouth +v (2026-11-07 evening; front edge since 2026-11-06, was the rear edge).
+centre (−10.5, +16.85), mouth +v (2026-11-08: same edge distance as FC J2; front edge since 2026-11-06, was the rear edge).
 
 ## Placement (board frame, FC top view: front = +u +v)
 | Part | Where |
 |---|---|
-| J1 ESC link | top, front edge after the front-left arc, (−10.5, +16.08), mouth +v, right under FC J2 |
+| J1 ESC link | top, front edge after the front-left arc, (−10.5, +16.85), mouth +v, right under FC J2 (same edge distance) |
+| J2 battery pads | top, rear-left corner, side by side on the diagonal, rotated 45°: BAT+ (−17.38, −14.42), GND (−14.42, −17.38); 2.2 × 3.2 mm, 4.2 mm pitch |
 | J4 USB-C | top, (+15.77, −15.77), axis at 45°, mouth at the rear-right chamfer (under the FC USB-C) |
 | U2, C8, C9, D6 | top, rear-right, next to J4 (U2 at (+16.0, −6.6)); R12–R16 bottom |
 | Q5 | top, left edge, (−17.1, −6.5), source pins toward the shunt; 7 + 7 vias for VBAT_SH / VBAT |

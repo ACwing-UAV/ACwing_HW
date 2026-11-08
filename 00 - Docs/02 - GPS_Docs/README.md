@@ -6,6 +6,10 @@
 
 > **Revisions.** Rev A is the first released revision. Earlier letters, marked *draft* in this document (drafts A–C), are internal design iterations that were never manufactured.
 
+> **45° routing (2026-11-08, still rev A).** Every track is now at 0 / 45 / 90° (house rule for all ACwing boards):
+> 11 off-angle runs replaced by octilinear doglegs, same end points, pads and vias; 0 segments off 45° left; 8 duplicated segments removed.
+> Checked and saved with KiCad 10.0.6: DRC 0 / 0, ERC 0 errors; Gerber, drill, STEP, schematic PDF, DRC report and renders regenerated.
+
 > **Back to 1.0 mm (2026-11-07 evening, still rev A).** To save weight, all ACwing boards are **1.0 mm** again (the
 > 1.6 mm step of the same morning is reverted): 2 layers, 0.91 mm core, KiCad 10 files, vias unchanged. Layout unchanged.
 > The GPS board sits 1.2 mm lower than with the 1.6 mm boards; 6 mm standoffs unchanged. Board mass −1.0 g. DRC 0 / 0.

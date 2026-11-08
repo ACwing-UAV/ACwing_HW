@@ -165,7 +165,7 @@ sch.wire((lo[0] + 5.08, lo[1]), (lo[0] + 5.08, fb[1] - 7.62)); sch.junction((lo[
 C('C47', '4.7uF 50V', 20.32, 90.17, 'VBAT', 'GND', fp=FP_C1206, side='left',
   fields={'Note': 'Buck input, X7R 50 V 1206, at the VIN / GND pins (6S: 25.2 V)'})
 C('C49', '10nF', 30.48, 90.17, 'VBAT', 'GND', side='left', fields={'Note': 'Buck input HF bypass, X7R 50 V, closest to VIN'})
-note('VBAT 1S-6S (3.0-25.2 V), from ESC A J2\nor the battery pads J7/J8.\nVREG 4.1 V (2S-6S), VBAT - drop (1S).\nLoad on VREG <= 0.5 A', (66.04, 100.33))
+note('VBAT 1S-6S (3.0-25.2 V), from ESC A J2 pin 2\n(JST SH 8-pin, as on commercial FC/ESC stacks).\nVREG 4.1 V (2S-6S), VBAT - drop (1S).\nLoad on VREG <= 0.5 A', (66.04, 100.33))
 
 # Sense: battery voltage and USB presence
 sch.text('Sensing', (124.46, 66.04), size=1.5, bold=True)
@@ -392,20 +392,14 @@ for k in range(4):
              {'1': 'ESC_M%d' % (5 + k), '2': 'PWM_M%d' % (5 + k)}, fp=FP_R,
              fields={'Note': 'Series resistor on the cable line (edge rate, ESD, a fault on the ESC side)'},
              field_pos={'Reference': (213.36, y - 1.9), 'Value': (213.36, y + 1.9)})
-for k, (ref, net, nt) in enumerate([('J7', 'VBAT', 'Battery / power input pad VBAT+ (1S-6S), 2 x 2 mm solder pad, top side, left edge. FC supply only, no motor current: '
-                                     'use it when the ESC has no VBAT pin (separate ESCs, PDB); otherwise the FC is supplied through ESC A J2'),
-                                    ('J8', 'GND', 'Battery / power input pad GND, 2 x 2 mm solder pad, next to J7')]):
-    x = 238.76 + 12.7 * k
-    sch.part(ref, 'Connector:TestPoint', 'VBAT+' if net == 'VBAT' else 'GND', x, 241.3, 0, {'1': net}, fp='TestPoint:TestPoint_Pad_2.0x2.0mm',
-             fields={'Note': nt}, stub=2.54, in_bom=False,
-             field_pos={'Reference': (x + 1.27, 236.22), 'Value': (x + 1.27, 233.68), 'just': 'left'})
+# J7 / J8 battery pads removed (2026-11-08): VBAT comes only from ESC link A J2 pin 2, as on commercial FC / ESC stacks
 sch.part('J4', 'Connector_Generic:Conn_01x04', 'Qwiic', 180.34, 271.78, 0,
          {'1': 'GND', '2': 'VEXP', '3': 'I2C_SDA', '4': 'I2C_SCL'},
          fp='Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal',
          fields={'Note': 'Second Qwiic port, in parallel with J3. Right edge, rear: flow board (under the frame). Each add-on board gets its own cable, no daisy chain needed'},
          field_pos={'Reference': (184.15, 266.7), 'Value': (184.15, 269.24), 'just': 'left'})
 note('ESC link B: second 4-in-1 ESC (motors M5-M8).\nPins 2-4 (VBAT, CUR, TLM) open: two ESC supplies\nare never tied together on the FC.\n'
-     'Battery pads J7/J8: alternative FC supply input,\nsame VBAT net as J2 pin 2 (one source at a time).\nJ4: second Qwiic port (flow board), parallel to J3.', (213.36, 260.35))
+     'J4: second Qwiic port (flow board), parallel to J3.', (213.36, 260.35))
 
 # ================================================================ F. LEDS, PROGRAMMING, HOLES
 block('F - RGB LEDs (4 x XL-2020RGBC-WS2812B), programming pads, mounting', (286, 154), (408, 250))

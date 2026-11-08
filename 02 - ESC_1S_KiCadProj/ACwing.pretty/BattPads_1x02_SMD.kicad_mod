@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(descr "Solder pads for the 1S battery lead (AWG 22-24), pad 1 = BAT+, 4.5 mm pitch")
+	(descr "Solder pads for the 1S battery lead (AWG 22-24), pad 1 = BAT+, 4.2 mm pitch, 2.2 x 3.2 mm pads")
 	(tags "BattPads_1x02_SMD")
 	(property "Reference" "REF**"
 		(at 0 -1.5 0)
@@ -53,8 +53,8 @@
 	(attr smd)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_rect
-		(start -3.75 -2)
-		(end 3.75 2)
+		(start -3.45 -1.85)
+		(end 3.45 1.85)
 		(stroke
 			(width 0.05)
 			(type solid)
@@ -64,8 +64,8 @@
 		(uuid "a6a2a465-35a4-41df-941b-f11b912f9b4b")
 	)
 	(fp_rect
-		(start -3.5 -1.75)
-		(end 3.5 1.75)
+		(start -3.2 -1.6)
+		(end 3.2 1.6)
 		(stroke
 			(width 0.1)
 			(type solid)
@@ -75,7 +75,7 @@
 		(uuid "7b7f2b53-b83c-43c0-863d-fe48f466cb30")
 	)
 	(fp_text user "+"
-		(at -2.25 3.900118 0)
+		(at -2.1 3.900118 0)
 		(layer "F.Fab")
 		(uuid "90939718-13dc-4c4c-9700-1a0971afab9f")
 		(effects
@@ -97,7 +97,7 @@
 		)
 	)
 	(fp_text user "-"
-		(at 2.25 0 0)
+		(at 2.1 0 0)
 		(layer "F.Fab")
 		(uuid "521a5f9d-2788-4b58-a645-ae16c83b760b")
 		(effects
@@ -108,15 +108,15 @@
 		)
 	)
 	(pad "1" smd roundrect
-		(at -2.25 0)
-		(size 2.5 3.5)
+		(at -2.1 0)
+		(size 2.2 3.2)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.15)
 		(uuid "c51a4a42-ee5f-4400-8ffc-8d4bee62503b")
 	)
 	(pad "2" smd roundrect
-		(at 2.25 0)
-		(size 2.5 3.5)
+		(at 2.1 0)
+		(size 2.2 3.2)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.15)
 		(uuid "4c018348-297a-4402-9d0f-4788058311a4")

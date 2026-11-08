@@ -78,7 +78,7 @@ ul.find li[aria-selected="true"] { border-color: var(--accent); box-shadow: inse
   <div class="col">
     <header>
       <h1>ACwing Stack Check</h1>
-      <p class="lede">Power board rev A, flight controller rev A and GPS board stacked on the 20 × 20 mm holes, with every connector mated. Each part is a prism of its courtyard and datasheet height; plugs are envelopes in front of each connector mouth. <em>Board data of 2026-11-07 (evening): 1.0 mm boards, ESC A link at the front-left (FC J2 right above ESC J1), ESC charge port under the FC USB-C. One expected clash: the two USB-C plugs at the rear-right chamfer cannot be mated at the same time.</em></p>
+      <p class="lede">Power board rev A, flight controller rev A and GPS board stacked on the 20 × 20 mm holes, with every connector mated. Each part is a prism of its courtyard and datasheet height; plugs are envelopes in front of each connector mouth. <em>Board data of 2026-11-08 (KiCad 10.0.6): 1.0 mm boards, all tracks at 45°, ESC 1S J1 at the same edge distance as FC J2 (right below it, front-left), no battery pads on the FC, ESC charge port under the FC USB-C. One expected clash: the two USB-C plugs at the rear-right chamfer cannot be mated at the same time.</em></p>
     </header>
 
     <dl class="stackline">
@@ -104,7 +104,7 @@ ul.find li[aria-selected="true"] { border-color: var(--accent); box-shadow: inse
     <div class="panel">
       <h2>Not modelled</h2>
       <ul class="notes">
-        <li>Cables after the plug (ESC cable U-loop at the front edge, Qwiic leads, battery pigtail, motor leads, J7/J8 wires).</li>
+        <li>Cables after the plug (ESC cable U-loop at the front edge, Qwiic leads, battery pigtail at the ESC rear-left corner, motor leads).</li>
         <li>The ELRS receiver module and the flow board under the frame.</li>
         <li>Frame walls and bosses.</li>
       </ul>
@@ -153,7 +153,7 @@ ul.find li[aria-selected="true"] { border-color: var(--accent); box-shadow: inse
   const fill = new THREE.DirectionalLight(0xffffff, 0.25); fill.position.set(-60, -20, -40); scene.add(fill);
 
   // board frame (u right, v front, z up) -> three (X = u, Y = z, Z = -v)
-  const BASE = { ESC: 0, FC: 6.0, GPS: 13.0 };   // 1.0 mm boards (2026-11-07 evening)
+  const BASE = { ESC: 0, FC: 6.0, GPS: 13.0 };   // 1.0 mm boards (2026-11-08)
   let cfg = 'D6', standoff = 6, explode = 0;
   const zOf = (b) => b === 'ESC' ? 0 : b === 'FC' ? BASE.FC + explode : BASE.GPS + (standoff - 6) + 2 * explode;
 

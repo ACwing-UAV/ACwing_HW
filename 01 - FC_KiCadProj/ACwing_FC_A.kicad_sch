@@ -8230,7 +8230,7 @@
 		)
 		(uuid "f435d005-5e8b-5e9b-b233-3b1df1fcf032")
 	)
-	(text "ESC link B: second 4-in-1 ESC (motors M5-M8).\nPins 2-4 (VBAT, CUR, TLM) open: two ESC supplies\nare never tied together on the FC.\nBattery pads J7/J8: alternative FC supply input,\nsame VBAT net as J2 pin 2 (one source at a time).\nJ4: second Qwiic port (flow board), parallel to J3."
+	(text "ESC link B: second 4-in-1 ESC (motors M5-M8).\nPins 2-4 (VBAT, CUR, TLM) open: two ESC supplies\nare never tied together on the FC.\nJ4: second Qwiic port (flow board), parallel to J3."
 		(exclude_from_sim no)
 		(at 213.36 260.35 0)
 		(effects
@@ -8470,7 +8470,7 @@
 		)
 		(uuid "c6460b2b-33f7-5a98-9fcf-6ae8374c6b01")
 	)
-	(text "VBAT 1S-6S (3.0-25.2 V), from ESC A J2\nor the battery pads J7/J8.\nVREG 4.1 V (2S-6S), VBAT - drop (1S).\nLoad on VREG <= 0.5 A"
+	(text "VBAT 1S-6S (3.0-25.2 V), from ESC A J2 pin 2\n(JST SH 8-pin, as on commercial FC/ESC stacks).\nVREG 4.1 V (2S-6S), VBAT - drop (1S).\nLoad on VREG <= 0.5 A"
 		(exclude_from_sim no)
 		(at 66.04 100.33 0)
 		(effects
@@ -22189,94 +22189,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 238.76 241.3 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "7455d3a6-ff05-5330-a93c-33af0a6af140")
-		(property "Reference" "J7"
-			(at 240.03 236.22 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "VBAT+"
-			(at 240.03 233.68 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "ACwing:TestPoint_Pad_2.0x2.0mm"
-			(at 243.84 241.3 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 243.84 241.3 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 238.76 241.3 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Note" "Battery / power input pad VBAT+ (1S-6S), 2 x 2 mm solder pad, top side, left edge. FC supply only, no motor current: use it when the ESC has no VBAT pin (separate ESCs, PDB); otherwise the FC is supplied through ESC A J2"
-			(at 238.76 241.3 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "c650e77c-fbeb-5d00-8f86-07652560d4fc")
-		)
-		(instances
-			(project "ACwing_FC_A"
-				(path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-					(reference "J7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 71.12 205.74 0)
 		(unit 1)
@@ -22831,82 +22743,6 @@
 			(project "ACwing_FC_A"
 				(path "/7b987a65-9294-5c88-aa9e-83b05445a992"
 					(reference "#PWR025")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "ACwing:VBAT")
-		(at 238.76 241.3 180)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "78cab4c2-28b9-582e-a596-764ec98441c6")
-		(property "Reference" "#PWR102"
-			(at 238.76 237.49 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "VBAT"
-			(at 238.76 245.11 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 238.76 241.3 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 238.76 241.3 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 238.76 241.3 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "91145f0a-9500-5f7f-8867-41b9484eb827")
-		)
-		(instances
-			(project "ACwing_FC_A"
-				(path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-					(reference "#PWR102")
 					(unit 1)
 				)
 			)
@@ -25119,82 +24955,6 @@
 			(project "ACwing_FC_A"
 				(path "/7b987a65-9294-5c88-aa9e-83b05445a992"
 					(reference "#PWR077")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 251.46 241.3 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "9374165e-210b-56aa-a05e-2a97a43bedba")
-		(property "Reference" "#PWR103"
-			(at 251.46 247.65 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 251.46 245.11 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 251.46 241.3 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 251.46 241.3 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 251.46 241.3 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "1e0ef95c-147b-5ce3-b811-935e9c84c0a7")
-		)
-		(instances
-			(project "ACwing_FC_A"
-				(path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-					(reference "#PWR103")
 					(unit 1)
 				)
 			)
@@ -29752,94 +29512,6 @@
 			(project "ACwing_FC_A"
 				(path "/7b987a65-9294-5c88-aa9e-83b05445a992"
 					(reference "#PWR011")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 251.46 241.3 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "c7ddf4c8-bf6e-581e-901c-d7d02f84fcaf")
-		(property "Reference" "J8"
-			(at 252.73 236.22 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "GND"
-			(at 252.73 233.68 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "ACwing:TestPoint_Pad_2.0x2.0mm"
-			(at 256.54 241.3 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 256.54 241.3 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 251.46 241.3 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Note" "Battery / power input pad GND, 2 x 2 mm solder pad, next to J7"
-			(at 251.46 241.3 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "fee90402-ff04-5296-8362-63c227a9172b")
-		)
-		(instances
-			(project "ACwing_FC_A"
-				(path "/7b987a65-9294-5c88-aa9e-83b05445a992"
-					(reference "J8")
 					(unit 1)
 				)
 			)
