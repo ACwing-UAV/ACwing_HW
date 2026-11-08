@@ -6,11 +6,21 @@
 
 > **Revisions.** Rev A is the first released revision. Earlier letters, marked *draft* in this document (drafts C–G), are internal design iterations that were never manufactured.
 
-> **1.6 mm boards (2026-11-07, still rev A).** All ACwing boards are now **1.6 mm** thick (were 1.0 mm), KiCad 10 files. Stack-up JLC04161H-7628, stored in the board file; the F.Cu → In1 prepreg is the same 0.21 mm 7628, so the 50 Ω RF
-> line (0.36 mm) and the USB pair keep their impedance. Vias 0.45 / 0.2 mm (8:1, inside JLC's standard range, no
-> thickness limit for 0.2 mm holes). J1 USB-C shell legs (HRO TYPE-C-31-M-12) no longer stick out under the board.
-> Board mass +1.8 g (≈ 4.8 g bare). M2 grommets for 1.6 mm boards are the common FPV size. DRC 0 / 0, stack check
-> with all plugs mated: no clash (C2 0.28 mm from the +10, +10 grommet flange, the closest part).
+> **Layout update 2 and 1.0 mm (2026-11-07 evening, still rev A).**
+> - **ESC A (J2) on the front edge just after the front-left arc**: centre (−10.5, +16.85), body u −16.4 … −4.6
+>   (0.6 mm from the end of the R3 arc), right above ESC 1S J1: cable A is a short, straight 1:1 loop. **ESC B (J6)**
+>   takes the old ESC A place, (+3.64, +16.85). ESC A M1–M4 run from J2 to R20–R23 as a B.Cu bus under J2 / J6.
+> - **Front-left corner R3 again** (the ESC 1S charge port moved under the FC USB-C at the rear-right chamfer).
+> - **RGB LEDs at the corner tips, the same on both corners** (point-symmetric): D1 (−15.1, −18.4), D2 (−18.4, −15.1),
+>   D3 (+15.1, +18.4), D4 (+18.4, +15.1); each pair 5.4 mm apart (was 10.5 mm). Decoupling C40 / C41 / C42 / C45 next to them.
+> - **Battery pads J7 / J8** down the left edge, between L3 and D2: (−18.4, −9.0) / (−18.4, −12.0); label "- BAT +".
+> - **BLE antenna AE1 down the left edge**: (−18.6, +4.3), keep-out u −20.5 … −17.5, v −1.2 … +10.3; RF line from
+>   the MLPF ≈ 16 mm, straight, 50 Ω on F.Cu over In1 GND (was 22.4 mm).
+> - **Magnetometer U3 and barometer U4** right of the MCU, front-right quadrant: U3 (+16.0, +10.0), U4 (+13.4, +13.8),
+>   ≈ 36 mm from the buck inductor L3. Decoupling on the bottom below them. LED supply kept ≥ 4.5 mm from U3.
+>   `generator/emi_check.py`: static field at U3 39.5 µT upper bound (was 42.6 µT), L3 stray field 0.05 µT; IMU unchanged.
+> - **Board 1.0 mm again** (JLC04101H-7628: same 0.21 mm 7628 prepreg under F.Cu, so RF line and USB pair unchanged).
+>   J1 USB-C shell legs stick out ≈ 0.8 mm under the board again. Board mass −1.8 g.
 
 KiCad 10 project (2026-11-07). Rev A turns the FC into a **standard FC that works with any power
 stage that uses the common 4-in-1 ESC connector**:
@@ -97,7 +107,7 @@ IMU: unchanged (VBUS on In2 under the sensor, UART ≥ 1.7 mm).
 | C2 (VBAT at J2) | 10 µF 25 V 0805, bottom | 4.7 µF **50 V** 1206 X7R, top | 6S; the 1206 is too tall for the bottom side |
 | Power path | Q5 / D9 rear-left | same circuit, moved east of the IMU | the input buck takes the rear-left corner |
 
-Outline: preliminary-draft frame outline (40 × 40, R3) + 0.8 mm USB-corner step as drafts F/G, plus a **front-left chamfer** v − u = 36.6 (stack check with the
+Outline: preliminary-draft frame outline (40 × 40, R3) + 0.8 mm USB-corner step as drafts F/G (the **front-left chamfer** v − u = 36.6 of 2026-10-18 was removed on 2026-11-07; it came from the stack check with the
 power board rev A charge port below; the chip antenna stays inside, DRC 0). Unchanged: 20 × 20 grommet holes, MCU / IMU / compass / baro / flash,
 RF front end and antenna, LDOs U5 (3.1 V) and U11 (VEXP 3.31 V), 4 RGB LEDs and their positions, J1 USB-C, J2 ESC A,
 J3 Qwiic, J5 ELRS positions, pogo grid.
@@ -176,21 +186,21 @@ See `ACwing_FC_A_pinmap.md`. Summary:
 | U2 MCU | top, **(0, 0)**, rot 180; MLPF U8 (−1.0, +6.1), crystal Y1 (−5.6, +2.4) |
 | U1 IMU | top, (0, −7.6), rot 270; LDO U5 (−4.6, −7.8) west of it |
 | U12 LM5166, L3 (5 × 5 × 4 mm), C47, C49, R47/R48 | top, **left edge**: L3 (−16.9, −4.6), U12 (−12.1, −5.0), C47 (−11.8, −1.9) rot 180 (VBAT pad toward U12 pin 7), C49 (−9.0, −2.8) |
-| C6, C46 (VREG bulk) | top, (−15.9, −9.7), (−13.7, −13.0) |
-| C2 (VBAT at J2) | top, (+5.2, +12.35) |
+| C6, C46 (VREG bulk) | top, (−15.6, −9.7), (−13.45, −13.3) |
+| C2 (VBAT at J2) | top, (−4.7, +11.3) |
 | Q5, D9, C7, R2 (power path) | top, east of the IMU, (+6.6, −4.4) / (+5.2, −7.3) |
-| J2 ESC A | top, **front edge** next to J6, (+3.6, +16.85), mouth +v |
-| **J6 ESC B** | top, **front edge**, (−8.2, +16.85), mouth +v; pins v = +14.85, u = −4.7 (pin 1) … −11.7 (pin 8) |
+| **J2 ESC A** | top, **front edge after the front-left arc**, (−10.5, +16.85), mouth +v; pins v = +14.85, u = −7.0 (pin 1) … −14.0 (pin 8); right above ESC 1S J1 |
+| **J6 ESC B** | top, **front edge**, (+3.64, +16.85), mouth +v; pins v = +14.85, u = +7.14 (pin 1) … +0.14 (pin 8) |
 | J5 ELRS | top, **rear edge**, (+1.5, −16.9), mouth −v |
-| **J7 VBAT+ / J8 GND** | top, left edge, (−18.4, +7.2) / (−18.4, +4.1); "+" / "−" on the silkscreen |
+| **J7 VBAT+ / J8 GND** | top, left edge, (−18.4, −9.0) / (−18.4, −12.0); "- BAT +" on the silkscreen |
 | J3 Qwiic (GPS) | top, right edge, (+16.9, +3.6), mouth +u; GPS J1 right above it |
 | J4 Qwiic (flow) | top, right edge, (+16.9, −4.3), mouth +u |
-| LEDs D1–D4 | top: D1 (−11.0, −18.4), D2 (−18.4, −11.0), D3 (+11.0, +18.4) rot 180, D4 (+18.4, +11.0) rot 270 |
-| U3 magnetometer, U4 baro | top, front-right corner, (+17.4, +17.4) / (+16.6, +14.2) |
-| J1 USB-C, antenna AE1, pogo grid, flash U10 (bottom) | J1 (+15.8, −15.8) at the chamfer, AE1 left edge front, pogo grid TP1–TP8 bottom rear centre (ascending, bottom view), U10 bottom (+8.9, −3.6) |
+| LEDs D1–D4 | top, corner tips, point-symmetric: D1 (−15.1, −18.4) rot 180, D2 (−18.4, −15.1) rot 270, D3 (+15.1, +18.4) rot 0, D4 (+18.4, +15.1) rot 90 |
+| U3 magnetometer, U4 baro | top, front-right quadrant, (+16.0, +10.0) / (+13.4, +13.8) |
+| J1 USB-C, antenna AE1, pogo grid, flash U10 (bottom) | J1 (+15.8, −15.8) at the chamfer, AE1 left edge middle (−18.6, +4.3), pogo grid TP1–TP8 bottom rear centre (ascending, bottom view), U10 bottom (+8.9, −3.6) |
 
 ## PCB
-- **4 layers, 1.6 mm (since 2026-11-07), JLCPCB JLC04161H-7628:** F.Cu 35 µm · 7628 prepreg 0.21 mm · In1 15 µm ·
+- **4 layers, 1.0 mm (1.6 mm on 2026-11-07 only), JLCPCB JLC04101H-7628:** F.Cu 35 µm · 7628 prepreg 0.21 mm · In1 15 µm ·
   core 1.065 mm · In2 15 µm · 7628 prepreg 0.21 mm · B.Cu 35 µm (stack-up stored in the board file). The F.Cu → In1
   dielectric is the same 0.21 mm 7628 as the 1.0 mm stack-up, so the **0.36 mm RF line stays 50 Ω** and the USB pair
   is unchanged. Rules as drafts F/G. Net class **HV** (VBAT, BUCK_SW): 0.3 mm tracks, 0.15 mm
@@ -210,7 +220,7 @@ See `ACwing_FC_A_pinmap.md`. Summary:
   or ICs (they stay on the Fab layer for the assembly drawing). No text over pads or clipped by the mask.
 
 ## Fabrication (JLCPCB)
-- 4 layers, **1.6 mm** FR-4 (JLC04161H-7628); parts on both sides (top 36, bottom 57).
+- 4 layers, **1.0 mm** FR-4 (JLC04101H-7628); parts on both sides (top 36, bottom 57).
 - **Solder mask (2026-11-02):** JLCPCB keeps a mask dam between pads only if the pad spacing is ≥ 0.19 mm (green,
   blue, red, purple). Board setup: mask expansion **0.05 mm** per side, minimum mask web **0.09 mm** (0.19 − 2 × 0.05),
   so the KiCad DRC flags any pad pair closer than 0.19 mm. All pads pass, except the two DFN-6 LDOs U5 and U11

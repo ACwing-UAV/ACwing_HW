@@ -6,8 +6,9 @@
 
 > **Revisions.** Rev A is the first released revision.
 
-> **1.6 mm boards (2026-11-07, still rev A).** All ACwing boards are now **1.6 mm** thick (were 1.0 mm), KiCad 10 files. 2 layers, 1.51 mm core. Vias 0.45 / 0.2 and 0.5 / 0.3 mm. Sensor heights above the board unchanged; the board back
-> is 0.6 mm further from the tray face, so the M2 screws to the tray bosses need +0.6 mm. Board mass +0.6 g. DRC 0 / 0.
+> **Back to 1.0 mm (2026-11-07 evening, still rev A).** To save weight, all ACwing boards are **1.0 mm** again (the
+> 1.6 mm step of the same morning is reverted): 2 layers, 0.91 mm core, KiCad 10 files, vias unchanged. Layout unchanged.
+> The board back is 0.6 mm closer to the tray face again (M2 × 4 nylon screws). Board mass −0.6 g. DRC 0 / 0.
 
 > **Layout and routing update (2026-11-02, still rev A).**
 > - **Both Qwiic connectors on the top edge** (they were on the left and right edges): J1 IN at (−6.3, +8.95), J2 OUT
@@ -81,7 +82,7 @@ KiCad sources in [`04 - FLOW_KiCadProj/`](../../04%20-%20FLOW_KiCadProj/):
 - **Bus map (whole drone).** GPS 0x42, GPS compass 0x1E, ToF 0x29, flow bridge 0x3B: no clash.
 
 ## Mechanics
-- 21.0 × 25.0 × 1.6 mm (1.0 mm until 2026-11-07), R1.5 corners, 2 layers. Two M2 holes (Ø2.2 PTH, 3.6 mm GND ring both sides) at (±8.0, +0.4), keep-out r 2.4 mm.
+- 21.0 × 25.0 × 1.0 mm (1.6 mm on 2026-11-07 only), R1.5 corners, 2 layers. Two M2 holes (Ø2.2 PTH, 3.6 mm GND ring both sides) at (±8.0, +0.4), keep-out r 2.4 mm.
 - **All parts on one side** (the sensor side). Tallest: Qwiic connectors ≈ 2.9 mm, PMW3901 lens 2.28 mm, VL53L1X 1.56 mm.
   The back side has no parts: board name, logo and the five flat SWD test pads (program the board before mounting it).
 - Sensor axes (sensor-side view): PMW3901 at (0, −6.2), field of view 42°; VL53L1X at (0, +0.8), 27°.
@@ -102,7 +103,7 @@ KiCad sources in [`04 - FLOW_KiCadProj/`](../../04%20-%20FLOW_KiCadProj/):
 - Silkscreen: QWIIC IN / QWIIC OUT on the sensor side; TP1–TP5, logo and board name on the back; no part references.
 
 ## Fabrication (JLCPCB)
-- 2 layers, **1.6 mm** FR-4 (1.51 mm core), 1 oz. All parts on the top (sensor) side: single-sided assembly.
+- 2 layers, **1.0 mm** FR-4 (0.91 mm core), 1 oz. All parts on the top (sensor) side: single-sided assembly.
 - BoM `ACwing_Flow_A_BoM_JLCPCB.xlsx`; every line has an LCSC number (PMW3901 C43496881, VL53L1X C190004,
   STM32C011F4U6TR C5456188, LDK130PU-R C157446).
 - **PMW3901 lens.** The LN03-ZSZ lens is a separate item in the PixArt ordering table. Check that the LCSC/JLC part

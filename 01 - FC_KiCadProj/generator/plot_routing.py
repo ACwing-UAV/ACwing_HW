@@ -8,7 +8,7 @@ col={pcbnew.F_Cu:'red',pcbnew.B_Cu:'blue',pcbnew.In2_Cu:'orange',pcbnew.In1_Cu:'
 zc={'GND':'#2a7','VBAT':'#e60','VDD':'#c3c','M1_N':'#36f','M2_N':'#36f','M3_N':'#36f','M4_N':'#36f'}
 fig,ax=plt.subplots(figsize=(11,11))
 T=lambda p:(p.x/1e6-OX, OY-p.y/1e6)
-ps=pcbnew.SHAPE_POLY_SET(); b.GetBoardPolygonOutlines(ps); o=ps.Outline(0)
+ps=pcbnew.SHAPE_POLY_SET(); b.GetBoardPolygonOutlines(ps, True); o=ps.Outline(0)
 ax.add_patch(MP([T(o.CPoint(k)) for k in range(o.PointCount())],closed=True,fc='none',ec='k',lw=1))
 for z in b.Zones():
     if z.GetIsRuleArea():
@@ -26,7 +26,7 @@ for f in b.GetFootprints():
     for p in f.Pads():
         L=pcbnew.B_Cu if f.IsFlipped() else pcbnew.F_Cu
         if p.GetAttribute()==pcbnew.PAD_ATTRIB_NPTH: L=None
-        sh=p.GetEffectivePolygon()
+        sh=p.GetEffectivePolygon(L if L is not None else pcbnew.F_Cu)
         for i in range(sh.OutlineCount()):
             o=sh.Outline(i); pts=[T(o.CPoint(k)) for k in range(o.PointCount())]
             vis = L is None or L in [LM[l] for l in layers]

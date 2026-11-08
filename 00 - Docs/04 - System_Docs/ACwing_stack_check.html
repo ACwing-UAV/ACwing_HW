@@ -78,13 +78,13 @@ ul.find li[aria-selected="true"] { border-color: var(--accent); box-shadow: inse
   <div class="col">
     <header>
       <h1>ACwing Stack Check</h1>
-      <p class="lede">Power board rev A, flight controller rev A and GPS board stacked on the 20 × 20 mm holes, with every connector mated. Each part is a prism of its courtyard and datasheet height; plugs are envelopes in front of each connector mouth. <em>Board data of 2026-11-07: 1.6 mm boards, ESC link on the front edge (0 clashes).</em></p>
+      <p class="lede">Power board rev A, flight controller rev A and GPS board stacked on the 20 × 20 mm holes, with every connector mated. Each part is a prism of its courtyard and datasheet height; plugs are envelopes in front of each connector mouth. <em>Board data of 2026-11-07 (evening): 1.0 mm boards, ESC A link at the front-left (FC J2 right above ESC J1), ESC charge port under the FC USB-C. One expected clash: the two USB-C plugs at the rear-right chamfer cannot be mated at the same time.</em></p>
     </header>
 
     <dl class="stackline">
       <dt id="gpsName">GPS rev A</dt><dd id="zGps">on 6 mm nylon standoffs</dd>
-      <dt>FC rev A</dt><dd>1.6 mm, on M2 grommets, 5 mm above</dd>
-      <dt>ESC 1S rev A</dt><dd>1S power board, 1.6 mm, frame bosses</dd>
+      <dt>FC rev A</dt><dd>1.0 mm, on M2 grommets, 5 mm above</dd>
+      <dt>ESC 1S rev A</dt><dd>1S power board, 1.0 mm, frame bosses</dd>
     </dl>
 
     <div class="panel">
@@ -153,7 +153,7 @@ ul.find li[aria-selected="true"] { border-color: var(--accent); box-shadow: inse
   const fill = new THREE.DirectionalLight(0xffffff, 0.25); fill.position.set(-60, -20, -40); scene.add(fill);
 
   // board frame (u right, v front, z up) -> three (X = u, Y = z, Z = -v)
-  const BASE = { ESC: 0, FC: 6.6, GPS: 14.2 };   // 1.6 mm boards (2026-11-07)
+  const BASE = { ESC: 0, FC: 6.0, GPS: 13.0 };   // 1.0 mm boards (2026-11-07 evening)
   let cfg = 'D6', standoff = 6, explode = 0;
   const zOf = (b) => b === 'ESC' ? 0 : b === 'FC' ? BASE.FC + explode : BASE.GPS + (standoff - 6) + 2 * explode;
 
@@ -229,6 +229,8 @@ ul.find li[aria-selected="true"] { border-color: var(--accent); box-shadow: inse
     'FC J3|GPS J1': 'Receptacles face to face, 2.9 + 2.9 mm in a 6 mm gap.',
     'FC J4|GPS J1': 'Receptacles face to face, 2.9 + 2.9 mm in a 6 mm gap.',
     'ESC J4|HW grommet -10,+10': 'Charge port next to the front-left grommet spacer (r 2.5 mm assumed): fits.',
+    'ESC J4 plug|FC J1 plug': 'Both USB-C ports sit at the rear-right chamfer, the ESC charge port 6 mm below the FC port: the two plugs cannot be mated at the same time (one at a time is fine).',
+    'FC J1 plug|ESC J4 plug': 'Both USB-C ports sit at the rear-right chamfer, the ESC charge port 6 mm below the FC port: the two plugs cannot be mated at the same time (one at a time is fine).',
     'FC J1|HW grommet flange +10,-10': 'FC USB-C next to its grommet flange: as drafts F/G, fits.',
   };
   function why(f) { return WHY[f.a + '|' + f.b] || WHY[f.b + '|' + f.a] || ''; }

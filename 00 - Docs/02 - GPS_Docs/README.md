@@ -6,8 +6,9 @@
 
 > **Revisions.** Rev A is the first released revision. Earlier letters, marked *draft* in this document (drafts A–C), are internal design iterations that were never manufactured.
 
-> **1.6 mm boards (2026-11-07, still rev A).** All ACwing boards are now **1.6 mm** thick (were 1.0 mm), KiCad 10 files. 2 layers, 1.51 mm core. Vias 0.5 / 0.3 mm. The GPS board sits 1.2 mm higher above the ESC (FC and own thickness),
-> M2 standoff length unchanged (6 mm); screw / standoff column +1.8 mm overall. Board mass +1.0 g. DRC 0 / 0.
+> **Back to 1.0 mm (2026-11-07 evening, still rev A).** To save weight, all ACwing boards are **1.0 mm** again (the
+> 1.6 mm step of the same morning is reverted): 2 layers, 0.91 mm core, KiCad 10 files, vias unchanged. Layout unchanged.
+> The GPS board sits 1.2 mm lower than with the 1.6 mm boards; 6 mm standoffs unchanged. Board mass −1.0 g. DRC 0 / 0.
 
 > **Layout update (2026-10-24, still rev A).** Qwiic J1 moved from v = 0 to v = +3.6, right above FC J3; re-routed,
 > DRC 0. Nothing else changed.
@@ -96,7 +97,7 @@ m_fc = R · m_gps,   R = [  0.7071  -0.7071   0 ]
 ```
 
 ## Mechanics
-- 30 × 30 × 1.6 mm (1.0 mm until 2026-11-07), R2 corners, centred on the FC. 4 × M2 (Ø2.2 PTH, 3.6 mm copper ring on both sides tied to GND, since 2026-11-03) on the 20 × 20 pattern, keep-out r 2.6 mm.
+- 30 × 30 × 1.0 mm (1.6 mm on 2026-11-07 only), R2 corners, centred on the FC. 4 × M2 (Ø2.2 PTH, 3.6 mm copper ring on both sides tied to GND, since 2026-11-03) on the 20 × 20 pattern, keep-out r 2.6 mm.
 - Stack: FC on its grommets → 6 mm gap → GPS board (Mech A1: printed S2 spacer on the M2 screw column, titanium or
   A4 stainless screws, see `04 - System_Docs`). Top of the module ≈ 13.3 mm above the FC top.
 - Cables: FC rev A J3 (top, right edge, v = +3.6) → GPS J1 (top, right edge, v = +3.6): the two connectors are
@@ -120,7 +121,7 @@ m_fc = R · m_gps,   R = [  0.7071  -0.7071   0 ]
 - Connectors: J1 at (u, v) = (+11.9, +3.85), J2 at (+11.9, −4.05), both top side, right edge, mouth +u.
 
 ## Fabrication (JLCPCB)
-- 2 layers, **1.6 mm** FR-4 (1.51 mm core). Parts on both sides (top: U1, D2, J1, J2).
+- 2 layers, **1.0 mm** FR-4 (0.91 mm core). Parts on both sides (top: U1, D2, J1, J2).
 - Solder mask: expansion 0.05 mm, minimum web 0.09 mm, every pad gap ≥ 0.19 mm (JLCPCB dam rule for green / blue / red / purple mask).
 - U1 SAM-M10Q and C5 CPH3225A are not stocked by LCSC: consigned parts or hand soldering (as draft A).
 - CPL: SOT-23 +180° (Q1). Check U1 pin 1, J1/J2 (tabs toward the edges), C5 polarity and D1 in the JLC preview.

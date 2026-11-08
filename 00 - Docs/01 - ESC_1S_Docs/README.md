@@ -6,7 +6,20 @@
 
 > **Revisions.** Rev A is the first released revision. The earlier letter, marked *draft* in this document (draft A, the first motor board), is an internal design iteration that was never manufactured.
 
-> **J1 toward the front corner (2026-11-07, still rev A).** Answer to the frame A1 handoff (§10, front-left guard ring
+> **Layout update 2 (2026-11-07 evening, still rev A).** With FC ESC A moved to the front-left corner:
+> - **USB-C J4 and the charger** (U2, C8, C9, D6, R12–R16) moved to the **rear-right corner**, mouth at the rear-right
+>   chamfer, right under the FC USB-C (point reflection of the old group: J4 centre (+15.77, −15.77), axis at 45°).
+>   The rear-right corner gets the same 0.8 mm step outline as the FC. The two USB-C plugs cannot be mated at the same
+>   time (≈ 0.5 mm overlap of the overmolds); either one alone fits.
+> - The **front-left corner is R3 again** (the charge-port chamfer is gone).
+> - **J1 ESC link on the front edge, just after the front-left corner arc**: centre **(−10.5, +16.08)**, mouth +v,
+>   pins u = −7.0 (pin 1) … −14.0, v = +14.08; body u −16.4 … −4.6, 0.6 mm from the end of the R3 arc (u −17).
+>   FC J2 sits right above it (same u): cable A is a short, straight 1:1 loop. J1 is 2.8 mm closer to the front-edge
+>   centre than the mirror of the previous place: the frame has to check the front-left guard ring again (handoff §0.19).
+> - "TO FC" label under the left end of J1, logo at the front-left, "ESC 1S rev A" in the front-right quadrant.
+> - **Board 1.0 mm again** (JLC04101H-7628), as all ACwing boards. DRC 0 / 0, no via in pads.
+
+> **J1 toward the front corner (2026-11-07, still rev A; superseded by layout update 2).** Answer to the frame A1 handoff (§10, front-left guard ring
 > above J1): **J1 moved 3.7 mm toward the front corner and 0.8 mm inward**: centre **(+13.3, +16.08)**, mouth +v, pins
 > u = +16.8 (pin 1) … +9.8, v = +14.08. Limits: the R3 corner (mounting pad ≥ 0.3 mm from the edge, with 0.2 mm spare)
 > and the +10, +10 grommet (0.31 mm in the stack check). The end of the mated plug nearest the motor axis moves ≈ 1.6 mm
@@ -34,15 +47,15 @@ this board on the same cable.
 ## Changes from draft A
 | Item | Rev A | Why |
 |---|---|---|
-| **Charge port (new)** | J4 USB-C (HRO TYPE-C-31-M-12), power only, CC1/CC2 5.1 k (R12/R13), C8 1 µF; top side, **45° at a new front-left chamfer** (the FC USB corner mirrored about u = v) | charging moves off the FC; the edges are full (motor stages at the midpoints, holes at ±10), the corners are the only free edge spots |
+| **Charge port (new)** | J4 USB-C (HRO TYPE-C-31-M-12), power only, CC1/CC2 5.1 k (R12/R13), C8 1 µF; top side, **45° at the rear-right chamfer**, under the FC USB-C (front-left chamfer until 2026-11-07) | charging moves off the FC; the edges are full (motor stages at the midpoints, holes at ±10), the corners are the only free edge spots |
 | **1S charger (new)** | U2 STC4054GR, 4.2 V, **455 mA** (R14 2.2 k); D6 green LED (on = charging) + R15; R16 1 Ω + C9 4.7 µF on BAT; BAT straight to the battery terminal | ≈ 1C for a 450 mAh pack; thermal regulation in the IC |
 | **Charge switch (new)** | Q5 AON7423 P-MOSFET (20 V, 4.9 mΩ @ −2.5 V) between the shunt and VBAT; R11 100 k gate pull-down (on), D5 RB521S30 from VBUS lifts the gate (off) | with USB plugged in, FC and motors are unpowered: no motor can spin while charging, and the charger terminates on the battery current alone |
 | Current sensor | R9 2 mΩ + U1 TSC213 as draft A; the sensed node is now VBAT_SH (battery → R9 → Q5 → VBAT); U1 supplied from VBAT | charge current does not pass R9 (CUR reads 0 while charging) |
 | Battery connection | J2 solder pads as draft A + a **JST PH 2.0 pigtail** soldered to them (BoM item, not assembled) | a board-mounted PH 2.0 does not fit: 9 mm deep against 7.3 mm between the holes and the edges (checked at every edge and corner) |
-| Outline | preliminary-draft frame outline (40 × 40, R3) + front-left chamfer v − u = 36.2 with 0.8 mm steps at the edges | charge port |
+| Outline | preliminary-draft frame outline (40 × 40, R3) with the rear-right chamfer u − v = 36.2 and 0.8 mm steps at the edges, as the FC (front-left until 2026-11-07) | charge port |
 
 Unchanged: motor stages Q1–Q4 / D1–D4 / R1–R8 / C2–C5, C1 470 µF bulk, J1 ESC link (rear edge until 2026-11-06, now front edge), holes,
-4 layers (1.6 mm since 2026-11-07, JLC04161H-7628), In1 GND / In2 VBAT planes.
+4 layers, 1.0 mm (JLC04101H-7628; 1.6 mm on 2026-11-07 only), In1 GND / In2 VBAT planes.
 
 ## Power path
 ```
@@ -56,14 +69,14 @@ USB-C J4 VBUS ─ U2 VCC, D6 LED, D5
 
 ## ESC link J1
 1 GND, 2 VBAT, 3 CUR (0.1 V/A), 4 TLM (n.c.), 5–8 M1–M4. 1:1 JST SH 8-pin cable to FC rev A J2. Top side, **front edge**,
-centre (+13.3, +16.08), mouth +v (2026-11-07; front edge since 2026-11-06, was the rear edge).
+centre (−10.5, +16.08), mouth +v (2026-11-07 evening; front edge since 2026-11-06, was the rear edge).
 
 ## Placement (board frame, FC top view: front = +u +v)
 | Part | Where |
 |---|---|
-| J1 ESC link | top, front edge toward the front corner, (+13.3, +16.08), mouth +v, 9.7 mm east of FC J2 |
-| J4 USB-C | top, (−15.77, +15.77), axis at 45°, mouth at the front-left chamfer |
-| U2, C8, C9, D6 | top, front-left, next to J4 (U2 at (−16.0, +6.6)); R12–R16 bottom |
+| J1 ESC link | top, front edge after the front-left arc, (−10.5, +16.08), mouth +v, right under FC J2 |
+| J4 USB-C | top, (+15.77, −15.77), axis at 45°, mouth at the rear-right chamfer (under the FC USB-C) |
+| U2, C8, C9, D6 | top, rear-right, next to J4 (U2 at (+16.0, −6.6)); R12–R16 bottom |
 | Q5 | top, left edge, (−17.1, −6.5), source pins toward the shunt; 7 + 7 vias for VBAT_SH / VBAT |
 | R11, D5 | top, east of Q5 |
 | R9, U1 | bottom, as draft A |
@@ -83,11 +96,11 @@ a mated-plug envelope. Results:
   above FC J3/J4: with plugs inserted they overlap by 0.6 mm (plugs) and 0.2 mm (plug on receptacle). GPS J2 (unused
   in FC rev A) would hit the FC ESC-A plug.
 - **8 mm standoffs: no clash**, nothing under 0.39 mm (charge port and FC USB next to the grommet hardware).
-- Charge port plug vs FC board: solved by chamfering the FC rev A front-left corner (v − u = 36.6); before, the plug
-  overmold ran 0.1 mm under the FC corner.
+- Charge port plug vs FC board: the charge port sits under the FC USB-C at the common rear-right chamfer (2026-11-07
+  evening); the plug stays outside the FC outline. The two USB-C plugs cannot be mated at the same time.
 
 ## Fabrication (JLCPCB)
-- 4 layers, **1.6 mm** FR-4 (JLC04161H-7628, stack-up in the board file), parts on both sides (top 30, bottom 10).
+- 4 layers, **1.0 mm** FR-4 (JLC04101H-7628, stack-up in the board file), parts on both sides (top 30, bottom 10).
 - Solder mask (2026-11-02): expansion 0.05 mm, minimum web 0.09 mm; every pad gap ≥ 0.19 mm (JLCPCB dam rule).
 - Mounting holes (2026-11-03): 4 × Ø2.2 mm PTH with a 3.6 mm copper ring on both sides, tied to GND (as the FC); PWM_M3,
   PWM_M4 and the charger VBAT_RAW branch re-routed around the rings.
@@ -104,9 +117,8 @@ a mated-plug envelope. Results:
 2. AON7423 land pattern. The footprint is the Vishay PowerPAK 1212-8, as Q1–Q4: 4 pads at 0.66 mm pitch plus the
    drain pad. The AOS package is DFN 3.3 × 3.3 EP, 0.65 mm pitch, the same family. The AOS datasheet (rev 1.0,
    2023-10) gives the body size only, so check the pad sizes against the AOS package drawing in the JLC preview.
-3. Frame: **checked in ACwing_Mechs Mech A1 (2026-11-07)**. The front-left chamfer and the J4 USB-C plug are clear
-   of the frame and the electronics cover: plug envelope × frame and × cover = 0 mm³. J1 on the front edge needs the
-   motor ring moved out 2 mm (RM 51 → 53): see the handoff §0.16.
+3. Frame: **to be checked again in ACwing_Mechs Mech A1** (handoff §0.19): J4 USB-C now at the rear-right chamfer under
+   the FC USB-C, J1 at the front-left corner, 1.0 mm boards. The previous layout was checked on 2026-11-07 (§0.16, §0.18).
 4. Charger temperature at 455 mA (raise R14 to 3.3 k for 300 mA if it runs hot).
 
 ## Contents
