@@ -123,7 +123,7 @@ FIXED = {   # ref: (u, v, rot, bottom)
     'J1': (15.767, -15.767, 45, False),             # USB-C at the chamfer, 0.85 mm further out than rev E
     'J3': (16.9, 3.6, 90, False),                   # Qwiic, right edge (front-right): GPS board above
     'J4': (16.9, -4.3, 90, False),                  # rev H: second Qwiic, right edge (rear-right): flow board
-    'J7': (-18.4, 7.2, 0, False), 'J8': (-18.4, 4.1, 0, False),   # rev H: battery / power input pads, left edge
+    # J7 / J8 battery pads removed (2026-11-08): the FC is supplied only through ESC link A J2 pin 2
     'J5': (2.0, 16.85, 180, False),                 # ELRS, top edge (front-left)
     'J6': (-8.2, 16.85, 180, False),                # layout update: ESC link B on the front edge, next to J5 (same mouth direction)
     # RGB LEDs, mirrored about the front-rear diagonal u = v (and point-symmetric front / rear); rev A: D3 / D4 turned

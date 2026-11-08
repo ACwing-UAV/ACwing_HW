@@ -6,6 +6,10 @@
 
 > **Revisions.** Rev A is the first released revision.
 
+> **45° routing (2026-11-08, still rev A).** Every track is now at 0 / 45 / 90° (house rule for all ACwing boards):
+> 165 off-angle runs replaced by octilinear doglegs, same end points, pads and vias; 0 segments off 45° left; 170 duplicated segments left by the router removed.
+> DRC 0 / 0 (KiCad 7 engine on a converted copy). Regenerate Gerber, STEP, renders and DRC report with KiCad 10.
+
 > **Back to 1.0 mm (2026-11-07 evening, still rev A).** To save weight, all ACwing boards are **1.0 mm** again (the
 > 1.6 mm step of the same morning is reverted): 2 layers, 0.91 mm core, KiCad 10 files, vias unchanged. Layout unchanged.
 > The board back is 0.6 mm closer to the tray face again (M2 × 4 nylon screws). Board mass −0.6 g. DRC 0 / 0.

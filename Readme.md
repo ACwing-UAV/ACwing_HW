@@ -79,7 +79,7 @@ page locally.
 - Sensors: **LSM6DSV16X** IMU, **LPS22HH** barometer, **IIS2MDC** compass; **W25Q128JV** 16 MB log flash.
 - Input **1S–6S** (LM5166 buck, 3–65 V; 100 % duty cycle pass-through on 1S), 4.1 V system rail, 3.1 V and 3.31 V LDOs.
 - **Two ESC links** (JST SH 8-pin, standard 4-in-1 pinout): 8 motor outputs (TIM2 / TIM1 / TIM16), VBAT and current
-  sense from the ESC, battery pads for setups without a VBAT pin.
+  sense from the ESC: the FC is supplied only through ESC link A (no battery pads).
 - Two Qwiic ports, ELRS / CRSF UART port, USB-C (data, DFU, bench supply), 4 × addressable RGB LEDs (XL-2020, level-shifted data), SWD pogo grid.
 
 **ACwing ESC 1S rev A**
@@ -125,6 +125,12 @@ Indicative component cost per board (10 / 100 boards, components only): FC 29.4 
 GPS 27.6 / 23.4 USD, Flow 11.1 / 9.4 USD. Check LCSC stock before ordering.
 
 ## Status
+
+**Update 2026-11-08 (still rev A):** **all tracks on all four boards at 0 / 45 / 90°** (house routing rule; tool in
+[`tools/route45`](tools/route45/)); FC battery pads J7 / J8 removed (the FC is supplied through ESC link A J2 pin 2 only);
+ESC 1S J1 moved 0.77 mm to the front edge, the same edge distance as FC J2. See the
+[mechanical handoff](00%20-%20Docs/04%20-%20System_Docs/ACwing_mechanical_handoff.md) §0.20. Fabrication outputs in
+`00 - Docs` still have to be regenerated with KiCad 10.
 
 **Update 2026-11-07 evening (still rev A):** all boards **1.0 mm** again (JLC04101H-7628 on the 4-layer boards); FC ESC A
 moved to the front-left, right above ESC 1S J1 (straight cable), ESC B to the old ESC A place; FC RGB LEDs at the corner tips

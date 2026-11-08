@@ -649,24 +649,6 @@
 },
 "dnp": false
 },
-"J7": {
-"lib_id": "Connector:TestPoint",
-"value": "VBAT+",
-"fp": "DimaQuad:TestPoint_Pad_2.0x2.0mm",
-"fields": {
-"Note": "Battery / power input pad VBAT+ (1S-6S), 2 x 2 mm solder pad, top side, left edge. FC supply only, no motor current: use it when the ESC has no VBAT pin (separate ESCs, PDB); otherwise the FC is supplied through ESC A J2"
-},
-"dnp": false
-},
-"J8": {
-"lib_id": "Connector:TestPoint",
-"value": "GND",
-"fp": "DimaQuad:TestPoint_Pad_2.0x2.0mm",
-"fields": {
-"Note": "Battery / power input pad GND, 2 x 2 mm solder pad, next to J7"
-},
-"dnp": false
-},
 "J4": {
 "lib_id": "Connector_Generic:Conn_01x04",
 "value": "Qwiic",

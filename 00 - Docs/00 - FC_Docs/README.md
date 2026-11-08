@@ -6,6 +6,18 @@
 
 > **Revisions.** Rev A is the first released revision. Earlier letters, marked *draft* in this document (drafts C–G), are internal design iterations that were never manufactured.
 
+> **45° routing and no battery pads (2026-11-08, still rev A).**
+> - **Every track is now at 0 / 45 / 90°** (house rule for all ACwing boards): 374 off-angle runs from Freerouting
+>   replaced by octilinear doglegs or a short octilinear A* detour, same end points, pads and vias; 0 segments off 45°
+>   left (checked on the exact coordinates). 93 duplicated segments and 3 dangling stubs left by the router removed.
+> - **Battery pads J7 / J8 removed** (and the "- BAT +" label). The FC is supplied **only through ESC link A J2 pin 2
+>   (VBAT)**, as on commercial FC / 4-in-1 ESC stacks. The Qwiic ports stay 3.3 V I2C only (VEXP is an output of the FC).
+>   With separate ESCs + PDB, crimp a JST SH 8-pin lead with GND / VBAT on pins 1 / 2 (JST SH: 1 A per contact, the FC
+>   draws < 0.5 A).
+> - Checks: DRC 0 violations / 0 unconnected (KiCad 7 engine on a converted copy, see the board README); the
+>   fabrication outputs (Gerber, CPL, STEP, renders, DRC report, schematic PDF) **must be regenerated with KiCad 10**
+>   before ordering.
+
 > **Layout update 2 and 1.0 mm (2026-11-07 evening, still rev A).**
 > - **ESC A (J2) on the front edge just after the front-left arc**: centre (−10.5, +16.85), body u −16.4 … −4.6
 >   (0.6 mm from the end of the R3 arc), right above ESC 1S J1: cable A is a short, straight 1:1 loop. **ESC B (J6)**
@@ -13,7 +25,7 @@
 > - **Front-left corner R3 again** (the ESC 1S charge port moved under the FC USB-C at the rear-right chamfer).
 > - **RGB LEDs at the corner tips, the same on both corners** (point-symmetric): D1 (−15.1, −18.4), D2 (−18.4, −15.1),
 >   D3 (+15.1, +18.4), D4 (+18.4, +15.1); each pair 5.4 mm apart (was 10.5 mm). Decoupling C40 / C41 / C42 / C45 next to them.
-> - **Battery pads J7 / J8** down the left edge, between L3 and D2: (−18.4, −9.0) / (−18.4, −12.0); label "- BAT +".
+> - ~~Battery pads J7 / J8 down the left edge~~ (removed on 2026-11-08, see above).
 > - **BLE antenna AE1 down the left edge**: (−18.6, +4.3), keep-out u −20.5 … −17.5, v −1.2 … +10.3; RF line from
 >   the MLPF ≈ 16 mm, straight, 50 Ω on F.Cu over In1 GND (was 22.4 mm).
 > - **Magnetometer U3 and barometer U4** right of the MCU, front-right quadrant: U3 (+16.0, +10.0), U4 (+13.4, +13.8),
@@ -58,7 +70,7 @@ ESC J1) stays 8 mm offset: FC J2 can move only 0.8 mm before the USB-C, and ESC 
 | **Vias in pads** | vias on several SMD pads (GND, PWM, HSE, VBAT_SNS, USB ESD) | **none**: vias moved next to the pad with a short stub (dog-bone), or the net rerouted | no solder wicking, no via plugging needed. Only the exposed thermal pads of U2 (STM32WB55, its VSS is the EP) and U12 (LM5166) keep their vias, by design |
 | **U8 MLPF-WB55 (CSP-6, 0.5 × 0.587 mm pitch)** | 0.20 mm pads, own mask margin | **0.25 mm pads**, board mask expansion; 0.25 mm gap between pads | the 0.25 mm minimum asked for the ball pads; still ≥ 0.19 mm pad-to-pad for the mask dams |
 | **U1 / U3 / U4 LGA pads** | 0.35 mm wide, 0.15 mm gaps | **0.31 mm wide** (U3 IIS2MDC 0.30 × 0.35, U4 LPS22HH 0.31 × 0.38): every gap ≥ 0.19 mm | solder mask dam between every pad (see Fabrication) |
-| Silkscreen | references of passives and ICs removed (2026-11) | connector labels only: ESC A / ESC B (front), ELRS (rear), GPS / FLOW, USB, BAT with **+ / −** at J7 / J8, TP1–TP8 on the bottom, logo and board name on both sides | |
+| Silkscreen | references of passives and ICs removed (2026-11) | connector labels only: ESC A / ESC B (front), ELRS (rear), GPS / FLOW, USB, TP1–TP8 on the bottom, logo and board name on both sides | |
 
 ESC link A now leaves from the front edge: the cable to the ESC 1S (its J1 is on the rear side) is longer than the
 17 mm of the Mech A1 stack. **Update the cable A length and route in the mechanical handoff before ordering cables.**
@@ -98,7 +110,6 @@ IMU: unchanged (VBUS on In2 under the sensor, UART ≥ 1.7 mm).
 | **External current input** | TP9/TP10 → PA6 | removed | PA6 is now motor M8 |
 | **Motor outputs** | 4 (TIM2) | **8**: M1–M4 TIM2 (J2), M5–M7 TIM1 CH1–CH3 (PA8–PA10), M8 TIM16 CH1 (PA6) on **ESC link B (J6)** | hexa / octo frames with two 4-in-1 ESCs |
 | **ESC link B (new)** | – | J6 JST SH 8-pin, top side, **front edge next to J5** (layout update), mouth toward the front; R25–R28 100 Ω; pins 2–4 (VBAT, CUR, TLM) open | same connector and cable as ESC link A; two ESC supplies are never tied together on the FC |
-| **Battery pads (new)** | – | J7 VBAT+ / J8 GND, 2 × 2 mm, top side, left edge | FC supply when the ESC has no VBAT pin (separate ESCs, PDB) |
 | **Second Qwiic port (new)** | J3 only | J3 (right edge, front) + **J4 (right edge, rear)** in parallel | GPS board and flow board get their own cables; no daisy chain under the stack |
 | ELRS (J5) | USART1 PA9/PA10 | USART1 **PB6/PB7** (alternate pins) | PA9/PA10 are TIM1 for M6/M7 |
 | RGB LEDs | PB6 TIM16_CH1N | **PA7 TIM17_CH1** + DMA | PB6 is USART1 TX |
@@ -118,7 +129,7 @@ J3 Qwiic, J5 ELRS positions, pogo grid.
 | ACwing 1S power board (brushed coreless) | 1S | ≈ VBAT (100 % duty cycle) | on the power board (its USB-C) | CUR pin, 0.1 V/A |
 | Commercial 20 × 20 4-in-1 ESC (2–6S class) | 2S–6S | 4.1 V | external balance charger | CUR pin (scale in firmware) or EDT |
 | Two 4-in-1 ESCs (hexa / octo) | 2S–6S | 4.1 V | external | ESC A CUR + EDT on all motors |
-| Separate ESCs + PDB | 2S–6S | 4.1 V | external | EDT; FC supplied on the J7/J8 pads |
+| Separate ESCs + PDB | 2S–6S | 4.1 V | external | EDT; FC supplied through a JST SH lead on J2 pins 1 / 2 |
 
 - **Maximum 6S (25.2 V).** LM5166 abs. max is 68 V, so 6S has a wide margin for regenerative spikes. The 50 V input
   capacitors and the 100k/10k divider (34 V full scale) set a practical limit of 6S–7S.
@@ -129,8 +140,7 @@ J3 Qwiic, J5 ELRS positions, pogo grid.
 
 ## Power architecture
 ```
-ESC A J2 pin 2 ─┐
-J7 / J8 pads ───┴─ VBAT 1S–6S ── U12 LM5166 (PFM) ── VREG 4.1 V ── Q5 ──┬── VSYS ── U5 LDO 3.1 V (VDD: MCU, sensors)
+ESC A J2 pin 2 ─── VBAT 1S–6S ── U12 LM5166 (PFM) ── VREG 4.1 V ── Q5 ──┬── VSYS ── U5 LDO 3.1 V (VDD: MCU, sensors)
                          │                                           │         ├─ U11 LDO 3.31 V (VEXP: Qwiic J3/J4)
                          └─ R8/R9 → VBAT_SNS (PA5)          USB VBUS ── D9 ─┘         ├─ 4 × XL-2020RGBC-WS2812B (data: PA7 → U13 buffer)
                                                                                         └─ J5 ELRS supply
@@ -192,7 +202,6 @@ See `ACwing_FC_A_pinmap.md`. Summary:
 | **J2 ESC A** | top, **front edge after the front-left arc**, (−10.5, +16.85), mouth +v; pins v = +14.85, u = −7.0 (pin 1) … −14.0 (pin 8); right above ESC 1S J1 |
 | **J6 ESC B** | top, **front edge**, (+3.64, +16.85), mouth +v; pins v = +14.85, u = +7.14 (pin 1) … +0.14 (pin 8) |
 | J5 ELRS | top, **rear edge**, (+1.5, −16.9), mouth −v |
-| **J7 VBAT+ / J8 GND** | top, left edge, (−18.4, −9.0) / (−18.4, −12.0); "- BAT +" on the silkscreen |
 | J3 Qwiic (GPS) | top, right edge, (+16.9, +3.6), mouth +u; GPS J1 right above it |
 | J4 Qwiic (flow) | top, right edge, (+16.9, −4.3), mouth +u |
 | LEDs D1–D4 | top, corner tips, point-symmetric: D1 (−15.1, −18.4) rot 180, D2 (−18.4, −15.1) rot 270, D3 (+15.1, +18.4) rot 0, D4 (+18.4, +15.1) rot 90 |
@@ -214,7 +223,7 @@ See `ACwing_FC_A_pinmap.md`. Summary:
 
 ## Checks
 - Netlist: 0 errors (`check_net.py`, 91 nets).
-- KiCad DRC (`ACwing_FC_A_DRC.rpt`): **0 violations, 0 unconnected pads, 0 footprint errors**.
+- KiCad DRC (`ACwing_FC_A_DRC.rpt`, 2026-11-07): **0 violations, 0 unconnected pads, 0 footprint errors**. After the 2026-11-08 changes: 0 / 0 with the KiCad 7 engine; rerun in KiCad 10 and replace the report.
 - EMI check (`emi_check.py`): see above.
 - Silkscreen: connector labels, + / − at the battery pads, TP1–TP8, logo and board name; no references of passives
   or ICs (they stay on the Fab layer for the assembly drawing). No text over pads or clipped by the mask.

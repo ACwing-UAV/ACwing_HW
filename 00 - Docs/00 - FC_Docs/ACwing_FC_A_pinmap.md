@@ -84,10 +84,11 @@ All alternate functions below were checked against ST's pin data (STM32_open_pin
 
 The same 1:1 JST SH 8-pin cable fits both links. Check the pin order of any third-party ESC before plugging it in.
 
-## Battery / power input pads (J7 VBAT+, J8 GND)
-2 × 2 mm pads, top side, left edge. Same VBAT net as J2 pin 2: an alternative FC supply when the ESC has
-no VBAT pin (separate ESCs with a PDB). FC current only (≤ 0.5 A at 4.1 V), no motor current. Use one supply source at
-a time.
+## FC supply
+**Only through ESC link A, J2 pin 2 (VBAT, 1S–6S)**, as on commercial FC / 4-in-1 ESC stacks. The battery pads J7 / J8
+were removed on 2026-11-08. With separate ESCs and a PDB, use a JST SH 8-pin lead with GND on pin 1 and VBAT on pin 2
+(FC current only, ≤ 0.5 A; JST SH contacts are rated 1 A). The Qwiic ports are not a supply input: their 3.3 V pin is
+the FC's VEXP output.
 
 ## Add-on boards (unchanged circuit, now two ports)
 | Port | Position | Intended board | Bus addresses |
