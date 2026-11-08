@@ -4,7 +4,7 @@
 
 **From:** electronics design (ACwing FC, ACwing ESC 1S, ACwing Flow, ACwing GPS)
 **To:** mechanical / frame design agent
-**Date:** 2026-10-17, **updated 2026-11-07** (§0 supersedes the older items it names; §0.9 = FC rev A, §0.10 = power board rev A + stack check; §0.11 = GPS rev A, 6 mm standoffs; §0.12 = layout update 2026-10-24; §0.13 = layout and routing 2026-11-02/03; §0.14 = stack connectors 2026-11-06; §0.15 = 1.6 mm boards 2026-11-07; §0.16 = mechanical answer; §0.17 = ESC J1 toward the front corner; §0.18 = mechanical answer to §0.17; §0.19 = layout update 2; §0.20 = ESC J1 at the FC edge distance, no FC battery pads, 45° routing)
+**Date:** 2026-10-17, **updated 2026-11-07** (§0 supersedes the older items it names; §0.9 = FC rev A, §0.10 = power board rev A + stack check; §0.11 = GPS rev A, 6 mm standoffs; §0.12 = layout update 2026-10-24; §0.13 = layout and routing 2026-11-02/03; §0.14 = stack connectors 2026-11-06; §0.15 = 1.6 mm boards 2026-11-07; §0.16 = mechanical answer; §0.17 = ESC J1 toward the front corner; §0.18 = mechanical answer to §0.17; §0.19 = layout update 2; §0.20 = ESC J1 at the FC edge distance, no FC battery pads, 45° routing; §0.21 = mechanical answer to §0.19 / §0.20)
 **Status:** §0 is a decided architecture change; **§0.7 gives the draft F boards as designed** (ACwing ESC 1S draft A, ACwing FC
 draft F, ACwing GPS draft C: connector coordinates, USB corner, LEDs, heights). §2 (flow board) is final.
 
@@ -303,6 +303,21 @@ What we need back: guard-ring check and RM with J1 at u −10.5; cable A length 
 | Routing | all tracks on all boards at 0 / 45 / 90°; copper only, no part moved apart from ESC J1 |
 | **ESC 1S battery pads J2** | side by side across the **rear-left corner**, rotated 45°: BAT+ (−17.38, −14.42), GND (−14.42, −17.38), pads 2.2 × 3.2 mm, 2.0 mm apart. The battery pigtail (PH 2.0, 24 AWG) leaves the ESC at the rear-left corner, both wires parallel along the diagonal, solder joints ≈ 1.6 mm high: route the battery lead down past that corner to the tray |
 | Stack check | page and render updated (KiCad 10.0.6 boards): 1 expected clash (the two USB-C plugs), ESC J1 now 0.7 mm further from the −10, +10 grommet |
+
+### 0.21 Mechanical answer to §0.19 / §0.20 (2026-11-08, ACwing_Mechs Mech A1, A2 guard rings)
+| Item | Answer |
+|---|---|
+| **Guard ring** | With J1 at (−10.5, +16.85) the plug back (v +22.63) sits under the front-left top ring and the wires of cable A cannot rise. A closed ring would need RM 53. **New guard rings "A2" on all four motors**: the top ring stays only on the outer half of each guard; from ±90° it ramps down and lands on the bottom ring at ±32° (φ = 0 toward the frame centre). Above the four board edges there is now only the bottom ring, below the stack. Ramps 1.2 × 1.7 mm; first frame mode −1.4 Hz, core −0.17 g, guard stiffness kept (Mech A1 handoff §11). |
+| **RM** | **RM 52** (frame 132.9 mm): with the open ring the limit is the propeller disc. Cable A passes **1.37 mm** from the disc (pin 1). |
+| **Cable A** | Straight 1:1 loop, up right behind the plugs with a 1 mm bend, leaning 2.3 mm toward the board corner on the way up. **10 mm of wire between the housings** (8 mm minimum): make all 8 wires 10 mm. Frame 4.5 mm away. |
+| **Stack, 1.0 mm** | ESC −2.0 … −1.0, FC 4.0 … 5.0, GPS 11.0 … 12.0 (frame z). Back to the QUARKZMAN M2 damping balls (H 6.0, slot 3.03 × 1.14, 2.43 mm above / below the board). **S1 2.57 mm, S2 3.57 mm. Stack screws M2 × 14 ISO 7380 (indoor, tip 2.6 mm into the insert) and M2 × 25 (GPS, 3.0 mm). Flow screws M2 × 4 nylon** (1.0 mm board + 3.0 mm in the insert); lens 11.3 mm above the ground (T400). |
+| **USB-C** | Both at the rear-right chamfer (frame +X): the FC plug goes through the cover notch (4.0 mm from the frame), the ESC plug passes under the cover (1.1 mm from the frame bottom bridge). One at a time, as you wrote. |
+| **Corner LEDs** | The new cover has a wavy skirt, low at the corners (z 6.2): the front and rear LEDs (FC top z 5.0) show under it, and through the translucent PLA. |
+| **Battery lead** | From the ESC pads across the rear-left corner over the rear deck tip, down behind the tray to the JST-PH pair: 22 mm, make 25 mm. No FC battery lead. |
+| **Cable C** | Unchanged route; 48–51 mm, make it 60 mm. Clearances: frame 0.5 mm, tray 0.5 mm. |
+| **Checks** | T400 indoor and GPS, T800, T1200: 0 mm³ for every pair that is not an assembly interface (boards from your STEP models of 2026-11-08). |
+| **Frame modes** | First mode (saddle) 98.8 Hz with T400 in the 2026-11-08 FE model, −3.7 Hz from the RM 51 design in the same model. Do the tap test on the first build. |
+| **For rev B** | The A2 rings leave the space above the board edges free; the limit near the edge centres is the propeller disc (27.5 mm from each motor axis, 24.5 mm from the board centre along the edge normal at RM 52). |
 
 ## 1. Coordinate conventions
 
