@@ -129,8 +129,8 @@ GPS 27.6 / 23.4 USD, Flow 11.1 / 9.4 USD. Check LCSC stock before ordering.
 **Update 2026-11-08 (still rev A):** **all tracks on all four boards at 0 / 45 / 90°** (house routing rule; tool in
 [`tools/route45`](tools/route45/)); FC battery pads J7 / J8 removed (the FC is supplied through ESC link A J2 pin 2 only);
 ESC 1S J1 moved 0.77 mm to the front edge, the same edge distance as FC J2. See the
-[mechanical handoff](00%20-%20Docs/04%20-%20System_Docs/ACwing_mechanical_handoff.md) §0.20. Fabrication outputs in
-`00 - Docs` still have to be regenerated with KiCad 10.
+[mechanical handoff](00%20-%20Docs/04%20-%20System_Docs/ACwing_mechanical_handoff.md) §0.20. ESC 1S battery pads side by side across the rear-left corner. All
+boards checked and saved with KiCad 10.0.6, all outputs, renders and the stack check page regenerated.
 
 **Update 2026-11-07 evening (still rev A):** all boards **1.0 mm** again (JLC04101H-7628 on the 4-layer boards); FC ESC A
 moved to the front-left, right above ESC 1S J1 (straight cable), ESC B to the old ESC A place; FC RGB LEDs at the corner tips

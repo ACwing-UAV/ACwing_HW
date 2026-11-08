@@ -14,9 +14,9 @@
 >   (VBAT)**, as on commercial FC / 4-in-1 ESC stacks. The Qwiic ports stay 3.3 V I2C only (VEXP is an output of the FC).
 >   With separate ESCs + PDB, crimp a JST SH 8-pin lead with GND / VBAT on pins 1 / 2 (JST SH: 1 A per contact, the FC
 >   draws < 0.5 A).
-> - Checks: DRC 0 violations / 0 unconnected (KiCad 7 engine on a converted copy, see the board README); the
->   fabrication outputs (Gerber, CPL, STEP, renders, DRC report, schematic PDF) **must be regenerated with KiCad 10**
->   before ordering.
+> - Checks with KiCad 10.0.6: zones refilled, DRC 0 violations / 0 unconnected, schematic parity: no missing or extra
+>   footprint, ERC the same 2 power-flag errors as before. Gerber, drill, STEP, schematic PDF, DRC report, renders and
+>   routing plot regenerated; CPL checked against the KiCad position export (unchanged).
 
 > **Layout update 2 and 1.0 mm (2026-11-07 evening, still rev A).**
 > - **ESC A (J2) on the front edge just after the front-left arc**: centre (−10.5, +16.85), body u −16.4 … −4.6
@@ -223,7 +223,7 @@ See `ACwing_FC_A_pinmap.md`. Summary:
 
 ## Checks
 - Netlist: 0 errors (`check_net.py`, 91 nets).
-- KiCad DRC (`ACwing_FC_A_DRC.rpt`, 2026-11-07): **0 violations, 0 unconnected pads, 0 footprint errors**. After the 2026-11-08 changes: 0 / 0 with the KiCad 7 engine; rerun in KiCad 10 and replace the report.
+- KiCad DRC (`ACwing_FC_A_DRC.rpt`, 2026-11-07): **0 violations, 0 unconnected pads, 0 footprint errors**. Rerun after the 2026-11-08 changes with KiCad 10.0.6: 0 / 0 / 0.
 - EMI check (`emi_check.py`): see above.
 - Silkscreen: connector labels, + / − at the battery pads, TP1–TP8, logo and board name; no references of passives
   or ICs (they stay on the Fab layer for the assembly drawing). No text over pads or clipped by the mask.

@@ -301,7 +301,8 @@ What we need back: guard-ring check and RM with J1 at u −10.5; cable A length 
 | **Guard ring (front-left motor)** | the J1 plug end moves 0.77 mm toward the ring. With §0.19 already at ≈ −0.3 mm at RM 51 (estimate), expect ≈ −1.1 mm at RM 51: **rerun the guard-ring / cable A check**; RM 52–53 is probably needed, or a local notch in the guard top ring above J1 |
 | **FC battery pads J7 / J8** | **removed** (and the "- BAT +" label). The FC is supplied only through ESC link A (J2 pin 2), so no battery lead goes to the FC any more: drop the battery-lead route to the FC left edge if the frame had one |
 | Routing | all tracks on all boards at 0 / 45 / 90°; copper only, no part moved apart from ESC J1 |
-| Not yet updated | `stack_data.js` / `ACwing_stack_check.html` and `ACwing_stack_3D.png` still show ESC J1 at v +16.08 and the FC pads |
+| **ESC 1S battery pads J2** | side by side across the **rear-left corner**, rotated 45°: BAT+ (−17.38, −14.42), GND (−14.42, −17.38), pads 2.2 × 3.2 mm, 2.0 mm apart. The battery pigtail (PH 2.0, 24 AWG) leaves the ESC at the rear-left corner, both wires parallel along the diagonal, solder joints ≈ 1.6 mm high: route the battery lead down past that corner to the tray |
+| Stack check | page and render updated (KiCad 10.0.6 boards): 1 expected clash (the two USB-C plugs), ESC J1 now 0.7 mm further from the −10, +10 grommet |
 
 ## 1. Coordinate conventions
 
