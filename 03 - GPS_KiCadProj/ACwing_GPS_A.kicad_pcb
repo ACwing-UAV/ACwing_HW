@@ -6765,6 +6765,28 @@
 			)
 		)
 	)
+	(gr_text "OUT"
+		(at 163 108.5 0)
+		(layer "F.SilkS")
+		(uuid "5712ccd7-6b8f-4dcd-9152-133576ccc3a1")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "IN"
+		(at 163.6 91.8 0)
+		(layer "F.SilkS")
+		(uuid "921ed603-5250-4b57-b451-58c544bce820")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
 	(gr_text "FRONT"
 		(at 151.9 90 0)
 		(layer "F.SilkS")
@@ -6777,26 +6799,92 @@
 			(justify right)
 		)
 	)
-	(gr_text "QWIIC\nIN"
-		(at 163.2 90.4 90)
-		(layer "F.SilkS")
-		(uuid "921ed603-5250-4b57-b451-58c544bce820")
+	(gr_text "SCL"
+		(at 163.9 95 0)
+		(layer "B.SilkS")
+		(uuid "fa9fc2ef-aeae-49f7-8572-2b98c00a58a7")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.15)
+				(size 0.508 0.508)
 			)
+			(justify left bottom mirror)
 		)
 	)
-	(gr_text "QWIIC\nOUT"
-		(at 163.2 109.9 90)
-		(layer "F.SilkS")
-		(uuid "5712ccd7-6b8f-4dcd-9152-133576ccc3a1")
+	(gr_text "SDA"
+		(at 163.9 96 0)
+		(layer "B.SilkS")
+		(uuid "e58ec2a0-6c12-4aa8-91a9-505300c73ea0")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.15)
+				(size 0.508 0.508)
 			)
+			(justify left bottom mirror)
+		)
+	)
+	(gr_text "3V3"
+		(at 163.9 97 0)
+		(layer "B.SilkS")
+		(uuid "8e1cbfb7-e0df-441d-8122-cc36ea0e30c6")
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom mirror)
+		)
+	)
+	(gr_text "GND"
+		(at 163.9 97.9 0)
+		(layer "B.SilkS")
+		(uuid "1dd2a510-56dd-491e-8247-5ef2d00a64aa")
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom mirror)
+		)
+	)
+	(gr_text "SCL"
+		(at 163.9 102.9 0)
+		(layer "B.SilkS")
+		(uuid "7b2a6843-c4dd-4417-887b-18f278695720")
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom mirror)
+		)
+	)
+	(gr_text "SDA"
+		(at 163.9 103.9 0)
+		(layer "B.SilkS")
+		(uuid "06a62805-0cd6-4183-80da-b39f20564b82")
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom mirror)
+		)
+	)
+	(gr_text "3V3"
+		(at 163.9 104.9 0)
+		(layer "B.SilkS")
+		(uuid "f0b2f6d0-74a2-4f82-bdbf-17c759428e48")
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom mirror)
+		)
+	)
+	(gr_text "GND"
+		(at 163.9 105.8 0)
+		(layer "B.SilkS")
+		(uuid "f8492126-c36a-4d04-9ef1-ca1a6a0918cc")
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom mirror)
 		)
 	)
 	(gr_text "GPS rev A"

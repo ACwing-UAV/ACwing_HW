@@ -11295,6 +11295,102 @@
 		(layer "Edge.Cuts")
 		(uuid "4ad58b6c-e22d-45a2-88a8-9b42a33eb1e0")
 	)
+	(gr_text "M4"
+		(at 136.4 88 90)
+		(layer "F.SilkS")
+		(uuid "ec500323-d357-4ec0-9816-e57baefc181e")
+		(effects
+			(font
+				(size 0.508 0.508)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "M3"
+		(at 137.4 88 90)
+		(layer "F.SilkS")
+		(uuid "d0c22ee4-f77e-42b2-92d5-2b6f96476a91")
+		(effects
+			(font
+				(size 0.508 0.508)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "M2"
+		(at 138.3 88 90)
+		(layer "F.SilkS")
+		(uuid "3c9f8dc7-b4fc-4237-880f-f5700bc91626")
+		(effects
+			(font
+				(size 0.508 0.508)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "M1"
+		(at 139.3 88 90)
+		(layer "F.SilkS")
+		(uuid "04d2f6fb-b8bb-4414-aa11-118a5e591fc6")
+		(effects
+			(font
+				(size 0.508 0.508)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "NC"
+		(at 140.3 88 90)
+		(layer "F.SilkS")
+		(uuid "b8251096-5f0b-4f97-a5db-b94fd17f81b1")
+		(effects
+			(font
+				(size 0.508 0.508)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "CUR"
+		(at 141.3 88 90)
+		(layer "F.SilkS")
+		(uuid "2fa9970c-c009-4f7a-92d0-c0b2852e6b67")
+		(effects
+			(font
+				(size 0.508 0.508)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "VBAT"
+		(at 142.3 88 90)
+		(layer "F.SilkS")
+		(uuid "52b4e99d-26f4-4d67-8cef-fed4ab482432")
+		(effects
+			(font
+				(size 0.508 0.508)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "GND"
+		(at 143.3 88 90)
+		(layer "F.SilkS")
+		(uuid "27c6dfae-df91-4fae-80e0-0f0405ab9291")
+		(effects
+			(font
+				(size 0.508 0.508)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
 	(gr_text "+"
 		(at 147.05 118.3 0)
 		(layer "F.SilkS")
@@ -11303,17 +11399,6 @@
 			(font
 				(size 0.8 0.8)
 				(thickness 0.12)
-			)
-		)
-	)
-	(gr_text "TO FC"
-		(at 136 87.4 0)
-		(layer "F.SilkS")
-		(uuid "c5b87caa-a673-4a1b-8093-2cd34ecd4a2d")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.15)
 			)
 		)
 	)
@@ -11363,9 +11448,20 @@
 		)
 	)
 	(gr_text "CHARGE"
-		(at 161.9 111.7 45)
+		(at 161.8 111.9 45)
 		(layer "F.SilkS")
 		(uuid "1ef37615-236d-474d-aaca-894e60b49651")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "TO FC"
+		(at 133.2 83.4 90)
+		(layer "F.SilkS")
+		(uuid "c5b87caa-a673-4a1b-8093-2cd34ecd4a2d")
 		(effects
 			(font
 				(size 0.8 0.8)

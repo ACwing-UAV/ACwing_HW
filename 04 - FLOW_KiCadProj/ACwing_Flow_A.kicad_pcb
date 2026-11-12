@@ -8459,8 +8459,104 @@
 		(layer "Edge.Cuts")
 		(uuid "5be43946-eeaf-43f4-8e25-eb19346c2542")
 	)
-	(gr_text "QWIIC IN"
-		(at 142.55 94.62 0)
+	(gr_text "SCL"
+		(at 142.5 95.7 90)
+		(layer "F.SilkS")
+		(uuid "85f034f7-5ac7-48a8-b645-5d503b318b93")
+		(effects
+			(font
+				(size 0.508 0.508)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "SCA"
+		(at 143.5 95.7 90)
+		(layer "F.SilkS")
+		(uuid "aa47532c-b9b2-47d2-add5-9ad9240f8f89")
+		(effects
+			(font
+				(size 0.508 0.508)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "3V3"
+		(at 144.5 95.7 90)
+		(layer "F.SilkS")
+		(uuid "db0de32b-1a7a-460c-b887-3fc5368fae62")
+		(effects
+			(font
+				(size 0.508 0.508)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "GND"
+		(at 145.5 95.7 90)
+		(layer "F.SilkS")
+		(uuid "94f97b98-9c90-499d-9e57-9623c822e466")
+		(effects
+			(font
+				(size 0.508 0.508)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "SCL"
+		(at 155.1 95.7 90)
+		(layer "F.SilkS")
+		(uuid "c4e9a2ff-7702-4bc7-8903-03efe226a898")
+		(effects
+			(font
+				(size 0.508 0.508)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "SCA"
+		(at 156.1 95.7 90)
+		(layer "F.SilkS")
+		(uuid "c4e73fa0-6c50-4c45-86a8-7a77547071b1")
+		(effects
+			(font
+				(size 0.508 0.508)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "3V3"
+		(at 157.1 95.7 90)
+		(layer "F.SilkS")
+		(uuid "5fe8786c-c5ee-4065-8dc7-0b5683d8378a")
+		(effects
+			(font
+				(size 0.508 0.508)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "GND"
+		(at 158.1 95.7 90)
+		(layer "F.SilkS")
+		(uuid "b78a5718-99b2-4ea6-ac9d-58513f2e2131")
+		(effects
+			(font
+				(size 0.508 0.508)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "IN"
+		(at 148 89.9 90)
 		(layer "F.SilkS")
 		(uuid "307d0c53-4c24-4a0e-a2c3-406f0418efc3")
 		(effects
@@ -8470,8 +8566,8 @@
 			)
 		)
 	)
-	(gr_text "QWIIC OUT"
-		(at 157.1 94.62 0)
+	(gr_text "OUT"
+		(at 151.9 89.4 90)
 		(layer "F.SilkS")
 		(uuid "24c2215f-b298-4253-b9ce-8358e14265cc")
 		(effects
