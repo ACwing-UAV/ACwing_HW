@@ -4,7 +4,7 @@
 
 **From:** electronics design (ACwing FC, ACwing ESC 1S, ACwing Flow, ACwing GPS)
 **To:** mechanical / frame design agent
-**Date:** 2026-10-17, **updated 2026-11-07** (§0 supersedes the older items it names; §0.9 = FC rev A, §0.10 = power board rev A + stack check; §0.11 = GPS rev A, 6 mm standoffs; §0.12 = layout update 2026-10-24; §0.13 = layout and routing 2026-11-02/03; §0.14 = stack connectors 2026-11-06; §0.15 = 1.6 mm boards 2026-11-07; §0.16 = mechanical answer; §0.17 = ESC J1 toward the front corner; §0.18 = mechanical answer to §0.17; §0.19 = layout update 2; §0.20 = ESC J1 at the FC edge distance, no FC battery pads, 45° routing; §0.21 = mechanical answer to §0.19 / §0.20)
+**Date:** 2026-10-17, **updated 2026-11-12** (§0 supersedes the older items it names; §0.9 = FC rev A, §0.10 = power board rev A + stack check; §0.11 = GPS rev A, 6 mm standoffs; §0.12 = layout update 2026-10-24; §0.13 = layout and routing 2026-11-02/03; §0.14 = stack connectors 2026-11-06; §0.15 = 1.6 mm boards 2026-11-07; §0.16 = mechanical answer; §0.17 = ESC J1 toward the front corner; §0.18 = mechanical answer to §0.17; §0.19 = layout update 2; §0.20 = ESC J1 at the FC edge distance, no FC battery pads, 45° routing; §0.21 = mechanical answer to §0.19 / §0.20; §0.22 = print-first frame and closed wire eyelets, 2026-11-12)
 **Status:** §0 is a decided architecture change; **§0.7 gives the draft F boards as designed** (ACwing ESC 1S draft A, ACwing FC
 draft F, ACwing GPS draft C: connector coordinates, USB corner, LEDs, heights). §2 (flow board) is final.
 
@@ -318,6 +318,18 @@ What we need back: guard-ring check and RM with J1 at u −10.5; cable A length 
 | **Checks** | T400 indoor and GPS, T800, T1200: 0 mm³ for every pair that is not an assembly interface (boards from your STEP models of 2026-11-08). |
 | **Frame modes** | First mode (saddle) 98.8 Hz with T400 in the 2026-11-08 FE model, −3.7 Hz from the RM 51 design in the same model. Do the tap test on the first build. |
 | **For rev B** | The A2 rings leave the space above the board edges free; the limit near the edge centres is the propeller disc (27.5 mm from each motor axis, 24.5 mm from the board centre along the edge normal at RM 52). |
+
+### 0.22 Mechanical update: print-first frame, closed wire eyelets (2026-11-12, ACwing_Mechs Mech A1 §12)
+| Item | Answer |
+|---|---|
+| **Why** | The first print of the A2 core (PETG Matte, upside down) failed: the top rings of the guards needed supports and broke when the supports were removed. The frame is now designed for a Bambu Lab A1 with no supports inside the guards. |
+| **Guards** | New **wave guards** on all four motors: a 0.86 mm wall bulged 1.2 mm outward, a top lip, the lower rim and an S ribbon between them (the curve of the cover skirt). Still **open toward the body** for ±46° with 45° ramps: above the four board edges there is still only the lower rim, below the stack. Nothing changes for the board edges, the plugs or cable A (1.37 mm from the propeller disc, 4.55 mm from the frame). |
+| **RM, stack, screws** | Unchanged: RM 52, ESC −2.0 … −1.0, FC 4.0 … 5.0, GPS 11.0 … 12.0; S1 2.57 / S2 3.57 mm; M2 × 14 (indoor) / M2 × 25 (GPS); flow M2 × 4 nylon. |
+| **USB-C** | Frame clearance: FC plug 1.20 mm, ESC plug 0.77 mm (the bulge fades to a straight wall near the plugs). One plug at a time, as before. |
+| **Motor leads** | The 8520 motors have no connector: the arms now have **3 closed eyelets each** (hole ≈ 1.6 mm). Thread the two leads through them before soldering them to the ESC motor pads; keep the pads where they are. |
+| **Cover** | Flat roof with a 45° chamfer, logo engraved, printed roof-down; same posts, screws, notch for the FC USB-C and skirt (corner LEDs visible). |
+| **Frame** | 134.8 × 134.8 mm; core 17.63 g solid (about 15 g printed); drone T400 indoor ≈ 69.3 g. First frame mode 93.9 Hz with T400 (FE model of 2026-11-08). |
+| **Checks** | T400 indoor and GPS, T800, T1200: 0 mm³ for every pair that is not an assembly interface (your STEP models of 2026-11-08; the silkscreen of 2026-11-12 does not change them). |
 
 ## 1. Coordinate conventions
 

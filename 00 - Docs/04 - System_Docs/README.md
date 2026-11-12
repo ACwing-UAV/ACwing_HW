@@ -13,7 +13,7 @@ and the stack check of the boards with all connectors mated.
 | [`ACwing_frame_preliminary_draft_mechanical_answer.md`](ACwing_frame_preliminary_draft_mechanical_answer.md) | mechanical answer on the preliminary draft frame: stack hardware, cables wire by wire, flow board mounting, vibration, weight budget |
 | [`ACwing_frame_preliminary_draft_electronics_reply.md`](ACwing_frame_preliminary_draft_electronics_reply.md) | electronics reply: checks confirmed, non-magnetic stack screws requested |
 | `ACwing_stack_check.html` + `stack_data.js` | interactive 3D stack check (ESC 1S A + FC A + GPS A, 6 mm FC → GPS gap): download both files and open the page in a browser. Board data of 2026-11-08 (KiCad 10.0.6): 1.0 mm boards, 45° routing, ESC A link at the front-left, ESC J1 at the FC J2 edge distance, ESC battery pads across the rear-left corner |
-| `ACwing_stack_3D.png` | render of the stack (2026-11-08, Blender Cycles from the KiCad 10 GLB exports, 1.0 mm boards): ESC A cable straight at the front-left, Qwiic FC → GPS on the right edge |
+| `ACwing_stack_3D.png` | render of the stack (regenerated 2026-11-12 with the silkscreen pin names; Blender Cycles from the KiCad 10 GLB exports, 1.0 mm boards): ESC A cable straight at the front-left, Qwiic FC → GPS on the right edge |
 
 > The handoff and the two preliminary-draft frame documents are design logs from before the release: their *draft*
 > letters are internal iterations, never manufactured. All current boards are rev A. The released mechanics is
