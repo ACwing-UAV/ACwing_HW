@@ -1,10 +1,13 @@
 import sys, numpy as np
-import sys, numpy as np
 from OCP.STEPCAFControl import STEPCAFControl_Reader
 from OCP.TDocStd import TDocStd_Document
 from OCP.XCAFDoc import XCAFDoc_DocumentTool, XCAFDoc_ColorType
 from OCP.TCollection import TCollection_ExtendedString
-from OCP.TDF import TDF_LabelSequence, TDF_Label
+from OCP.TDF import TDF_Label
+try:
+    from OCP.TDF import TDF_LabelSequence                                 # cadquery-ocp < 7.9
+except ImportError:
+    from OCP.collections import Sequence_TDF_Label as TDF_LabelSequence  # cadquery-ocp 7.9 / 8
 from OCP.Quantity import Quantity_Color
 from OCP.TopLoc import TopLoc_Location
 from OCP.BRepMesh import BRepMesh_IncrementalMesh
@@ -12,6 +15,7 @@ from OCP.TopExp import TopExp_Explorer
 from OCP.TopAbs import TopAbs_FACE, TopAbs_SOLID
 from OCP.BRep import BRep_Tool
 from OCP.TopoDS import TopoDS
+_face = getattr(TopoDS, 'Face_s', None) or TopoDS.Face                # name differs across OCP versions
 path, out = sys.argv[1], sys.argv[2]
 doc = TDocStd_Document(TCollection_ExtendedString("doc"))
 r = STEPCAFControl_Reader(); r.SetColorMode(True); r.SetNameMode(True)
@@ -39,9 +43,9 @@ def walk(lbl, loc, inherited):
     BRepMesh_IncrementalMesh(s, 0.08, False, 0.5, True)
     ex = TopExp_Explorer(s, TopAbs_FACE)
     while ex.More():
-        f = TopoDS.Face_s(ex.Current()); l = TopLoc_Location()
+        f = _face(ex.Current()); l = TopLoc_Location()
         fc = Quantity_Color(); fcol = col
-        f0 = TopoDS.Face_s(ex.Current())
+        f0 = _face(ex.Current())
         if ct.GetColor(f0.Moved(loc.Inverted()), XCAFDoc_ColorType.XCAFDoc_ColorSurf, fc) or ct.GetColor(f0, XCAFDoc_ColorType.XCAFDoc_ColorSurf, fc):
             fcol = (fc.Red(), fc.Green(), fc.Blue())
         tri = BRep_Tool.Triangulation_s(f, l)
