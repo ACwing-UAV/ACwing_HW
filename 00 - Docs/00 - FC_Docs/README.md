@@ -6,6 +6,8 @@
 
 > **Revisions.** Rev A is the first released revision. Earlier letters, marked *draft* in this document (drafts C–G), are internal design iterations that were never manufactured.
 
+> **Silkscreen with connector pin names (2026-11-12, still rev A).** The connector labels now carry the pin names (commit 568e74d). Layout and copper unchanged. `ACwing_FC_A_pcb.png` and `ACwing_FC_A_3D.png` regenerated with the KiCad 10.0.6 raytracer (`99 - Tools/outputs/k10_renders.sh`, `compose_board_renders.py`).
+
 > **45° routing and no battery pads (2026-11-08, still rev A).**
 > - **Every track is now at 0 / 45 / 90°** (house rule for all ACwing boards): 374 off-angle runs from Freerouting
 >   replaced by octilinear doglegs or a short octilinear A* detour, same end points, pads and vias; 0 segments off 45°

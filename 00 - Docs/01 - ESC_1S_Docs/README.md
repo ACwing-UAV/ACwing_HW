@@ -6,6 +6,8 @@
 
 > **Revisions.** Rev A is the first released revision. The earlier letter, marked *draft* in this document (draft A, the first motor board), is an internal design iteration that was never manufactured.
 
+> **Silkscreen with connector pin names (2026-11-12, still rev A).** The connector labels now carry the pin names (commit 568e74d). Layout and copper unchanged. `ACwing_ESC1S_A_pcb.png` and `ACwing_ESC1S_A_3D.png` regenerated with the KiCad 10.0.6 raytracer (`99 - Tools/outputs/k10_renders.sh`, `compose_board_renders.py`).
+
 > **J1 at the FC edge distance and 45° routing (2026-11-08, still rev A).**
 > - **J1 moved 0.77 mm toward the front edge**: centre **(−10.5, +16.85)**, the same edge distance as FC J2 / J6
 >   (pins v = +14.85, mouth +v; body front at the board edge as on the FC). Copper under and around J1 (PWM_M1–M4, CUR,

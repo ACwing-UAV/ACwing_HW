@@ -6,6 +6,8 @@
 
 > **Revisions.** Rev A is the first released revision. Earlier letters, marked *draft* in this document (drafts A–C), are internal design iterations that were never manufactured.
 
+> **Silkscreen with connector pin names (2026-11-12, still rev A).** The connector labels now carry the pin names (commit 568e74d). Layout and copper unchanged. `ACwing_GPS_A_pcb.png` and `ACwing_GPS_A_3D.png` regenerated with the KiCad 10.0.6 raytracer (`99 - Tools/outputs/k10_renders.sh`, `compose_board_renders.py`).
+
 > **45° routing (2026-11-08, still rev A).** Every track is now at 0 / 45 / 90° (house rule for all ACwing boards):
 > 11 off-angle runs replaced by octilinear doglegs, same end points, pads and vias; 0 segments off 45° left; 8 duplicated segments removed.
 > Checked and saved with KiCad 10.0.6: DRC 0 / 0, ERC 0 errors; Gerber, drill, STEP, schematic PDF, DRC report and renders regenerated.
