@@ -162,6 +162,21 @@ All four boards are routed with **0 DRC violations and 0 unconnected pads** (KiC
 yet: see each board README for the bench checks planned before the first order (ERC in KiCad 8/9, power-stage tests,
 land patterns to verify). Firmware: [ACwing_FW](https://github.com/ACwing-UAV/ACwing_FW).
 
+## License
+
+The ACwing hardware is open hardware, licensed under the
+[CERN Open Hardware Licence Version 2 – Strongly Reciprocal](LICENSE) (**CERN-OHL-S-2.0**).
+This covers the KiCad projects, schematics, layouts, Gerbers, BoMs, STEP models, renders and documentation.
+The scripts in `tools/` and `99 - Tools/` are licensed under the [GNU GPL v3.0 or later](LICENSE-GPL-3.0).
+
+You may use, study, modify, make and sell the boards. If you distribute modified designs, or products made from
+them, you must make the modified sources available under the same licence.
+
+Source location: <https://github.com/ACwing-UAV/ACwing_HW>
+
+The ACwing name and logo identify the original project: you may keep them on unmodified boards, but please remove
+them from modified designs so they are not mistaken for official ACwing hardware.
+
 ## Author
 
 **Andrea Cirillo** – ACwing hardware design.
