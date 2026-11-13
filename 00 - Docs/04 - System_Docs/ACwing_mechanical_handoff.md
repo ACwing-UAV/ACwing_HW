@@ -341,6 +341,17 @@ What we need back: guard-ring check and RM with J1 at u −10.5; cable A length 
 | **Frame** | Core 16.67 g solid (−0.96 g); drone T400 indoor ≈ 68.3 g, T/W 2.05; first frame mode 91.7 Hz with T400 (FE model of 2026-11-08). |
 | **Checks** | T400 indoor and GPS, T800, T1200: 0 mm³ for every pair that is not an assembly interface. |
 
+### 0.24 Mechanical update: frame core rev R, flow board cover (2026-11-13, ACwing_Mechs Mech A1 §14)
+| Item | Answer |
+|---|---|
+| **Why** | The §0.23 core still carried leftovers of the mesh edits and gave non-manifold edges in the slicer. The core is now generated from scratch from a parametric plan as one body (rev R). |
+| **Stack** | Unchanged: bosses on the 20 × 20 diamond, top z −2.0, ESC −2.0 … −1.0, FC 4.0 … 5.0, GPS 11.0 … 12.0, same spacers and screws. **New under the ESC:** deck ribs (1.6 mm wide, top z −4.1) from each boss to the side rails, and the rails rise to z −4.1. Keep-out for ESC bottom-side parts: they are 0.96 mm above the ribs now (lowest part z −3.14); a new bottom-side part on the ESC must stay above z −3.2 within the ESC outline. |
+| **Motor leads** | Same pads and path as §0.23, plus one hole through the rail cap before the deck slot. |
+| **Frame** | Core 18.12 g solid (+1.45 g); foot at z −30: frame 134.8 × 134.8 × **32.5 mm**. Drone T400 indoor ≈ 70.4 g, T/W 1.99 (T800 ≈ 81.2 g, T1200 ≈ 89.6 g). Frame first mode 90.5 Hz with T400; with T800 / T1200 the rear of the tray with the pack comes first (76.7 / 62.7 Hz, lower bound). Set the gyro notch from a tap test. |
+| **Flow board cover** (new) | PETG cover over the sensor side of Flow rev A: 0.8 mm plate 2.6 mm below the sensor face (0.3 mm under the PMW3901), walls on −X, ±Y up to the board back. Openings: PMW3901 lens Ø6.0 at (s, t) of the optical axis, VL53L1X window 3.0 × 5.4 mm, LED D1 Ø1.2 mm. Connector edge (J1 / J2) open. **Flow screws become M2 × 6 nylon from below** through the cover (head 2.0 mm under the sensor face). Flow rev B: keep sensor-side parts ≤ 2.3 mm tall outside the openings, and keep the PMW3901, VL53L1X and LED positions (or tell mechanics). |
+| **Ground clearance** | Cover plate 6.3 mm (T400, T1200) / 5.3 mm (T800) above the ground; PMW3901 lens 7.4 / 6.4 mm. |
+| **Checks** | T400 indoor and GPS, T800, T1200: 0 unexpected overlaps; optical cones 0.80 mm from the cover openings; Flow J1 plug 1.77 mm from the cover. |
+
 ## 1. Coordinate conventions
 
 - **FC frame (u, v):** origin at the FC centre, u to the right, v up, **FC top view**. KiCad: X = 150 + u, Y = 100 − v.
