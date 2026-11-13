@@ -4,7 +4,7 @@
 
 **From:** electronics design (ACwing FC, ACwing ESC 1S, ACwing Flow, ACwing GPS)
 **To:** mechanical / frame design agent
-**Date:** 2026-10-17, **updated 2026-11-12** (§0 supersedes the older items it names; §0.9 = FC rev A, §0.10 = power board rev A + stack check; §0.11 = GPS rev A, 6 mm standoffs; §0.12 = layout update 2026-10-24; §0.13 = layout and routing 2026-11-02/03; §0.14 = stack connectors 2026-11-06; §0.15 = 1.6 mm boards 2026-11-07; §0.16 = mechanical answer; §0.17 = ESC J1 toward the front corner; §0.18 = mechanical answer to §0.17; §0.19 = layout update 2; §0.20 = ESC J1 at the FC edge distance, no FC battery pads, 45° routing; §0.21 = mechanical answer to §0.19 / §0.20; §0.22 = print-first frame and closed wire eyelets, 2026-11-12)
+**Date:** 2026-10-17, **updated 2026-11-13** (§0 supersedes the older items it names; §0.9 = FC rev A, §0.10 = power board rev A + stack check; §0.11 = GPS rev A, 6 mm standoffs; §0.12 = layout update 2026-10-24; §0.13 = layout and routing 2026-11-02/03; §0.14 = stack connectors 2026-11-06; §0.15 = 1.6 mm boards 2026-11-07; §0.16 = mechanical answer; §0.17 = ESC J1 toward the front corner; §0.18 = mechanical answer to §0.17; §0.19 = layout update 2; §0.20 = ESC J1 at the FC edge distance, no FC battery pads, 45° routing; §0.21 = mechanical answer to §0.19 / §0.20; §0.22 = print-first frame and closed wire eyelets, 2026-11-12; §0.23 = one-piece motor holders and lead path, 2026-11-13)
 **Status:** §0 is a decided architecture change; **§0.7 gives the draft F boards as designed** (ACwing ESC 1S draft A, ACwing FC
 draft F, ACwing GPS draft C: connector coordinates, USB corner, LEDs, heights). §2 (flow board) is final.
 
@@ -330,6 +330,16 @@ What we need back: guard-ring check and RM with J1 at u −10.5; cable A length 
 | **Cover** | Flat roof with a 45° chamfer, logo engraved, printed roof-down; same posts, screws, notch for the FC USB-C and skirt (corner LEDs visible). |
 | **Frame** | 134.8 × 134.8 mm; core 17.63 g solid (about 15 g printed); drone T400 indoor ≈ 69.3 g. First frame mode 93.9 Hz with T400 (FE model of 2026-11-08). |
 | **Checks** | T400 indoor and GPS, T800, T1200: 0 mm³ for every pair that is not an assembly interface (your STEP models of 2026-11-08; the silkscreen of 2026-11-12 does not change them). |
+
+### 0.23 Mechanical update: one-piece motor holders, foot ring, motor-lead path (2026-11-13, ACwing_Mechs Mech A1 §13)
+| Item | Answer |
+|---|---|
+| **Why** | Review of the 2026-11-12 frame in the slicer: the holder collar was a separate body, the landing loop was bulky, spokes and bridges were not aligned, the wire eyelets were boxy. |
+| **Motor holders** | One revolved body per motor, same bore and sleeve as before; the drone now stands on a **foot ring** under each holder (no landing loop). Frame 134.8 × 134.8 × **28.0 mm** (36.4 mm before). |
+| **Motor leads** | Same ESC motor pads. The leads leave the motor through the **floor hole** of the holder, run in the recess inside the foot ring and in a **closed channel** (Ø2.0 mm) in the rib under the arm, then weave through **3 holes** (Ø1.9 mm) in the arm and go up through the deck slot to the pads. Thread them before soldering. |
+| **Stack, plugs, cables** | Unchanged: RM 52, stack z, screws, USB-C clearances (FC 1.20 mm, ESC 0.77 mm), cable A 1.37 mm from the propeller disc. |
+| **Frame** | Core 16.67 g solid (−0.96 g); drone T400 indoor ≈ 68.3 g, T/W 2.05; first frame mode 91.7 Hz with T400 (FE model of 2026-11-08). |
+| **Checks** | T400 indoor and GPS, T800, T1200: 0 mm³ for every pair that is not an assembly interface. |
 
 ## 1. Coordinate conventions
 
