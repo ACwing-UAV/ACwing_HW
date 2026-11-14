@@ -6,6 +6,10 @@
 
 > **Revisions.** Rev A is the first released revision.
 
+> **Flow board cover (2026-11-13, mechanics, board unchanged).** Frame A1 rev R adds a PETG cover over the sensor side:
+> only the PMW3901 lens, the VL53L1X window and LED D1 stay open; the J1 / J2 edge is open. The two board screws become
+> **M2 × 6 nylon from below** through the cover. Keep-outs for a future revision: [mechanical handoff §0.24](../04%20-%20System_Docs/ACwing_mechanical_handoff.md).
+
 > **Silkscreen with connector pin names (2026-11-12, still rev A).** The connector labels now carry the pin names (commit 568e74d). Layout and copper unchanged. `ACwing_Flow_A_pcb.png` and `ACwing_Flow_A_3D.png` regenerated with the KiCad 10.0.6 raytracer (`99 - Tools/outputs/k10_renders.sh`, `compose_board_renders.py`).
 
 > **45° routing (2026-11-08, still rev A).** Every track is now at 0 / 45 / 90° (house rule for all ACwing boards):
